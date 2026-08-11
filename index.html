@@ -823,7 +823,7 @@ p:last-child{margin-bottom:0}
 .project-feature-contrib-label{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -941,10 +941,10 @@ p:last-child{margin-bottom:0}
 }
 .project-matrix-panel{
   width:100%;
-  padding:var(--space-4);
+  padding:var(--space-3);
   background:var(--project-catalyx-panel);
-  border-radius:var(--radius-control);
-  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--radius-module);
+  border:1px solid rgba(255,255,255,.04);
 }
 .project-matrix{
   width:100%;
@@ -953,17 +953,17 @@ p:last-child{margin-bottom:0}
   gap:8px;
 }
 .project-matrix-cell{
-  min-height:46px;
+  min-height:40px;
   display:grid;
   place-items:center;
-  padding:10px 8px;
-  border-radius:8px;
+  padding:8px;
+  border-radius:6px;
   background:var(--project-catalyx-cell);
   color:var(--project-catalyx-panel-text);
   font-family:var(--font-mono);
-  font-size:.6875rem;
-  font-weight:700;
-  letter-spacing:.04em;
+  font-size:.625rem;
+  font-weight:600;
+  letter-spacing:.08em;
   text-transform:uppercase;
   text-align:center;
   line-height:1.2;
@@ -990,29 +990,29 @@ p:last-child{margin-bottom:0}
   display:flex;
   flex-direction:column;
   gap:var(--space-2);
-  padding:clamp(16px,2vw,22px);
-  background:var(--project-secondary-bg);
-  border:1px solid var(--line);
-  border-radius:calc(var(--radius-module) - 4px);
+  padding:var(--space-4) 0 0;
+  background:transparent;
+  border:0;
+  border-top:1px solid var(--line);
+  border-radius:0;
   min-width:0;
   text-decoration:none;
   color:inherit;
-  transition:transform var(--dur-fast) var(--ease-out),background var(--dur-fast);
+  transition:transform var(--dur-fast) var(--ease-out);
 }
 .project-evidence-card--brickbillion{
-  background:var(--project-brick-bg);
-  border-color:var(--project-brick-border);
-  border-left:3px solid var(--lime);
+  background:transparent;
+  border-color:var(--line);
 }
 .project-evidence-card--research{
   grid-column:1 / -1;
-  background:var(--project-secondary-alt);
-  border-color:transparent;
+  background:transparent;
+  border-color:var(--line);
   flex-direction:row;
   flex-wrap:wrap;
   align-items:baseline;
   gap:var(--space-2) var(--space-4);
-  padding:clamp(14px,1.8vw,18px) clamp(16px,2vw,22px);
+  padding:var(--space-4) 0 0;
 }
 .project-evidence-card--research .project-evidence-kicker{flex:0 0 auto}
 .project-evidence-card--research h3{
@@ -1027,12 +1027,11 @@ p:last-child{margin-bottom:0}
   padding-top:0;
   margin-left:auto;
 }
-.project-evidence-card:hover{transform:translateY(-1px)}
 .project-evidence-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
 .project-evidence-kicker{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -1066,7 +1065,7 @@ p:last-child{margin-bottom:0}
 .project-evidence-group-label{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -5567,7 +5566,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   display:flex;
   flex-direction:column;
   gap:var(--space-3);
-  padding:clamp(18px,2.2vw,24px);
+  padding:var(--space-4) var(--space-5);
   border-radius:var(--radius-module);
   border:1px solid transparent;
   min-width:0;
@@ -5590,7 +5589,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-pillar-label{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.6875rem;
+  font-size:.625rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -5610,8 +5609,8 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-pillar--product .capability-pillar-title{color:var(--cap-product-text)}
 .capability-pillar--delivery .capability-pillar-title{color:var(--cap-delivery-text)}
 .capability-pillar-summary{
-  margin:0;
-  font-size:.9375rem;
+  margin:calc(var(--space-2) * -1) 0 0;
+  font-size:.875rem;
   line-height:1.55;
   max-width:42ch;
 }
@@ -5738,7 +5737,9 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-depth-row:first-of-type{border-top:0;padding-top:0}
 .capability-depth-label{
   display:grid;
-  gap:6px;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:start;
+  gap:4px 10px;
   min-width:0;
 }
 .capability-depth-marker{
@@ -5751,20 +5752,25 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-depth-row--foundation .capability-depth-marker{background:var(--cap-foundation-marker)}
 .capability-depth-row--building .capability-depth-marker{background:var(--cap-building-marker)}
 .capability-depth-label strong{
+  grid-column:2;
+  grid-row:1;
   font-family:var(--font-display);
   font-size:.9375rem;
   font-weight:700;
   color:var(--ink);
   letter-spacing:-.01em;
+  margin-top:-2px;
 }
 .capability-depth-label span{
+  grid-column:2;
+  grid-row:2;
   font-size:.8125rem;
   line-height:1.45;
   color:var(--muted);
 }
 .capability-depth-content{
   display:grid;
-  gap:var(--space-3);
+  gap:var(--space-2);
   min-width:0;
 }
 .capability-depth-group{
@@ -5794,12 +5800,24 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   color:var(--muted);
   max-width:62ch;
 }
-.capability-focus{
-  margin-top:var(--space-4);
-  padding-top:var(--space-4);
-  border-top:1px solid var(--line);
+
+.capability-footer{
+  background:var(--lavender-soft);
+  border-radius:var(--radius-module);
+  padding:var(--space-5);
+  margin-bottom:var(--space-4);
+  display:grid;
+  gap:var(--space-4);
 }
-.capability-focus-label{
+.capability-footer-divider{
+  height:1px;
+  background:var(--line);
+  opacity:0.5;
+}
+.capability-role-map{
+  margin:0;
+}
+.capability-role-map-kicker{
   margin:0 0 var(--space-2);
   font-family:var(--font-mono);
   font-size:.625rem;
@@ -5808,48 +5826,9 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   text-transform:uppercase;
   color:var(--muted);
 }
-.capability-focus-list{
-  margin:0 0 var(--space-2);
-  padding:0;
-  list-style:none;
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px 18px;
-  font-family:var(--font-display);
-  font-size:1rem;
-  font-weight:700;
-  letter-spacing:-.02em;
-  color:var(--ink);
-}
-.capability-focus-list li{position:relative}
-.capability-focus-note{
-  margin:0;
-  font-size:.8125rem;
-  color:var(--muted);
-  line-height:1.45;
-}
-.capability-focus-secondary{
-  margin:var(--space-2) 0 0;
-  font-size:.8125rem;
-  color:var(--muted);
-  line-height:1.45;
-}
-
-.capability-role-map{
-  margin-bottom:var(--space-6);
-}
-.capability-role-map-kicker{
-  margin:0 0 var(--space-2);
-  font-family:var(--font-mono);
-  font-size:.6875rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--muted);
-}
 .capability-role-map h2{
   margin:0 0 var(--space-4);
-  font-size:clamp(1.2rem,2vw,1.45rem);
+  font-size:clamp(1.1rem,2vw,1.25rem);
   letter-spacing:-.02em;
 }
 .capability-role-grid{
@@ -5858,13 +5837,13 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   gap:var(--space-4) var(--space-5);
 }
 .capability-role-col h3{
-  margin:0 0 var(--space-2);
-  font-size:.9375rem;
+  margin:0 0 var(--space-1);
+  font-size:.875rem;
   letter-spacing:-.01em;
 }
 .capability-role-col p{
   margin:0;
-  font-size:.875rem;
+  font-size:.8125rem;
   line-height:1.55;
   color:var(--muted);
   max-width:36ch;
@@ -5872,11 +5851,8 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 
 .capability-cta{
   display:grid;
-  gap:var(--space-3);
-  padding:clamp(18px,2.2vw,26px);
-  background:var(--lavender-soft);
-  border-radius:var(--radius-module);
-  margin-bottom:var(--space-4);
+  gap:var(--space-2);
+  margin:0;
 }
 .capability-cta-kicker{
   margin:0;
@@ -6819,7 +6795,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
 }
 
 html[data-theme="dark"] #view-toolbox {
-  --tb-playbook-bg: #2f2f33;
+  --tb-playbook-bg: #222226;
   --tb-playbook-text: #f4f4f4;
   --tb-playbook-muted: rgba(244, 244, 244, 0.68);
   --tb-playbook-meta: rgba(244, 244, 244, 0.52);
@@ -6847,7 +6823,7 @@ html[data-theme="dark"] #view-toolbox {
 }
 
 #view-toolbox .page-head {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 }
 
 #view-toolbox .page-head .lead {
@@ -6855,39 +6831,42 @@ html[data-theme="dark"] #view-toolbox {
 }
 
 .toolbox-micro {
-  margin: var(--space-4) 0 0;
+  margin: var(--space-2) 0 0;
   max-width: 58ch;
   font-size: 0.875rem;
   line-height: 1.6;
   color: var(--muted);
 }
 
+
 /* —— Decision flow —— */
 .toolbox-flow {
   list-style: none;
-  margin: 0 0 var(--space-3);
-  padding: 0;
+  margin: 0 0 var(--space-2);
+  padding: 12px 16px;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2) 0;
   align-items: center;
+  background: var(--surface-secondary);
+  border-radius: var(--radius-control);
 }
 
 .toolbox-flow li {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 8px;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.9375rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .toolbox-flow li:not(:last-child)::after {
   content: "→";
-  margin-left: var(--space-2);
-  margin-right: var(--space-2);
+  margin-left: 8px;
+  margin-right: 8px;
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 0.75rem;
@@ -6895,10 +6874,10 @@ html[data-theme="dark"] #view-toolbox {
 }
 
 .toolbox-flow-caption {
-  margin: 0 0 var(--space-7);
-  max-width: 58ch;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  margin: 0 0 var(--space-5);
+  max-width: 68ch;
+  font-size: 0.8125rem;
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -6922,15 +6901,15 @@ html[data-theme="dark"] #view-toolbox {
 
 .toolbox-section-head h2 {
   margin: 0 0 var(--space-3);
-  font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
   letter-spacing: -0.02em;
 }
 
 .toolbox-section-head p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.9375rem;
-  line-height: 1.65;
+  font-size: 0.875rem;
+  line-height: 1.6;
   max-width: 58ch;
 }
 
@@ -6941,13 +6920,13 @@ html[data-theme="dark"] #view-toolbox {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-5) var(--space-6);
+  gap: var(--space-4) var(--space-5);
   counter-reset: tb-principle;
 }
 
 .toolbox-principle {
   position: relative;
-  padding-top: var(--space-4);
+  padding-top: var(--space-3);
   border-top: 1px solid var(--line);
   counter-increment: tb-principle;
 }
@@ -6968,15 +6947,15 @@ html[data-theme="dark"] #view-toolbox {
 }
 
 .toolbox-principle h3 {
-  margin: 0 0 var(--space-2);
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-1);
+  font-size: 1rem;
+  letter-spacing: -0.01em;
 }
 
 .toolbox-principle p {
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: 0.8125rem;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -7038,7 +7017,7 @@ html[data-theme="dark"] #view-toolbox {
 }
 
 .toolbox-playbook {
-  padding: var(--space-5) var(--space-5) var(--space-6);
+  padding: var(--space-4) var(--space-5) var(--space-5);
   border-radius: var(--radius-module);
   background: var(--tb-playbook-bg);
   color: var(--tb-playbook-text);
@@ -7143,9 +7122,7 @@ html[data-theme="dark"] #view-toolbox {
 }
 
 .toolbox-playbook-flow li {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  display: inline;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--tb-playbook-text);
@@ -7153,6 +7130,9 @@ html[data-theme="dark"] #view-toolbox {
 
 .toolbox-playbook-flow li:not(:last-child)::after {
   content: "→";
+  display: inline-block;
+  margin-left: 6px;
+  margin-right: 2px;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--tb-playbook-meta);
@@ -7277,7 +7257,7 @@ html[data-theme="dark"] .toolbox-compare-tab.is-active {
 
 .toolbox-compare-col h3 {
   margin: 0 0 var(--space-2);
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .toolbox-compare-col .mono-label {
@@ -7287,8 +7267,8 @@ html[data-theme="dark"] .toolbox-compare-tab.is-active {
 
 .toolbox-compare-col p,
 .toolbox-compare-col li {
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: 0.8125rem;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -7312,6 +7292,38 @@ html[data-theme="dark"] .toolbox-compare-tab.is-active {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-5);
+}
+
+.toolbox-compare-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+.toolbox-compare-wrapper .toolbox-section {
+  margin-bottom: 0;
+}
+.toolbox-compare-wrapper .toolbox-compare-card,
+.toolbox-compare-wrapper .toolbox-split-when {
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 1100px) {
+  .toolbox-compare-wrapper {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .toolbox-compare-wrapper .toolbox-compare-card,
+  .toolbox-compare-wrapper .toolbox-split-when {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .toolbox-compare-wrapper .toolbox-compare-card,
+  .toolbox-compare-wrapper .toolbox-split-when {
+    grid-template-columns: 1fr;
+  }
 }
 
 .toolbox-when {
@@ -7431,7 +7443,7 @@ html[data-theme="dark"] .toolbox-compare-tab.is-active {
 .toolbox-tco-grid p,
 .toolbox-tco-grid li {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   line-height: 1.55;
   color: var(--ink);
   opacity: 0.82;
@@ -7470,7 +7482,7 @@ html[data-theme="dark"] .toolbox-tco-models {
 }
 
 .toolbox-tco-models li {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
   color: var(--ink);
   opacity: 0.85;
@@ -7577,14 +7589,14 @@ html[data-theme="dark"] .toolbox-tco .btn-text {
 }
 
 .toolbox-case h3 {
-  margin: 0 0 var(--space-3);
-  font-size: 1.1rem;
+  margin: 0 0 var(--space-2);
+  font-size: 1.05rem;
 }
 
 .toolbox-case p {
   margin: 0 0 var(--space-3);
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: 0.8125rem;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -7623,8 +7635,8 @@ html[data-theme="dark"] .toolbox-tco .btn-text {
 }
 
 .toolbox-stack h3 {
-  margin: 0 0 var(--space-3);
-  font-size: 1.05rem;
+  margin: 0 0 var(--space-2);
+  font-size: 1rem;
 }
 
 .toolbox-stack ul {
@@ -7636,8 +7648,8 @@ html[data-theme="dark"] .toolbox-tco .btn-text {
 }
 
 .toolbox-stack li {
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.8125rem;
+  line-height: 1.55;
   color: var(--muted);
 }
 
@@ -7890,7 +7902,7 @@ html[data-theme="dark"] .toolbox-tco .btn-text {
 }
 
 .toolbox-dir-table td {
-  padding: 12px 0;
+  padding: 8px 0;
   vertical-align: baseline;
   font-size: 0.875rem;
 }
@@ -8186,6 +8198,22 @@ html[data-theme="dark"] #view-learning {
   line-height: 1.2;
 }
 
+.learning-split-hero {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+.learning-split-hero .learning-section-head {
+  max-width: none;
+}
+@media (max-width: 900px) {
+  .learning-split-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+}
+
 .learning-section-head p {
   margin: 0;
   font-size: 0.9375rem;
@@ -8286,53 +8314,42 @@ html[data-theme="dark"] #view-learning {
   border: 1px solid var(--ln-sprint-border);
 }
 
-.learning-sprint-list {
-  list-style: none;
-  margin: 16px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 22px;
+.learning-sprint-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 var(--space-4);
 }
 
-.learning-sprint-list li {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 10px 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--line);
+.learning-sprint-card {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
 }
 
 .learning-sprint-num {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--ln-now);
-  padding-top: 3px;
+  line-height: 1.2;
 }
 
-.learning-sprint-list strong {
+.learning-sprint-content strong {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   margin-bottom: 2px;
 }
 
-.learning-sprint-list span {
+.learning-sprint-content span {
   display: block;
   font-size: 0.8125rem;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--muted);
 }
 
 .learning-sprint-target {
-  margin: 18px 0 0;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: var(--muted);
-}
 
 .learning-sprint-target strong {
   color: var(--ink);
@@ -10022,7 +10039,7 @@ html[data-theme="dark"] .learning-platform-layers li {
           <dd>Functional testing / UAT · Issue reproduction · Documentation · Requirements decomposition</dd>
         </dl>
         <dl class="capability-depth-group">
-          <dt>Tools</dt>
+          <dt>Workflow & AI</dt>
           <dd>OpenProject · Cursor · OpenAI Codex · Antigravity · Ollama</dd>
         </dl>
         <dl class="capability-depth-group">
@@ -10066,49 +10083,43 @@ html[data-theme="dark"] .learning-platform-layers li {
           <dt>Secondary</dt>
           <dd>JSON · Jira Service Management familiarity · Power BI basics</dd>
         </dl>
-        <div class="capability-focus">
-          <p class="capability-focus-label">Current technical focus</p>
-          <ul class="capability-focus-list">
-            <li>SQL</li>
-            <li>REST APIs / Postman</li>
-            <li>ITSM</li>
-            <li>Linux / Networking</li>
-          </ul>
-          <p class="capability-focus-note">Building practical support readiness for product and application support roles.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="capability-footer">
+    <div class="capability-role-map" aria-labelledby="cap-role-heading">
+      <p class="capability-role-map-kicker">Where this fits</p>
+      <h2 id="cap-role-heading">Role families these capabilities support</h2>
+      <div class="capability-role-grid">
+        <div class="capability-role-col">
+          <h3>Product / Application Support</h3>
+          <p>Issue reproduction · troubleshooting · validation · documentation</p>
+        </div>
+        <div class="capability-role-col">
+          <h3>Implementation</h3>
+          <p>Requirements · workflows · role/state validation · handover</p>
+        </div>
+        <div class="capability-role-col">
+          <h3>Product Operations</h3>
+          <p>Work tracking · documentation · process clarity · delivery visibility</p>
         </div>
       </div>
     </div>
-  </section>
+    
+    <div class="capability-footer-divider"></div>
 
-  <section class="capability-role-map" aria-labelledby="cap-role-heading">
-    <p class="capability-role-map-kicker">Where this fits</p>
-    <h2 id="cap-role-heading">Role families these capabilities support</h2>
-    <div class="capability-role-grid">
-      <div class="capability-role-col">
-        <h3>Product / Application Support</h3>
-        <p>Issue reproduction · troubleshooting · validation · documentation</p>
-      </div>
-      <div class="capability-role-col">
-        <h3>Implementation</h3>
-        <p>Requirements · workflows · role/state validation · handover</p>
-      </div>
-      <div class="capability-role-col">
-        <h3>Product Operations</h3>
-        <p>Work tracking · documentation · process clarity · delivery visibility</p>
+    <div class="capability-cta" aria-labelledby="cap-cta-heading">
+      <h2 id="cap-cta-heading">Skillverse + Catalyx show these capabilities in context.</h2>
+      <p>Project pages demonstrate how support, workflow and delivery practices show up in real product work.</p>
+      <div class="capability-cta-actions">
+        <a href="#/projects" class="btn btn-primary" data-nav-link="projects">View projects</a>
+        <a href="#/recruiter" class="btn btn-quiet" data-nav-link="recruiter">Recruiter view →</a>
+        <a href="#/contact" class="btn-text" data-nav-link="contact">Contact →</a>
       </div>
     </div>
-  </section>
-
-  <section class="capability-cta" aria-labelledby="cap-cta-heading">
-    <p class="capability-cta-kicker">See the evidence</p>
-    <h2 id="cap-cta-heading">Skillverse + Catalyx show these capabilities in context.</h2>
-    <p>Project pages demonstrate how support, workflow and delivery practices show up in real product work.</p>
-    <div class="capability-cta-actions">
-      <a href="#/projects" class="btn btn-primary" data-nav-link="projects">View projects</a>
-      <a href="#/recruiter" class="btn btn-quiet" data-nav-link="recruiter">Recruiter view →</a>
-      <a href="#/contact" class="btn-text" data-nav-link="contact">Contact →</a>
-    </div>
-  </section>
+  </footer>
 </div>
 </section>
 
@@ -10480,8 +10491,9 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
   </section>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-compare-heading">
-    <header class="toolbox-section-head">
+  <div class="toolbox-compare-wrapper">
+    <section class="toolbox-section" aria-labelledby="toolbox-compare-heading">
+      <header class="toolbox-section-head">
       <p class="mono-label">03 / Compare</p>
       <h2 id="toolbox-compare-heading">Compare by need</h2>
       <p>Lean and enterprise options side by side. Use “evaluate when” — not “best tool” — language for each need.</p>
@@ -10626,6 +10638,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       </div>
     </div>
   </section>
+  </div>
 
   <section class="toolbox-section toolbox-tco" aria-labelledby="toolbox-tco-heading">
     <header class="toolbox-section-head">
@@ -11382,44 +11395,48 @@ html[data-theme="dark"] .learning-platform-layers li {
   </header>
 
   <section class="learning-north-star learning-section" aria-labelledby="learning-north-heading">
-    <div class="learning-section-head">
-      <p class="mono-label">01 / Direction</p>
-      <h2 id="learning-north-heading">North star</h2>
-      <p>One primary direction. Supporting skills add layers around how modern applications run, fail, communicate, store data and are supported.</p>
-    </div>
-    <ol class="learning-path" aria-label="Learning direction">
-      <li class="learning-path-step learning-path-step--now">
-        <span class="learning-path-label">Now</span>
-        <div class="learning-path-copy">
-          <strong>Product Support · Application Support</strong>
-          <span>Immediate destination — structured troubleshooting, validation and evidence.</span>
+    <div class="learning-split-hero">
+      <div class="learning-split-main">
+        <div class="learning-section-head">
+          <p class="mono-label">01 / Direction</p>
+          <h2 id="learning-north-heading">North star</h2>
+          <p>One primary direction. Supporting skills add layers around how modern applications run, fail, communicate, store data and are supported.</p>
         </div>
-      </li>
-      <li class="learning-path-step learning-path-step--deepening">
-        <span class="learning-path-label">Deepening</span>
-        <div class="learning-path-copy">
-          <strong>Platform Support · Implementation</strong>
-          <span>Growing depth around configuration, workflows, APIs, data and handover quality.</span>
-        </div>
-      </li>
-      <li class="learning-path-step">
-        <span class="learning-path-label">Longer term</span>
-        <div class="learning-path-copy">
-          <strong>Technical Operations · Integrations · Solutions depth</strong>
-          <span>Learning direction — not a guaranteed title path.</span>
-        </div>
-      </li>
-    </ol>
-    <p class="learning-north-note">The goal is not to collect unrelated technologies. Each learning track adds another layer of understanding around how modern applications run, fail, communicate, store data and are supported.</p>
-  </section>
+        <ol class="learning-path" aria-label="Learning direction">
+          <li class="learning-path-step learning-path-step--now">
+            <span class="learning-path-label">Now</span>
+            <div class="learning-path-copy">
+              <strong>Product Support · Application Support</strong>
+              <span>Immediate destination — structured troubleshooting, validation and evidence.</span>
+            </div>
+          </li>
+          <li class="learning-path-step learning-path-step--deepening">
+            <span class="learning-path-label">Deepening</span>
+            <div class="learning-path-copy">
+              <strong>Platform Support · Implementation</strong>
+              <span>Growing depth around configuration, workflows, APIs, data and handover quality.</span>
+            </div>
+          </li>
+          <li class="learning-path-step">
+            <span class="learning-path-label">Longer term</span>
+            <div class="learning-path-copy">
+              <strong>Technical Operations · Integrations · Solutions depth</strong>
+              <span>Learning direction — not a guaranteed title path.</span>
+            </div>
+          </li>
+        </ol>
+        <p class="learning-north-note">The goal is not to collect unrelated technologies. Each learning track adds another layer of understanding around how modern applications run, fail, communicate, store data and are supported.</p>
+      </div>
 
-  <section class="learning-section" aria-labelledby="learning-sprint-heading">
-    <div class="learning-section-head">
-      <p class="mono-label">02 / Focus</p>
-      <h2 id="learning-sprint-heading">Current learning sprint</h2>
-      <p>Limited active priorities — everything else stays queued, foundation or later.</p>
+      <div class="learning-split-side">
+        <div class="learning-section-head">
+          <p class="mono-label">02 / Focus</p>
+          <h2 id="learning-sprint-heading">Current learning sprint</h2>
+          <p>Limited active priorities — everything else stays queued.</p>
+        </div>
+        <div class="learning-sprint" id="learning-sprint"></div>
+      </div>
     </div>
-    <div class="learning-sprint" id="learning-sprint"></div>
   </section>
 
   <section class="learning-section" aria-labelledby="learning-map-heading">
@@ -13609,39 +13626,52 @@ None identified`;
     const primary = TOOLBOX.filter(t => !t.utility);
     const utilities = TOOLBOX.filter(t => t.utility);
 
-    root.innerHTML = TOOL_GROUPS.map(group => {
-      const tools = primary.filter(t => t.group === group.id);
-      if (!tools.length) return '';
-      return `
-        <section class="toolbox-dir-group" aria-labelledby="tb-group-${esc(group.id)}">
-          <h3 id="tb-group-${esc(group.id)}">${esc(group.label)}</h3>
-          <table class="toolbox-dir-table">
-            <thead>
-              <tr>
-                <th scope="col">Tool</th>
-                <th scope="col">Level</th>
-                <th scope="col">Used for</th>
-                <th scope="col">Evidence</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${tools.map(tool => {
-                const lvl = toolLevelMeta(tool.level);
-                const evidence = (tool.evidence || []).slice(0, 2).map(e =>
-                  `<a href="${esc(e.href)}" data-nav-link="${esc(e.path)}">${esc(e.label)}</a>`
-                ).join(' · ') || '—';
-                return `<tr>
-                  <td>${esc(tool.name)}</td>
-                  <td><span class="toolbox-level toolbox-level--${esc(lvl.id)}">${esc(lvl.short)}</span></td>
-                  <td>${esc(tool.purpose || tool.usedFor || '')}</td>
-                  <td>${evidence}</td>
-                </tr>`;
-              }).join('')}
-            </tbody>
-          </table>
-        </section>
-      `;
-    }).join('') + `
+    const tabsHtml = `
+      <div class="toolbox-compare-tabs" role="tablist" aria-label="Tool directory categories" style="margin-bottom:var(--space-4);">
+        ${TOOL_GROUPS.map((group, index) => `
+          <button type="button" class="toolbox-compare-tab ${index === 0 ? 'is-active' : ''}" role="tab" id="tb-dir-tab-${esc(group.id)}" aria-selected="${index === 0 ? 'true' : 'false'}" aria-controls="tb-dir-panel-${esc(group.id)}">${esc(group.label)}</button>
+        `).join('')}
+      </div>
+    `;
+
+    const panelsHtml = `
+      <div class="toolbox-compare-panels">
+        ${TOOL_GROUPS.map((group, index) => {
+          const tools = primary.filter(t => t.group === group.id);
+          if (!tools.length) return '';
+          return `
+            <div class="toolbox-compare-panel ${index === 0 ? 'is-active' : ''}" role="tabpanel" id="tb-dir-panel-${esc(group.id)}" aria-labelledby="tb-dir-tab-${esc(group.id)}" aria-hidden="${index === 0 ? 'false' : 'true'}">
+              <table class="toolbox-dir-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tool</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Used for</th>
+                    <th scope="col">Evidence</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${tools.map(tool => {
+                    const lvl = toolLevelMeta(tool.level);
+                    const evidence = (tool.evidence || []).slice(0, 2).map(e =>
+                      `<a href="${esc(e.href)}" data-nav-link="${esc(e.path)}">${esc(e.label)}</a>`
+                    ).join(' · ') || '—';
+                    return `<tr>
+                      <td>${esc(tool.name)}</td>
+                      <td><span class="toolbox-level toolbox-level--${esc(lvl.id)}">${esc(lvl.short)}</span></td>
+                      <td>${esc(tool.purpose || tool.usedFor || '')}</td>
+                      <td>${evidence}</td>
+                    </tr>`;
+                  }).join('')}
+                </tbody>
+              </table>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    root.innerHTML = tabsHtml + panelsHtml + `
       <aside class="toolbox-utility-shelf" aria-labelledby="tb-utility-heading">
         <h3 id="tb-utility-heading">Utility shelf</h3>
         <p>Practical familiarity — visually secondary to delivery and support tools.</p>
@@ -13657,20 +13687,24 @@ None identified`;
   }
 
   function initToolboxCompare() {
-    const tabs = $$('.toolbox-compare-tab');
-    if (!tabs.length) return;
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const need = tab.dataset.tbNeed;
-        tabs.forEach(t => {
-          const on = t === tab;
-          t.classList.toggle('is-active', on);
-          t.setAttribute('aria-selected', String(on));
-        });
-        $$('.toolbox-compare-panel').forEach(panel => {
-          const on = panel.dataset.tbPanel === need;
-          panel.classList.toggle('is-active', on);
-          panel.setAttribute('aria-hidden', String(!on));
+    const tablists = $$('.toolbox-compare-tabs');
+    tablists.forEach(tablist => {
+      const tabs = tablist.querySelectorAll('.toolbox-compare-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => {
+            const on = t === tab;
+            t.classList.toggle('is-active', on);
+            t.setAttribute('aria-selected', String(on));
+            const panelId = t.getAttribute('aria-controls');
+            if (panelId) {
+              const panel = document.getElementById(panelId);
+              if (panel) {
+                panel.classList.toggle('is-active', on);
+                panel.setAttribute('aria-hidden', String(!on));
+              }
+            }
+          });
         });
       });
     });
@@ -13691,18 +13725,21 @@ None identified`;
     const root = $('#learning-sprint');
     if (!root) return;
     root.innerHTML = `
-      <ol class="learning-sprint-list">
+      <div class="learning-sprint-cards">
         ${LEARNING_SPRINT.items.map(item => `
-          <li>
+          <div class="learning-sprint-card">
             <span class="learning-sprint-num">${esc(item.num)}</span>
-            <div>
+            <div class="learning-sprint-content">
               <strong>${esc(item.title)}</strong>
               <span>${esc(item.detail)}</span>
             </div>
-          </li>
+          </div>
         `).join('')}
-      </ol>
-      <p class="learning-sprint-target"><strong>Target outcome</strong>${esc(LEARNING_SPRINT.target)}</p>
+      </div>
+      <div class="learning-sprint-target">
+        <span class="mono-label">Target outcome</span>
+        <p>${esc(LEARNING_SPRINT.target)}</p>
+      </div>
     `;
   }
 
