@@ -202,7 +202,10 @@ p:last-child{margin-bottom:0}
 
 /* WORKSPACE */
 .workspace{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--workspace);border-radius:var(--radius-module) 0 0 var(--radius-module)}
-.workspace-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
+.workspace-scroll{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(17,17,17,.22) transparent}
+.workspace-scroll::-webkit-scrollbar{width:8px}
+.workspace-scroll::-webkit-scrollbar-track{background:transparent}
+.workspace-scroll::-webkit-scrollbar-thumb{background:rgba(17,17,17,.22);border-radius:var(--radius-pill)}
 .workspace-topbar{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4) var(--space-6);min-height:var(--header-h);flex-shrink:0}
 .topbar-user{display:flex;align-items:center;gap:var(--space-3);min-width:0}
 .topbar-avatar{width:40px;height:40px;border-radius:12px;object-fit:cover}
@@ -272,7 +275,7 @@ p:last-child{margin-bottom:0}
 
 /* HERO MODULE */
 .hero-module{display:grid;grid-template-columns:1fr;gap:var(--space-5);align-items:end}
-@media(min-width:900px){.hero-module{grid-template-columns:1.1fr .9fr;align-items:center}}
+@media(min-width:1024px){.hero-module{grid-template-columns:1.1fr .9fr;align-items:center}}
 .hero-portrait-wrap{max-width:320px;margin:0 auto}
 .hero-portrait{width:100%;aspect-ratio:4/5;border-radius:24px;object-fit:cover;object-position:center top}
 .hero-statement{font-size:clamp(1rem,2vw,1.2rem);font-weight:500;line-height:1.5;margin-top:var(--space-4)}
@@ -290,30 +293,11 @@ p:last-child{margin-bottom:0}
 .viz-circle--charcoal{background:var(--shell-deep);color:#fff}
 .viz-circle--lime{background:var(--lime);color:var(--ink)}
 .module-dark .viz-circle{border-color:var(--shell-deep)}
-
-/* VIZ — BARS */
-.viz-bars{display:flex;flex-direction:column;gap:10px;margin-top:var(--space-4)}
-.viz-bar-row{display:grid;grid-template-columns:80px 1fr;gap:var(--space-3);align-items:center;font-size:.75rem;font-weight:600}
-.viz-bar-track{height:10px;background:rgba(255,255,255,.12);border-radius:var(--radius-pill);overflow:hidden}
-.viz-bar-fill{height:100%;border-radius:var(--radius-pill);background:var(--lavender)}
-.viz-bar-fill--lime{background:var(--lime)}
-
-/* VIZ — TIMELINE */
 .career-track{margin-top:var(--space-4)}
-.career-line{position:relative;height:4px;background:var(--surface-soft);border-radius:var(--radius-pill);margin:var(--space-5) 0 var(--space-4)}
-.career-line-fill{position:absolute;left:0;top:0;height:100%;width:85%;background:linear-gradient(90deg,var(--lavender),var(--lime));border-radius:var(--radius-pill)}
 .career-nodes{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-2)}
 .career-node{text-align:center}
 .career-node-year{font-family:var(--font-display);font-weight:800;font-size:1rem}
 .career-node-label{font-size:.6875rem;color:var(--muted);margin-top:4px;line-height:1.3}
-
-/* SUPPORT LOOP DARK */
-.loop-bars{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-3);margin-top:var(--space-5);align-items:end;height:140px}
-.loop-bar-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);height:100%}
-.loop-bar{width:100%;max-width:48px;border-radius:12px 12px 4px 4px;background:var(--lavender);opacity:.5;flex:1;min-height:20px}
-.loop-bar--active{background:var(--lime);opacity:1}
-.loop-bar-label{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center}
-.loop-bar-num{font-size:.6875rem;font-weight:800;color:var(--lime)}
 
 /* CARDS + LEGACY */
 .card{background:var(--surface);border:none;border-radius:var(--radius-module);padding:var(--space-5);transition:transform var(--dur-fast)}
@@ -329,7 +313,7 @@ p:last-child{margin-bottom:0}
 .project-spread:hover{transform:translateY(-2px)}
 .project-spread--skillverse{background:var(--lavender-soft)}
 .project-spread--catalyx{background:var(--shell-deep);color:#f4f4f4}
-@media(min-width:900px){.project-spread{grid-template-columns:1fr 1fr;align-items:center}}
+@media(min-width:1024px){.project-spread{grid-template-columns:1fr 1fr;align-items:center}}
 .project-link{font-weight:700;font-size:.875rem;margin-top:var(--space-4);display:inline-flex;gap:6px}
 .workflow-viz{display:flex;flex-direction:column;gap:6px}
 .workflow-node{padding:10px 14px;background:var(--surface);border-radius:14px;font-size:.8125rem;font-weight:600}
@@ -359,17 +343,7 @@ p:last-child{margin-bottom:0}
 .metric-type-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;color:var(--muted)}
 .metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:var(--space-5);margin:var(--space-5) 0}
 .case-study-hero{display:grid;gap:var(--space-5);margin-bottom:var(--space-6)}
-@media(min-width:900px){.case-study-hero{grid-template-columns:1fr 1fr}}
-
-/* TIMELINE */
-.timeline-card{background:var(--surface);border-radius:var(--radius-control);overflow:hidden;margin-bottom:var(--space-4)}
-.timeline-header{padding:var(--space-5);cursor:pointer;display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between;width:100%;text-align:left}
-.timeline-header:hover{background:var(--surface-soft)}
-.timeline-body{padding:0 var(--space-5) var(--space-5)}
-.timeline-body[hidden]{display:none}
-.timeline-meta{font-size:.8125rem;color:var(--muted)}
-.process-step{padding:var(--space-4);background:var(--surface-soft);border-radius:14px;font-size:.875rem;font-weight:600;margin-bottom:6px}
-.process-arrow{text-align:center;font-size:.625rem;color:var(--muted);font-family:var(--font-mono)}
+@media(min-width:1024px){.case-study-hero{grid-template-columns:1fr 1fr}}
 
 /* ARTICLES */
 .article-body{max-width:var(--article-max);font-size:1rem;line-height:1.7}
@@ -391,12 +365,11 @@ p:last-child{margin-bottom:0}
 .cert-grid{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .cert-card{padding:var(--space-5);background:var(--surface);border-radius:var(--radius-control);cursor:pointer;transition:transform var(--dur-fast)}
 .cert-card:hover{transform:translateY(-2px)}
-.skill-item{padding:8px 12px;background:var(--surface-soft);border-radius:12px;font-size:.8125rem;color:var(--muted)}
 
 /* WORKBENCH */
 .workbench{background:var(--surface);border-radius:var(--radius-module);overflow:hidden}
 .workbench-tabs{display:flex;gap:4px;padding:var(--space-4) var(--space-4) 0;overflow-x:auto}
-.workbench-tab{padding:10px 16px;border-radius:var(--radius-pill);font-family:var(--font-mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.workbench-tab{padding:10px 16px;border-radius:var(--radius-pill);font-family:var(--font-mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;color:var(--muted);cursor:pointer;min-height:44px}
 .workbench-tab.active{background:var(--lime);color:var(--ink)}
 .workbench-body{padding:var(--space-5)}
 .workbench-panel{display:none}
@@ -408,7 +381,7 @@ p:last-child{margin-bottom:0}
 .form-group{margin-bottom:var(--space-4)}
 .form-group label{display:block;font-size:.75rem;font-weight:700;margin-bottom:var(--space-2);font-family:var(--font-mono);text-transform:uppercase;color:var(--muted)}
 .chip-group{display:flex;flex-wrap:wrap;gap:var(--space-2)}
-.chip{padding:8px 14px;border-radius:var(--radius-pill);font-size:.8125rem;cursor:pointer;background:var(--surface-soft);color:var(--muted);font-weight:600}
+.chip{padding:8px 14px;border-radius:var(--radius-pill);font-size:.8125rem;cursor:pointer;background:var(--surface-soft);color:var(--muted);font-weight:600;min-height:44px}
 .chip:hover,.chip.active{background:var(--lavender-soft);color:var(--ink)}
 .uat-checklist li{display:flex;gap:var(--space-3);padding:var(--space-3) 0;border-bottom:1px solid var(--line);font-size:.875rem}
 .uat-checklist input{accent-color:var(--lime)}
@@ -421,8 +394,9 @@ p:last-child{margin-bottom:0}
 .research-hero{padding:var(--space-6) 0;margin-bottom:var(--space-5)}
 
 /* MENU MOBILE */
-.menu-overlay{position:fixed;inset:0;background:rgba(17,17,17,.5);backdrop-filter:blur(6px);z-index:var(--z-overlay);opacity:0;visibility:hidden;transition:opacity var(--dur-normal)}
-.menu-overlay.open{opacity:1;visibility:visible}
+.menu-overlay{position:fixed;inset:0;background:rgba(17,17,17,.5);backdrop-filter:blur(6px);z-index:var(--z-overlay);opacity:0;visibility:hidden;transition:opacity var(--dur-normal);pointer-events:none}
+.menu-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+body.menu-open{overflow:hidden;touch-action:none}
 .site-menu{position:fixed;top:0;left:0;width:min(400px,100vw);height:100vh;z-index:calc(var(--z-overlay)+1);background:var(--shell);color:var(--nav-text);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-out);padding:var(--space-6);overflow-y:auto}
 .site-menu.open{transform:translateX(0)}
 .menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6)}
@@ -458,6 +432,17 @@ dialog::backdrop{background:rgba(17,17,17,.55);backdrop-filter:blur(4px)}
 .view{display:none}
 .view.active{display:block;animation:view-in var(--dur-slow) var(--ease-out)}
 @keyframes view-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1023px){
+  .view.active{animation:none}
+  .view.active .module,
+  .view.active .feature-panel,
+  .view.active .project-spread,
+  .view.active .experience-entry,
+  .view.active .capability-system,
+  .view.active .workbench,
+  .view.active .knowledge-row,
+  .view.active .card{opacity:1!important}
+}
 html.js-enabled #knowledge-articles-archive{display:none}
 html:not(.js-enabled) .nav-sidebar,html:not(.js-enabled) .mobile-header,html:not(.js-enabled) .workspace-topbar,html:not(.js-enabled) .menu-overlay,html:not(.js-enabled) .site-menu{display:none!important}
 html:not(.js-enabled) .app-frame{padding:0}
@@ -466,15 +451,6 @@ html:not(.js-enabled) .view{display:block!important;margin-bottom:var(--space-8)
 html:not(.js-enabled) #knowledge-articles-archive{display:block!important;padding:var(--space-6)}
 .kna-article{margin-bottom:var(--space-6);padding-bottom:var(--space-5);border-bottom:1px solid var(--line)}
 
-/* FOOTER */
-.site-footer{padding:var(--space-6);margin-top:var(--space-4)}
-.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);font-size:.8125rem;color:var(--muted)}
-.footer-brand{font-family:var(--font-display);font-weight:700;color:var(--ink);font-size:.9375rem}
-.site-footer a{color:var(--ink);font-weight:600}
-
-/* HIDE LEGACY */
-.rail,.sidebar{display:none!important}
-
 /* ACCESSIBILITY */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -482,14 +458,48 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 }
 
 /* RESPONSIVE */
+@media (min-width: 1024px) {
+  html, body { height: 100%; }
+  body { overflow: hidden; }
+  .app-frame { height: 100dvh; min-height: 0; }
+  .app-shell { height: min(920px, calc(100dvh - clamp(32px, 6vw, 96px))); min-height: 0; }
+  .app { height: 100%; min-height: 0; }
+  .nav-sidebar { height: 100%; min-height: 0; }
+  .workspace { height: 100%; min-height: 0; }
+  .workspace-scroll { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+}
 @media(max-width:1023px){
-  .app-frame{padding:0;place-items:stretch}
-  .app-shell{width:100%;min-height:100svh;border-radius:0;box-shadow:none}
+  html, body { min-height:100%; height:auto; overflow-x:hidden; }
+  body { overflow-y:auto; }
+  .app-frame { display:block; min-height:100dvh; padding:0; }
+  .app-shell { display:block; width:100%; min-height:100dvh; height:auto; border-radius:0; box-shadow:none; overflow:visible; }
+  .app { display:block; min-height:100dvh; height:auto; }
+  .workspace { display:block; width:100%; min-height:100dvh; height:auto; border-radius:0; }
+  .workspace-scroll { display:block; overflow:visible; height:auto; min-height:0; }
   .nav-sidebar{display:none}
-  .workspace{border-radius:0}
   .workspace-topbar{display:none}
   .mobile-header{display:flex}
   .page-inner{padding:var(--space-4) var(--space-5) var(--space-6)}
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-col-4, .bento-col-5, .bento-col-6, .bento-col-7, .bento-col-8, .bento-col-12 { grid-column: auto; }
+  .bento-side-stack { gap: 14px; }
+  .hero-portrait-wrap { max-width: 112px; margin: 20px auto 0; }
+  .hero-portrait { width: 112px; height: 112px; border-radius: 24px; }
+  .display-hero { font-size: clamp(2.6rem, 14vw, 4rem); }
+  .career-line { display: none; }
+  .career-nodes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .building-strip { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 10px; align-items: start; text-align: left; }
+  .support-loop-track { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media(max-width:767px){
+  .page-inner { padding: 20px 16px 40px; }
+}
+@media(max-width:360px){
+  .page-inner { padding-left: 14px; padding-right: 14px; }
+  .hero-portrait-wrap { max-width: 96px; }
+  .hero-portrait { width: 96px; height: 96px; }
+  .support-loop-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media(max-width:480px){
   .topbar-search{display:none}
@@ -546,6 +556,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-list{display:grid;gap:0}
 .capability-row{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid var(--line);align-items:start}
 .capability-system--dark .capability-row{border-top-color:rgba(255,255,255,.12)}
+.capability-system--dark .capability-row p{color:rgba(255,255,255,.62)}
 .capability-row:first-child{border-top:0;padding-top:0}
 .capability-row-num{font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:var(--muted)}
 .capability-system--dark .capability-row-num{color:var(--lime)}
@@ -577,14 +588,18 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .knowledge-row-meta{display:flex;gap:12px;font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;color:var(--muted)}
 .knowledge-row-title{font-weight:700;font-size:.95rem;margin:4px 0}
 .knowledge-row-summary{font-size:.8rem;color:var(--muted);margin:0}
-.knowledge-row-arrow{color:var(--muted);font-size:1.1rem}
+.knowledge-row-arrow{color:var(--muted);font-size:1.1rem;transition:transform var(--dur-fast)}
+.knowledge-row{transition:padding-left var(--dur-fast)}
+.knowledge-row:hover .knowledge-row-arrow{transform:translateX(3px)}
 .knowledge-load-more{margin-top:20px}
+.knowledge-result-count{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:var(--space-3) 0}
 @media(max-width:800px){.knowledge-featured{grid-template-columns:1fr}}
 .toolbox-shelves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .tool-shelf{background:var(--surface);border-radius:var(--radius-module);padding:24px}
 .tool-list{margin-top:16px}
 .tool-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0;border-top:1px solid var(--line)}
 .tool-row:first-child{border-top:0}
+.tool-row:hover{background:var(--surface-soft)}
 .tool-relation{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase}
 @media(max-width:760px){.toolbox-shelves{grid-template-columns:1fr}}
 .lab-split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px;align-items:start}
@@ -621,6 +636,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .learning-focus-side{display:grid;gap:12px}
 .learning-focus-row{background:var(--surface);border-radius:var(--radius-module);padding:20px}
 @media(max-width:800px){.learning-focus{grid-template-columns:1fr}}
+.toolbox-legend{font-size:.75rem;color:var(--muted);margin-bottom:24px;line-height:1.6}
 
 /* PRINT */
 @media print{
@@ -741,7 +757,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     </header>
 
     <header class="mobile-header no-print">
-      <button type="button" class="btn-icon" id="menu-toggle" aria-label="Open menu"><i class="bi bi-list" aria-hidden="true"></i></button>
+      <button type="button" class="btn-icon" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu"><i class="bi bi-list" aria-hidden="true"></i></button>
       <span class="brand">Bhramar Raut</span>
       <button type="button" class="btn-icon theme-toggle-mobile" aria-label="Toggle theme"><i class="bi bi-circle-half" aria-hidden="true"></i></button>
       <button type="button" class="btn-icon cmd-trigger-mobile" id="cmd-trigger-mobile" aria-label="Search"><i class="bi bi-search" aria-hidden="true"></i></button>
@@ -783,7 +799,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
         <h3 style="margin-top:var(--space-3);font-size:1.1rem">Immediate joiner</h3>
         <p class="text-sm text-muted">Former Wipro Project Engineer</p>
         <p class="text-sm text-muted">PSM I · Open to relocation</p>
-        <div class="hero-cta" style="margin-top:var(--space-4)">
+      <div class="hero-cta">
           <a href="#/recruiter" class="btn btn-primary btn-sm" data-nav-link="recruiter">Recruiter view</a>
         </div>
       </div>
@@ -815,7 +831,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
         <span class="viz-circle viz-circle--lime">AI</span>
         <span class="viz-circle viz-circle--lavender">Test</span>
       </div>
-      <span class="project-link">Open case study ?</span>
+      <span class="project-link">Open case study →</span>
     </a>
     <a href="#/projects/catalyx" class="bento-col-5 module module-dark" data-nav-link="projects/catalyx" id="home-catalyx" style="text-decoration:none;color:inherit">
       <p class="mono-label">02 / Admissions ops</p>
@@ -832,7 +848,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
         <div class="concept-cell concept-cell--lavender">Lead</div>
         <div class="concept-cell concept-cell--lime">State</div>
       </div>
-      <span class="project-link" style="color:var(--lime)">Open case study ?</span>
+      <span class="project-link" style="color:var(--lime)">Open case study →</span>
     </a>
 
     <!-- ROW 3: Support loop -->
@@ -1071,7 +1087,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       <p class="mono-label">EdTech · Project-based · 2026</p>
       <h3>Skillverse.in</h3>
       <p>AI-assisted product delivery and functional validation — 6+ product areas.</p>
-      <span class="project-link">Case study ?</span>
+      <span class="project-link">Case study →</span>
     </div>
     <div class="workflow-viz">
       <div class="workflow-node">Requirement</div><div class="workflow-connector">→</div>
@@ -1087,7 +1103,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       <p class="mono-label">Admissions ops · Project-based · 2026</p>
       <h3>Catalyx</h3>
       <p>10+ modules · 7 role concepts — role-aware validation.</p>
-      <span class="project-link">Case study ?</span>
+      <span class="project-link">Case study →</span>
     </div>
     <div class="matrix-viz">
       <div class="matrix-cell">Role</div><div class="matrix-cell">Module</div><div class="matrix-cell">Permission</div>
@@ -1117,10 +1133,10 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   </div>
   <div class="case-study-hero">
     <div class="workflow-viz" id="skillverse-diagram-viz">
-      <div class="workflow-node">Requirement</div><div class="workflow-connector">?</div>
-      <div class="workflow-node">User journey</div><div class="workflow-connector">?</div>
-      <div class="workflow-node">AI execution</div><div class="workflow-connector">?</div>
-      <div class="workflow-node">Test &amp; reproduce</div><div class="workflow-connector">?</div>
+      <div class="workflow-node">Requirement</div><div class="workflow-connector">→</div>
+      <div class="workflow-node">User journey</div><div class="workflow-connector">→</div>
+      <div class="workflow-node">AI execution</div><div class="workflow-connector">→</div>
+      <div class="workflow-node">Test &amp; reproduce</div><div class="workflow-connector">→</div>
       <div class="workflow-node">Validate &amp; document</div>
     </div>
     <div class="feature-panel">
@@ -1134,7 +1150,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   <p>Skillverse.in is a multi-role EdTech platform. My project-based work focused on translating requirements into testable workflows, reviewing AI-assisted implementation output and validating behavior across product areas — not on manual full-stack coding of the entire application.</p>
   <div class="grid-2" style="margin-bottom:24px">
     <div class="card"><h3>Context</h3><p class="text-sm">Multi-role EdTech spanning registration, onboarding, authentication, courses, library, payments, entitlements and administration — 6+ core product areas where behavior must align across roles and states.</p></div>
-    <div class="card"><h3>My Role</h3><p class="text-sm"><span class="tag">PROJECT-BASED</span> Requirements ? workflows ? AI-assisted output ? validation. Used AI coding tools as execution partners while retaining human responsibility for requirements, workflow definition, validation and iteration.</p></div>
+    <div class="card"><h3>My Role</h3><p class="text-sm"><span class="tag">PROJECT-BASED</span> Requirements → workflows → AI-assisted output → validation. Used AI coding tools as execution partners while retaining human responsibility for requirements, workflow definition, validation and iteration.</p></div>
   </div>
   <h2>Product Areas</h2>
   <div class="grid-3" style="margin-bottom:24px">
@@ -1144,14 +1160,14 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   <p>Multi-role workflows, onboarding flows, authentication states, payment entitlements and administrative controls required structured decomposition before implementation could be validated. Ambiguous requirements produced plausible-but-wrong behavior from AI-assisted output.</p>
   <h2>Requirements-to-Validation Process</h2>
   <div class="process-diagram" id="skillverse-diagram">
-    <div class="process-step">1. Understand requirement</div><div class="process-arrow">?</div>
-    <div class="process-step">2. Define expected user journey</div><div class="process-arrow">?</div>
-    <div class="process-step">3. Break into implementation behavior</div><div class="process-arrow">?</div>
-    <div class="process-step">4. Prompt / iterate AI-assisted implementation</div><div class="process-arrow">?</div>
-    <div class="process-step">5. Test behavior</div><div class="process-arrow">?</div>
-    <div class="process-step">6. Reproduce defects</div><div class="process-arrow">?</div>
-    <div class="process-step">7. Document expected vs actual</div><div class="process-arrow">?</div>
-    <div class="process-step">8. Correct &amp; validate fix</div><div class="process-arrow">?</div>
+    <div class="process-step">1. Understand requirement</div><div class="process-arrow">→</div>
+    <div class="process-step">2. Define expected user journey</div><div class="process-arrow">→</div>
+    <div class="process-step">3. Break into implementation behavior</div><div class="process-arrow">→</div>
+    <div class="process-step">4. Prompt / iterate AI-assisted implementation</div><div class="process-arrow">→</div>
+    <div class="process-step">5. Test behavior</div><div class="process-arrow">→</div>
+    <div class="process-step">6. Reproduce defects</div><div class="process-arrow">→</div>
+    <div class="process-step">7. Document expected vs actual</div><div class="process-arrow">→</div>
+    <div class="process-step">8. Correct &amp; validate fix</div><div class="process-arrow">→</div>
     <div class="process-step">9. Track status in OpenProject</div>
   </div>
   <h2>Example: Expected-vs-Actual Pattern</h2>
@@ -1207,9 +1223,9 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   <p class="text-sm">I defined expected behavior for status transitions, follow-up scheduling, aging visibility and counselor assignment — then validated whether implementation matched those expectations, documenting gaps as expected-vs-actual notes.</p>
   <h2>Workflow Validation Process</h2>
   <div class="process-diagram" id="catalyx-diagram">
-    <div class="process-step">Business Requirement</div><div class="process-arrow">?</div>
-    <div class="process-step">Module ? Role ? Permission</div><div class="process-arrow">?</div>
-    <div class="process-step">Workflow ? Expected Behavior</div><div class="process-arrow">?</div>
+    <div class="process-step">Business Requirement</div><div class="process-arrow">→</div>
+    <div class="process-step">Module → Role → Permission</div><div class="process-arrow">→</div>
+    <div class="process-step">Workflow → Expected Behavior</div><div class="process-arrow">→</div>
     <div class="process-step">Validation &amp; Documentation</div>
   </div>
   <h2>OpenProject Tracking</h2>
@@ -1255,15 +1271,49 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       <h2>Track, adapt and deliver.</h2>
     </div>
     <div class="capability-list">
-      <article class="capability-row"><span class="capability-row-num">01</span><div><h3>Track Work</h3><p class="text-sm" style="color:rgba(255,255,255,.62)">Experience using OpenProject for work items, priorities, status, dependencies and delivery visibility.</p></div></article>
-      <article class="capability-row"><span class="capability-row-num">02</span><div><h3>AI-Assisted Execution</h3><p class="text-sm" style="color:rgba(255,255,255,.62)">Use AI agents to explore problems, iterate output and verify results — human remains responsible for requirements, judgment, testing and correctness.</p></div></article>
-      <article class="capability-row"><span class="capability-row-num">03</span><div><h3>Quick Tool Adoption</h3><p class="text-sm" style="color:rgba(255,255,255,.62)">Demonstrated through Wipro Velocity, AWS learning, PSM I, Cursor, Codex, Ollama, OpenProject and SQL coursework.</p></div></article>
+      <article class="capability-row"><span class="capability-row-num">01</span><div><h3>Track Work</h3><p class="text-sm">Experience using OpenProject for work items, priorities, status, dependencies and delivery visibility.</p></div></article>
+      <article class="capability-row"><span class="capability-row-num">02</span><div><h3>AI-Assisted Execution</h3><p class="text-sm">Use AI agents to explore problems, iterate output and verify results — human remains responsible for requirements, judgment, testing and correctness.</p></div></article>
+      <article class="capability-row"><span class="capability-row-num">03</span><div><h3>Quick Tool Adoption</h3><p class="text-sm">Demonstrated through Wipro Velocity, AWS learning, PSM I, Cursor, Codex, Ollama, OpenProject and SQL coursework.</p></div></article>
     </div>
   </section>
   <section class="skill-truth" aria-labelledby="skills-heading">
     <h2 id="skills-heading" style="margin-bottom:16px">Skill Truth Model</h2>
     <div class="skill-level"><h3><span class="status-label status-hands-on">Level A</span> Hands-on / Defensible</h3>
-      <div class="skill-grid"><span class="skill-item">Windows troubleshooting</span><span class="skill-item">macOS troubleshooting</span><span class="skill-item">Workflow understanding</span><span class="skill-item">Requirements decomposition</span><span class="skill-item">Functional testing / UAT</span><span class="skill-item">Issue reproduction</span><span class="skill-item">Documentation</span><span class="skill-item">OpenProject</span><span class="skill-item">Cursor</span><span class="skill-item">OpenAI Codex</span><span class="skill-item">Antigravity</span><span class="skill-item">Ollama</span><span class="skill-item">Agile/Scrum terminology</span><span class="skill-item">PSM I foundation</span></div>
+      <div>
+        <div class="skill-group">
+          <span class="mono-label" style="font-size:.6rem;color:var(--muted);display:block;margin-bottom:6px">SUPPORT</span>
+          <div class="skill-grid">
+            <span class="skill-item">Functional testing / UAT</span>
+            <span class="skill-item">Issue reproduction</span>
+            <span class="skill-item">Documentation</span>
+            <span class="skill-item">Requirements decomposition</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="mono-label" style="font-size:.6rem;color:var(--muted);display:block;margin-bottom:6px">TOOLS</span>
+          <div class="skill-grid">
+            <span class="skill-item">OpenProject</span>
+            <span class="skill-item">Cursor</span>
+            <span class="skill-item">OpenAI Codex</span>
+            <span class="skill-item">Antigravity</span>
+            <span class="skill-item">Ollama</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="mono-label" style="font-size:.6rem;color:var(--muted);display:block;margin-bottom:6px">SYSTEMS</span>
+          <div class="skill-grid">
+            <span class="skill-item">Windows troubleshooting</span>
+            <span class="skill-item">macOS troubleshooting</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <span class="mono-label" style="font-size:.6rem;color:var(--muted);display:block;margin-bottom:6px">METHOD</span>
+          <div class="skill-grid">
+            <span class="skill-item">Agile/Scrum terminology</span>
+            <span class="skill-item">PSM I foundation</span>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="skill-level"><h3><span class="status-label status-foundation">Level B</span> Formal Foundation / Needs Refresh</h3>
       <div class="skill-grid"><span class="skill-item">Java / Full Stack concepts</span><span class="skill-item">SQL fundamentals</span><span class="skill-item">AWS fundamentals</span><span class="skill-item">Excel working knowledge</span></div>
@@ -1295,6 +1345,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     <button type="button" class="chip" data-filter="security">Security</button>
   </div>
   <input type="search" class="form-control" id="knowledge-search" placeholder="Search articles…" aria-label="Search knowledge articles" style="margin-bottom:20px">
+  <button type="button" id="knowledge-clear-search" class="btn-text" style="display:none;margin-bottom:20px" aria-label="Clear search">Clear search</button>
   <h2>Start Here</h2>
   <div id="knowledge-featured"></div>
   <p id="knowledge-result-count" class="knowledge-result-count" aria-live="polite"></p>
@@ -1409,59 +1460,77 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       <button type="button" class="workbench-tab" data-lab-tab="uat" role="tab">UAT</button>
     </div>
     <div class="workbench-body">
-      <div class="workbench-panel active" id="lab-panel-triage" role="tabpanel">
-        <p class="text-sm text-secondary">Select an issue type to see a structured troubleshooting framework.</p>
-        <div class="chip-group" id="triage-chips" style="margin-top:var(--space-4)">
-          <button type="button" class="chip" data-triage="login">Login issue</button>
-          <button type="button" class="chip" data-triage="crash">App crash</button>
-          <button type="button" class="chip" data-triage="network">Network issue</button>
-          <button type="button" class="chip" data-triage="permission">Permission issue</button>
-          <button type="button" class="chip" data-triage="api">API error</button>
+      <div class="workbench-panel active" id="lab-panel-triage" role="tabpanel" aria-labelledby="tab-triage">
+        <div class="lab-split">
+          <div class="lab-controls">
+            <p class="text-sm text-secondary">Select an issue type to see a structured troubleshooting framework.</p>
+            <div class="chip-group" id="triage-chips" style="margin-top:var(--space-4)">
+              <button type="button" class="chip" data-triage="login">Login issue</button>
+              <button type="button" class="chip" data-triage="crash">App crash</button>
+              <button type="button" class="chip" data-triage="network">Network issue</button>
+              <button type="button" class="chip" data-triage="permission">Permission issue</button>
+              <button type="button" class="chip" data-triage="api">API error</button>
+            </div>
+          </div>
+          <div class="lab-output" id="triage-output">Select an issue type above.</div>
         </div>
-        <div class="lab-output" id="triage-output">Select an issue type above.</div>
       </div>
-      <div class="workbench-panel" id="lab-panel-http" role="tabpanel" hidden>
-        <p class="text-sm text-secondary">HTTP status meanings and what I would check before escalation.</p>
-        <select class="form-control" id="http-select" aria-label="Select HTTP status code" style="margin-top:var(--space-4)">
-          <option value="">Select a status code…</option>
-          <option value="200">200 OK</option>
-          <option value="201">201 Created</option>
-          <option value="204">204 No Content</option>
-          <option value="400">400 Bad Request</option>
-          <option value="401">401 Unauthorized</option>
-          <option value="403">403 Forbidden</option>
-          <option value="404">404 Not Found</option>
-          <option value="409">409 Conflict</option>
-          <option value="422">422 Unprocessable</option>
-          <option value="429">429 Too Many Requests</option>
-          <option value="500">500 Internal Server Error</option>
-          <option value="502">502 Bad Gateway</option>
-          <option value="503">503 Service Unavailable</option>
-        </select>
-        <div class="lab-output" id="http-output">Select a status code.</div>
-      </div>
-      <div class="workbench-panel" id="lab-panel-bug" role="tabpanel" hidden>
-        <div class="form-group"><label for="bug-summary">Summary</label><input type="text" class="form-control" id="bug-summary" placeholder="Brief issue description"></div>
-        <div class="form-group"><label for="bug-env">Environment</label><input type="text" class="form-control" id="bug-env" placeholder="OS, browser, app version"></div>
-        <div class="form-group"><label for="bug-steps">Steps to reproduce</label><textarea class="form-control" id="bug-steps" rows="3" placeholder="1. Go to… 2. Click…"></textarea></div>
-        <div class="form-group"><label for="bug-expected">Expected</label><textarea class="form-control" id="bug-expected" rows="2"></textarea></div>
-        <div class="form-group"><label for="bug-actual">Actual</label><textarea class="form-control" id="bug-actual" rows="2"></textarea></div>
-        <div class="form-group"><label for="bug-evidence">Evidence</label><textarea class="form-control" id="bug-evidence" rows="2" placeholder="Screenshot, log snippet, request ID"></textarea></div>
-        <div class="form-group"><label for="bug-impact">Impact</label><input type="text" class="form-control" id="bug-impact" placeholder="Who is blocked and how severely"></div>
-        <button type="button" class="btn btn-primary btn-sm" id="bug-generate">Generate preview</button>
-        <button type="button" class="btn btn-ghost btn-sm" id="bug-copy">Copy report</button>
-        <div class="lab-output lab-output--ticket" id="bug-output" style="margin-top:var(--space-4)"></div>
-      </div>
-      <div class="workbench-panel" id="lab-panel-uat" role="tabpanel" hidden>
-        <p class="text-sm text-secondary">Self-directed UAT demonstration — mark items complete, then reset.</p>
-        <div class="chip-group" id="uat-chips" style="margin-top:var(--space-4)">
-          <button type="button" class="chip" data-uat="auth">Authentication</button>
-          <button type="button" class="chip" data-uat="onboarding">Onboarding</button>
-          <button type="button" class="chip" data-uat="payments">Payments</button>
-          <button type="button" class="chip" data-uat="permissions">Permissions</button>
+      <div class="workbench-panel" id="lab-panel-http" role="tabpanel" aria-labelledby="tab-http" hidden>
+        <div class="lab-split">
+          <div class="lab-controls">
+            <p class="text-sm text-secondary">HTTP status meanings and what I would check before escalation.</p>
+            <select class="form-control" id="http-select" aria-label="Select HTTP status code" style="margin-top:var(--space-4)">
+              <option value="">Select a status code…</option>
+              <option value="200">200 OK</option>
+              <option value="201">201 Created</option>
+              <option value="204">204 No Content</option>
+              <option value="400">400 Bad Request</option>
+              <option value="401">401 Unauthorized</option>
+              <option value="403">403 Forbidden</option>
+              <option value="404">404 Not Found</option>
+              <option value="409">409 Conflict</option>
+              <option value="422">422 Unprocessable</option>
+              <option value="429">429 Too Many Requests</option>
+              <option value="500">500 Internal Server Error</option>
+              <option value="502">502 Bad Gateway</option>
+              <option value="503">503 Service Unavailable</option>
+            </select>
+          </div>
+          <div class="lab-output" id="http-output">Select a status code.</div>
         </div>
-        <ul class="uat-checklist" id="uat-checklist" style="margin-top:var(--space-4)"></ul>
-        <button type="button" class="btn btn-ghost btn-sm" id="uat-reset" style="margin-top:var(--space-4)">Reset checklist</button>
+      </div>
+      <div class="workbench-panel" id="lab-panel-bug" role="tabpanel" aria-labelledby="tab-bug" hidden>
+        <div class="lab-split">
+          <div class="lab-controls">
+            <div class="form-group"><label for="bug-summary">Summary</label><input type="text" class="form-control" id="bug-summary" placeholder="Brief issue description"></div>
+            <div class="form-group"><label for="bug-env">Environment</label><input type="text" class="form-control" id="bug-env" placeholder="OS, browser, app version"></div>
+            <div class="form-group"><label for="bug-steps">Steps to reproduce</label><textarea class="form-control" id="bug-steps" rows="3" placeholder="1. Go to… 2. Click…"></textarea></div>
+            <div class="form-group"><label for="bug-expected">Expected</label><textarea class="form-control" id="bug-expected" rows="2"></textarea></div>
+            <div class="form-group"><label for="bug-actual">Actual</label><textarea class="form-control" id="bug-actual" rows="2"></textarea></div>
+            <div class="form-group"><label for="bug-evidence">Evidence</label><textarea class="form-control" id="bug-evidence" rows="2" placeholder="Screenshot, log snippet, request ID"></textarea></div>
+            <div class="form-group"><label for="bug-impact">Impact</label><input type="text" class="form-control" id="bug-impact" placeholder="Who is blocked and how severely"></div>
+            <button type="button" class="btn btn-primary btn-sm" id="bug-generate">Generate preview</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="bug-copy">Copy report</button>
+          </div>
+          <div class="lab-output lab-output--ticket" id="bug-output" style="margin-top:var(--space-4)"></div>
+        </div>
+      </div>
+      <div class="workbench-panel" id="lab-panel-uat" role="tabpanel" aria-labelledby="tab-uat" hidden>
+        <div class="lab-split">
+          <div class="lab-controls">
+            <p class="text-sm text-secondary">Self-directed UAT demonstration — mark items complete, then reset.</p>
+            <div class="chip-group" id="uat-chips" style="margin-top:var(--space-4)">
+              <button type="button" class="chip" data-uat="auth">Authentication</button>
+              <button type="button" class="chip" data-uat="onboarding">Onboarding</button>
+              <button type="button" class="chip" data-uat="payments">Payments</button>
+              <button type="button" class="chip" data-uat="permissions">Permissions</button>
+            </div>
+            <button type="button" class="btn btn-ghost btn-sm" id="uat-reset" style="margin-top:var(--space-4)">Reset checklist</button>
+          </div>
+          <div class="uat-output-panel">
+            <ul class="uat-checklist" id="uat-checklist" style="margin-top:var(--space-4)"></ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1567,12 +1636,12 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 <article class="kna-article" id="kna-priority-vs-severity" data-slug="priority-vs-severity" data-category="support" data-label="EXPLAINER" data-summary="Why urgency and impact are different dimensions" data-minutes="4" data-updated="Aug 2026"><h2 class="kna-title">Priority vs Severity: Related but Not the Same</h2><div class="article-body"><p><strong>Severity</strong> describes how bad the issue is technically or for user experience. <strong>Priority</strong> describes how soon it should be addressed given business context.</p><p>A low-severity cosmetic issue on a CEO demo may have high priority. A severe bug affecting one internal test account may have low priority.</p><h2>What I document</h2><p>Both dimensions separately — not collapsed into one label.</p></div></article>
 <article class="kna-article" id="kna-incident-problem-change" data-slug="incident-problem-change" data-category="support" data-label="EXPLAINER" data-summary="ITSM concepts without overcomplication" data-minutes="6" data-updated="Aug 2026"><h2 class="kna-title">Incident vs Problem vs Change: A Beginner Mental Model</h2><div class="article-body"><p><strong>Incident:</strong> Unplanned interruption or quality degradation — restore service.</p><p><strong>Problem:</strong> Underlying cause of incidents — reduce recurrence.</p><p><strong>Change:</strong> Planned modification that may affect services.</p><p>Fixing an incident restores service; solving a problem reduces repeat incidents. I treat these as learning concepts — not production ITSM employment claims.</p></div></article>
 <article class="kna-article" id="kna-rca-not-restart" data-slug="rca-not-restart" data-category="support" data-label="OPINION" data-summary="Distinguishing workaround from cause" data-minutes="5" data-updated="Aug 2026"><h2 class="kna-title">Root Cause Analysis: Why Restarted the App Is Not a Root Cause</h2><div class="article-body"><p>Restarting may restore service temporarily but rarely explains why failure occurred.</p><h2>Useful RCA questions</h2><ul><li>What changed recently?</li><li>What dependency failed?</li><li>What resource was exhausted?</li><li>What configuration drift occurred?</li></ul><p>Document workarounds separately from verified root cause.</p></div></article>
-<article class="kna-article" id="kna-uat-multirole-saas" data-slug="uat-multirole-saas" data-category="product" data-label="CHECKLIST" data-summary="Testing across roles and workflows" data-minutes="7" data-updated="Aug 2026" data-featured="true"><h2 class="kna-title">A Practical UAT Checklist for a Multi-Role SaaS Product</h2><div class="article-body"><p>Multi-role products need validation per role, not only happy-path admin testing.</p><ul><li>Authentication and session behavior per role</li><li>Permission boundaries: can role A access role B data?</li><li>Onboarding flows for each persona</li><li>State transitions (pending ? active ? suspended)</li><li>Payment/entitlement alignment</li><li>Admin overrides and audit visibility</li><li>Error messages and empty states</li><li>Branch/org scoping where applicable</li></ul><p>From Skillverse/Catalyx-style work: RBAC mistakes often appear only when negative tests are run.</p></div></article>
+<article class="kna-article" id="kna-uat-multirole-saas" data-slug="uat-multirole-saas" data-category="product" data-label="CHECKLIST" data-summary="Testing across roles and workflows" data-minutes="7" data-updated="Aug 2026" data-featured="true"><h2 class="kna-title">A Practical UAT Checklist for a Multi-Role SaaS Product</h2><div class="article-body"><p>Multi-role products need validation per role, not only happy-path admin testing.</p><ul><li>Authentication and session behavior per role</li><li>Permission boundaries: can role A access role B data?</li><li>Onboarding flows for each persona</li>    <li>State transitions (pending → active → suspended)</li><li>Payment/entitlement alignment</li><li>Admin overrides and audit visibility</li><li>Error messages and empty states</li><li>Branch/org scoping where applicable</li></ul><p>From Skillverse/Catalyx-style work: RBAC mistakes often appear only when negative tests are run.</p></div></article>
 <article class="kna-article" id="kna-rbac-testing-strategy" data-slug="rbac-testing-strategy" data-category="product" data-label="PRACTICAL NOTE" data-summary="RBAC requires matrix thinking" data-minutes="6" data-updated="Aug 2026"><h2 class="kna-title">How Role-Based Access Changes Testing Strategy</h2><div class="article-body"><p>Build a matrix of roles → actions → resources. For each cell: allowed or denied? Test both.</p><p>Branch-level restrictions add another dimension — same role, different branch, different data scope.</p></div></article>
 <article class="kna-article" id="kna-auth-authz-permissions" data-slug="auth-authz-permissions" data-category="product" data-label="EXPLAINER" data-summary="A product-support view of access control" data-minutes="6" data-updated="Aug 2026"><h2 class="kna-title">Authentication, Authorization and Permissions</h2><div class="article-body"><p><strong>Authentication:</strong> Verifying identity (login, MFA).</p><p><strong>Authorization:</strong> What an authenticated user may do.</p><p><strong>Permissions:</strong> Specific grants tied to roles or policies.</p><p>Support clusters: session expiry, wrong role assignment, missing grants, branch scoping errors.</p></div></article>
 <article class="kna-article" id="kna-ai-agents-without-fake-coding" data-slug="ai-agents-without-fake-coding" data-category="ai" data-label="CORE NOTE" data-summary="Flagship article on human accountability" data-minutes="9" data-updated="Aug 2026" data-featured="true"><h2 class="kna-title">How I Use AI Agents Without Pretending AI Output Is My Manual Coding</h2><div class="article-body"><p>My workflow with Cursor, Codex, Antigravity and Ollama during project-based product work:</p><ol><li><strong>Define requirement</strong> → what should the system do?</li><li><strong>Constrain context</strong> — scope, constraints, acceptance criteria</li><li><strong>Generate</strong> — AI produces implementation</li><li><strong>Inspect</strong> — read output; do not blindly accept</li><li><strong>Test</strong> — run workflows manually</li><li><strong>Identify failures</strong> — expected vs actual</li><li><strong>Iterate</strong> — refine prompts and corrections</li><li><strong>Validate</strong> — confirm fix meets original expectation</li><li><strong>Document</strong> — record behavior and decisions</li></ol><div class="callout"><strong>Human accountability:</strong> Requirements, judgment, testing and correctness remain human responsibilities. AI accelerates execution — it does not replace validation.</div><h2>What this demonstrates</h2><p>Ability to work in human-in-the-loop AI-assisted delivery — not claiming manual authorship of all generated code.</p></div></article>
 <article class="kna-article" id="kna-ai-acceptance-criteria" data-slug="ai-acceptance-criteria" data-category="ai" data-label="EXPLAINER" data-summary="Criteria before generation" data-minutes="5" data-updated="Aug 2026"><h2 class="kna-title">AI Does Not Remove the Need for Acceptance Criteria</h2><div class="article-body"><p>Without acceptance criteria, AI output cannot be objectively validated. Define expected behavior, edge cases and negative cases before prompting.</p><h2>Minimum criteria set</h2><ul><li>Happy path behavior</li><li>Error/empty states</li><li>Role/permission boundaries</li><li>Data validation rules</li></ul></div></article>
-<article class="kna-article" id="kna-psm-i-scrum-thinking" data-slug="psm-i-scrum-thinking" data-category="scrum" data-label="LEARNING NOTE" data-summary="Scrum.org foundation — not employment" data-minutes="6" data-updated="Aug 2026" data-featured="true"><h2 class="kna-title">What PSM I Changed About How I Think About Scrum</h2><div class="article-body"><p>PSM I reinforced empiricism, accountabilities, and events as inspection/adaptation opportunities — not a meeting checklist.</p><p>PSM I ? professional Scrum Master employment.</p><p><strong>Sources:</strong> <a href="https://scrumguides.org/" target="_blank" rel="noopener noreferrer">Scrum Guide</a>, <a href="https://www.scrum.org/" target="_blank" rel="noopener noreferrer">Scrum.org</a></p></div></article>
+<article class="kna-article" id="kna-psm-i-scrum-thinking" data-slug="psm-i-scrum-thinking" data-category="scrum" data-label="LEARNING NOTE" data-summary="Scrum.org foundation — not employment" data-minutes="6" data-updated="Aug 2026" data-featured="true"><h2 class="kna-title">What PSM I Changed About How I Think About Scrum</h2><div class="article-body"><p>PSM I reinforced empiricism, accountabilities, and events as inspection/adaptation opportunities — not a meeting checklist.</p><p>PSM I ≠ professional Scrum Master employment.</p><p><strong>Sources:</strong> <a href="https://scrumguides.org/" target="_blank" rel="noopener noreferrer">Scrum Guide</a>, <a href="https://www.scrum.org/" target="_blank" rel="noopener noreferrer">Scrum.org</a></p></div></article>
 <article class="kna-article" id="kna-windows-troubleshooting-checklist" data-slug="windows-troubleshooting-checklist" data-category="windows" data-label="CHECKLIST" data-summary="Systematic Windows diagnostics" data-minutes="7" data-updated="Aug 2026"><h2 class="kna-title">My Windows Troubleshooting Checklist</h2><div class="article-body"><p>Before assuming hardware failure:</p><ol><li>Recent software or update changes?</li><li>Reproducible after restart?</li><li>Event Viewer errors around failure time</li><li>Disk space and memory pressure</li><li>Network connectivity if cloud-dependent</li><li>User profile vs system-wide issue</li><li>Safe Mode behavior</li><li>Driver or peripheral changes</li></ol><p><strong>Source:</strong> <a href="https://learn.microsoft.com/en-us/windows/" target="_blank" rel="noopener noreferrer">Microsoft Windows documentation</a></p></div></article>
 <article class="kna-article" id="kna-windows-commands-toolkit" data-slug="windows-commands-toolkit" data-category="windows" data-label="LAB" data-summary="Network and system commands with context" data-minutes="8" data-updated="Aug 2026"><h2 class="kna-title">Essential Windows Commands in My Toolkit</h2><div class="article-body"><p><code>ipconfig</code> — adapter config. <code>ping</code> — reachability. <code>tracert</code> — path. <code>nslookup</code> — DNS. <code>netstat</code> — connections. <code>tasklist</code>/<code>taskkill</code> — processes (kill only when identified). <code>sfc /scannow</code> — System files (admin). <code>DISM</code> — Image repair (admin). <code>chkdsk</code> — Disk (schedule carefully).</p><p><strong>Source:</strong> <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands" target="_blank" rel="noopener noreferrer">Microsoft Windows Commands</a></p></div></article>
 <article class="kna-article" id="kna-dns-troubleshooting" data-slug="dns-troubleshooting" data-category="windows" data-label="EXPLAINER" data-summary="When sites fail but internet works" data-minutes="5" data-updated="Aug 2026"><h2 class="kna-title">DNS Troubleshooting for Non-Network Engineers</h2><div class="article-body"><p>Try alternate DNS, <code>ipconfig /flushdns</code>, compare <code>nslookup</code> results, check VPN/proxy, verify corporate DNS policies.</p><p><strong>Source:</strong> <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/dns-top" target="_blank" rel="noopener noreferrer">Microsoft DNS documentation</a></p></div></article>
@@ -1654,56 +1723,56 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   };
 
   const ROUTES = {
-    'home': { view: 'view-home', title: 'Bhramar Raut — Product Support & Implementation' },
-    'profile': { view: 'view-profile', title: 'Profile — Bhramar Raut' },
-    'experience': { view: 'view-experience', title: 'Experience — Bhramar Raut' },
-    'projects': { view: 'view-projects', title: 'Projects — Bhramar Raut' },
-    'projects/skillverse': { view: 'view-project-skillverse', title: 'Skillverse Case Study — Bhramar Raut' },
-    'projects/catalyx': { view: 'view-project-catalyx', title: 'Catalyx Case Study — Bhramar Raut' },
-    'capabilities': { view: 'view-capabilities', title: 'Capabilities — Bhramar Raut' },
-    'knowledge': { view: 'view-knowledge', title: 'Knowledge Center — Bhramar Raut' },
-    'toolbox': { view: 'view-toolbox', title: 'Toolbox — Bhramar Raut' },
-    'certifications': { view: 'view-certifications', title: 'Certifications — Bhramar Raut' },
-    'research': { view: 'view-research', title: 'Research — Bhramar Raut' },
-    'learning': { view: 'view-learning', title: 'Learning — Bhramar Raut' },
-    'support-lab': { view: 'view-support-lab', title: 'Support Lab — Bhramar Raut' },
-    'recruiter': { view: 'view-recruiter', title: 'Recruiter Mode — Bhramar Raut' },
-    'contact': { view: 'view-contact', title: 'Contact — Bhramar Raut' },
-    '404': { view: 'view-404', title: 'Not Found — Bhramar Raut' }
+    'home': { view: 'view-home', title: 'Bhramar Raut — Product Support & Implementation', label: 'Home' },
+    'profile': { view: 'view-profile', title: 'Profile — Bhramar Raut', label: 'Profile' },
+    'experience': { view: 'view-experience', title: 'Experience — Bhramar Raut', label: 'Experience' },
+    'projects': { view: 'view-projects', title: 'Projects — Bhramar Raut', label: 'Projects' },
+    'projects/skillverse': { view: 'view-project-skillverse', title: 'Skillverse Case Study — Bhramar Raut', label: 'Skillverse Case Study' },
+    'projects/catalyx': { view: 'view-project-catalyx', title: 'Catalyx Case Study — Bhramar Raut', label: 'Catalyx Case Study' },
+    'capabilities': { view: 'view-capabilities', title: 'Capabilities — Bhramar Raut', label: 'Capabilities' },
+    'knowledge': { view: 'view-knowledge', title: 'Knowledge Center — Bhramar Raut', label: 'Knowledge' },
+    'toolbox': { view: 'view-toolbox', title: 'Toolbox — Bhramar Raut', label: 'Toolbox' },
+    'certifications': { view: 'view-certifications', title: 'Certifications — Bhramar Raut', label: 'Certifications' },
+    'research': { view: 'view-research', title: 'Research — Bhramar Raut', label: 'Research' },
+    'learning': { view: 'view-learning', title: 'Learning Roadmap — Bhramar Raut', label: 'Learning' },
+    'support-lab': { view: 'view-support-lab', title: 'Support Lab — Bhramar Raut', label: 'Support Lab' },
+    'recruiter': { view: 'view-recruiter', title: 'Recruiter Mode — Bhramar Raut', label: 'Recruiter Mode' },
+    'contact': { view: 'view-contact', title: 'Contact — Bhramar Raut', label: 'Contact' },
+    '404': { view: 'view-404', title: 'Not Found — Bhramar Raut', label: 'Page Not Found' }
   };
 
   const CREDENTIALS = [
     { id: 'psm1', name: 'Professional Scrum Master I (PSM I)', issuer: 'Scrum.org', year: '2026', status: 'Valid', file: './Certification/Professional Scrum Master I.pdf', featured: true },
-    { id: 'aws-clf', name: 'AWS Certified Cloud Practitioner (CLF-C01)', issuer: 'Amazon Web Services', year: '2023', status: 'Earned 2023 · Expired Apr 2026 Apr 2026', score: '754/1000', file: './Certification/AWS Certified Cloud Practitioner certificate.pdf', featured: true },
-    { id: 'ibm-sql', name: 'Databases and SQL for Data Science with Python', issuer: 'IBM / Coursera', year: 'Nov 2025', status: 'Completed', file: './Certification/Coursera DB3FW2MT3J9T.pdf' },
-    { id: 'java-fs', name: 'Certificate Program in Java Full Stack', issuer: 'StackRoute / Wipro Velocity', year: 'Jul 2022', status: 'Completed', file: './Certification/Certificate Program in Java Full Stack.pdf', featured: true },
-    { id: 'aws-essentials', name: 'AWS Cloud Practitioner Essentials', issuer: 'AWS Training', year: 'Nov 2022', status: 'Completed', file: './Certification/AWS Training & Certification - Certificate of Completion.pdf' },
-    { id: 'data-privacy', name: 'Data Privacy Awareness', issuer: 'Wipro', year: 'Oct 2022', status: 'Completed', file: './Certification/Data Privacy Awareness Certificate.pdf' },
-    { id: 'digital-marketing', name: 'Fundamentals of Digital Marketing', issuer: 'Google Digital Garage', year: 'Nov 2021', status: 'Completed', file: './Certification/The Fundamentals of Digital Marketing Certificate.pdf' },
-    { id: 'robotics', name: 'Robotics: Aerial Robotics', issuer: 'University of Pennsylvania / Coursera', year: 'Oct 2021', status: 'Completed', file: './Certification/Coursera 8K8XIRBAIJMV.pdf' }
+    { id: 'aws-clf', name: 'AWS Certified Cloud Practitioner (CLF-C01)', issuer: 'Amazon Web Services', year: '2023', status: 'Earned 2023 · Expired Apr 2026', score: '754/1000', file: './Certification/AWS Certified Cloud Practitioner certificate.pdf', featured: true },
+    { id: 'ibm-sql', name: 'Databases and SQL for Data Science with Python', issuer: 'IBM / Coursera', year: 'Nov 2025', status: 'Course completion', file: './Certification/Coursera DB3FW2MT3J9T.pdf' },
+    { id: 'java-fs', name: 'Certificate Program in Java Full Stack', issuer: 'StackRoute / Wipro Velocity', year: 'Jul 2022', status: 'Training certificate', file: './Certification/Certificate Program in Java Full Stack.pdf', featured: true },
+    { id: 'aws-essentials', name: 'AWS Cloud Practitioner Essentials', issuer: 'AWS Training', year: 'Nov 2022', status: 'Course completion', file: './Certification/AWS Training & Certification - Certificate of Completion.pdf' },
+    { id: 'data-privacy', name: 'Data Privacy Awareness', issuer: 'Wipro', year: 'Oct 2022', status: 'Training certificate', file: './Certification/Data Privacy Awareness Certificate.pdf' },
+    { id: 'digital-marketing', name: 'Fundamentals of Digital Marketing', issuer: 'Google Digital Garage', year: 'Nov 2021', status: 'Course certificate', file: './Certification/The Fundamentals of Digital Marketing Certificate.pdf' },
+    { id: 'robotics', name: 'Robotics: Aerial Robotics', issuer: 'University of Pennsylvania / Coursera', year: 'Oct 2021', status: 'Course completion', file: './Certification/Coursera 8K8XIRBAIJMV.pdf' }
   ];
 
   const TOOLBOX = [
-    { name: 'OpenProject', category: 'Project Management', relation: 'Hands-on' },
-    { name: 'Cursor', category: 'AI', relation: 'Hands-on' },
-    { name: 'OpenAI Codex', category: 'AI', relation: 'Hands-on' },
-    { name: 'Antigravity', category: 'AI', relation: 'Hands-on' },
-    { name: 'Ollama', category: 'AI', relation: 'Hands-on' },
-    { name: 'Windows', category: 'Operating Systems', relation: 'Hands-on' },
-    { name: 'macOS', category: 'Operating Systems', relation: 'Hands-on' },
-    { name: 'Excel', category: 'Productivity', relation: 'Working knowledge' },
-    { name: 'Obsidian', category: 'Productivity', relation: 'Used' },
-    { name: 'SQL', category: 'Databases', relation: 'Refreshing' },
-    { name: 'Postman', category: 'Development Assistance', relation: 'Learning' },
-    { name: 'AWS', category: 'Cloud Foundations', relation: 'Foundation / previous certification' },
-    { name: 'Java', category: 'Development Assistance', relation: 'Formal foundation' },
+    { name: 'OpenProject', category: 'Workflow & Productivity', relation: 'Hands-on' },
+    { name: 'Cursor', category: 'AI & Assisted Build', relation: 'Hands-on' },
+    { name: 'OpenAI Codex', category: 'AI & Assisted Build', relation: 'Hands-on' },
+    { name: 'Antigravity', category: 'AI & Assisted Build', relation: 'Hands-on' },
+    { name: 'Ollama', category: 'AI & Assisted Build', relation: 'Hands-on' },
+    { name: 'Windows', category: 'Systems', relation: 'Hands-on' },
+    { name: 'macOS', category: 'Systems', relation: 'Hands-on' },
+    { name: 'Excel', category: 'Workflow & Productivity', relation: 'Working knowledge' },
+    { name: 'Obsidian', category: 'Workflow & Productivity', relation: 'Used' },
+    { name: 'SQL', category: 'Data / API / Development', relation: 'Refreshing' },
+    { name: 'Postman', category: 'Data / API / Development', relation: 'Learning' },
+    { name: 'AWS', category: 'Cloud', relation: 'Foundation / previous certification' },
+    { name: 'Java', category: 'Data / API / Development', relation: 'Formal foundation' },
     { name: '7-Zip', category: 'Utilities', relation: 'Used' },
     { name: 'VLC', category: 'Utilities', relation: 'Used' },
     { name: 'Rufus', category: 'Utilities', relation: 'Aware of' },
     { name: 'LocalSend', category: 'Utilities', relation: 'Used' },
     { name: 'OWASP ZAP', category: 'Security Awareness', relation: 'Learning' },
-    { name: 'Git', category: 'Development Assistance', relation: 'Learning' },
-    { name: 'Linux', category: 'Operating Systems', relation: 'Learning' }
+    { name: 'Git', category: 'Data / API / Development', relation: 'Learning' },
+    { name: 'Linux', category: 'Systems', relation: 'Learning' }
   ];
 
   // Article helper - body stored as array of paragraphs for brevity in source
@@ -1712,7 +1781,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   }
 
   const ARTICLES = [
-    art('approach-application-issue', 'How I Approach an Application Issue', 'support', 'PRACTICAL NOTE', 'Reproduce ? Observe ? Isolate ? Document ? Validate', 5,
+    art('approach-application-issue', 'How I Approach an Application Issue', 'support', 'PRACTICAL NOTE', 'Reproduce → Observe → Isolate → Document → Validate', 5,
       '<p>When I encounter an application issue, I follow a consistent sequence before escalating.</p><h2>1. Reproduce</h2><p>Can I trigger the issue again with the same steps? If not, I note what differs between attempts.</p><h2>2. Observe</h2><p>What exactly happens? Error message, blank screen, wrong data, timing? I capture screenshots or logs when available.</p><h2>3. Isolate</h2><p>Is it user-specific, environment-specific, or data-specific? I test with another account, browser or device when possible.</p><h2>4. Document</h2><p>I write environment, steps, expected vs actual and evidence so another person can continue.</p><h2>5. Validate</h2><p>After a fix, I return to the original steps and confirm the original expectation is met.</p><div class="callout"><strong>My take:</strong> Escalation without reproduction wastes engineering time.</div>',
       ['troubleshooting', 'support', 'reproduce']),
     art('expected-vs-actual-bug-report', 'Expected vs Actual: Writing a Useful Bug Report', 'support', 'CHECKLIST', 'The simplest framework for actionable bug reports', 4,
@@ -1734,7 +1803,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       '<p>Restarting may restore service temporarily but rarely explains why the failure occurred.</p><p>A useful RCA asks: what changed, what dependency failed, what resource was exhausted, what configuration drift occurred?</p><p>Document workarounds separately from verified root cause.</p>',
       ['RCA', 'root cause']),
     art('uat-multirole-saas', 'A Practical UAT Checklist for a Multi-Role SaaS Product', 'product', 'CHECKLIST', 'Testing across roles and workflows', 6,
-      '<p>Multi-role products need validation per role, not just happy-path admin testing.</p><ul><li>Authentication and session behavior per role</li><li>Permission boundaries: can role A access role B data?</li><li>Onboarding flows for each persona</li><li>State transitions (pending ? active ? suspended)</li><li>Payment/entitlement alignment</li><li>Admin overrides and audit visibility</li><li>Error messages and empty states</li></ul>',
+      '<p>Multi-role products need validation per role, not just happy-path admin testing.</p><ul><li>Authentication and session behavior per role</li><li>Permission boundaries: can role A access role B data?</li><li>Onboarding flows for each persona</li>    <li>State transitions (pending → active → suspended)</li><li>Payment/entitlement alignment</li><li>Admin overrides and audit visibility</li><li>Error messages and empty states</li></ul>',
       ['UAT', 'SaaS', 'RBAC']),
     art('rbac-testing-strategy', 'How Role-Based Access Changes Testing Strategy', 'product', 'PRACTICAL NOTE', 'RBAC requires matrix thinking', 5,
       '<p>RBAC testing is not one login test. Build a matrix of roles → actions → resources.</p><p>For each cell: should access be allowed or denied? Test both positive and negative cases.</p><p>Branch-level restrictions add another dimension — same role, different branch, different data scope.</p>',
@@ -1782,7 +1851,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       '<p>AI accelerates implementation but amplifies requirement gaps. Vague requirements produce plausible-but-wrong behavior. Structured workflows and explicit states help both humans and AI.</p>',
       ['AI', 'requirements']),
     art('psm-i-scrum-thinking', 'What PSM I Changed About How I Think About Scrum', 'scrum', 'LEARNING NOTE', 'Scrum.org foundation — not employment', 5,
-      '<p>PSM I reinforced empiricism, Scrum accountabilities, events as opportunities for inspection and adaptation, and that Scrum is a framework not a prescriptive methodology.</p><p>PSM I ? professional Scrum Master employment.</p><p><strong>Source:</strong> <a href="https://scrumguides.org/" target="_blank" rel="noopener noreferrer">Scrum Guide</a></p>',
+      '<p>PSM I reinforced empiricism, Scrum accountabilities, events as opportunities for inspection and adaptation, and that Scrum is a framework not a prescriptive methodology.</p><p>PSM I ≠ professional Scrum Master employment.</p><p><strong>Source:</strong> <a href="https://scrumguides.org/" target="_blank" rel="noopener noreferrer">Scrum Guide</a></p>',
       ['PSM I', 'Scrum']),
     art('scrum-not-meetings', 'Scrum Is Not a Meeting Framework', 'scrum', 'OPINION', 'Events serve empiricism', 3,
       '<p>Scrum events exist to inspect and adapt toward the Sprint Goal. Meetings without outcomes are not Scrum.</p>',
@@ -2128,11 +2197,17 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
         : active;
 
     $$('.nav-item[data-nav]').forEach(item => {
-      item.classList.toggle('active', item.dataset.nav === base);
+      const isActive = item.dataset.nav === base;
+      item.classList.toggle('active', isActive);
+      if (isActive) item.setAttribute('aria-current', 'page');
+      else item.removeAttribute('aria-current');
     });
 
     $$('.menu-link[data-nav]').forEach(item => {
-      item.classList.toggle('active', item.dataset.nav === base);
+      const isActive = item.dataset.nav === base;
+      item.classList.toggle('active', isActive);
+      if (isActive) item.setAttribute('aria-current', 'page');
+      else item.removeAttribute('aria-current');
     });
 
     $$('.nav-group').forEach(group => {
@@ -2160,13 +2235,17 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     $('#site-menu')?.classList.add('open');
     $('#menu-overlay')?.classList.add('open');
     $('#site-menu')?.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('menu-open');
+    const toggle = $('#menu-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
   }
   function closeSiteMenu() {
     $('#site-menu')?.classList.remove('open');
     $('#menu-overlay')?.classList.remove('open');
     $('#site-menu')?.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
+    const toggle = $('#menu-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
   }
   function closeMobileNav() { closeSiteMenu(); }
 
@@ -2179,10 +2258,12 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     const list = $('#knowledge-list');
     const featured = $('#knowledge-featured');
     const loadMore = $('#knowledge-load-more');
+    const resultCount = $('#knowledge-result-count');
+    const clearBtn = $('#knowledge-clear-search');
     if (!list) return;
 
-    activeKnowledgeCategory = filterCat || 'all';
-    activeKnowledgeSearch = search || '';
+    if (typeof filterCat === 'string') activeKnowledgeCategory = filterCat;
+    if (typeof search === 'string') activeKnowledgeSearch = search;
     const q = activeKnowledgeSearch.toLowerCase();
 
     const filtered = ARTICLES.filter(a => {
@@ -2204,8 +2285,16 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     if (featured) featured.innerHTML = renderFeaturedKnowledge(startArticles);
 
     const visible = filtered.slice(0, knowledgeVisibleCount);
+    if (resultCount) {
+      resultCount.textContent = q
+        ? `${filtered.length} notes matching "${activeKnowledgeSearch}"`
+        : `${filtered.length} notes`;
+    }
+    if (clearBtn) {
+      clearBtn.style.display = q ? 'inline-block' : 'none';
+    }
     list.innerHTML = visible.map(a => knowledgeRow(a)).join('') ||
-      '<p class="text-muted">No notes match this filter.</p>';
+      `<p class="text-muted">No notes match "${esc(activeKnowledgeSearch)}".</p>`;
 
     if (loadMore) loadMore.hidden = visible.length >= filtered.length;
 
@@ -2269,13 +2358,11 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     if (!root) return;
 
     const GROUP_ORDER = [
-      'AI',
-      'Project Management',
-      'Productivity',
-      'Operating Systems',
-      'Databases',
-      'Development Assistance',
-      'Cloud Foundations',
+      'AI & Assisted Build',
+      'Workflow & Productivity',
+      'Systems',
+      'Data / API / Development',
+      'Cloud',
       'Utilities',
       'Security Awareness'
     ];
@@ -2287,7 +2374,8 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 
     root.className = 'toolbox-shelves';
 
-    root.innerHTML = GROUP_ORDER
+    root.innerHTML = `<div class="toolbox-legend"><strong>HANDS-ON</strong> Used directly in project/workflow activity · <strong>USED</strong> Personally used · <strong>FOUNDATION</strong> Formally learned or previously certified · <strong>LEARNING</strong> Currently building · <strong>AWARE</strong> Familiarity only</div>` +
+      GROUP_ORDER
       .filter(group => grouped[group]?.length)
       .map(group => `
         <section class="tool-shelf">
@@ -2325,14 +2413,24 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
         </section>`;
     }
 
-    html += '<div class="cert-compact-list">' + others.map(c => `
+    html += '<div class="cert-compact-list">' + others.map(c => {
+      const statusTag = (() => {
+        const s = (c.status || '').toLowerCase();
+        if (s.includes('valid')) return '<span class="status-label status-hands-on">VALID CREDENTIAL</span>';
+        if (s.includes('expired')) return '<span class="status-label status-learning">EARNED 2023 · EXPIRED APR 2026</span>';
+        if (s.includes('training')) return '<span class="status-label status-foundation">TRAINING CERTIFICATE</span>';
+        if (s.includes('course')) return '<span class="status-label status-learning">COURSE COMPLETION</span>';
+        return '<span class="status-label status-aware">' + esc(c.status) + '</span>';
+      })();
+      return `
       <div class="cert-compact-row cert-card" data-cert-id="${c.id}" role="button" tabindex="0">
-        <span class="tag">VERIFIED</span>
+        ${statusTag}
         <h3>${esc(c.name)}</h3>
         <p class="text-sm text-muted">${esc(c.issuer)} · ${esc(c.year)}</p>
         <p class="text-sm ${c.status.toLowerCase().includes('expired') ? 'cert-expired' : ''}">${esc(c.status)}</p>
         ${c.score ? '<p class="text-xs text-muted">Score: ' + esc(c.score) + '</p>' : ''}
-      </div>`).join('') + '</div>';
+      </div>`;
+    }).join('') + '</div>';
 
     grid.innerHTML = html;
 
@@ -2381,7 +2479,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     const items = [];
     Object.keys(ROUTES).forEach(p => {
       if (p === '404') return;
-      items.push({ type: 'page', label: ROUTES[p].title.split('—')[0].trim(), path: p, icon: 'bi-file' });
+      items.push({ type: 'page', label: ROUTES[p].label, path: p, icon: 'bi-file' });
     });
     ARTICLES.forEach(a => items.push({ type: 'article', label: a.title, path: 'knowledge/' + a.slug, icon: 'bi-book' }));
     CREDENTIALS.forEach(c => items.push({ type: 'cert', label: c.name, path: 'certifications', icon: 'bi-award' }));
@@ -2443,46 +2541,51 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     ).join('') || '<li class="text-muted">Select a workflow area.</li>';
   }
 
-  function wrapLabPanel(panelId, outputId) {
-    const panel = $('#' + panelId);
-    const output = $('#' + outputId);
-    if (!panel || !output || panel.querySelector('.lab-split')) return;
-    const split = document.createElement('div');
-    split.className = 'lab-split';
-    const left = document.createElement('div');
-    while (panel.firstChild && panel.firstChild !== output) {
-      left.appendChild(panel.firstChild);
-    }
-    split.append(left, output);
-    panel.appendChild(split);
-  }
-
   function initSupportLab() {
-    wrapLabPanel('lab-panel-triage', 'triage-output');
-    wrapLabPanel('lab-panel-http', 'http-output');
-    wrapLabPanel('lab-panel-bug', 'bug-output');
-    wrapLabPanel('lab-panel-uat', 'uat-checklist');
-
-    $$('.workbench-tab').forEach(tab => {
+    const tabs = $$('.workbench-tab');
+    tabs.forEach(tab => {
       const id = tab.dataset.labTab;
       tab.id = 'tab-' + id;
+      tab.setAttribute('role', 'tab');
       tab.setAttribute('aria-controls', 'lab-panel-' + id);
-      const panel = $('#lab-panel-' + id);
-      if (panel) panel.setAttribute('aria-labelledby', 'tab-' + id);
       tab.setAttribute('aria-selected', tab.classList.contains('active') ? 'true' : 'false');
-      tab.addEventListener('click', () => {
-        $$('.workbench-tab').forEach(t => {
-          const active = t === tab;
-          t.classList.toggle('active', active);
-          t.setAttribute('aria-selected', String(active));
-        });
-        $$('.workbench-panel').forEach(p => {
-          const show = p.id === 'lab-panel-' + id;
-          p.classList.toggle('active', show);
-          p.hidden = !show;
-        });
+      tab.setAttribute('tabindex', tab.classList.contains('active') ? '0' : '-1');
+
+      const panel = $('#lab-panel-' + id);
+      if (panel) {
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('aria-labelledby', 'tab-' + id);
+      }
+
+      tab.addEventListener('click', () => activateLabTab(id));
+      tab.addEventListener('keydown', e => {
+        const idx = tabs.indexOf(tab);
+        let next = null;
+        if (e.key === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (next) {
+          e.preventDefault();
+          activateLabTab(next.dataset.labTab);
+          next.focus();
+        }
       });
     });
+
+    function activateLabTab(id) {
+      $$('.workbench-tab').forEach(t => {
+        const active = t.dataset.labTab === id;
+        t.classList.toggle('active', active);
+        t.setAttribute('aria-selected', String(active));
+        t.setAttribute('tabindex', active ? '0' : '-1');
+      });
+      $$('.workbench-panel').forEach(p => {
+        const show = p.id === 'lab-panel-' + id;
+        p.classList.toggle('active', show);
+        p.hidden = !show;
+      });
+    }
 
     $$('#triage-chips .chip').forEach(chip => {
       chip.addEventListener('click', () => {
@@ -2547,39 +2650,68 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
     if (typeof gsap === 'undefined') return;
     gsapReady = true;
     if (reducedMotion) return;
-    gsap.from('.nav-sidebar .nav-item', { opacity: 0, x: -10, duration: 0.4, stagger: 0.03, ease: 'power2.out' });
-    gsap.from('.workspace-topbar', { opacity: 0, y: -8, duration: 0.45, ease: 'power2.out', delay: 0.05 });
-    animateHomeBento();
+    if (window.matchMedia('(min-width: 1024px)').matches) {
+      gsap.fromTo('.nav-sidebar .nav-item', { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: .4, stagger: .03, ease: 'power2.out', overwrite: 'auto', clearProps: 'opacity,transform' });
+      gsap.fromTo('.workspace-topbar', { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: .45, ease: 'power2.out', clearProps: 'opacity,transform' });
+    }
   }
 
   function animateHomeBento() {
-    if (reducedMotion || typeof gsap === 'undefined') return;
     const home = $('#view-home');
-    if (!home || !home.classList.contains('active')) return;
-    gsap.from('.bento-grid .module', { opacity: 0, y: 20, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.1 });
+    if (!home || !home.classList.contains('active') || reducedMotion || typeof gsap === 'undefined') return;
+    const modules = home.querySelectorAll('.bento-grid .module');
+    gsap.killTweensOf(modules);
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      gsap.set(modules, { opacity: 1, y: 0, clearProps: 'transform' });
+      return;
+    }
+    gsap.fromTo(modules, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .42, stagger: .045, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
     const circles = $('#skillverse-workflow');
-    if (circles) gsap.from(circles.querySelectorAll('.viz-circle'), { scale: 0, opacity: 0, duration: 0.4, stagger: 0.08, ease: 'back.out(1.4)', delay: 0.35 });
+    if (circles) {
+      const c = circles.querySelectorAll('.viz-circle');
+      gsap.killTweensOf(c);
+      gsap.fromTo(c, { opacity: 0, scale: .8 }, { opacity: 1, scale: 1, duration: .4, stagger: .08, ease: 'back.out(1.4)', overwrite: true, clearProps: 'opacity,transform' });
+    }
     const cells = $$('#catalyx-matrix .concept-cell');
-    if (cells.length) gsap.from(cells, { scale: 0.9, opacity: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out', delay: 0.35 });
+    if (cells.length) {
+      gsap.killTweensOf(cells);
+      gsap.fromTo(cells, { opacity: 0, scale: .9 }, { opacity: 1, scale: 1, duration: .4, stagger: .05, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
+    }
     const steps = $$('#operating-loop .support-loop-step');
-    if (steps.length) gsap.from(steps, { opacity: 0, y: 10, duration: 0.35, stagger: 0.05, ease: 'power2.out', delay: 0.25 });
+    if (steps.length) {
+      gsap.killTweensOf(steps);
+      gsap.fromTo(steps, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .35, stagger: .05, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
+    }
+  }
+
+  function forceActiveViewVisible(root) {
+    if (!root) return;
+    root.querySelectorAll('.module, .feature-panel, .project-spread, .experience-entry, .capability-system, .workbench, .knowledge-row, .card').forEach(el => {
+      gsap?.killTweensOf(el);
+      el.style.opacity = '';
+      el.style.transform = '';
+    });
   }
 
   function animateView() {
-    if (reducedMotion || typeof gsap === 'undefined') return;
     const active = $('.view.active');
     if (!active) return;
+    const mobile = window.matchMedia('(max-width: 1023px)').matches;
+    if (mobile || reducedMotion || typeof gsap === 'undefined') {
+      forceActiveViewVisible(active);
+      return;
+    }
     if (active.id === 'view-home') {
       animateHomeBento();
       return;
     }
     const targets = active.querySelectorAll('.module, .feature-panel, .project-spread, .experience-entry, .capability-system, .workbench, .knowledge-row, .card');
     if (targets.length) {
-      gsap.fromTo(targets, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.38, stagger: 0.04, ease: 'power2.out' });
+      gsap.fromTo(targets, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .38, stagger: .04, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
     }
     const nodes = active.querySelectorAll('.viz-circle, .process-step');
     if (nodes.length) {
-      gsap.fromTo(nodes, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.35, stagger: 0.06, ease: 'power2.out', delay: 0.1 });
+      gsap.fromTo(nodes, { opacity: 0, scale: .9 }, { opacity: 1, scale: 1, duration: .35, stagger: .06, ease: 'power2.out', delay: .1, overwrite: true, clearProps: 'opacity,transform' });
     }
   }
 
@@ -2635,11 +2767,22 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       closeSiteMenu();
     }));
 
-    $$('.topbar-search.cmd-trigger').forEach(b => b.addEventListener('click', openCommandPalette));
-
     $('#menu-toggle')?.addEventListener('click', openSiteMenu);
     $('#menu-close')?.addEventListener('click', closeSiteMenu);
     $('#menu-overlay')?.addEventListener('click', closeSiteMenu);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        const menu = $('#site-menu');
+        if (menu?.classList.contains('open')) closeSiteMenu();
+      }
+    });
+
+    window.addEventListener('pageshow', closeSiteMenu);
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) closeSiteMenu();
+    });
 
     bindNavLinks();
     initTimeline();
@@ -2650,7 +2793,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 
     initGsap();
     $$('.theme-toggle, .theme-toggle-mobile').forEach(b => b.addEventListener('click', cycleTheme));
-    $$('.cmd-trigger, .cmd-trigger-mobile, #cmd-trigger-mobile').forEach(b => b?.addEventListener('click', openCommandPalette));
+    $$('.cmd-trigger, .cmd-trigger-mobile').forEach(b => b?.addEventListener('click', openCommandPalette));
 
     $('#cmd-input').addEventListener('input', e => renderCmdResults(e.target.value));
     $('#cmd-input').addEventListener('keydown', e => {
@@ -2686,6 +2829,12 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
       knowledgeVisibleCount = 12;
       const active = $('#knowledge-filters .chip.active');
       renderKnowledgeList(active?.dataset.filter || 'all', e.target.value);
+    });
+    $('#knowledge-clear-search')?.addEventListener('click', () => {
+      const search = $('#knowledge-search');
+      if (search) search.value = '';
+      knowledgeVisibleCount = 12;
+      renderKnowledgeList();
     });
     $('#knowledge-load-more')?.addEventListener('click', () => {
       knowledgeVisibleCount += 12;
