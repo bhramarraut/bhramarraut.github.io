@@ -77,17 +77,16 @@ Capture the smallest useful evidence set. Do not include passwords, access token
 
 ## Copy-ready template
 
-**Summary:**  
-**Environment:**  
-**Account or role:**  
-**Precondition:**  
-**Steps to reproduce:**  
-**Expected:**  
-**Actual:**  
-**Frequency:**  
-**Evidence:**  
-**Impact:**  
-**Workaround:**
+- **Summary:**
+- **Environment:**
+- **Account or role:**
+- **Precondition:**
+- **Steps to reproduce:**
+- **Expected:**
+- **Actual:**
+- **Frequency:**
+- **Evidence:**
+- **Impact:**
+- **Workaround:**
 
 > A good bug report is not long for the sake of being long. It is complete enough that the next person does not have to rediscover the problem.
-

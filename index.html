@@ -142,7 +142,8 @@ table{border-collapse:collapse}
   --radius-control:16px;
   --radius-pill:999px;
   --shell-max-width:1440px;
-  --shell-max-height:860px;
+  --shell-max-height:clamp(820px, 88vh, 1200px);
+  --shell-max-height-mobile:100svh;
   --nav-w:220px;
   --header-h:64px;
   --page-inline-padding:clamp(16px,2.2vw,28px);
@@ -408,13 +409,8 @@ p:last-child{margin-bottom:0}
   place-items:center;
   min-height:100svh;
   padding:clamp(16px,2.5vw,40px);
-  background-color: #E6E4DD;
-  background-image:
-    radial-gradient(at 10% 20%, rgba(216, 209, 230, 0.5) 0px, transparent 50%),
-    radial-gradient(at 90% 10%, rgba(235, 230, 215, 0.7) 0px, transparent 40%),
-    radial-gradient(at 30% 80%, rgba(200, 215, 200, 0.3) 0px, transparent 60%),
-    radial-gradient(at 80% 90%, rgba(220, 210, 235, 0.4) 0px, transparent 50%),
-    linear-gradient(135deg, #EBE8E0 0%, #DFDBD3 100%);
+  background-color: #E8E6E0;
+  background-image: radial-gradient(at 15% 20%, rgba(220, 212, 235, 0.4) 0px, transparent 65%);
   background-size: 100% 100%;
   background-repeat:no-repeat;
   background-attachment:local;
@@ -438,10 +434,10 @@ p:last-child{margin-bottom:0}
 .nav-brand:hover{background:rgba(255,255,255,.06)}
 .nav-brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}
 .nav-brand-text{font-family:var(--font-display);font-weight:700;font-size:.875rem;color:var(--nav-text);line-height:1.2}
-.nav-brand-sub{font-size:.625rem;color:var(--nav-muted);font-weight:500}
+.nav-brand-sub{font-size:.6875rem;color:var(--nav-muted);font-weight:500}
 .nav-groups{flex:1;display:flex;flex-direction:column;gap:var(--space-3);overflow-y:auto;overflow-x:hidden;min-height:0;scrollbar-width:none;-ms-overflow-style:none}
 .nav-groups::-webkit-scrollbar{width:0;height:0}
-.nav-group-label{font-family:var(--font-mono);font-size:.5625rem;text-transform:uppercase;letter-spacing:.12em;color:var(--nav-muted);padding:4px var(--space-3);margin-bottom:2px}
+.nav-group-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.12em;color:var(--nav-muted);padding:4px var(--space-3);margin-bottom:2px}
 .nav-item{display:flex;align-items:center;gap:var(--space-2);padding:8px 12px;border-radius:var(--radius-pill);font-size:.8125rem;font-weight:600;color:var(--nav-muted);transition:all var(--dur-fast) var(--ease-out);margin-bottom:1px;min-height:36px}
 .nav-item i{font-size:.9375rem;width:16px;text-align:center}
 .nav-item:hover{color:var(--nav-text)}
@@ -495,12 +491,12 @@ p:last-child{margin-bottom:0}
   border-bottom:1px solid color-mix(in srgb, var(--line) 55%, transparent);
 }
 .topbar-context{min-width:0;flex:1 1 auto;max-width:min(280px,32vw);display:flex;flex-direction:column;justify-content:center;gap:2px}
-.topbar-context-kicker{font-family:var(--font-mono);font-size:.625rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.2}
+.topbar-context-kicker{font-family:var(--font-mono);font-size:.6875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.2}
 .topbar-context-title{font-family:var(--font-display);font-weight:700;font-size:1rem;line-height:1.2;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .topbar-spacer{flex:0 0 auto;width:var(--space-2)}
 .topbar-search{display:flex;align-items:center;gap:var(--space-2);padding:8px 14px;background:var(--surface);border-radius:var(--radius-pill);min-width:min(200px,24vw);max-width:280px;flex:0 1 280px;color:var(--muted);font-size:.8125rem;cursor:pointer;transition:background var(--dur-fast)}
 .topbar-search:hover{background:var(--surface-soft)}
-.topbar-search kbd{font-family:var(--font-mono);font-size:.625rem;padding:2px 6px;background:var(--workspace);border-radius:6px;margin-left:auto}
+.topbar-search kbd{font-family:var(--font-mono);font-size:.6875rem;padding:2px 6px;background:var(--workspace);border-radius:6px;margin-left:auto}
 .topbar-actions{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0;margin-left:auto}
 .topbar-icon{width:40px;height:40px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background var(--dur-fast)}
 .topbar-icon:hover{background:var(--surface-soft)}
@@ -575,7 +571,7 @@ p:last-child{margin-bottom:0}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--radius-pill);font-size:.75rem;font-weight:700;background:var(--lime-soft);color:var(--ink)}
 .pill-success{background:var(--lime);color:#171717}
 .pill-warning{background:rgba(234,179,8,.2);color:var(--warning)}
-.tag{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tag{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .callout{padding:var(--space-5);border-radius:var(--radius-control);background:var(--lime-soft);margin:var(--space-5) 0}
 .callout-warn{background:rgba(234,179,8,.12)}
 .callout-info{background:var(--lavender-soft)}
@@ -585,7 +581,7 @@ p:last-child{margin-bottom:0}
 .status-dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(218,241,103,.4)}
 .status-available .status-dot{animation:pulse-once 1.2s ease-out 1}
 @keyframes pulse-once{0%,100%{opacity:1}50%{opacity:.5}}
-.status-label{font-family:var(--font-mono);font-size:.625rem;font-weight:700;text-transform:uppercase;padding:4px 8px;border-radius:8px}
+.status-label{font-family:var(--font-mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;padding:4px 8px;border-radius:8px}
 .status-hands-on{background:var(--lime-soft);color:var(--ink)}
 .status-foundation{background:var(--lavender-soft);color:var(--ink)}
 .status-learning{background:rgba(234,179,8,.15);color:var(--warning)}
@@ -865,7 +861,7 @@ p:last-child{margin-bottom:0}
   display:block;
   margin-top:4px;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -924,7 +920,7 @@ p:last-child{margin-bottom:0}
   display:grid;
   place-items:center;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   background:var(--project-skillverse-stage);
   border:1px solid var(--project-skillverse-border);
@@ -961,7 +957,7 @@ p:last-child{margin-bottom:0}
   background:var(--project-catalyx-cell);
   color:var(--project-catalyx-panel-text);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:600;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -1112,7 +1108,7 @@ p:last-child{margin-bottom:0}
   gap:6px 8px;
   margin-top:var(--space-2);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.06em;
   text-transform:uppercase;
@@ -1281,7 +1277,7 @@ p:last-child{margin-bottom:0}
   display:grid;
   place-items:center;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   background:var(--surface-primary);
   border:1px solid var(--line-strong);
@@ -1513,7 +1509,7 @@ html[data-theme="light"] .profile-direction{
   display:block;
   margin-top:4px;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -1676,7 +1672,7 @@ html[data-theme="light"] .profile-direction{
   display:inline-flex;
   margin:0 0 var(--space-3);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -1860,7 +1856,7 @@ html[data-theme="dark"] .article-framework-num{
 .article-comparison-label{
   margin:0 0 var(--space-2);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -1931,7 +1927,7 @@ html[data-theme="dark"] .article-framework-num{
 .article-example-label{
   margin:0 0 var(--space-3);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -1989,7 +1985,7 @@ html[data-theme="dark"] .article-framework-num{
   display:block;
   margin-bottom:var(--space-2);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   letter-spacing:.1em;
   text-transform:uppercase;
 }
@@ -2041,7 +2037,7 @@ html[data-theme="dark"] .article-framework-num{
 .article-field-note-label{
   margin:0 0 var(--space-2);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -2065,7 +2061,7 @@ html[data-theme="dark"] .article-framework-num{
   display:block;
   margin-bottom:6px;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--muted);
@@ -2085,7 +2081,7 @@ html[data-theme="dark"] .article-framework-num{
 .article-related-meta{
   margin:0 0 4px;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -2136,7 +2132,7 @@ html[data-theme="dark"] .article-framework-num{
   display:block;
   margin-bottom:var(--space-3);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--muted);
@@ -3466,41 +3462,7 @@ html[data-theme="dark"] #view-certifications {
   }
 }
 
-@media print {
-  #cert-dialog {
-    display: none !important;
-  }
 
-  .credential-featured,
-  .credential-card,
-  .credential-bridge {
-    background: transparent !important;
-    color: #000 !important;
-    border: 1px solid #999 !important;
-    box-shadow: none !important;
-  }
-
-  .credential-featured-summary,
-  .credential-featured-issuer,
-  .credential-featured-short,
-  .credential-card-meta,
-  .credential-card-supports,
-  .credential-bridge p,
-  .credential-timeline-item span {
-    color: #333 !important;
-  }
-
-  .credential-bridge-actions,
-  .credential-card-cta,
-  .credential-featured-side .btn {
-    display: none !important;
-  }
-
-  .credential-status::before {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-}
 
 
 /* WORKBENCH */
@@ -5142,7 +5104,7 @@ html[data-theme="dark"] #view-research {
   color: var(--rs-paper-ink);
   border-radius: 10px;
   padding: 18px 16px;
-  min-height: 220px;
+  height: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -5329,25 +5291,7 @@ html[data-theme="dark"] #view-research {
   }
 }
 
-@media print {
-  .research-hero-actions,
-  .research-cta,
-  .research-figure-cta,
-  .research-related,
-  #research-figure-dialog {
-    display: none !important;
-  }
 
-  .research-snapshot,
-  .research-paper-block,
-  .research-focus,
-  .research-rec-col,
-  .research-why {
-    background: transparent !important;
-    color: #000 !important;
-    border: 1px solid #999 !important;
-  }
-}
 
 
 /* MENU MOBILE */
@@ -5361,7 +5305,7 @@ body.menu-open{overflow:hidden;touch-action:none;position:fixed;width:100%;left:
 .site-menu .menu-meta{flex-shrink:0;padding-top:var(--space-4)}
 .site-menu.open{transform:translateX(0);visibility:visible;pointer-events:auto;transition:transform var(--dur-slow) var(--ease-out),visibility 0s}
 .menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);flex-shrink:0}
-.menu-group h3{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;color:var(--nav-muted);margin-bottom:var(--space-2)}
+.menu-group h3{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;color:var(--nav-muted);margin-bottom:var(--space-2)}
 .menu-link{display:block;padding:10px 0;font-weight:600;color:var(--nav-muted)}
 .menu-link:hover,.menu-link.active{color:var(--nav-text)}
 .menu-meta{margin-top:var(--space-6);font-size:.8125rem;color:var(--nav-muted);line-height:1.7}
@@ -5423,6 +5367,7 @@ html:not(.js-enabled) .app-frame{padding:0}
 html:not(.js-enabled) .app-shell{border-radius:0;min-height:100svh}
 html:not(.js-enabled) .view{display:block!important;margin-bottom:var(--space-8);padding-bottom:var(--space-6)}
 html:not(.js-enabled) #knowledge-articles-archive{display:block!important;padding:var(--space-6)}
+.kna-article p, .toolbox-case p, .research-body p, .article-content p { max-width: 65ch; }
 .kna-article{margin-bottom:var(--space-6);padding-bottom:var(--space-5);border-bottom:1px solid var(--line)}
 
 /* ACCESSIBILITY */
@@ -5435,8 +5380,8 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 @media (min-width: 1024px) {
   html, body { height: 100%; }
   body { overflow: hidden; }
-  .app-frame { height: 100dvh; min-height: 0; }
-  .app-shell { height: min(var(--shell-max-height), calc(100dvh - clamp(24px, 5vw, 80px))); min-height: 0; }
+  .app-frame { height: 100dvh; min-height: 0; overflow: hidden; }
+  .app-shell { height: min(var(--shell-max-height), calc(100dvh - clamp(24px, 4vw, 60px))); min-height: 0; }
   .app { height: 100%; min-height: 0; }
   .nav-sidebar { height: 100%; min-height: 0; }
   .workspace { height: 100%; min-height: 0; }
@@ -5516,7 +5461,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .concept-cell--lavender{background:var(--lavender);color:#111}
 .support-loop-track{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:var(--space-5)}
 .support-loop-step{display:flex;align-items:center;gap:6px}
-.support-loop-step span{font-family:var(--font-mono);font-size:.65rem;color:var(--lime);font-weight:700;letter-spacing:.06em}
+.support-loop-step span{font-family:var(--font-mono);font-size:.6875rem;color:var(--lime);font-weight:700;letter-spacing:.06em}
 .support-loop-step strong{font-size:.75rem;color:rgba(255,255,255,.9);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
 .support-loop-step:not(:last-child)::after{content:"→";color:rgba(218,241,103,.55);font-size:.75rem;margin-left:6px;font-family:var(--font-mono)}
 .credential-home-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4);flex:1}
@@ -5525,7 +5470,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .credential-home-status{
   display:inline-block;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.06em;
   text-transform:uppercase;
@@ -5540,7 +5485,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   height:44px;
   margin:0;
   flex-shrink:0;
-  font-size:.625rem;
+  font-size:.6875rem;
 }
 .credential-home-row h4{margin:0;font-size:.9rem;line-height:1.25}
 .credential-home-row p{margin:4px 0 0}
@@ -5589,7 +5534,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-pillar-label{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -5641,7 +5586,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-evidence-label{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -5713,7 +5658,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-depth-summary-block h3{
   margin:0 0 var(--space-2);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -5780,7 +5725,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-depth-group dt{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -5820,7 +5765,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .capability-role-map-kicker{
   margin:0 0 var(--space-2);
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -6294,7 +6239,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
 .knowledge-context-label{
   margin:0 0 4px;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -6462,7 +6407,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
 .knowledge-featured-label{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -6537,7 +6482,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   margin:0;
   padding:var(--space-3) var(--space-4) 0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.1em;
   text-transform:uppercase;
@@ -6558,7 +6503,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
 .knowledge-rec-meta{
   margin:0;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -6629,7 +6574,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
 .knowledge-topic em{
   font-style:normal;
   font-family:var(--font-mono);
-  font-size:.625rem;
+  font-size:.6875rem;
   font-weight:700;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -8871,15 +8816,21 @@ html[data-theme="dark"] .learning-platform-layers li {
   }
 
   /* Hide web controls & chrome */
-  .nav-sidebar, .mobile-header, .workspace-topbar, .menu-overlay, .site-menu, .no-print, .read-progress, .skip-link, .recruiter-toolbar, .site-footer {
+  .nav-sidebar, .mobile-header, .workspace-topbar, .menu-overlay, .site-menu, .no-print, .read-progress, .skip-link, .recruiter-toolbar, .site-footer, dialog {
     display: none !important;
   }
 
-  /* Force Recruiter view display */
+  /* Print logic for views */
   .view {
     display: none !important;
   }
-  #view-recruiter.view.active, body.is-printing #view-recruiter, body.is-printing #print-target {
+  .view.active {
+    display: block !important;
+  }
+  body.is-printing .view.active {
+    display: none !important;
+  }
+  body.is-printing #view-recruiter, body.is-printing #print-target {
     display: block !important;
   }
 
@@ -14846,6 +14797,71 @@ None identified`;
        The legacy archive is no longer merged into ARTICLES. */
   }
 
+  function printRecruiterResume() {
+    const doPrint = () => {
+      const originalTitle = document.title;
+      document.title = 'Bhramar-Raut-Resume';
+      document.body.classList.add('is-printing');
+      const restoreTitle = () => {
+        document.title = originalTitle;
+        document.body.classList.remove('is-printing');
+        window.removeEventListener('afterprint', restoreTitle);
+      };
+      window.addEventListener('afterprint', restoreTitle);
+      requestAnimationFrame(() => window.print());
+    };
+    
+    const r = parseRoute();
+    if (r.path !== 'recruiter') {
+      navigate('recruiter', true);
+      requestAnimationFrame(() => requestAnimationFrame(doPrint));
+    } else {
+      doPrint();
+    }
+  }
+
+  function handleCopySummary() {
+    const summary = [
+      'BHRAMAR RAUT',
+      'Product Support · Application Support · Implementation',
+      'Former Wipro Project Engineer · PSM I · Immediate joiner',
+      'Location: Pandhurna, India · Open to relocation & Remote India',
+      'Email: raut.bhramar@gmail.com · Phone: +91 89894 12921',
+      '',
+      'PROFILE SUMMARY:',
+      'Former Wipro Project Engineer with 2+ years of enterprise IT environment exposure and recent project-based work in AI-assisted product delivery, requirements/workflow decomposition, functional validation and documentation. PSM I certified with hands-on exposure to OpenProject, Windows/macOS troubleshooting and AI-assisted delivery workflows. Currently strengthening SQL, REST APIs, Postman, ITSM, Linux and networking for Product/Application Support and Implementation roles.',
+      '',
+      'EXPERIENCE:',
+      '- Analytika Improva SV (Apr–Jul 2026) — AI-Assisted Product Delivery & Operations [PROJECT-BASED]',
+      '- BrickBillion Properties (Nov 2024–Mar 2025) — Business Operations & Digital Execution [PROJECT-BASED]',
+      '- Wipro Limited (Sep 2022–Jan 2025) — Project Engineer (2y 4m Enterprise IT environment & training) [FULL-TIME]',
+      '- Arcons (Dec 2021–Jun 2022) — Project Engineering Intern [INTERNSHIP]',
+      '',
+      'PRODUCT EVIDENCE:',
+      '- Skillverse.in — 6+ product areas, requirements → workflows → functional validation → issue reproduction → fix verification',
+      '- Catalyx — 10+ operational modules, 7 role concepts, role-aware workflow & permission validation',
+      '',
+      'TECHNICAL PROFILE:',
+      '- Practical / Used: Windows/macOS troubleshooting, Functional testing/UAT, OpenProject, Cursor/Codex, Workflow documentation',
+      '- Foundation: Java concepts, SQL fundamentals, AWS fundamentals, Excel',
+      '- Building Now: Practical SQL, REST APIs, Postman, ITSM, Linux, Networking',
+      '',
+      'CREDENTIALS & EDUCATION:',
+      '- PSM I (Scrum.org · 2026) [Valid]',
+      '- AWS Certified Cloud Practitioner (Earned 2023, Expired Apr 2026) [Historical]',
+      '- IBM Databases and SQL (Coursera / IBM · 2025) [Course]',
+      '- Java Full Stack (StackRoute / Wipro Velocity · 2022) [Training]',
+      '- B.E. Civil Engineering (RCOEM Nagpur, 2018–2022, CGPA 7.81/10)',
+      '- Publication: Economic Impact on Construction Sector Due to COVID-19 (Co-author, 2020)',
+      '',
+      'LINKS:',
+      'Portfolio: https://bhramarraut.github.io/',
+      'LinkedIn: https://www.linkedin.com/in/bhramarraut',
+      'GitHub: https://github.com/bhramarraut'
+    ].join('\\n');
+    copyText(summary, 'Profile summary');
+  }
+
   // INIT
   async function init() {
     document.documentElement.classList.add('js-enabled');
@@ -14986,74 +15002,11 @@ None identified`;
     bindCopyControl($('#copy-email'), CONFIG.email, 'Email');
     bindCopyControl($('#copy-phone'), CONFIG.phone, 'Phone');
     $('#download-vcard')?.addEventListener('click', downloadVCard);
-    function handlePrintResume() {
-      const originalTitle = document.title;
-      document.title = 'Bhramar-Raut-Resume';
-      document.body.classList.add('is-printing');
-
-      const restoreTitle = () => {
-        document.title = originalTitle;
-        document.body.classList.remove('is-printing');
-        window.removeEventListener('afterprint', restoreTitle);
-      };
-
-      window.addEventListener('afterprint', restoreTitle);
-
-      requestAnimationFrame(() => {
-        window.print();
-      });
-    }
-
-    function handleCopySummary() {
-      const summary = [
-        'BHRAMAR RAUT',
-        'Product Support · Application Support · Implementation',
-        'Former Wipro Project Engineer · PSM I · Immediate joiner',
-        'Location: Pandhurna, India · Open to relocation & Remote India',
-        'Email: raut.bhramar@gmail.com · Phone: +91 89894 12921',
-        '',
-        'PROFILE SUMMARY:',
-        'Former Wipro Project Engineer with 2+ years of enterprise IT environment exposure and recent project-based work in AI-assisted product delivery, requirements/workflow decomposition, functional validation and documentation. PSM I certified with hands-on exposure to OpenProject, Windows/macOS troubleshooting and AI-assisted delivery workflows. Currently strengthening SQL, REST APIs, Postman, ITSM, Linux and networking for Product/Application Support and Implementation roles.',
-        '',
-        'EXPERIENCE:',
-        '- Analytika Improva SV (Apr–Jul 2026) — AI-Assisted Product Delivery & Operations [PROJECT-BASED]',
-        '- BrickBillion Properties (Nov 2024–Mar 2025) — Business Operations & Digital Execution [PROJECT-BASED]',
-        '- Wipro Limited (Sep 2022–Jan 2025) — Project Engineer (2y 4m Enterprise IT environment & training) [FULL-TIME]',
-        '- Arcons (Dec 2021–Jun 2022) — Project Engineering Intern [INTERNSHIP]',
-        '',
-        'PRODUCT EVIDENCE:',
-        '- Skillverse.in — 6+ product areas, requirements → workflows → functional validation → issue reproduction → fix verification',
-        '- Catalyx — 10+ operational modules, 7 role concepts, role-aware workflow & permission validation',
-        '',
-        'TECHNICAL PROFILE:',
-        '- Practical / Used: Windows/macOS troubleshooting, Functional testing/UAT, OpenProject, Cursor/Codex, Workflow documentation',
-        '- Foundation: Java concepts, SQL fundamentals, AWS fundamentals, Excel',
-        '- Building Now: Practical SQL, REST APIs, Postman, ITSM, Linux, Networking',
-        '',
-        'CREDENTIALS & EDUCATION:',
-        '- PSM I (Scrum.org · 2026) [Valid]',
-        '- AWS Certified Cloud Practitioner (Earned 2023, Expired Apr 2026) [Historical]',
-        '- IBM Databases and SQL (Coursera / IBM · 2025) [Course]',
-        '- Java Full Stack (StackRoute / Wipro Velocity · 2022) [Training]',
-        '- B.E. Civil Engineering (RCOEM Nagpur, 2018–2022, CGPA 7.81/10)',
-        '- Publication: Economic Impact on Construction Sector Due to COVID-19 (Co-author, 2020)',
-        '',
-        'LINKS:',
-        'Portfolio: https://bhramarraut.github.io/',
-        'LinkedIn: https://www.linkedin.com/in/bhramarraut',
-        'GitHub: https://github.com/bhramarraut'
-      ].join('\n');
-      copyText(summary, 'Profile summary');
-    }
-
-    $('#recruiter-print')?.addEventListener('click', handlePrintResume);
-    $('#recruiter-copy')?.addEventListener('click', handleCopySummary);
-
     document.addEventListener('click', (e) => {
       const printBtn = e.target.closest('#recruiter-print');
       if (printBtn) {
         e.preventDefault();
-        handlePrintResume();
+        printRecruiterResume();
       }
       const copyBtn = e.target.closest('#recruiter-copy');
       if (copyBtn) {
