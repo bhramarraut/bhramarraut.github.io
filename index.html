@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="auto">
 <head>
 <meta charset="UTF-8">
@@ -7,8 +7,8 @@
 <meta name="author" content="Bhramar Raut">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://bhramarraut.github.io/">
-<meta name="theme-color" content="#1a1d24" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#232325" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#dbe98e" media="(prefers-color-scheme: light)">
 <meta id="meta-description" name="description" content="Bhramar Raut — Former Wipro Project Engineer targeting Product Support, Application Support and Implementation roles. PSM I, AI-assisted product delivery, functional validation, Skillverse & Catalyx project work. Immediate joiner.">
 <meta property="og:type" content="website">
 <meta id="og-title" property="og:title" content="Bhramar Raut — Product Support & Implementation">
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://bhramarraut.github.io/Profile%20Pic/Profile_Pic.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script type="application/ld+json">
 {
@@ -72,7 +72,7 @@
 <style>
 /* RESET */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 img,picture,video,svg{display:block;max-width:100%}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer;border:none;background:none}
@@ -80,265 +80,436 @@ a{color:inherit;text-decoration:none}
 ul,ol{list-style:none}
 table{border-collapse:collapse}
 
-/* TOKENS */
+/* TOKENS — LIME / CHARCOAL SYSTEM */
 :root{
-  --font-sans:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --font-mono:ui-monospace,'Cascadia Code','Segoe UI Mono',Consolas,monospace;
-  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-full:999px;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 20px rgba(0,0,0,.08);
-  --transition:180ms ease;--sidebar-w:280px;--header-h:56px;
-  --content-max:1200px;--article-max:72ch;
-  --accent:#3b5bdb;--accent-hover:#2f4ac4;--accent-soft:rgba(59,91,219,.12);
-  --success:#2b8a3e;--warning:#e67700;--danger:#c92a2a;
-  --bg:#f8f9fc;--bg-elevated:#fff;--bg-subtle:#eef1f7;
-  --text:#1a1d24;--text-secondary:#4a5568;--text-muted:#6b7280;
-  --border:#d8dee9;--border-subtle:#e8ecf3;
-  --grid-color:rgba(59,91,219,.04);
-  --focus-ring:2px solid var(--accent);
+  --bg-outer:#dbe98e;
+  --shell:#232325;
+  --shell-deep:#1c1c1e;
+  --workspace:#e2e1e2;
+  --surface:#fdfdfd;
+  --surface-soft:#efeff0;
+  --ink:#111111;
+  --muted:#686868;
+  --lime:#daf163;
+  --lime-soft:#e8f6a6;
+  --lavender:#bdb8da;
+  --lavender-soft:#dcd8ef;
+  --line:rgba(17,17,17,.08);
+  --line-strong:rgba(17,17,17,.12);
+  --nav-muted:rgba(255,255,255,.55);
+  --nav-text:#f4f4f4;
+  --font-display:'Montserrat',system-ui,sans-serif;
+  --font-body:Inter,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-mono:ui-monospace,'Cascadia Code',Consolas,monospace;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;
+  --space-6:32px;--space-7:48px;--space-8:64px;
+  --radius-shell:36px;
+  --radius-module:28px;
+  --radius-control:20px;
+  --radius-pill:999px;
+  --nav-w:240px;
+  --header-h:72px;
+  --read-w:42rem;
+  --article-max:72ch;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --dur-fast:150ms;--dur-normal:220ms;--dur-slow:480ms;
+  --z-overlay:300;--z-dialog:400;--z-toast:500;
+  --shadow-shell:0 30px 80px rgba(17,17,17,.22);
+  --focus-ring:2px solid var(--lime);
+  /* legacy aliases */
+  --bg:var(--workspace);--bg-elevated:var(--surface);--bg-subtle:var(--surface-soft);
+  --surface-1:var(--surface-soft);--surface-2:var(--workspace);
+  --text-primary:var(--ink);--text-secondary:var(--muted);--text-tertiary:var(--muted);
+  --text:var(--ink);--text-muted:var(--muted);
+  --border:var(--line);--border-subtle:var(--line);
+  --accent:var(--lime);--accent-hover:#c8e84a;--accent-soft:rgba(218,241,103,.35);
+  --success:#1a7f37;--success-dot:var(--lime);--warning:#b45309;--danger:#c92a2a;
+  --max-w:100%;--rail-w:0;
 }
 html[data-theme="dark"]{
-  --accent:#6c8cff;--accent-hover:#8ba3ff;--accent-soft:rgba(108,140,255,.15);
-  --bg:#111318;--bg-elevated:#1a1d24;--bg-subtle:#22262f;
-  --text:#e8eaef;--text-secondary:#a0aec0;--text-muted:#7a8494;
-  --border:#2d3340;--border-subtle:#252a33;
-  --grid-color:rgba(108,140,255,.05);
-  --shadow-sm:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 4px 24px rgba(0,0,0,.4);
+  --bg-outer:#111113;
+  --shell:#18181a;
+  --shell-deep:#111113;
+  --workspace:#242426;
+  --surface:#303033;
+  --surface-soft:#2a2a2d;
+  --ink:#f4f4f4;
+  --muted:#a0a0a5;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.12);
+  --nav-muted:rgba(255,255,255,.45);
+  --shadow-shell:0 30px 80px rgba(0,0,0,.55);
 }
 @media(prefers-color-scheme:dark){
   html[data-theme="auto"]{
-    --accent:#6c8cff;--accent-hover:#8ba3ff;--accent-soft:rgba(108,140,255,.15);
-    --bg:#111318;--bg-elevated:#1a1d24;--bg-subtle:#22262f;
-    --text:#e8eaef;--text-secondary:#a0aec0;--text-muted:#7a8494;
-    --border:#2d3340;--border-subtle:#252a33;
-    --grid-color:rgba(108,140,255,.05);
-    --shadow-sm:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 4px 24px rgba(0,0,0,.4);
+    --bg-outer:#111113;--shell:#18181a;--shell-deep:#111113;
+    --workspace:#242426;--surface:#303033;--surface-soft:#2a2a2d;
+    --ink:#f4f4f4;--muted:#a0a0a5;
+    --line:rgba(255,255,255,.08);--shadow-shell:0 30px 80px rgba(0,0,0,.55);
   }
 }
 
 /* BASE */
-body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
-  background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
-  background-size:48px 48px;}
-::selection{background:var(--accent-soft);color:var(--text)}
-:focus-visible{outline:var(--focus-ring);outline-offset:2px}
-.skip-link{position:absolute;top:-100px;left:16px;z-index:10000;padding:10px 16px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);font-weight:600}
+body{font-family:var(--font-body);background:var(--bg-outer);color:var(--ink);line-height:1.6;min-height:100svh;overflow-x:hidden}
+::selection{background:var(--lime-soft);color:var(--ink)}
+:focus-visible{outline:var(--focus-ring);outline-offset:3px}
+.skip-link{position:absolute;top:-100px;left:16px;z-index:10000;padding:10px 16px;background:var(--lime);color:var(--ink);border-radius:var(--radius-control);font-weight:700}
 .skip-link:focus{top:16px}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* TYPOGRAPHY */
-h1,h2,h3,h4,h5,h6{line-height:1.25;font-weight:700;color:var(--text)}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:700;line-height:1.1;color:var(--ink)}
 h1{font-size:clamp(1.75rem,4vw,2.5rem)}
-h2{font-size:clamp(1.35rem,3vw,1.75rem)}
-h3{font-size:clamp(1.1rem,2.5vw,1.25rem)}
+h2{font-size:clamp(1.35rem,3vw,1.75rem);margin-bottom:var(--space-3)}
+h3{font-size:clamp(1.05rem,2.5vw,1.2rem)}
 p{margin-bottom:1rem}
 p:last-child{margin-bottom:0}
-.text-secondary{color:var(--text-secondary)}
-.text-muted{color:var(--text-muted)}
-.text-sm{font-size:.875rem}
+.display-hero{font-size:clamp(2.5rem,7vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:.92;color:var(--ink)}
+.display-page{font-size:clamp(2rem,5vw,3.25rem);letter-spacing:-.03em;line-height:1.05}
+.section-num{font-family:var(--font-mono);font-size:.6875rem;font-weight:600;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.section-title{font-size:clamp(1.35rem,3vw,1.85rem);letter-spacing:-.02em;margin-top:var(--space-2)}
+.mono-label{font-family:var(--font-mono);font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.text-secondary{color:var(--muted)}
+.text-muted{color:var(--muted)}
+.text-sm{font-size:.875rem;line-height:1.55}
 .text-xs{font-size:.75rem}
-.eyebrow{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)}
+.eyebrow{font-family:var(--font-mono);font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.lead{font-size:clamp(1.05rem,2vw,1.15rem);line-height:1.65;color:var(--muted);max-width:var(--read-w)}
+.metric-big{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;line-height:1;letter-spacing:-.03em}
+.metric-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:var(--space-2)}
 
-/* LAYOUT */
-.app{display:flex;min-height:100vh}
-.main-wrap{flex:1;display:flex;flex-direction:column;min-width:0}
-.content-area{flex:1;padding:24px 20px 40px;max-width:100%}
-.page-inner{max-width:var(--content-max);margin:0 auto}
-.page-header{margin-bottom:28px}
-.page-header h1{margin-bottom:8px}
-.breadcrumb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.8125rem;color:var(--text-muted);margin-bottom:12px}
-.breadcrumb a{color:var(--accent)}
+/* APP FRAME */
+.app-frame{display:grid;place-items:center;min-height:100svh;padding:clamp(16px,3vw,48px)}
+.app-shell{width:min(1680px,100%);min-height:min(920px,calc(100svh - clamp(32px,6vw,96px)));background:var(--shell);border-radius:var(--radius-shell);box-shadow:var(--shadow-shell);display:flex;overflow:hidden}
+.app{display:flex;width:100%;min-height:inherit}
+
+/* NAV SIDEBAR */
+.nav-sidebar{width:var(--nav-w);flex-shrink:0;background:var(--shell);padding:var(--space-5) var(--space-4);display:flex;flex-direction:column;gap:var(--space-5)}
+.nav-brand{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-radius:var(--radius-control);transition:background var(--dur-fast)}
+.nav-brand:hover{background:rgba(255,255,255,.06)}
+.nav-brand img{width:44px;height:44px;border-radius:14px;object-fit:cover}
+.nav-brand-text{font-family:var(--font-display);font-weight:700;font-size:.9375rem;color:var(--nav-text);line-height:1.2}
+.nav-brand-sub{font-size:.6875rem;color:var(--nav-muted);font-weight:500}
+.nav-groups{flex:1;display:flex;flex-direction:column;gap:var(--space-4);overflow-y:auto}
+.nav-group-label{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.12em;color:var(--nav-muted);padding:var(--space-2) var(--space-3);margin-bottom:var(--space-1)}
+.nav-item{display:flex;align-items:center;gap:var(--space-3);padding:10px 14px;border-radius:var(--radius-pill);font-size:.875rem;font-weight:600;color:var(--nav-muted);transition:all var(--dur-fast) var(--ease-out);margin-bottom:2px}
+.nav-item i{font-size:1rem;width:18px;text-align:center}
+.nav-item:hover{color:var(--nav-text)}
+.nav-item.active{background:var(--surface);color:var(--ink);box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.nav-footer{display:flex;gap:var(--space-2);padding-top:var(--space-4);border-top:1px solid rgba(255,255,255,.08)}
+.nav-footer .btn-icon{background:rgba(255,255,255,.08);border:none;color:var(--nav-text)}
+.nav-footer .btn-icon:hover{background:rgba(255,255,255,.14)}
+
+/* WORKSPACE */
+.workspace{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--workspace);border-radius:var(--radius-module) 0 0 var(--radius-module)}
+.workspace-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
+.workspace-topbar{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4) var(--space-6);min-height:var(--header-h);flex-shrink:0}
+.topbar-user{display:flex;align-items:center;gap:var(--space-3);min-width:0}
+.topbar-avatar{width:40px;height:40px;border-radius:12px;object-fit:cover}
+.topbar-name{font-family:var(--font-display);font-weight:700;font-size:.9375rem;line-height:1.2}
+.topbar-sub{font-size:.75rem;color:var(--muted)}
+.topbar-spacer{flex:1}
+.topbar-search{display:flex;align-items:center;gap:var(--space-2);padding:10px 18px;background:var(--surface);border-radius:var(--radius-pill);min-width:min(280px,40vw);color:var(--muted);font-size:.875rem;cursor:pointer;transition:background var(--dur-fast)}
+.topbar-search:hover{background:var(--surface-soft)}
+.topbar-search kbd{font-family:var(--font-mono);font-size:.625rem;padding:2px 6px;background:var(--workspace);border-radius:6px;margin-left:auto}
+.topbar-actions{display:flex;align-items:center;gap:var(--space-2)}
+.topbar-icon{width:40px;height:40px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background var(--dur-fast)}
+.topbar-icon:hover{background:var(--surface-soft)}
+
+.main-wrap,.canvas,.main-content{flex:1;min-width:0;display:flex;flex-direction:column}
+.content-area{flex:1}
+.page-inner{padding:var(--space-5) var(--space-6) var(--space-7)}
+.page-head{margin-bottom:var(--space-6)}
+.page-head h1{margin-bottom:var(--space-3)}
+.breadcrumb{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);margin-bottom:var(--space-4);letter-spacing:.04em}
+.breadcrumb a{color:var(--ink);font-weight:600}
 .breadcrumb a:hover{text-decoration:underline}
 
-/* APP SHELL / NAV */
-.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--bg-elevated);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:200;transition:transform var(--transition)}
-.sidebar-brand{padding:20px 20px 16px;border-bottom:1px solid var(--border-subtle)}
-.sidebar-brand a{display:flex;align-items:center;gap:12px}
-.sidebar-brand img{width:40px;height:40px;border-radius:var(--radius-full);object-fit:cover;border:2px solid var(--border)}
-.sidebar-brand span{font-weight:700;font-size:.9375rem}
-.nav-list{flex:1;padding:12px 10px;overflow-y:auto}
-.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius-md);font-size:.875rem;font-weight:500;color:var(--text-secondary);transition:background var(--transition),color var(--transition);position:relative}
-.nav-item i{font-size:1.1rem;width:20px;text-align:center}
-.nav-item:hover{background:var(--bg-subtle);color:var(--text)}
-.nav-item.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
-.nav-item.active::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--accent);border-radius:0 3px 3px 0}
-.sidebar-footer{padding:12px 10px;border-top:1px solid var(--border-subtle);display:flex;gap:8px;flex-wrap:wrap}
-.mobile-header{display:none;position:sticky;top:0;z-index:150;height:var(--header-h);background:var(--bg-elevated);border-bottom:1px solid var(--border);align-items:center;padding:0 16px;gap:12px}
-.mobile-header .brand{font-weight:700;font-size:.9375rem;flex:1}
-.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190}
-.main-content{margin-left:var(--sidebar-w);flex:1;min-width:0}
+/* BENTO */
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.bento-col-7{grid-column:span 7}
+.bento-col-5{grid-column:span 5}
+.bento-col-6{grid-column:span 6}
+.bento-col-12{grid-column:span 12}
+@media(max-width:1024px){.bento-col-7,.bento-col-5,.bento-col-6{grid-column:span 12}}
+.module{border-radius:var(--radius-module);padding:clamp(20px,3vw,32px);position:relative;overflow:hidden}
+.module-light{background:var(--surface)}
+.module-lavender{background:var(--lavender-soft)}
+.module-dark{background:var(--shell-deep);color:#f4f4f4}
+.module-dark .text-secondary,.module-dark .text-muted,.module-dark .mono-label,.module-dark .metric-label{color:rgba(255,255,255,.55)}
+.module-dark h1,.module-dark h2,.module-dark h3,.module-dark h4,.module-dark .display-hero,.module-dark .metric-big{color:#f4f4f4}
+.module-dark .btn-ghost{border-color:rgba(255,255,255,.2);color:#f4f4f4}
+.module-dark .btn-ghost:hover{background:rgba(255,255,255,.08)}
 
-/* COMPONENTS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:var(--radius-md);font-weight:600;font-size:.875rem;transition:all var(--transition);border:1px solid transparent;min-height:42px}
-.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
-.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
-.btn-ghost:hover{background:var(--bg-subtle);border-color:var(--text-muted)}
-.btn-sm{padding:6px 12px;font-size:.8125rem;min-height:34px}
-.btn-icon{width:40px;height:40px;padding:0;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg-elevated);color:var(--text)}
-.btn-icon:hover{background:var(--bg-subtle)}
-.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:var(--radius-full);font-size:.75rem;font-weight:600;background:var(--bg-subtle);color:var(--text-secondary);border:1px solid var(--border-subtle)}
-.pill-accent{background:var(--accent-soft);color:var(--accent);border-color:transparent}
-.pill-success{background:rgba(43,138,62,.12);color:var(--success)}
-.pill-warning{background:rgba(230,119,0,.12);color:var(--warning)}
-.card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:box-shadow var(--transition),transform var(--transition)}
-.card:hover{box-shadow:var(--shadow-md)}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);padding:12px 22px;border-radius:var(--radius-pill);font-family:var(--font-display);font-weight:700;font-size:.875rem;transition:all var(--dur-normal) var(--ease-out);border:1px solid transparent;min-height:44px}
+.btn-primary{background:var(--lime);color:var(--ink)}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-ghost{background:var(--surface);color:var(--ink);border-color:transparent}
+.btn-ghost:hover{background:var(--surface-soft)}
+.btn-text{background:none;padding:8px 0;min-height:auto;color:var(--ink);font-weight:700;border:none;text-decoration:underline;text-underline-offset:3px}
+.btn-sm{padding:8px 16px;font-size:.8125rem;min-height:36px}
+.btn-icon{width:40px;height:40px;padding:0;border-radius:12px;border:none;background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.btn-icon:hover{background:var(--surface-soft)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--radius-pill);font-size:.75rem;font-weight:700;background:var(--lime-soft);color:var(--ink)}
+.pill-success{background:var(--lime);color:var(--ink)}
+.pill-warning{background:rgba(234,179,8,.2);color:var(--warning)}
+.tag{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.callout{padding:var(--space-5);border-radius:var(--radius-control);background:var(--lime-soft);margin:var(--space-5) 0}
+.callout-warn{background:rgba(234,179,8,.12)}
+.callout-info{background:var(--lavender-soft)}
+
+/* STATUS */
+.status-available{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(218,241,103,.4)}
+.status-available .status-dot{animation:pulse-once 1.2s ease-out 1}
+@keyframes pulse-once{0%,100%{opacity:1}50%{opacity:.5}}
+.status-label{font-family:var(--font-mono);font-size:.625rem;font-weight:700;text-transform:uppercase;padding:4px 8px;border-radius:8px}
+.status-hands-on{background:var(--lime-soft);color:var(--ink)}
+.status-foundation{background:var(--lavender-soft);color:var(--ink)}
+.status-learning{background:rgba(234,179,8,.15);color:var(--warning)}
+.status-aware{background:var(--surface-soft);color:var(--muted)}
+
+/* HERO MODULE */
+.hero-module{display:grid;grid-template-columns:1fr;gap:var(--space-5);align-items:end}
+@media(min-width:900px){.hero-module{grid-template-columns:1.1fr .9fr;align-items:center}}
+.hero-portrait-wrap{max-width:320px;margin:0 auto}
+.hero-portrait{width:100%;aspect-ratio:4/5;border-radius:24px;object-fit:cover;object-position:center top}
+.hero-statement{font-size:clamp(1rem,2vw,1.2rem);font-weight:500;line-height:1.5;margin-top:var(--space-4)}
+.hero-sub{font-family:var(--font-mono);font-size:.8125rem;color:var(--muted);margin-top:var(--space-3)}
+.hero-cta,.cta-row{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-5)}
+.hero-focus{font-size:.9375rem;color:var(--muted);line-height:1.6;margin-top:var(--space-3)}
+.hero-focus strong{color:var(--ink)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-3)}
+
+/* VIZ — CIRCLES */
+.viz-circles{display:flex;align-items:center;justify-content:center;gap:0;margin:var(--space-5) 0;flex-wrap:wrap}
+.viz-circle{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:700;font-family:var(--font-mono);text-transform:uppercase;margin-left:-12px;border:3px solid var(--surface)}
+.viz-circle:first-child{margin-left:0}
+.viz-circle--lavender{background:var(--lavender);color:var(--ink)}
+.viz-circle--charcoal{background:var(--shell-deep);color:#fff}
+.viz-circle--lime{background:var(--lime);color:var(--ink)}
+.module-dark .viz-circle{border-color:var(--shell-deep)}
+
+/* VIZ — BARS */
+.viz-bars{display:flex;flex-direction:column;gap:10px;margin-top:var(--space-4)}
+.viz-bar-row{display:grid;grid-template-columns:80px 1fr;gap:var(--space-3);align-items:center;font-size:.75rem;font-weight:600}
+.viz-bar-track{height:10px;background:rgba(255,255,255,.12);border-radius:var(--radius-pill);overflow:hidden}
+.viz-bar-fill{height:100%;border-radius:var(--radius-pill);background:var(--lavender)}
+.viz-bar-fill--lime{background:var(--lime)}
+
+/* VIZ — TIMELINE */
+.career-track{margin-top:var(--space-4)}
+.career-line{position:relative;height:4px;background:var(--surface-soft);border-radius:var(--radius-pill);margin:var(--space-5) 0 var(--space-4)}
+.career-line-fill{position:absolute;left:0;top:0;height:100%;width:85%;background:linear-gradient(90deg,var(--lavender),var(--lime));border-radius:var(--radius-pill)}
+.career-nodes{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-2)}
+.career-node{text-align:center}
+.career-node-year{font-family:var(--font-display);font-weight:800;font-size:1rem}
+.career-node-label{font-size:.6875rem;color:var(--muted);margin-top:4px;line-height:1.3}
+
+/* SUPPORT LOOP DARK */
+.loop-bars{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-3);margin-top:var(--space-5);align-items:end;height:140px}
+.loop-bar-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);height:100%}
+.loop-bar{width:100%;max-width:48px;border-radius:12px 12px 4px 4px;background:var(--lavender);opacity:.5;flex:1;min-height:20px}
+.loop-bar--active{background:var(--lime);opacity:1}
+.loop-bar-label{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;color:rgba(255,255,255,.55);text-align:center}
+.loop-bar-num{font-size:.6875rem;font-weight:800;color:var(--lime)}
+
+/* CARDS + LEGACY */
+.card{background:var(--surface);border:none;border-radius:var(--radius-module);padding:var(--space-5);transition:transform var(--dur-fast)}
 .card-interactive{cursor:pointer}
 .card-interactive:hover{transform:translateY(-2px)}
-.grid-2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.grid-3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.tag{display:inline-block;padding:3px 8px;border-radius:var(--radius-sm);font-size:.6875rem;font-weight:600;background:var(--bg-subtle);color:var(--text-secondary);border:1px solid var(--border-subtle)}
-.callout{padding:16px 18px;border-radius:var(--radius-md);border-left:4px solid var(--accent);background:var(--accent-soft);margin:1.25rem 0}
-.callout-warn{border-left-color:var(--warning);background:rgba(230,119,0,.1)}
-.callout-info{border-left-color:var(--accent)}
-.status-label{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:var(--radius-sm)}
-.status-hands-on{background:rgba(43,138,62,.15);color:var(--success)}
-.status-foundation{background:rgba(59,91,219,.15);color:var(--accent)}
-.status-learning{background:rgba(230,119,0,.15);color:var(--warning)}
-.status-aware{background:var(--bg-subtle);color:var(--text-muted)}
+.feature-panel{padding:var(--space-6);background:var(--surface);border-radius:var(--radius-module)}
+.feature-panel--flat{background:transparent;padding:0}
+.grid-2{display:grid;gap:var(--space-5);grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.grid-3{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 
-/* HERO */
-.hero{display:grid;gap:24px;grid-template-columns:1fr;align-items:start}
-@media(min-width:768px){.hero{grid-template-columns:auto 1fr;gap:32px}}
-.hero-image{width:140px;height:140px;border-radius:var(--radius-lg);object-fit:cover;border:3px solid var(--border);box-shadow:var(--shadow-md)}
-.hero-eyebrow{margin-bottom:12px}
-.hero-title{margin-bottom:8px}
-.hero-statement{font-size:clamp(1rem,2vw,1.125rem);color:var(--text-secondary);max-width:60ch;margin-bottom:16px}
-.role-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.credibility-strip{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
-.cred-item{padding:12px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);text-align:center;cursor:pointer;transition:all var(--transition)}
-.cred-item:hover{border-color:var(--accent);background:var(--accent-soft)}
-.cred-item strong{display:block;font-size:.8125rem;margin-bottom:2px}
-.cred-item span{font-size:.6875rem;color:var(--text-muted)}
+/* PROJECT SPREADS */
+.project-spread{display:grid;grid-template-columns:1fr;gap:var(--space-5);padding:clamp(20px,3vw,32px);border-radius:var(--radius-module);margin-bottom:var(--space-4);text-decoration:none;color:inherit;transition:transform var(--dur-fast)}
+.project-spread:hover{transform:translateY(-2px)}
+.project-spread--skillverse{background:var(--lavender-soft)}
+.project-spread--catalyx{background:var(--shell-deep);color:#f4f4f4}
+@media(min-width:900px){.project-spread{grid-template-columns:1fr 1fr;align-items:center}}
+.project-link{font-weight:700;font-size:.875rem;margin-top:var(--space-4);display:inline-flex;gap:6px}
+.workflow-viz{display:flex;flex-direction:column;gap:6px}
+.workflow-node{padding:10px 14px;background:var(--surface);border-radius:14px;font-size:.8125rem;font-weight:600}
+.workflow-connector{text-align:center;font-size:.625rem;color:var(--muted);font-family:var(--font-mono)}
+.matrix-viz{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.matrix-cell{padding:10px;background:rgba(255,255,255,.08);border-radius:10px;font-size:.6875rem;font-family:var(--font-mono);text-align:center}
+
+/* OPERATING LOOP */
+.operating-loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--space-4);counter-reset:loop}
+.loop-step{padding:var(--space-5);background:var(--surface);border-radius:var(--radius-control);counter-increment:loop}
+.loop-step::before{content:counter(loop,decimal-leading-zero);font-family:var(--font-mono);font-size:.6875rem;color:var(--muted);display:block;margin-bottom:var(--space-2)}
+.loop-step h4{font-size:.9375rem;margin-bottom:var(--space-2)}
+.loop-step p{font-size:.8125rem;color:var(--muted)}
+
+/* SIGNAL / ARTICLES */
+.signal-rail{display:flex;flex-direction:column}
+.signal-item{display:grid;grid-template-columns:72px 1fr auto;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--line);align-items:start}
+.signal-year{font-family:var(--font-mono);font-size:.8125rem;color:var(--muted)}
+.signal-metric{font-family:var(--font-display);font-weight:800;color:var(--ink)}
+.article-preview{display:grid;gap:0}
+.article-preview-item{padding:var(--space-4) 0;border-bottom:1px solid var(--line);display:grid;gap:var(--space-2);cursor:pointer;text-decoration:none;color:inherit}
+.article-preview-item:hover{padding-left:var(--space-2)}
+.article-feature{padding:var(--space-5);background:var(--surface-soft);border-radius:var(--radius-control);margin-bottom:var(--space-4)}
+.building-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--space-4)}
+.building-item{padding:var(--space-4);border-left:3px solid var(--lime)}
+.metric-type,.metric-row .metric-big{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1}
+.metric-type-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;color:var(--muted)}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:var(--space-5);margin:var(--space-5) 0}
+.case-study-hero{display:grid;gap:var(--space-5);margin-bottom:var(--space-6)}
+@media(min-width:900px){.case-study-hero{grid-template-columns:1fr 1fr}}
 
 /* TIMELINE */
-.timeline{position:relative;padding-left:24px}
-.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--border)}
-.timeline-item{position:relative;margin-bottom:16px}
-.timeline-item::before{content:'';position:absolute;left:-22px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg-elevated)}
-.timeline-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-elevated);overflow:hidden}
-.timeline-header{padding:16px 18px;cursor:pointer;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
-.timeline-header:hover{background:var(--bg-subtle)}
-.timeline-body{padding:0 18px 18px;border-top:1px solid var(--border-subtle)}
+.timeline-card{background:var(--surface);border-radius:var(--radius-control);overflow:hidden;margin-bottom:var(--space-4)}
+.timeline-header{padding:var(--space-5);cursor:pointer;display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between;width:100%;text-align:left}
+.timeline-header:hover{background:var(--surface-soft)}
+.timeline-body{padding:0 var(--space-5) var(--space-5)}
 .timeline-body[hidden]{display:none}
-.timeline-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.8125rem;color:var(--text-muted)}
-
-/* PROJECTS */
-.process-diagram{display:flex;flex-direction:column;gap:8px;margin:24px 0}
-.process-step{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg-subtle);border-radius:var(--radius-md);border:1px solid var(--border-subtle)}
-.process-arrow{text-align:center;color:var(--text-muted);font-size:.75rem}
+.timeline-meta{font-size:.8125rem;color:var(--muted)}
+.process-step{padding:var(--space-4);background:var(--surface-soft);border-radius:14px;font-size:.875rem;font-weight:600;margin-bottom:6px}
+.process-arrow{text-align:center;font-size:.625rem;color:var(--muted);font-family:var(--font-mono)}
 
 /* ARTICLES */
-.article-body{max-width:var(--article-max);font-size:.9375rem}
-.article-body h2{margin-top:1.75rem;margin-bottom:.75rem}
-.article-body h3{margin-top:1.25rem;margin-bottom:.5rem}
-.article-body ul,.article-body ol{margin:0 0 1rem 1.25rem}
-.article-body ul{list-style:disc}
-.article-body ol{list-style:decimal}
-.article-body li{margin-bottom:.35rem}
-.article-body code{font-family:var(--font-mono);font-size:.875em;background:var(--bg-subtle);padding:2px 6px;border-radius:4px}
-.article-body pre{background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;overflow-x:auto;margin:1rem 0;font-family:var(--font-mono);font-size:.8125rem;line-height:1.5}
-.article-meta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;font-size:.8125rem;color:var(--text-muted)}
-.article-toc{position:sticky;top:24px;padding:16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);font-size:.8125rem}
-.article-toc h4{margin-bottom:10px;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
-.article-toc a{display:block;padding:4px 0;color:var(--text-secondary)}
-.article-toc a:hover{color:var(--accent)}
-.article-layout{display:grid;gap:24px}
-@media(min-width:1024px){.article-layout{grid-template-columns:1fr 220px}}
+.article-body{max-width:var(--article-max);font-size:1rem;line-height:1.7}
+.article-body h2{margin-top:var(--space-7);margin-bottom:var(--space-3)}
+.article-body code{font-family:var(--font-mono);background:var(--surface-soft);padding:2px 6px;border-radius:6px}
+.article-body pre{background:var(--surface-soft);border-radius:var(--radius-control);padding:var(--space-5);overflow-x:auto;font-family:var(--font-mono);font-size:.8125rem}
+.article-meta{display:flex;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-5);font-size:.8125rem;color:var(--muted);font-family:var(--font-mono)}
+.read-progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--line);z-index:200}
+.read-progress-bar{height:100%;background:var(--lime);width:0%}
 
 /* RECRUITER */
-.recruiter-mode{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;max-width:800px}
-.recruiter-mode h1{font-size:1.5rem}
-.recruiter-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--border-subtle)}
-.recruiter-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.brief,.recruiter-mode{max-width:720px;margin:0 auto;background:var(--surface);padding:var(--space-6);border-radius:var(--radius-module)}
+.brief-section,.recruiter-section{padding:var(--space-5) 0;border-top:1px solid var(--line)}
+.brief-section h2,.recruiter-section h2{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;color:var(--muted)}
+.recruiter-actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-5)}
 
-/* MODALS */
-dialog{border:none;border-radius:var(--radius-lg);padding:0;background:var(--bg-elevated);color:var(--text);max-width:90vw;max-height:90vh;box-shadow:var(--shadow-md)}
-dialog::backdrop{background:rgba(0,0,0,.6)}
-.modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
-.modal-body{padding:20px;overflow-y:auto;max-height:70vh}
-.modal-footer{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
+/* CERT */
+.cert-feature{padding:var(--space-6);background:var(--lavender-soft);border-radius:var(--radius-module);margin-bottom:var(--space-4)}
+.cert-grid{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.cert-card{padding:var(--space-5);background:var(--surface);border-radius:var(--radius-control);cursor:pointer;transition:transform var(--dur-fast)}
+.cert-card:hover{transform:translateY(-2px)}
+.skill-item{padding:8px 12px;background:var(--surface-soft);border-radius:12px;font-size:.8125rem;color:var(--muted)}
 
-/* COMMAND PALETTE */
-.cmd-palette{width:min(560px,92vw)}
-.cmd-input{width:100%;padding:14px 18px;border:none;border-bottom:1px solid var(--border);background:transparent;font-size:1rem}
-.cmd-input:focus{outline:none}
-.cmd-results{max-height:360px;overflow-y:auto;padding:8px}
-.cmd-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-md);cursor:pointer}
-.cmd-item:hover,.cmd-item.active{background:var(--accent-soft)}
-.cmd-item kbd{font-size:.6875rem;padding:2px 6px;background:var(--bg-subtle);border-radius:4px;border:1px solid var(--border);font-family:var(--font-mono)}
+/* WORKBENCH */
+.workbench{background:var(--surface);border-radius:var(--radius-module);overflow:hidden}
+.workbench-tabs{display:flex;gap:4px;padding:var(--space-4) var(--space-4) 0;overflow-x:auto}
+.workbench-tab{padding:10px 16px;border-radius:var(--radius-pill);font-family:var(--font-mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;color:var(--muted);cursor:pointer}
+.workbench-tab.active{background:var(--lime);color:var(--ink)}
+.workbench-body{padding:var(--space-5)}
+.workbench-panel{display:none}
+.workbench-panel.active{display:block}
+.lab-output{padding:var(--space-5);background:var(--shell-deep);color:#f4f4f4;border-radius:var(--radius-control);margin-top:var(--space-4);font-family:var(--font-mono);font-size:.8125rem;white-space:pre-wrap}
+.lab-output--ticket{background:var(--shell-deep);color:#e8e8e8}
+.form-control{width:100%;padding:12px 16px;border:none;border-radius:var(--radius-control);background:var(--surface-soft);color:var(--ink)}
+.form-control:focus{outline:var(--focus-ring)}
+.form-group{margin-bottom:var(--space-4)}
+.form-group label{display:block;font-size:.75rem;font-weight:700;margin-bottom:var(--space-2);font-family:var(--font-mono);text-transform:uppercase;color:var(--muted)}
+.chip-group{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.chip{padding:8px 14px;border-radius:var(--radius-pill);font-size:.8125rem;cursor:pointer;background:var(--surface-soft);color:var(--muted);font-weight:600}
+.chip:hover,.chip.active{background:var(--lavender-soft);color:var(--ink)}
+.uat-checklist li{display:flex;gap:var(--space-3);padding:var(--space-3) 0;border-bottom:1px solid var(--line);font-size:.875rem}
+.uat-checklist input{accent-color:var(--lime)}
+
+/* CONTACT */
+.contact-stage{text-align:center;max-width:640px;margin:0 auto;padding:var(--space-7) 0}
+.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3);margin-top:var(--space-5)}
+.contact-cta{text-align:center;padding:var(--space-7) 0}
+.seo-quiet{padding:var(--space-5);font-size:.875rem;color:var(--muted);line-height:1.7;margin-top:var(--space-4)}
+.research-hero{padding:var(--space-6) 0;margin-bottom:var(--space-5)}
+
+/* MENU MOBILE */
+.menu-overlay{position:fixed;inset:0;background:rgba(17,17,17,.5);backdrop-filter:blur(6px);z-index:var(--z-overlay);opacity:0;visibility:hidden;transition:opacity var(--dur-normal)}
+.menu-overlay.open{opacity:1;visibility:visible}
+.site-menu{position:fixed;top:0;left:0;width:min(400px,100vw);height:100vh;z-index:calc(var(--z-overlay)+1);background:var(--shell);color:var(--nav-text);transform:translateX(-100%);transition:transform var(--dur-slow) var(--ease-out);padding:var(--space-6);overflow-y:auto}
+.site-menu.open{transform:translateX(0)}
+.menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6)}
+.menu-group h3{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;color:var(--nav-muted);margin-bottom:var(--space-2)}
+.menu-link{display:block;padding:10px 0;font-weight:600;color:var(--nav-muted)}
+.menu-link:hover,.menu-link.active{color:var(--nav-text)}
+.menu-meta{margin-top:var(--space-6);font-size:.8125rem;color:var(--nav-muted);line-height:1.7}
+.menu-meta a{color:var(--lime)}
+
+/* MOBILE HEADER */
+.mobile-header{display:none;position:sticky;top:0;z-index:150;height:56px;background:var(--shell);color:var(--nav-text);align-items:center;padding:0 var(--space-4);gap:var(--space-3)}
+.mobile-header .brand{font-family:var(--font-display);font-weight:700;flex:1}
+.mobile-header .btn-icon{background:rgba(255,255,255,.1);color:var(--nav-text);border:none}
+
+/* DIALOGS */
+dialog{border:none;border-radius:var(--radius-module);padding:0;background:var(--surface);color:var(--ink);max-width:92vw;box-shadow:var(--shadow-shell)}
+dialog::backdrop{background:rgba(17,17,17,.55);backdrop-filter:blur(4px)}
+.modal-header{display:flex;justify-content:space-between;padding:var(--space-5) var(--space-6);border-bottom:1px solid var(--line)}
+.modal-body{padding:var(--space-6);overflow-y:auto;max-height:70vh}
+.modal-footer{padding:var(--space-4) var(--space-6);border-top:1px solid var(--line);display:flex;gap:var(--space-3);justify-content:flex-end}
+.cmd-palette{width:min(600px,94vw)}
+.cmd-input{width:100%;padding:var(--space-5) var(--space-6);border:none;border-bottom:1px solid var(--line);background:transparent;font-size:1.0625rem}
+.cmd-results{max-height:400px;overflow-y:auto;padding:var(--space-2)}
+.cmd-item{display:flex;align-items:center;gap:var(--space-4);padding:12px var(--space-4);border-radius:var(--radius-control);cursor:pointer}
+.cmd-item:hover,.cmd-item.active{background:var(--lime-soft)}
 
 /* TOAST */
-.toast-container{position:fixed;bottom:24px;right:24px;z-index:10000;display:flex;flex-direction:column;gap:8px}
-.toast{padding:12px 18px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-md);font-size:.875rem;animation:toast-in .3s ease}
+.toast-container{position:fixed;bottom:var(--space-6);right:var(--space-6);z-index:var(--z-toast)}
+.toast{padding:12px 18px;background:var(--surface);border-radius:var(--radius-control);font-size:.875rem;box-shadow:var(--shadow-shell);animation:toast-in .3s ease}
 @keyframes toast-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* SUPPORT LAB */
-.lab-panel{padding:20px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-elevated);margin-bottom:16px}
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-size:.8125rem;font-weight:600;margin-bottom:6px}
-.form-control{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg);color:var(--text)}
-.form-control:focus{outline:var(--focus-ring);border-color:var(--accent)}
-.lab-output{padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);margin-top:12px;font-size:.875rem;white-space:pre-wrap}
-.chip-group{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:8px 14px;border-radius:var(--radius-full);border:1px solid var(--border);font-size:.8125rem;cursor:pointer;background:var(--bg-elevated)}
-.chip:hover,.chip.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
-
-/* SKILL MATRIX */
-.skill-level{margin-bottom:28px}
-.skill-level h3{margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.skill-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-.skill-item{padding:10px 12px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);font-size:.8125rem}
-
 /* VIEWS */
-.view{display:none;animation:fade-in .25s ease}
-.view.active{display:block}
-@keyframes fade-in{from{opacity:0}to{opacity:1}}
-.no-js .view{display:block!important;margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--border)}
+.view{display:none}
+.view.active{display:block;animation:view-in var(--dur-slow) var(--ease-out)}
+@keyframes view-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 html.js-enabled #knowledge-articles-archive{display:none}
-html:not(.js-enabled) .sidebar,html:not(.js-enabled) .mobile-header,html:not(.js-enabled) .nav-overlay{display:none!important}
-html:not(.js-enabled) .main-content{margin-left:0!important}
-html:not(.js-enabled) .knowledge-articles-archive{display:block!important;position:static!important;width:auto!important;height:auto!important;margin:24px 0!important;clip:auto!important;white-space:normal!important}
-.kna-article{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border-subtle)}
-.kna-article h2{font-size:1.25rem;margin-bottom:8px}
+html:not(.js-enabled) .nav-sidebar,html:not(.js-enabled) .mobile-header,html:not(.js-enabled) .workspace-topbar,html:not(.js-enabled) .menu-overlay,html:not(.js-enabled) .site-menu{display:none!important}
+html:not(.js-enabled) .app-frame{padding:0}
+html:not(.js-enabled) .app-shell{border-radius:0;min-height:100svh}
+html:not(.js-enabled) .view{display:block!important;margin-bottom:var(--space-8);padding-bottom:var(--space-6)}
+html:not(.js-enabled) #knowledge-articles-archive{display:block!important;padding:var(--space-6)}
+.kna-article{margin-bottom:var(--space-6);padding-bottom:var(--space-5);border-bottom:1px solid var(--line)}
 
 /* FOOTER */
-.site-footer{margin-top:40px;padding:24px 20px;border-top:1px solid var(--border);text-align:center;font-size:.8125rem;color:var(--text-muted)}
-.site-footer a{color:var(--accent)}
+.site-footer{padding:var(--space-6);margin-top:var(--space-4)}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);font-size:.8125rem;color:var(--muted)}
+.footer-brand{font-family:var(--font-display);font-weight:700;color:var(--ink);font-size:.9375rem}
+.site-footer a{color:var(--ink);font-weight:600}
+
+/* HIDE LEGACY */
+.rail,.sidebar{display:none!important}
 
 /* ACCESSIBILITY */
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .view.active{animation:none}
 }
 
 /* RESPONSIVE */
 @media(max-width:1023px){
-  .sidebar{transform:translateX(-100%)}
-  .sidebar.open{transform:translateX(0)}
-  .nav-overlay.open{display:block}
-  .main-content{margin-left:0}
+  .app-frame{padding:0;place-items:stretch}
+  .app-shell{width:100%;min-height:100svh;border-radius:0;box-shadow:none}
+  .nav-sidebar{display:none}
+  .workspace{border-radius:0}
+  .workspace-topbar{display:none}
   .mobile-header{display:flex}
-  .article-toc-collapsible{margin-bottom:16px}
+  .page-inner{padding:var(--space-4) var(--space-5) var(--space-6)}
 }
 @media(max-width:480px){
-  .content-area{padding:16px 14px 32px}
-  .hero-image{width:100px;height:100px}
-  .credibility-strip{grid-template-columns:repeat(2,1fr)}
+  .topbar-search{display:none}
+  .bento-grid{gap:14px}
+  .module{padding:20px}
 }
 
 /* PRINT */
 @media print{
-  body{background:#fff!important;color:#000!important;background-image:none!important}
-  .sidebar,.mobile-header,.nav-overlay,.sidebar-footer,.btn-icon,.cmd-trigger,.theme-toggle,.recruiter-actions,.no-print{display:none!important}
-  .main-content{margin-left:0!important}
+  body{background:#fff!important}
+  .app-frame{padding:0}
+  .app-shell{box-shadow:none;border-radius:0}
+  .nav-sidebar,.mobile-header,.workspace-topbar,.menu-overlay,.site-menu,.no-print,.read-progress{display:none!important}
+  .workspace{background:#fff}
   .view{display:none!important}
-  .view.active,.view#print-target{display:block!important}
-  #print-target{display:block!important}
-  .card,.timeline-card{border:1px solid #ccc;box-shadow:none}
+  .view.active,#print-target{display:block!important}
+  .brief{background:#fff;padding:0}
   a{color:#000;text-decoration:underline}
-  .recruiter-mode{border:none;padding:0;max-width:100%}
 }
+
 </style>
 </head>
 <body>
@@ -349,108 +520,271 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
   </div>
 </noscript>
 
-<div class="app" id="app">
-  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+<div class="app-frame">
+<div class="app-shell" id="app">
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true"></div>
 
-  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
-    <div class="sidebar-brand">
-      <a href="#/home" data-nav="home">
-        <img src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut profile photo" width="40" height="40" loading="eager">
-        <span>Bhramar Raut</span>
-      </a>
-    </div>
-    <nav class="nav-list" role="navigation">
-      <a href="#/home" class="nav-item" data-nav="home"><i class="bi bi-house" aria-hidden="true"></i> Home</a>
-      <a href="#/profile" class="nav-item" data-nav="profile"><i class="bi bi-person" aria-hidden="true"></i> Profile</a>
-      <a href="#/experience" class="nav-item" data-nav="experience"><i class="bi bi-briefcase" aria-hidden="true"></i> Experience</a>
-      <a href="#/projects" class="nav-item" data-nav="projects"><i class="bi bi-folder" aria-hidden="true"></i> Projects</a>
-      <a href="#/capabilities" class="nav-item" data-nav="capabilities"><i class="bi bi-grid" aria-hidden="true"></i> Capabilities</a>
-      <a href="#/knowledge" class="nav-item" data-nav="knowledge"><i class="bi bi-book" aria-hidden="true"></i> Knowledge</a>
-      <a href="#/toolbox" class="nav-item" data-nav="toolbox"><i class="bi bi-tools" aria-hidden="true"></i> Toolbox</a>
-      <a href="#/certifications" class="nav-item" data-nav="certifications"><i class="bi bi-award" aria-hidden="true"></i> Certifications</a>
-      <a href="#/research" class="nav-item" data-nav="research"><i class="bi bi-journal-text" aria-hidden="true"></i> Research</a>
-      <a href="#/learning" class="nav-item" data-nav="learning"><i class="bi bi-mortarboard" aria-hidden="true"></i> Learning</a>
-      <a href="#/support-lab" class="nav-item" data-nav="support-lab"><i class="bi bi-wrench" aria-hidden="true"></i> Support Lab</a>
-      <a href="#/recruiter" class="nav-item" data-nav="recruiter"><i class="bi bi-clipboard-check" aria-hidden="true"></i> Recruiter Mode</a>
-      <a href="#/contact" class="nav-item" data-nav="contact"><i class="bi bi-envelope" aria-hidden="true"></i> Contact</a>
+  <aside class="nav-sidebar no-print" aria-label="Main navigation">
+    <a href="#/home" class="nav-brand" data-nav="home">
+      <img src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut" width="44" height="44" loading="eager">
+      <div>
+        <div class="nav-brand-text">Bhramar Raut</div>
+        <div class="nav-brand-sub">Portfolio</div>
+      </div>
+    </a>
+    <nav class="nav-groups">
+      <a href="#/home" class="nav-item" data-nav="home" data-nav-group="home"><i class="bi bi-house" aria-hidden="true"></i> Home</a>
+      <div class="nav-group">
+        <div class="nav-group-label">Work</div>
+        <a href="#/experience" class="nav-item" data-nav="experience" data-nav-group="work"><i class="bi bi-briefcase" aria-hidden="true"></i> Experience</a>
+        <a href="#/projects" class="nav-item" data-nav="projects" data-nav-group="work"><i class="bi bi-folder" aria-hidden="true"></i> Projects</a>
+        <a href="#/capabilities" class="nav-item" data-nav="capabilities" data-nav-group="work"><i class="bi bi-grid" aria-hidden="true"></i> Capabilities</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">Thinking</div>
+        <a href="#/knowledge" class="nav-item" data-nav="knowledge" data-nav-group="thinking"><i class="bi bi-book" aria-hidden="true"></i> Knowledge</a>
+        <a href="#/toolbox" class="nav-item" data-nav="toolbox" data-nav-group="thinking"><i class="bi bi-tools" aria-hidden="true"></i> Toolbox</a>
+        <a href="#/learning" class="nav-item" data-nav="learning" data-nav-group="thinking"><i class="bi bi-mortarboard" aria-hidden="true"></i> Learning</a>
+        <a href="#/support-lab" class="nav-item" data-nav="support-lab" data-nav-group="thinking"><i class="bi bi-wrench" aria-hidden="true"></i> Support Lab</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">Proof</div>
+        <a href="#/certifications" class="nav-item" data-nav="certifications" data-nav-group="proof"><i class="bi bi-award" aria-hidden="true"></i> Certifications</a>
+        <a href="#/research" class="nav-item" data-nav="research" data-nav-group="proof"><i class="bi bi-journal-text" aria-hidden="true"></i> Research</a>
+        <a href="#/recruiter" class="nav-item" data-nav="recruiter" data-nav-group="proof"><i class="bi bi-clipboard-check" aria-hidden="true"></i> Recruiter Mode</a>
+      </div>
+      <a href="#/contact" class="nav-item" data-nav="contact" data-nav-group="contact"><i class="bi bi-envelope" aria-hidden="true"></i> Contact</a>
+      <a href="#/profile" class="nav-item" data-nav="profile" data-nav-group="profile"><i class="bi bi-person" aria-hidden="true"></i> How I Think</a>
     </nav>
-    <div class="sidebar-footer">
+    <div class="nav-footer">
       <button type="button" class="btn-icon theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="bi bi-circle-half" aria-hidden="true"></i></button>
-      <button type="button" class="btn-icon cmd-trigger" id="cmd-trigger" aria-label="Open command palette (Ctrl+K)"><i class="bi bi-search" aria-hidden="true"></i></button>
+      <button type="button" class="btn-icon cmd-trigger" id="cmd-trigger" aria-label="Open command palette"><i class="bi bi-search" aria-hidden="true"></i></button>
     </div>
   </aside>
 
-  <div class="main-wrap">
+  <aside class="site-menu" id="site-menu" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="menu-head">
+      <h2>Menu</h2>
+      <button type="button" class="btn-icon" id="menu-close" aria-label="Close menu"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    </div>
+    <div class="menu-grid">
+      <a href="#/home" class="menu-link" data-nav="home">Home</a>
+      <div class="menu-group"><h3>Work</h3>
+        <a href="#/experience" class="menu-link" data-nav="experience">Experience</a>
+        <a href="#/projects" class="menu-link" data-nav="projects">Projects</a>
+        <a href="#/capabilities" class="menu-link" data-nav="capabilities">Capabilities</a>
+      </div>
+      <div class="menu-group"><h3>Thinking</h3>
+        <a href="#/knowledge" class="menu-link" data-nav="knowledge">Knowledge</a>
+        <a href="#/toolbox" class="menu-link" data-nav="toolbox">Toolbox</a>
+        <a href="#/learning" class="menu-link" data-nav="learning">Learning</a>
+        <a href="#/support-lab" class="menu-link" data-nav="support-lab">Support Lab</a>
+      </div>
+      <div class="menu-group"><h3>Proof</h3>
+        <a href="#/certifications" class="menu-link" data-nav="certifications">Certifications</a>
+        <a href="#/research" class="menu-link" data-nav="research">Research</a>
+        <a href="#/recruiter" class="menu-link" data-nav="recruiter">Recruiter Mode</a>
+      </div>
+      <a href="#/contact" class="menu-link" data-nav="contact">Contact</a>
+      <a href="#/profile" class="menu-link" data-nav="profile">How I Think</a>
+    </div>
+    <div class="menu-meta">
+      <p><a href="mailto:raut.bhramar@gmail.com">raut.bhramar@gmail.com</a></p>
+      <p><a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    </div>
+  </aside>
+
+  <div class="workspace">
+    <header class="workspace-topbar no-print">
+      <div class="topbar-user">
+        <img class="topbar-avatar" src="./Profile Pic/Profile_Pic.jpg" alt="" width="40" height="40" loading="lazy">
+        <div>
+          <div class="topbar-name">Bhramar Raut</div>
+          <div class="topbar-sub">Product Support / Implementation</div>
+        </div>
+      </div>
+      <div class="topbar-spacer"></div>
+      <button type="button" class="topbar-search cmd-trigger" aria-label="Search (Ctrl+K)">
+        <i class="bi bi-search" aria-hidden="true"></i> Search… <kbd>Ctrl K</kbd>
+      </button>
+      <div class="topbar-actions">
+        <span class="status-available"><span class="status-dot" aria-hidden="true"></span> Available</span>
+        <button type="button" class="topbar-icon theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle theme"><i class="bi bi-circle-half" aria-hidden="true"></i></button>
+        <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="topbar-icon" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="topbar-icon" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+      </div>
+    </header>
+
     <header class="mobile-header no-print">
       <button type="button" class="btn-icon" id="menu-toggle" aria-label="Open menu"><i class="bi bi-list" aria-hidden="true"></i></button>
       <span class="brand">Bhramar Raut</span>
-      <button type="button" class="btn-icon theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle theme"><i class="bi bi-circle-half" aria-hidden="true"></i></button>
+      <button type="button" class="btn-icon theme-toggle-mobile" aria-label="Toggle theme"><i class="bi bi-circle-half" aria-hidden="true"></i></button>
       <button type="button" class="btn-icon cmd-trigger-mobile" id="cmd-trigger-mobile" aria-label="Search"><i class="bi bi-search" aria-hidden="true"></i></button>
     </header>
 
+    <div class="read-progress no-print" id="read-progress" hidden><div class="read-progress-bar" id="read-progress-bar"></div></div>
+
+    <div class="workspace-scroll">
     <main class="main-content" id="main-content">
       <div class="content-area">
 
 <!-- VIEW: HOME -->
 <section id="view-home" class="view active" data-route="home" aria-labelledby="home-heading">
 <div class="page-inner">
-  <div class="hero">
-    <img class="hero-image" src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut — professional headshot" width="140" height="140" loading="eager" fetchpriority="high">
-    <div>
-      <p class="hero-eyebrow eyebrow">Former Wipro Project Engineer • PSM I • <span class="pill pill-success">Immediate Joiner</span></p>
-      <h1 id="home-heading" class="hero-title">Bhramar Raut</h1>
-      <p class="hero-statement">I turn product requirements, workflows and issues into structured, testable and documented outcomes.</p>
-      <p class="text-secondary text-sm" style="margin-bottom:16px">Enterprise IT exposure + AI-assisted product delivery + functional validation + support-focused technical learning.</p>
-      <div class="role-chips">
-        <span class="pill">Product Support</span>
-        <span class="pill">Application Support</span>
-        <span class="pill">Implementation</span>
-        <span class="pill">Product Operations</span>
+  <div class="bento-grid">
+    <!-- ROW 1: Hero + side panels -->
+    <div class="bento-col-7 module module-light hero-module">
+      <div class="hero-module">
+        <div>
+          <p class="mono-label">India / Remote</p>
+          <h1 id="home-heading" class="display-hero">Bhramar Raut</h1>
+          <p class="hero-focus">Product Support · Application Support · Implementation</p>
+          <p class="text-sm text-muted">Former Wipro Project Engineer · PSM I · 2026</p>
+          <p class="hero-statement">I turn product requirements, workflows and issues into structured, testable and documented outcomes.</p>
+          <p class="hero-sub">Requirements → workflows → validation → documentation</p>
+          <div class="hero-cta">
+            <a href="#/projects" class="btn btn-primary" data-nav-link="projects">View work</a>
+            <a href="#/recruiter" class="btn btn-ghost" data-nav-link="recruiter">Recruiter view</a>
+          </div>
+        </div>
+        <div class="hero-portrait-wrap">
+          <img class="hero-portrait" src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut" width="320" height="400" loading="eager" fetchpriority="high">
+        </div>
       </div>
-      <div class="cta-row">
-        <a href="#/projects" class="btn btn-primary" data-nav-link="projects"><i class="bi bi-folder" aria-hidden="true"></i> View Proof of Work</a>
-        <a href="#/recruiter" class="btn btn-ghost" data-nav-link="recruiter"><i class="bi bi-clipboard-check" aria-hidden="true"></i> Recruiter Mode</a>
-        <a href="#/contact" class="btn btn-ghost" data-nav-link="contact"><i class="bi bi-envelope" aria-hidden="true"></i> Contact Me</a>
+    </div>
+    <div class="bento-col-5" style="display:flex;flex-direction:column;gap:20px">
+      <div class="module module-light" style="flex:1">
+        <span class="status-available"><span class="status-dot" aria-hidden="true"></span> Available now</span>
+        <h3 style="margin-top:var(--space-4);font-size:1.1rem">Immediate joiner</h3>
+        <p class="text-sm text-muted">Pandhurna, India · Open to relocation</p>
+        <div class="hero-cta" style="margin-top:var(--space-4)">
+          <a href="#/contact" class="btn btn-primary btn-sm" data-nav-link="contact">Contact</a>
+          <a href="mailto:raut.bhramar@gmail.com" class="btn btn-ghost btn-sm">Email</a>
+        </div>
       </div>
-      <div class="credibility-strip">
-        <a href="#/experience" class="cred-item" data-nav-link="experience"><strong>WIPRO</strong><span>2+ Years Employment</span></a>
-        <a href="#/certifications" class="cred-item" data-nav-link="certifications"><strong>PSM I</strong><span>Scrum.org</span></a>
-        <a href="#/projects" class="cred-item" data-nav-link="projects"><strong>PRODUCT WORK</strong><span>Skillverse + Catalyx</span></a>
-        <a href="#/research" class="cred-item" data-nav-link="research"><strong>RESEARCH</strong><span>Co-Author</span></a>
-        <a href="#/experience" class="cred-item" data-nav-link="experience"><strong>PROJECT EXECUTION</strong><span>18 km Highway Internship</span></a>
+      <div class="module module-light" style="flex:1" id="signal-rail">
+        <p class="mono-label">Career signals</p>
+        <div class="career-track">
+          <div class="career-line"><div class="career-line-fill"></div></div>
+          <div class="career-nodes">
+            <div class="career-node"><div class="career-node-year">2021</div><div class="career-node-label">Arcons</div></div>
+            <div class="career-node"><div class="career-node-year">22–25</div><div class="career-node-label">Wipro</div></div>
+            <div class="career-node"><div class="career-node-year">2023</div><div class="career-node-label">AWS</div></div>
+            <div class="career-node"><div class="career-node-year">2026</div><div class="career-node-label">PSM I</div></div>
+            <div class="career-node"><div class="career-node-year">2026</div><div class="career-node-label">Projects</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: Projects -->
+    <a href="#/projects/skillverse" class="bento-col-7 module module-lavender" data-nav-link="projects/skillverse" id="home-skillverse" style="text-decoration:none;color:inherit">
+      <p class="mono-label">01 / Selected work</p>
+      <div class="metric-big">6+</div>
+      <div class="metric-label">Product areas</div>
+      <h3 style="margin-top:var(--space-4)">Skillverse.in</h3>
+      <p class="text-sm text-muted">AI-assisted product delivery &amp; functional validation</p>
+      <div class="viz-circles" id="skillverse-workflow" aria-label="Conceptual workflow">
+        <span class="viz-circle viz-circle--lavender">Req</span>
+        <span class="viz-circle viz-circle--charcoal">Flow</span>
+        <span class="viz-circle viz-circle--lime">AI</span>
+        <span class="viz-circle viz-circle--lavender">Test</span>
+      </div>
+      <span class="project-link">Open case study →</span>
+    </a>
+    <a href="#/projects/catalyx" class="bento-col-5 module module-dark" data-nav-link="projects/catalyx" id="home-catalyx" style="text-decoration:none;color:inherit">
+      <p class="mono-label">02 / Admissions ops</p>
+      <div class="metric-big">10+</div>
+      <div class="metric-label">Operational modules</div>
+      <div class="metric-big" style="font-size:2rem;margin-top:var(--space-3)">7</div>
+      <div class="metric-label">Role concepts</div>
+      <h3 style="margin-top:var(--space-4)">Catalyx</h3>
+      <div class="viz-bars" id="catalyx-matrix" aria-label="Conceptual role matrix">
+        <div class="viz-bar-row"><span>Leads</span><div class="viz-bar-track"><div class="viz-bar-fill" style="width:85%"></div></div></div>
+        <div class="viz-bar-row"><span>Counselors</span><div class="viz-bar-track"><div class="viz-bar-fill viz-bar-fill--lime" style="width:70%"></div></div></div>
+        <div class="viz-bar-row"><span>Branches</span><div class="viz-bar-track"><div class="viz-bar-fill" style="width:60%"></div></div></div>
+        <div class="viz-bar-row"><span>Permissions</span><div class="viz-bar-track"><div class="viz-bar-fill viz-bar-fill--lime" style="width:90%"></div></div></div>
+      </div>
+      <span class="project-link" style="color:var(--lime)">Open case study →</span>
+    </a>
+
+    <!-- ROW 3: Support loop -->
+    <div class="bento-col-12 module module-dark" id="operating-loop">
+      <p class="mono-label">How I work</p>
+      <h2 style="color:#f4f4f4;margin-bottom:var(--space-2)">My support loop</h2>
+      <p class="text-sm" style="color:rgba(255,255,255,.55)">From unclear behavior to reproducible evidence.</p>
+      <div class="loop-bars">
+        <div class="loop-bar-item"><span class="loop-bar-num">01</span><div class="loop-bar loop-bar--active" style="height:75%"></div><span class="loop-bar-label">Understand</span></div>
+        <div class="loop-bar-item"><span class="loop-bar-num">02</span><div class="loop-bar loop-bar--active" style="height:65%"></div><span class="loop-bar-label">Reproduce</span></div>
+        <div class="loop-bar-item"><span class="loop-bar-num">03</span><div class="loop-bar" style="height:55%"></div><span class="loop-bar-label">Isolate</span></div>
+        <div class="loop-bar-item"><span class="loop-bar-num">04</span><div class="loop-bar" style="height:50%"></div><span class="loop-bar-label">Document</span></div>
+        <div class="loop-bar-item"><span class="loop-bar-num">05</span><div class="loop-bar loop-bar--active" style="height:70%"></div><span class="loop-bar-label">Validate</span></div>
+        <div class="loop-bar-item"><span class="loop-bar-num">06</span><div class="loop-bar" style="height:45%"></div><span class="loop-bar-label">Hand over</span></div>
+      </div>
+    </div>
+
+    <!-- ROW 4: Thinking + Certs -->
+    <div class="bento-col-6 module module-light">
+      <p class="mono-label">Thinking</p>
+      <h3 style="margin-bottom:var(--space-4)">Knowledge notes</h3>
+      <a href="#/knowledge/ai-agents-without-fake-coding" class="article-feature" data-nav-link="knowledge/ai-agents-without-fake-coding" style="text-decoration:none;color:inherit;display:block">
+        <span class="mono-label">Featured</span>
+        <h4 style="margin-top:var(--space-2)">AI agents without fake coding claims</h4>
+        <p class="text-sm text-muted">Human accountability in AI-assisted delivery.</p>
+      </a>
+      <div class="article-preview">
+        <a href="#/knowledge/approach-application-issue" class="article-preview-item" data-nav-link="knowledge/approach-application-issue">
+          <h4>How I approach an application issue</h4>
+        </a>
+        <a href="#/knowledge/uat-multirole-saas" class="article-preview-item" data-nav-link="knowledge/uat-multirole-saas">
+          <h4>UAT in multi-role SaaS</h4>
+        </a>
+      </div>
+      <a href="#/knowledge" class="btn-text" data-nav-link="knowledge" style="margin-top:var(--space-4)">All notes</a>
+    </div>
+    <div class="bento-col-6 module module-light">
+      <p class="mono-label">Credentials</p>
+      <div style="display:flex;align-items:flex-start;gap:var(--space-4);margin-top:var(--space-3)">
+        <div class="viz-circle viz-circle--lime" style="width:56px;height:56px;margin:0;flex-shrink:0">PSM</div>
+        <div>
+          <div class="metric-big" style="font-size:2rem">PSM I</div>
+          <div class="metric-label">Scrum.org · 2026 · Verified</div>
+        </div>
+      </div>
+      <div class="signal-rail" style="margin-top:var(--space-5)">
+        <div class="signal-item" style="border:none;padding:var(--space-2) 0">
+          <span class="signal-year">AWS</span>
+          <div><h4 style="font-size:.875rem">Cloud Practitioner</h4><p class="text-xs text-muted">Earned 2023 · Expired Apr 2026</p></div>
+        </div>
+        <div class="signal-item" style="border:none;padding:var(--space-2) 0">
+          <span class="signal-year">IBM</span>
+          <div><h4 style="font-size:.875rem">SQL · Java Full Stack</h4><p class="text-xs text-muted">Coursera · Wipro Velocity</p></div>
+        </div>
+      </div>
+      <a href="#/certifications" class="btn-text" data-nav-link="certifications" style="margin-top:var(--space-4)">All credentials</a>
+    </div>
+
+    <!-- ROW 5: Building + CTA -->
+    <div class="bento-col-8 module module-light">
+      <p class="mono-label">Currently building</p>
+      <div class="building-strip" style="margin-top:var(--space-4)">
+        <div class="building-item"><h4>Now</h4><ul class="text-sm text-muted"><li>SQL · APIs · Postman</li><li>ITSM · Linux · Networking</li></ul></div>
+        <div class="building-item"><h4>Next</h4><ul class="text-sm text-muted"><li>Integrations · Monitoring</li><li>L2 support patterns</li></ul></div>
+        <div class="building-item"><h4>Later</h4><ul class="text-sm text-muted"><li>Implementation · Solutions</li></ul></div>
+      </div>
+    </div>
+    <div class="bento-col-4 module module-lavender contact-cta" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left">
+      <h2 style="font-size:1.5rem;margin-bottom:var(--space-3)">Let's talk.</h2>
+      <p class="text-sm text-muted">Product Support · Implementation</p>
+      <div class="hero-cta" style="margin-top:var(--space-4)">
+        <a href="#/contact" class="btn btn-primary btn-sm" data-nav-link="contact">Contact</a>
       </div>
     </div>
   </div>
 
-  <section style="margin-top:40px" aria-labelledby="help-heading">
-    <h2 id="help-heading">What I Can Help With</h2>
-    <p class="text-secondary text-sm" style="margin-bottom:16px">A preview of capabilities — see <a href="#/capabilities" data-nav-link="capabilities">Capabilities</a> for detail.</p>
-    <div class="grid-3">
-      <div class="card"><h3>Reproduce &amp; Document Issues</h3><p class="text-sm text-secondary">Compare expected vs actual behavior, capture steps and document observations clearly.</p></div>
-      <div class="card"><h3>Validate User Workflows</h3><p class="text-sm text-secondary">Walk through workflows and verify intended behavior matches actual behavior.</p></div>
-      <div class="card"><h3>Requirements to Structure</h3><p class="text-sm text-secondary">Break requirements into flows, states, permissions and validation criteria.</p></div>
-    </div>
-  </section>
-
-  <section style="margin-top:40px" aria-labelledby="direction-heading">
-    <h2 id="direction-heading">Current Direction</h2>
-    <p class="text-secondary">Building toward Product Support, Application Support, Implementation and SaaS Operations with deepening technical skills in SQL, APIs, Linux, networking, ITSM and cloud fundamentals.</p>
-    <p class="text-sm text-muted" style="margin-top:8px">My goal is to grow from functional/product troubleshooting into technically deeper support, integrations, implementation and solutions-oriented work.</p>
-  </section>
-
-  <section style="margin-top:40px" aria-labelledby="faq-heading">
-    <h2 id="faq-heading">Quick Answers</h2>
-    <div class="grid-2">
-      <div class="card"><h3>What roles is Bhramar looking for?</h3><p class="text-sm text-secondary">Product Support, Application Support, SaaS Support, Implementation, Product Operations and Project Coordination / PMO Support.</p></div>
-      <div class="card"><h3>What projects has Bhramar worked on?</h3><p class="text-sm text-secondary">Skillverse.in and Catalyx (AI-assisted product delivery and validation), plus infrastructure internship and a 2020 research publication.</p></div>
-      <div class="card"><h3>What certifications does Bhramar have?</h3><p class="text-sm text-secondary">PSM I (2026), AWS CLF-C01 (earned 2023, expired Apr 2026), IBM SQL Coursera, Java Full Stack (Wipro Velocity), and additional corporate and online credentials.</p></div>
-      <div class="card"><h3>What can Bhramar help a product team with?</h3><p class="text-sm text-secondary">Requirements decomposition, workflow validation, issue reproduction and documentation, fix validation, OpenProject tracking and AI-assisted delivery with human accountability.</p></div>
-    </div>
-  </section>
-
-  <section style="margin-top:40px" aria-labelledby="about-bhramar-heading">
+  <section class="seo-quiet" aria-labelledby="about-bhramar-heading">
     <h2 id="about-bhramar-heading">About Bhramar Raut</h2>
-    <p>Bhramar Raut is a former Wipro Project Engineer and Civil Engineering graduate from RCOEM Nagpur, currently building toward Product Support, Application Support and Implementation roles. His background combines 2+ years of enterprise employment at Wipro, formal Java Full Stack training, PSM I certification, project-based AI-assisted product delivery, functional/UAT-style validation, workflow documentation and hands-on technology troubleshooting. His recent project work includes Skillverse.in and Catalyx, where he translated requirements into structured workflows, reviewed AI-assisted implementation output, reproduced issues and validated fixes.</p>
+    <p>Bhramar Raut is a former Wipro Project Engineer and Civil Engineering graduate from RCOEM Nagpur, currently building toward Product Support, Application Support and Implementation roles. His background combines 2+ years of enterprise employment at Wipro, formal Java Full Stack training, PSM I certification, project-based AI-assisted product delivery, functional/UAT-style validation, workflow documentation and hands-on technology troubleshooting. Recent project work includes Skillverse.in and Catalyx.</p>
   </section>
 </div>
 </section>
@@ -458,19 +792,28 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: PROFILE -->
 <section id="view-profile" class="view" data-route="profile" aria-labelledby="profile-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="profile-heading">Profile</h1><p class="text-secondary">Background, working style and current direction.</p></header>
-  <div class="card" style="margin-bottom:20px">
-    <h2>Background</h2>
+  <header class="page-head">
+    <p class="section-num">How I think</p>
+    <h1 id="profile-heading" class="display-page">Origin, approach &amp; principles</h1>
+    <p class="lead">A civil engineer who entered enterprise technology, then moved closer to product delivery through structured validation and documentation.</p>
+  </header>
+  <div class="feature-panel" style="margin-bottom:var(--space-5)">
+    <h2>Origin</h2>
     <p>Civil engineering graduate who entered enterprise technology through Wipro Velocity, developed exposure to structured IT environments, later worked around early-stage business operations and AI-assisted product delivery, and is now intentionally building toward support and implementation roles.</p>
     <p>Bhramar began in Civil Engineering and gained structured project exposure through infrastructure work. He entered enterprise technology through Wipro Velocity and spent more than two years inside Wipro's corporate IT environment, gaining formal technical training and enterprise-process exposure. His later project-based work moved closer to digital products, where he worked on requirements, workflows, AI-assisted implementation review, functional validation and documentation.</p>
   </div>
-  <div class="grid-2">
-    <div class="card"><h3>How I Work</h3><ul style="list-style:disc;margin-left:1.25rem"><li>Understand before acting</li><li>Reproduce before escalating</li><li>Document so another person can continue</li><li>Separate assumptions from evidence</li><li>Validate fixes against original expectations</li></ul></div>
-    <div class="card"><h3>What I Value</h3><ul style="list-style:disc;margin-left:1.25rem"><li>Transparency about experience level</li><li>Structured thinking over buzzwords</li><li>Evidence over claims</li><li>Continuous learning made visible</li><li>Practical tools that solve real problems</li></ul></div>
-    <div class="card"><h3>Current Direction</h3><p>Product Support, Application Support, Implementation and Product Operations — with deepening SQL, API, ITSM, Linux and networking capability.</p></div>
-    <div class="card"><h3>Operating Principles</h3><ul style="list-style:disc;margin-left:1.25rem"><li>Use AI to accelerate judgment, not replace judgment</li><li>Prefer simple tools that solve the actual problem</li><li>Keep learning visible</li><li>Document workflows and handover notes</li></ul></div>
+  <div class="operating-loop" style="margin-bottom:var(--space-6)">
+    <div class="loop-step"><h4>Understand before acting</h4><p>Clarify requirement, role and expected outcome.</p></div>
+    <div class="loop-step"><h4>Reproduce before escalating</h4><p>Consistent steps and environment notes first.</p></div>
+    <div class="loop-step"><h4>Separate assumption from evidence</h4><p>Scope, role and state — not guesses.</p></div>
+    <div class="loop-step"><h4>Document so someone else can continue</h4><p>Handover-ready notes and structured tickets.</p></div>
+    <div class="loop-step"><h4>Use AI for leverage, not authority</h4><p>Human remains responsible for judgment and validation.</p></div>
   </div>
-  <div class="card" style="margin-top:20px">
+  <div class="grid-2">
+    <div class="feature-panel"><h3>What I value</h3><ul style="list-style:disc;margin-left:1.25rem;color:var(--text-secondary)"><li>Transparency about experience level</li><li>Structured thinking over buzzwords</li><li>Evidence over claims</li><li>Continuous learning made visible</li><li>Practical tools that solve real problems</li></ul></div>
+    <div class="feature-panel"><h3>Current direction</h3><p class="text-secondary">Product Support, Application Support, Implementation and Product Operations — with deepening SQL, API, ITSM, Linux and networking capability.</p></div>
+  </div>
+  <div class="feature-panel" style="margin-top:var(--space-5)">
     <h2>Education</h2>
     <p><strong>Bachelor of Engineering — Civil Engineering</strong><br>Shri Ramdeobaba College of Engineering and Management, Nagpur · 2018–2022 · CGPA 7.81/10</p>
     <p class="text-sm text-muted" style="margin-top:8px">Macro Vision Academy, Burhanpur — Science/PCM, 2016–2018, 74.4%</p>
@@ -482,7 +825,11 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: EXPERIENCE -->
 <section id="view-experience" class="view" data-route="experience" aria-labelledby="exp-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="exp-heading">Experience</h1><p class="text-secondary">Career timeline with honest context labels.</p></header>
+  <header class="page-head">
+    <p class="section-num">04 / Experience</p>
+    <h1 id="exp-heading" class="display-page">Career narrative</h1>
+    <p class="lead">Chronological evidence with honest context labels — not inflated scope.</p>
+  </header>
   <div class="timeline" id="experience-timeline">
     <article class="timeline-item">
       <div class="timeline-card">
@@ -553,28 +900,43 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: PROJECTS -->
 <section id="view-projects" class="view" data-route="projects" aria-labelledby="projects-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="projects-heading">Projects</h1><p class="text-secondary">Proof of work — digital products and structured project execution.</p></header>
-  <h2>Featured</h2>
-  <div class="grid-2" style="margin-bottom:32px">
-    <a href="#/projects/skillverse" class="card card-interactive" data-nav-link="projects/skillverse">
-      <span class="tag">PROJECT</span>
-      <h3 style="margin:8px 0">Skillverse.in</h3>
-      <p class="text-sm text-secondary">AI-Assisted Product Delivery &amp; Functional Validation — 6+ product areas including onboarding, authentication, courses, library, payments and administration.</p>
-      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px"><span class="tag">Requirements</span><span class="tag">UAT</span><span class="tag">OpenProject</span></div>
-      <p class="text-sm" style="margin-top:12px;color:var(--accent)">View Case Study →</p>
-    </a>
-    <a href="#/projects/catalyx" class="card card-interactive" data-nav-link="projects/catalyx">
-      <span class="tag">PROJECT</span>
-      <h3 style="margin:8px 0">Catalyx</h3>
-      <p class="text-sm text-secondary">Workflow Design, Role-Aware Validation &amp; Product Operations — 10+ modules, 7 role concepts.</p>
-      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px"><span class="tag">RBAC</span><span class="tag">Workflows</span><span class="tag">Documentation</span></div>
-      <p class="text-sm" style="margin-top:12px;color:var(--accent)">View Case Study →</p>
-    </a>
-  </div>
-  <h2>Additional</h2>
+  <header class="page-head">
+    <p class="section-num">02 / Work</p>
+    <h1 id="projects-heading" class="display-page">Projects</h1>
+    <p class="lead">Proof of work — digital products and structured project execution.</p>
+  </header>
+  <h2 class="section-title">Featured</h2>
+  <a href="#/projects/skillverse" class="project-spread project-spread--skillverse" data-nav-link="projects/skillverse" style="margin-bottom:var(--space-5)">
+    <div>
+      <span class="project-index">01</span>
+      <p class="mono-label">EdTech · Project-based · 2026</p>
+      <h3>Skillverse.in</h3>
+      <p>AI-assisted product delivery and functional validation — 6+ product areas.</p>
+      <span class="project-link">Case study →</span>
+    </div>
+    <div class="workflow-viz">
+      <div class="workflow-node">Requirement</div><div class="workflow-connector">↓</div>
+      <div class="workflow-node">Journey</div><div class="workflow-connector">↓</div>
+      <div class="workflow-node">Validate</div>
+    </div>
+  </a>
+  <a href="#/projects/catalyx" class="project-spread project-spread--catalyx" data-nav-link="projects/catalyx" style="margin-bottom:var(--space-6)">
+    <div>
+      <span class="project-index">02</span>
+      <p class="mono-label">Admissions ops · Project-based · 2026</p>
+      <h3>Catalyx</h3>
+      <p>10+ modules · 7 role concepts · role-aware validation.</p>
+      <span class="project-link">Case study →</span>
+    </div>
+    <div class="matrix-viz">
+      <div class="matrix-cell">Role</div><div class="matrix-cell">Module</div><div class="matrix-cell">Permission</div>
+      <div class="matrix-cell">Branch</div><div class="matrix-cell">Lead</div><div class="matrix-cell">State</div>
+    </div>
+  </a>
+  <h2 class="section-title">Additional</h2>
   <div class="grid-2">
-    <div class="card"><h3>NDB-II Highway Project</h3><p class="text-sm text-secondary">18 km state-highway upgradation internship at Arcons — site supervision, reporting, documentation. 46/50 mentor assessment.</p></div>
-    <a href="#/research" class="card card-interactive" data-nav-link="research"><h3>Research Publication</h3><p class="text-sm text-secondary">Co-authored paper on economic impact on construction sector due to COVID-19 (2020).</p></a>
+    <div class="feature-panel"><h3>NDB-II Highway Project</h3><p class="text-sm text-secondary">18 km state-highway upgradation internship at Arcons — site supervision, reporting, documentation. 46/50 mentor assessment.</p><p class="metric-type" style="margin-top:var(--space-4)">18<span style="font-size:.5em"> KM</span></p></div>
+    <a href="#/research" class="feature-panel card-interactive" data-nav-link="research"><h3>Research publication</h3><p class="text-sm text-secondary">Co-authored paper on economic impact on construction sector due to COVID-19 (2020).</p></a>
   </div>
 </div>
 </section>
@@ -582,8 +944,31 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: SKILLVERSE CASE STUDY -->
 <section id="view-project-skillverse" class="view" data-route="projects/skillverse" aria-labelledby="skillverse-heading">
 <div class="page-inner">
-  <nav class="breadcrumb"><a href="#/projects" data-nav-link="projects">Projects</a><span>/</span><span>Skillverse.in</span></nav>
-  <header class="page-header"><h1 id="skillverse-heading">Skillverse.in</h1><p class="text-secondary">AI-Assisted Product Delivery &amp; Functional Validation — Multi-role EdTech platform</p></header>
+  <nav class="breadcrumb">WORK / SKILLVERSE</nav>
+  <header class="page-head">
+    <p class="mono-label">Case study · Project-based · 2026</p>
+    <h1 id="skillverse-heading" class="display-page">Skillverse.in</h1>
+    <p class="lead">AI-assisted product delivery &amp; functional validation — multi-role EdTech platform.</p>
+  </header>
+  <div class="metric-row">
+    <div><div class="metric-type">6+</div><div class="metric-type-label">Core product areas</div></div>
+    <div><div class="metric-type">2026</div><div class="metric-type-label">Project timeline</div></div>
+  </div>
+  <div class="case-study-hero">
+    <div class="workflow-viz" id="skillverse-diagram-viz">
+      <div class="workflow-node">Requirement</div><div class="workflow-connector">↓</div>
+      <div class="workflow-node">User journey</div><div class="workflow-connector">↓</div>
+      <div class="workflow-node">AI execution</div><div class="workflow-connector">↓</div>
+      <div class="workflow-node">Test &amp; reproduce</div><div class="workflow-connector">↓</div>
+      <div class="workflow-node">Validate &amp; document</div>
+    </div>
+    <div class="feature-panel">
+      <p class="mono-label">Role</p>
+      <p>Requirements · workflow definition · validation · OpenProject tracking</p>
+      <p class="mono-label" style="margin-top:var(--space-4)">Tools</p>
+      <p class="text-sm text-secondary">Cursor · Codex · Antigravity · Ollama · OpenProject</p>
+    </div>
+  </div>
   <h2>Overview</h2>
   <p>Skillverse.in is a multi-role EdTech platform. My project-based work focused on translating requirements into testable workflows, reviewing AI-assisted implementation output and validating behavior across product areas — not on manual full-stack coding of the entire application.</p>
   <div class="grid-2" style="margin-bottom:24px">
@@ -624,8 +1009,29 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: CATALYX CASE STUDY -->
 <section id="view-project-catalyx" class="view" data-route="projects/catalyx" aria-labelledby="catalyx-heading">
 <div class="page-inner">
-  <nav class="breadcrumb"><a href="#/projects" data-nav-link="projects">Projects</a><span>/</span><span>Catalyx</span></nav>
-  <header class="page-header"><h1 id="catalyx-heading">Catalyx</h1><p class="text-secondary">Workflow Design, Role-Aware Validation &amp; Product Operations</p></header>
+  <nav class="breadcrumb">WORK / CATALYX</nav>
+  <header class="page-head">
+    <p class="mono-label">Case study · Project-based · 2026</p>
+    <h1 id="catalyx-heading" class="display-page">Catalyx</h1>
+    <p class="lead">Workflow design, role-aware validation &amp; product operations.</p>
+  </header>
+  <div class="metric-row">
+    <div><div class="metric-type">10+</div><div class="metric-type-label">Operational modules</div></div>
+    <div><div class="metric-type">7</div><div class="metric-type-label">Role concepts</div></div>
+  </div>
+  <div class="case-study-hero">
+    <div class="matrix-viz" style="grid-template-columns:repeat(3,1fr)">
+      <div class="matrix-cell">Admin</div><div class="matrix-cell">Counselor</div><div class="matrix-cell">Branch</div>
+      <div class="matrix-cell">Lead</div><div class="matrix-cell">Campaign</div><div class="matrix-cell">Reporting</div>
+      <div class="matrix-cell">Permission</div><div class="matrix-cell">Module</div><div class="matrix-cell">State</div>
+    </div>
+    <div class="feature-panel">
+      <p class="mono-label">Role</p>
+      <p>Requirements decomposition · role/access behavior · validation · documentation</p>
+      <p class="mono-label" style="margin-top:var(--space-4)">Focus</p>
+      <p class="text-sm text-secondary">Branch-level restrictions · auditability · lead lifecycle · follow-up aging</p>
+    </div>
+  </div>
   <h2>Overview</h2>
   <p>Catalyx is an admissions and revenue-operations product concept spanning lead lifecycle, counselor workflows, branch operations and reporting. My work centered on role-aware workflow definition, validation and documentation — not conventional full-time software development employment.</p>
   <div class="grid-2" style="margin-bottom:24px">
@@ -685,7 +1091,11 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: KNOWLEDGE -->
 <section id="view-knowledge" class="view" data-route="knowledge" aria-labelledby="knowledge-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="knowledge-heading">Knowledge Center</h1><p class="text-secondary">Notes documenting what I am learning and how I think — not claims of professional production experience.</p></header>
+  <header class="page-head">
+    <p class="section-num">03 / Thinking</p>
+    <h1 id="knowledge-heading" class="display-page">Knowledge</h1>
+    <p class="lead">Notes on support, systems, AI-assisted delivery and practical technology.</p>
+  </header>
   <div class="callout callout-warn text-sm"><strong>Disclaimer:</strong> These notes document learning and thinking. They are not claims of professional production experience.</div>
   <div style="margin:20px 0;display:flex;flex-wrap:wrap;gap:8px" id="knowledge-filters">
     <button type="button" class="chip active" data-filter="all">All</button>
@@ -729,8 +1139,11 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: RESEARCH -->
 <section id="view-research" class="view" data-route="research" aria-labelledby="research-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="research-heading">Research</h1><p class="text-secondary">Evidence of structured analysis and written communication.</p></header>
-  <article class="card">
+  <div class="research-hero">
+    <p class="mono-label">Co-authored research · 2020</p>
+    <h2 id="research-heading">Economic impact on construction sector due to COVID-19</h2>
+  </div>
+  <article class="feature-panel">
     <span class="tag">RESEARCH</span>
     <h2 style="margin:12px 0">Economic Impact on Construction Sector Due to COVID-19</h2>
     <p class="text-secondary text-sm"><strong>Co-authored</strong> — Bhramar Raut</p>
@@ -750,11 +1163,15 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: LEARNING -->
 <section id="view-learning" class="view" data-route="learning" aria-labelledby="learning-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="learning-heading">Learning Roadmap</h1><p class="text-secondary">Public evidence of intentional development — building practical depth.</p></header>
-  <div class="grid-3">
-    <div class="card"><h3>NOW</h3><p class="text-sm">Product/Application Support readiness — troubleshooting, ticket lifecycle, SLA, escalation, incident concepts, RCA fundamentals.</p></div>
-    <div class="card"><h3>NEXT</h3><p class="text-sm">L2 troubleshooting, integrations, practical SQL, REST APIs, Postman, Linux and networking fundamentals.</p></div>
-    <div class="card"><h3>LATER</h3><p class="text-sm">Solutions, implementation and technically deeper support roles.</p></div>
+  <header class="page-head">
+    <p class="section-num">Currently building</p>
+    <h1 id="learning-heading" class="display-page">Learning roadmap</h1>
+    <p class="lead">Deliberate capability expansion — not a list of unknowns.</p>
+  </header>
+  <div class="building-strip" style="margin-bottom:var(--space-6)">
+    <div class="building-item"><h4>Now</h4><ul><li>Product/Application Support readiness</li><li>Troubleshooting frameworks</li><li>Ticket lifecycle &amp; ITSM</li></ul></div>
+    <div class="building-item"><h4>Next</h4><ul><li>L2 troubleshooting</li><li>Integrations</li><li>Practical SQL &amp; APIs</li><li>Linux &amp; networking</li></ul></div>
+    <div class="building-item"><h4>Later</h4><ul><li>Solutions</li><li>Implementation</li><li>Platform-depth support</li></ul></div>
   </div>
   <h2 style="margin-top:28px">Current Focus Areas</h2>
   <div class="grid-2" style="margin-top:16px">
@@ -769,62 +1186,75 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: SUPPORT LAB -->
 <section id="view-support-lab" class="view" data-route="support-lab" aria-labelledby="lab-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="lab-heading">Support Lab</h1><p class="text-secondary">Self-directed practice demonstrations — not production incident history.</p></header>
-  <div class="callout callout-warn text-sm"><strong>Label:</strong> These are learning demonstrations of support thinking, not claims of production experience.</div>
-  <div class="lab-panel">
-    <h3>Issue Triage Flow</h3>
-    <p class="text-sm text-secondary">Select an issue type to see a structured troubleshooting framework.</p>
-    <div class="chip-group" id="triage-chips" style="margin-top:12px">
-      <button type="button" class="chip" data-triage="login">Login issue</button>
-      <button type="button" class="chip" data-triage="crash">App crash</button>
-      <button type="button" class="chip" data-triage="network">Network issue</button>
-      <button type="button" class="chip" data-triage="permission">Permission issue</button>
-      <button type="button" class="chip" data-triage="api">API error</button>
+  <header class="page-head">
+    <p class="section-num">Support workbench</p>
+    <h1 id="lab-heading" class="display-page">Support Lab</h1>
+    <p class="lead">Self-directed practice demonstrations — not production incident history.</p>
+  </header>
+  <div class="callout callout-warn text-sm"><strong>Label:</strong> Learning demonstrations of support thinking, not claims of production experience.</div>
+  <div class="workbench" id="support-workbench">
+    <div class="workbench-tabs" role="tablist">
+      <button type="button" class="workbench-tab active" data-lab-tab="triage" role="tab">Triage</button>
+      <button type="button" class="workbench-tab" data-lab-tab="http" role="tab">HTTP</button>
+      <button type="button" class="workbench-tab" data-lab-tab="bug" role="tab">Bug report</button>
+      <button type="button" class="workbench-tab" data-lab-tab="uat" role="tab">UAT</button>
     </div>
-    <div class="lab-output" id="triage-output">Select an issue type above.</div>
-  </div>
-  <div class="lab-panel">
-    <h3>HTTP Status Explorer</h3>
-    <select class="form-control" id="http-select" aria-label="Select HTTP status code">
-      <option value="">Select a status code…</option>
-      <option value="200">200 OK</option>
-      <option value="201">201 Created</option>
-      <option value="204">204 No Content</option>
-      <option value="400">400 Bad Request</option>
-      <option value="401">401 Unauthorized</option>
-      <option value="403">403 Forbidden</option>
-      <option value="404">404 Not Found</option>
-      <option value="409">409 Conflict</option>
-      <option value="422">422 Unprocessable</option>
-      <option value="429">429 Too Many Requests</option>
-      <option value="500">500 Internal Server Error</option>
-      <option value="502">502 Bad Gateway</option>
-      <option value="503">503 Service Unavailable</option>
-    </select>
-    <div class="lab-output" id="http-output">Select a status code.</div>
-  </div>
-  <div class="lab-panel">
-    <h3>Bug Report Builder</h3>
-    <div class="form-group"><label for="bug-summary">Summary</label><input type="text" class="form-control" id="bug-summary" placeholder="Brief issue description"></div>
-    <div class="form-group"><label for="bug-env">Environment</label><input type="text" class="form-control" id="bug-env" placeholder="OS, browser, app version"></div>
-    <div class="form-group"><label for="bug-steps">Steps to Reproduce</label><textarea class="form-control" id="bug-steps" rows="3" placeholder="1. Go to… 2. Click…"></textarea></div>
-    <div class="form-group"><label for="bug-expected">Expected</label><textarea class="form-control" id="bug-expected" rows="2"></textarea></div>
-    <div class="form-group"><label for="bug-actual">Actual</label><textarea class="form-control" id="bug-actual" rows="2"></textarea></div>
-    <div class="form-group"><label for="bug-evidence">Evidence</label><textarea class="form-control" id="bug-evidence" rows="2" placeholder="Screenshot, log snippet, request ID"></textarea></div>
-    <div class="form-group"><label for="bug-impact">Impact</label><input type="text" class="form-control" id="bug-impact" placeholder="Who is blocked and how severely"></div>
-    <button type="button" class="btn btn-primary btn-sm" id="bug-generate">Generate Preview</button>
-    <button type="button" class="btn btn-ghost btn-sm" id="bug-copy">Copy Report</button>
-    <div class="lab-output" id="bug-output" style="margin-top:12px"></div>
-  </div>
-  <div class="lab-panel">
-    <h3>UAT Checklist Demo</h3>
-    <div class="chip-group" id="uat-chips">
-      <button type="button" class="chip" data-uat="auth">Authentication</button>
-      <button type="button" class="chip" data-uat="onboarding">Onboarding</button>
-      <button type="button" class="chip" data-uat="payments">Payments</button>
-      <button type="button" class="chip" data-uat="permissions">Permissions</button>
+    <div class="workbench-body">
+      <div class="workbench-panel active" id="lab-panel-triage" role="tabpanel">
+        <p class="text-sm text-secondary">Select an issue type to see a structured troubleshooting framework.</p>
+        <div class="chip-group" id="triage-chips" style="margin-top:var(--space-4)">
+          <button type="button" class="chip" data-triage="login">Login issue</button>
+          <button type="button" class="chip" data-triage="crash">App crash</button>
+          <button type="button" class="chip" data-triage="network">Network issue</button>
+          <button type="button" class="chip" data-triage="permission">Permission issue</button>
+          <button type="button" class="chip" data-triage="api">API error</button>
+        </div>
+        <div class="lab-output" id="triage-output">Select an issue type above.</div>
+      </div>
+      <div class="workbench-panel" id="lab-panel-http" role="tabpanel" hidden>
+        <p class="text-sm text-secondary">HTTP status meanings and what I would check before escalation.</p>
+        <select class="form-control" id="http-select" aria-label="Select HTTP status code" style="margin-top:var(--space-4)">
+          <option value="">Select a status code…</option>
+          <option value="200">200 OK</option>
+          <option value="201">201 Created</option>
+          <option value="204">204 No Content</option>
+          <option value="400">400 Bad Request</option>
+          <option value="401">401 Unauthorized</option>
+          <option value="403">403 Forbidden</option>
+          <option value="404">404 Not Found</option>
+          <option value="409">409 Conflict</option>
+          <option value="422">422 Unprocessable</option>
+          <option value="429">429 Too Many Requests</option>
+          <option value="500">500 Internal Server Error</option>
+          <option value="502">502 Bad Gateway</option>
+          <option value="503">503 Service Unavailable</option>
+        </select>
+        <div class="lab-output" id="http-output">Select a status code.</div>
+      </div>
+      <div class="workbench-panel" id="lab-panel-bug" role="tabpanel" hidden>
+        <div class="form-group"><label for="bug-summary">Summary</label><input type="text" class="form-control" id="bug-summary" placeholder="Brief issue description"></div>
+        <div class="form-group"><label for="bug-env">Environment</label><input type="text" class="form-control" id="bug-env" placeholder="OS, browser, app version"></div>
+        <div class="form-group"><label for="bug-steps">Steps to reproduce</label><textarea class="form-control" id="bug-steps" rows="3" placeholder="1. Go to… 2. Click…"></textarea></div>
+        <div class="form-group"><label for="bug-expected">Expected</label><textarea class="form-control" id="bug-expected" rows="2"></textarea></div>
+        <div class="form-group"><label for="bug-actual">Actual</label><textarea class="form-control" id="bug-actual" rows="2"></textarea></div>
+        <div class="form-group"><label for="bug-evidence">Evidence</label><textarea class="form-control" id="bug-evidence" rows="2" placeholder="Screenshot, log snippet, request ID"></textarea></div>
+        <div class="form-group"><label for="bug-impact">Impact</label><input type="text" class="form-control" id="bug-impact" placeholder="Who is blocked and how severely"></div>
+        <button type="button" class="btn btn-primary btn-sm" id="bug-generate">Generate preview</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="bug-copy">Copy report</button>
+        <div class="lab-output lab-output--ticket" id="bug-output" style="margin-top:var(--space-4)"></div>
+      </div>
+      <div class="workbench-panel" id="lab-panel-uat" role="tabpanel" hidden>
+        <p class="text-sm text-secondary">Self-directed UAT demonstration — mark items complete, then reset.</p>
+        <div class="chip-group" id="uat-chips" style="margin-top:var(--space-4)">
+          <button type="button" class="chip" data-uat="auth">Authentication</button>
+          <button type="button" class="chip" data-uat="onboarding">Onboarding</button>
+          <button type="button" class="chip" data-uat="payments">Payments</button>
+          <button type="button" class="chip" data-uat="permissions">Permissions</button>
+        </div>
+        <ul class="uat-checklist" id="uat-checklist" style="margin-top:var(--space-4)"></ul>
+        <button type="button" class="btn btn-ghost btn-sm" id="uat-reset" style="margin-top:var(--space-4)">Reset checklist</button>
+      </div>
     </div>
-    <div class="lab-output" id="uat-output">Select a workflow area.</div>
   </div>
 </div>
 </section>
@@ -832,20 +1262,20 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: RECRUITER -->
 <section id="view-recruiter" class="view" data-route="recruiter" aria-labelledby="recruiter-heading">
 <div class="page-inner">
-  <div class="recruiter-mode" id="print-target">
+  <div class="brief recruiter-mode" id="print-target">
     <div class="recruiter-actions no-print">
       <button type="button" class="btn btn-primary btn-sm" id="recruiter-print"><i class="bi bi-printer" aria-hidden="true"></i> Print / Save PDF</button>
-      <button type="button" class="btn btn-ghost btn-sm" id="recruiter-copy"><i class="bi bi-clipboard" aria-hidden="true"></i> Copy Summary</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="recruiter-copy"><i class="bi bi-clipboard" aria-hidden="true"></i> Copy summary</button>
       <a href="mailto:raut.bhramar@gmail.com" class="btn btn-ghost btn-sm"><i class="bi bi-envelope" aria-hidden="true"></i> Email</a>
       <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">LinkedIn</a>
       <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub</a>
     </div>
     <h1 id="recruiter-heading">Bhramar Raut</h1>
-    <p><span class="pill pill-success">Immediate Joiner</span> · Pandhurna, Madhya Pradesh, India</p>
-    <p class="text-sm" style="margin-top:8px"><strong>Target:</strong> Product Support / Application Support / Implementation</p>
-    <p class="text-sm">raut.bhramar@gmail.com · +91 89894 12921</p>
-    <div class="recruiter-section">
-      <h2>Profile (60 words)</h2>
+    <p class="mono-label">Product Support / Application Support / Implementation</p>
+    <p class="status-available" style="margin-top:var(--space-3)"><span class="status-dot" aria-hidden="true"></span> Immediate joiner</p>
+    <p class="text-sm text-secondary" style="margin-top:var(--space-4)">raut.bhramar@gmail.com · +91 89894 12921 · Pandhurna, India</p>
+    <div class="brief-section">
+      <h2>Profile</h2>
       <p id="recruiter-summary-text">Former Wipro Project Engineer with enterprise IT exposure, formal Java Full Stack training, PSM I certification and recent project-based experience in AI-assisted product delivery, requirements/workflow decomposition, functional validation and documentation. Hands-on with OpenProject, Cursor, Codex, Ollama and technology troubleshooting; currently strengthening SQL, REST APIs, ITSM, Linux and networking for Product/Application Support and Implementation roles.</p>
     </div>
     <div class="recruiter-section"><h2>Experience</h2>
@@ -885,25 +1315,28 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 <!-- VIEW: CONTACT -->
 <section id="view-contact" class="view" data-route="contact" aria-labelledby="contact-heading">
 <div class="page-inner">
-  <header class="page-header"><h1 id="contact-heading">Contact</h1><p class="text-secondary">Open to India-based opportunities, relocation and remote India roles.</p></header>
-  <div class="card" style="max-width:560px">
-    <h2>Bhramar Raut</h2>
-    <p class="text-secondary">Pandhurna, Madhya Pradesh, India</p>
-    <p style="margin-top:16px"><span class="pill pill-success">Immediate Joiner</span></p>
-    <address style="margin-top:16px;font-style:normal">
-      <p><i class="bi bi-envelope" aria-hidden="true"></i> <a href="mailto:raut.bhramar@gmail.com">raut.bhramar@gmail.com</a>
-        <button type="button" class="btn btn-ghost btn-sm" id="copy-email" style="margin-left:8px">Copy</button></p>
-      <p style="margin-top:8px"><i class="bi bi-phone" aria-hidden="true"></i> <a href="tel:+918989412921">+91 89894 12921</a>
-        <button type="button" class="btn btn-ghost btn-sm" id="copy-phone" style="margin-left:8px">Copy</button></p>
+  <div class="contact-stage">
+    <p class="mono-label">05 / Contact</p>
+    <h1 id="contact-heading">Let's talk.</h1>
+    <p class="lead">Open to India-based opportunities, relocation and remote India roles.</p>
+    <p class="status-available" style="justify-content:center;margin:var(--space-5) 0"><span class="status-dot" aria-hidden="true"></span> Available now</p>
+    <div class="hero-portrait-wrap" style="max-width:200px;margin:var(--space-6) auto">
+      <img class="hero-portrait" src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut" width="200" height="250" loading="lazy">
+    </div>
+    <address style="font-style:normal;margin-top:var(--space-5)">
+      <p class="text-secondary">Bhramar Raut · Pandhurna, India</p>
+      <p style="margin-top:var(--space-3)"><a href="mailto:raut.bhramar@gmail.com">raut.bhramar@gmail.com</a>
+        <button type="button" class="btn btn-ghost btn-sm" id="copy-email">Copy</button></p>
+      <p style="margin-top:var(--space-2)"><a href="tel:+918989412921">+91 89894 12921</a>
+        <button type="button" class="btn btn-ghost btn-sm" id="copy-phone">Copy</button></p>
     </address>
-    <div class="cta-row" style="margin-top:20px">
-      <a href="mailto:raut.bhramar@gmail.com" class="btn btn-primary"><i class="bi bi-envelope" aria-hidden="true"></i> Email Me</a>
-      <a href="tel:+918989412921" class="btn btn-ghost"><i class="bi bi-phone" aria-hidden="true"></i> Call</a>
+    <div class="contact-links">
+      <a href="mailto:raut.bhramar@gmail.com" class="btn btn-primary">Email</a>
       <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn</a>
       <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+      <button type="button" class="btn btn-ghost" id="download-vcard">vCard</button>
     </div>
-    <button type="button" class="btn btn-ghost btn-sm" id="download-vcard" style="margin-top:12px"><i class="bi bi-person-badge" aria-hidden="true"></i> Download vCard</button>
-    <p class="text-sm text-muted" style="margin-top:20px"><strong>Target roles:</strong> Product Support, Application Support, SaaS Support, Implementation, Product Operations, Project Coordination</p>
+    <p class="text-sm text-muted" style="margin-top:var(--space-6)">Target: Product Support · Application Support · Implementation · Product Operations</p>
   </div>
 </div>
 </section>
@@ -965,17 +1398,23 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 
       </div>
       <footer class="site-footer no-print">
-        <p><strong>Bhramar Raut</strong> — Product Support • Implementation • Product Operations</p>
-        <p>Pandhurna, Madhya Pradesh, India</p>
-        <p style="margin-top:8px">
-          <a href="mailto:raut.bhramar@gmail.com">Email</a> ·
-          <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
-          <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </p>
-        <p class="text-xs" style="margin-top:12px">© <span id="footer-year"></span> Bhramar Raut. Designed as an AI-assisted personal portfolio and reviewed for factual accuracy.</p>
+        <div class="footer-inner">
+          <div>
+            <p class="footer-brand">Bhramar Raut</p>
+            <p class="footer-meta">Pandhurna, India</p>
+            <p class="footer-meta">Product Support · Implementation · Product Operations</p>
+          </div>
+          <div class="footer-meta">
+            <p><a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="mailto:raut.bhramar@gmail.com">Email</a></p>
+            <p>Built with HTML · CSS · JS · GSAP</p>
+            <p>AI-assisted, human-reviewed · © <span id="footer-year"></span></p>
+          </div>
+        </div>
       </footer>
     </main>
+    </div>
   </div>
+</div>
 </div>
 
 <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
@@ -1206,19 +1645,19 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
   const START_HERE = ['approach-application-issue', 'expected-vs-actual-bug-report', 'uat-multirole-saas', 'ai-agents-without-fake-coding', 'psm-i-scrum-thinking', 'windows-troubleshooting-checklist', 'owasp-zap', 'open-source-tco'];
 
   const HTTP_STATUSES = {
-    '200': 'OK — Request succeeded. Standard success response.',
-    '201': 'Created — Resource successfully created (often after POST).',
-    '204': 'No Content — Success but no body returned (common for DELETE).',
-    '400': 'Bad Request — Client sent invalid syntax or parameters. Check request payload.',
-    '401': 'Unauthorized — Authentication required or failed. Check credentials/token.',
-    '403': 'Forbidden — Authenticated but not permitted. Check roles/permissions.',
-    '404': 'Not Found — Resource or endpoint does not exist. Check URL and routing.',
-    '409': 'Conflict — Request conflicts with current state (e.g., duplicate).',
-    '422': 'Unprocessable — Validation failed on well-formed request.',
-    '429': 'Too Many Requests — Rate limited. Retry after delay.',
-    '500': 'Internal Server Error — Server-side failure. Escalate with reproduction details.',
-    '502': 'Bad Gateway — Upstream server error. Often infrastructure.',
-    '503': 'Service Unavailable — Server overloaded or down for maintenance.'
+    '200': '200 OK\n\nMeaning: Request succeeded.\n\nTypical causes: Normal successful operation.\n\nWhat I would check: Response body matches expected contract.\n\nBefore escalation: Confirm this is the expected success path.',
+    '201': '201 CREATED\n\nMeaning: Resource created successfully.\n\nTypical causes: POST created a new entity.\n\nWhat I would check: Response includes ID/location if applicable.\n\nBefore escalation: Verify entity exists via GET.',
+    '204': '204 NO CONTENT\n\nMeaning: Success with empty body.\n\nTypical causes: DELETE or update with no return payload.\n\nWhat I would check: Side effect occurred (resource removed/updated).\n\nBefore escalation: Confirm via follow-up read.',
+    '400': '400 BAD REQUEST\n\nMeaning: Client sent invalid syntax or parameters.\n\nTypical causes: Malformed JSON, missing required fields, wrong types.\n\nWhat I would check: Payload schema, required fields, Content-Type.\n\nBefore escalation: Capture request body and API docs reference.',
+    '401': '401 UNAUTHORIZED\n\nMeaning: Authentication required or failed.\n\nTypical causes: Missing/expired token, wrong credentials, clock skew on JWT.\n\nWhat I would check: Auth header, token expiry, login state, API key scope.\n\nBefore escalation: Screenshot of error, token metadata (not secret), reproduction steps.',
+    '403': '403 FORBIDDEN\n\nMeaning: Authenticated but not permitted.\n\nTypical causes: Role lacks permission, branch/org scope, feature flag.\n\nWhat I would check: User role, resource scope, recent permission changes.\n\nBefore escalation: Compare with working user same role; document expected vs actual access.',
+    '404': '404 NOT FOUND\n\nMeaning: Resource or endpoint does not exist.\n\nTypical causes: Wrong URL, deleted resource, routing misconfiguration.\n\nWhat I would check: URL path, API version, resource ID validity.\n\nBefore escalation: Full URL, method, environment, timestamp.',
+    '409': '409 CONFLICT\n\nMeaning: Request conflicts with current state.\n\nTypical causes: Duplicate unique field, concurrent edit, state transition violation.\n\nWhat I would check: Existing record, idempotency key, current state.\n\nBefore escalation: Request payload and current entity state.',
+    '422': '422 UNPROCESSABLE\n\nMeaning: Well-formed request failed validation.\n\nTypical causes: Business rule violation, invalid field combination.\n\nWhat I would check: Validation error details in response body.\n\nBefore escalation: Full error response and input values.',
+    '429': '429 TOO MANY REQUESTS\n\nMeaning: Rate limited.\n\nTypical causes: Too many requests in window, burst limit exceeded.\n\nWhat I would check: Retry-After header, request frequency, shared IP limits.\n\nBefore escalation: Timestamps of requests, rate limit headers.',
+    '500': '500 INTERNAL SERVER ERROR\n\nMeaning: Server-side failure.\n\nTypical causes: Unhandled exception, dependency failure, misconfiguration.\n\nWhat I would check: Correlation/request ID, time of failure, scope (all users vs one).\n\nBefore escalation: Reproduction steps, request ID, response body if any.',
+    '502': '502 BAD GATEWAY\n\nMeaning: Upstream server error.\n\nTypical causes: Backend down, proxy misroute, timeout to upstream.\n\nWhat I would check: Infrastructure status, recent deployments, other endpoints.\n\nBefore escalation: Timestamp, endpoint, whether intermittent or persistent.',
+    '503': '503 SERVICE UNAVAILABLE\n\nMeaning: Server overloaded or maintenance.\n\nTypical causes: Maintenance window, capacity exhaustion, health check failure.\n\nWhat I would check: Status page, Retry-After, scope of outage.\n\nBefore escalation: Time range, affected services, user impact.'
   };
 
   const TRIAGE = {
@@ -1230,10 +1669,29 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
   };
 
   const UAT_CHECKLISTS = {
-    auth: 'AUTHENTICATION UAT\n□ Login with valid credentials\n□ Login with invalid credentials (error message)\n□ Logout and session expiry\n□ Password reset flow\n□ MFA if applicable\n□ Concurrent session behavior',
-    onboarding: 'ONBOARDING UAT\n□ New user registration\n□ Email verification if required\n□ Profile completion steps\n□ Skip/back navigation\n□ Incomplete onboarding restrictions\n□ Welcome content accuracy',
-    payments: 'PAYMENTS UAT\n□ Successful payment flow\n□ Failed payment handling\n□ Entitlement granted after payment\n□ Receipt/confirmation display\n□ Refund/cancel edge cases\n□ Currency and tax display',
-    permissions: 'PERMISSIONS UAT\n□ Role A can access allowed modules\n□ Role A blocked from restricted modules\n□ Branch-level data isolation\n□ Admin override behavior\n□ Audit log entries for sensitive actions'
+    auth: ['Login with valid credentials', 'Login with invalid credentials (error message)', 'Logout and session expiry', 'Password reset flow', 'MFA if applicable', 'Concurrent session behavior'],
+    onboarding: ['New user registration', 'Email verification if required', 'Profile completion steps', 'Skip/back navigation', 'Incomplete onboarding restrictions', 'Welcome content accuracy'],
+    payments: ['Successful payment flow', 'Failed payment handling', 'Entitlement granted after payment', 'Receipt/confirmation display', 'Refund/cancel edge cases', 'Currency and tax display'],
+    permissions: ['Role A can access allowed modules', 'Role A blocked from restricted modules', 'Branch-level data isolation', 'Admin override behavior', 'Audit log entries for sensitive actions']
+  };
+
+  const NAV_GROUPS = {
+    home: 'home',
+    profile: 'profile',
+    experience: 'work',
+    projects: 'work',
+    'projects/skillverse': 'work',
+    'projects/catalyx': 'work',
+    capabilities: 'work',
+    knowledge: 'thinking',
+    toolbox: 'thinking',
+    learning: 'thinking',
+    'support-lab': 'thinking',
+    certifications: 'proof',
+    research: 'proof',
+    recruiter: 'proof',
+    contact: 'contact',
+    profile: 'profile'
   };
 
   let reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1358,7 +1816,7 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
     if (view) view.classList.add('active');
     const desc = route.description || DEFAULT_META.description;
     updatePageMeta(route.title, desc);
-    updateNav(path.includes('/') ? path.split('/')[0] : path);
+    updateNav(path);
     closeMobileNav();
     const main = $('#main-content');
     if (main) main.scrollTop = 0;
@@ -1367,6 +1825,38 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
     if (path === 'knowledge') renderKnowledgeList();
     if (path === 'toolbox') renderToolbox();
     if (path === 'certifications') renderCerts();
+    hideReadProgress();
+  }
+
+  function initReadProgress() {
+    const bar = $('#read-progress');
+    const inner = $('#read-progress-bar');
+    if (!bar || !inner) return;
+    bar.hidden = false;
+    function onScroll() {
+      const article = $('.article-body');
+      if (!article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = -rect.top;
+      const pct = total > 0 ? Math.min(100, Math.max(0, (scrolled / total) * 100)) : 0;
+      inner.style.width = pct + '%';
+    }
+    window.removeEventListener('scroll', window._readProgressHandler);
+    window._readProgressHandler = onScroll;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  function hideReadProgress() {
+    const bar = $('#read-progress');
+    if (bar) bar.hidden = true;
+    if (window._readProgressHandler) {
+      window.removeEventListener('scroll', window._readProgressHandler);
+      window._readProgressHandler = null;
+    }
+    const inner = $('#read-progress-bar');
+    if (inner) inner.style.width = '0%';
   }
 
   function showArticle(slug) {
@@ -1396,15 +1886,22 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
       </article>`;
     bindNavLinks(container);
     closeMobileNav();
+    initReadProgress();
     animateView();
   }
 
   function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
   function updateNav(active) {
-    $$('.nav-item').forEach(n => {
+    const base = active.includes('/') ? active.split('/')[0] : active;
+    const group = NAV_GROUPS[active] || NAV_GROUPS[base] || base;
+    $$('.nav-item[data-nav]').forEach(n => {
       const nav = n.dataset.nav;
-      n.classList.toggle('active', nav === active || (active === 'support-lab' && nav === 'support-lab'));
+      const navGroup = n.dataset.navGroup;
+      n.classList.toggle('active', nav === active || nav === base || navGroup === group);
+    });
+    $$('.menu-link[data-nav]').forEach(n => {
+      n.classList.toggle('active', n.dataset.nav === active || n.dataset.nav === base);
     });
   }
 
@@ -1420,9 +1917,20 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
     });
   }
 
-  // NAV MOBILE
-  function openMobileNav() { $('#sidebar').classList.add('open'); $('#nav-overlay').classList.add('open'); }
-  function closeMobileNav() { $('#sidebar').classList.remove('open'); $('#nav-overlay').classList.remove('open'); }
+  // SITE MENU
+  function openSiteMenu() {
+    $('#site-menu')?.classList.add('open');
+    $('#menu-overlay')?.classList.add('open');
+    $('#site-menu')?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSiteMenu() {
+    $('#site-menu')?.classList.remove('open');
+    $('#menu-overlay')?.classList.remove('open');
+    $('#site-menu')?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function closeMobileNav() { closeSiteMenu(); }
 
   // KNOWLEDGE
   function renderKnowledgeList(filterCat, search) {
@@ -1576,7 +2084,31 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
   }
 
   // SUPPORT LAB
+  let currentUatKey = null;
+
+  function renderUatChecklist(key) {
+    const list = $('#uat-checklist');
+    if (!list) return;
+    currentUatKey = key;
+    const items = UAT_CHECKLISTS[key] || [];
+    list.innerHTML = items.map((text, i) =>
+      `<li><input type="checkbox" id="uat-item-${i}" data-uat-idx="${i}"><label for="uat-item-${i}">${esc(text)}</label></li>`
+    ).join('') || '<li class="text-muted">Select a workflow area.</li>';
+  }
+
   function initSupportLab() {
+    $$('.workbench-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const id = tab.dataset.labTab;
+        $$('.workbench-tab').forEach(t => t.classList.toggle('active', t === tab));
+        $$('.workbench-panel').forEach(p => {
+          const show = p.id === 'lab-panel-' + id;
+          p.classList.toggle('active', show);
+          p.hidden = !show;
+        });
+      });
+    });
+
     $$('#triage-chips .chip').forEach(chip => {
       chip.addEventListener('click', () => {
         $$('#triage-chips .chip').forEach(c => c.classList.remove('active'));
@@ -1584,18 +2116,20 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
         $('#triage-output').textContent = TRIAGE[chip.dataset.triage] || '';
       });
     });
+
     const httpSelect = $('#http-select');
     if (httpSelect) httpSelect.addEventListener('change', e => {
       $('#http-output').textContent = HTTP_STATUSES[e.target.value] || 'Select a status code.';
     });
+
     function buildBugReport() {
-      return ['SUMMARY: ' + ($('#bug-summary').value || '—'),
-        'ENVIRONMENT: ' + ($('#bug-env').value || '—'),
-        'STEPS TO REPRODUCE:', $('#bug-steps').value || '—',
-        'EXPECTED:', $('#bug-expected').value || '—',
-        'ACTUAL:', $('#bug-actual').value || '—',
-        'EVIDENCE:', $('#bug-evidence').value || '—',
-        'IMPACT:', $('#bug-impact').value || '—'].join('\n');
+      return ['SUMMARY', ($('#bug-summary').value || '—'),
+        '', 'ENVIRONMENT', ($('#bug-env').value || '—'),
+        '', 'STEPS TO REPRODUCE', $('#bug-steps').value || '—',
+        '', 'EXPECTED', $('#bug-expected').value || '—',
+        '', 'ACTUAL', $('#bug-actual').value || '—',
+        '', 'EVIDENCE', $('#bug-evidence').value || '—',
+        '', 'IMPACT', ($('#bug-impact').value || '—')].join('\n');
     }
     $('#bug-generate')?.addEventListener('click', () => {
       $('#bug-output').textContent = buildBugReport();
@@ -1605,12 +2139,16 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
       if (!text.trim()) { $('#bug-output').textContent = buildBugReport(); }
       copyText($('#bug-output').textContent || buildBugReport(), 'Bug report');
     });
+
     $$('#uat-chips .chip').forEach(chip => {
       chip.addEventListener('click', () => {
         $$('#uat-chips .chip').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
-        $('#uat-output').textContent = UAT_CHECKLISTS[chip.dataset.uat] || '';
+        renderUatChecklist(chip.dataset.uat);
       });
+    });
+    $('#uat-reset')?.addEventListener('click', () => {
+      if (currentUatKey) renderUatChecklist(currentUatKey);
     });
   }
 
@@ -1632,24 +2170,40 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
   function initGsap() {
     if (typeof gsap === 'undefined') return;
     gsapReady = true;
-    if (!reducedMotion) {
-      gsap.from('.sidebar-brand, .nav-item', { opacity: 0, x: -8, duration: 0.35, stagger: 0.03, ease: 'power2.out', delay: 0.05 });
-      gsap.from('.hero-image', { opacity: 0, scale: 0.96, duration: 0.5, ease: 'power2.out' });
-      gsap.from('.cred-item', { opacity: 0, y: 10, duration: 0.4, stagger: 0.06, ease: 'power2.out', delay: 0.15 });
-    }
+    if (reducedMotion) return;
+    gsap.from('.nav-sidebar .nav-item', { opacity: 0, x: -10, duration: 0.4, stagger: 0.03, ease: 'power2.out' });
+    gsap.from('.workspace-topbar', { opacity: 0, y: -8, duration: 0.45, ease: 'power2.out', delay: 0.05 });
+    animateHomeBento();
+  }
+
+  function animateHomeBento() {
+    if (reducedMotion || typeof gsap === 'undefined') return;
+    const home = $('#view-home');
+    if (!home || !home.classList.contains('active')) return;
+    gsap.from('.bento-grid .module', { opacity: 0, y: 20, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.1 });
+    const circles = $('#skillverse-workflow');
+    if (circles) gsap.from(circles.querySelectorAll('.viz-circle'), { scale: 0, opacity: 0, duration: 0.4, stagger: 0.08, ease: 'back.out(1.4)', delay: 0.35 });
+    const bars = $('#catalyx-matrix .viz-bar-fill');
+    if (bars.length) gsap.from(bars, { scaleX: 0, duration: 0.5, stagger: 0.06, ease: 'power2.out', delay: 0.4, transformOrigin: 'left center' });
+    const loopBars = $('#operating-loop .loop-bar');
+    if (loopBars.length) gsap.from(loopBars, { scaleY: 0, duration: 0.45, stagger: 0.05, ease: 'power2.out', delay: 0.3, transformOrigin: 'bottom center' });
   }
 
   function animateView() {
     if (reducedMotion || typeof gsap === 'undefined') return;
     const active = $('.view.active');
     if (!active) return;
-    const targets = active.querySelectorAll('.card, .process-step, .lab-panel, .timeline-card');
+    if (active.id === 'view-home') {
+      animateHomeBento();
+      return;
+    }
+    const targets = active.querySelectorAll('.module, .feature-panel, .project-spread, .timeline-card, .workbench, .card');
     if (targets.length) {
       gsap.fromTo(targets, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.38, stagger: 0.04, ease: 'power2.out' });
     }
-    const diagram = active.querySelector('.process-diagram');
-    if (diagram) {
-      gsap.fromTo(diagram.querySelectorAll('.process-step'), { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.07, ease: 'power2.out', delay: 0.1 });
+    const nodes = active.querySelectorAll('.viz-circle, .process-step');
+    if (nodes.length) {
+      gsap.fromTo(nodes, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.35, stagger: 0.06, ease: 'power2.out', delay: 0.1 });
     }
   }
 
@@ -1699,10 +2253,17 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
 
     loadArticlesFromDOM();
 
-    $$('.nav-item, .sidebar-brand a[data-nav]').forEach(n => n.addEventListener('click', e => {
+    $$('.nav-item[data-nav], .nav-brand[data-nav], .menu-link[data-nav]').forEach(n => n.addEventListener('click', e => {
       e.preventDefault();
       navigate(n.dataset.nav, true);
+      closeSiteMenu();
     }));
+
+    $$('.topbar-search.cmd-trigger').forEach(b => b.addEventListener('click', openCommandPalette));
+
+    $('#menu-toggle')?.addEventListener('click', openSiteMenu);
+    $('#menu-close')?.addEventListener('click', closeSiteMenu);
+    $('#menu-overlay')?.addEventListener('click', closeSiteMenu);
 
     bindNavLinks();
     initTimeline();
@@ -1712,9 +2273,6 @@ html:not(.js-enabled) .knowledge-articles-archive{display:block!important;positi
     renderCerts();
 
     initGsap();
-
-    $('#menu-toggle')?.addEventListener('click', openMobileNav);
-    $('#nav-overlay')?.addEventListener('click', closeMobileNav);
     $$('.theme-toggle, .theme-toggle-mobile').forEach(b => b.addEventListener('click', cycleTheme));
     $$('.cmd-trigger, .cmd-trigger-mobile, #cmd-trigger-mobile').forEach(b => b?.addEventListener('click', openCommandPalette));
 
