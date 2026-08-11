@@ -2958,6 +2958,36 @@ html[data-theme="dark"] #view-certifications {
   #cert-dialog {
     display: none !important;
   }
+
+  .credential-featured,
+  .credential-card,
+  .credential-bridge {
+    background: transparent !important;
+    color: #000 !important;
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+  }
+
+  .credential-featured-summary,
+  .credential-featured-issuer,
+  .credential-featured-short,
+  .credential-card-meta,
+  .credential-card-supports,
+  .credential-bridge p,
+  .credential-timeline-item span {
+    color: #333 !important;
+  }
+
+  .credential-bridge-actions,
+  .credential-card-cta,
+  .credential-featured-side .btn {
+    display: none !important;
+  }
+
+  .credential-status::before {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
 }
 
 
@@ -11568,7 +11598,7 @@ None identified`;
                 <span class="credential-status ${credentialStatusClass(c.status)}" aria-label="Status: ${esc(c.statusLabel)}">${esc(c.statusLabel)}</span>
               </div>
               <h3>${esc(c.name)}</h3>
-              <p class="credential-card-meta">${esc(c.issuer)} · ${esc(c.issuedLabel || c.year)}${c.expiresLabel ? ' · Expired ' + esc(c.expiresLabel) : ''}${c.score ? ' · Score ' + esc(c.score) : ''}</p>
+              <p class="credential-card-meta">${esc(c.issuer)} · ${esc(c.issuedLabel || c.year)}${c.score ? ' · Exam score ' + esc(c.score) : ''}</p>
               <p class="credential-card-supports">${esc(c.supports || c.summary || '')}</p>
               <span class="credential-card-cta">View ${esc(c.shortTitle || 'credential')} evidence →</span>
             </button>
@@ -11586,7 +11616,7 @@ None identified`;
         <ul class="credential-list">
           ${supporting.map(c => `
             <li>
-              <button type="button" data-cert-id="${esc(c.id)}">
+              <button type="button" data-cert-id="${esc(c.id)}" aria-label="View ${esc(c.name)} credential">
                 <strong>${esc(c.name)}</strong>
                 <span>${esc(c.issuer)} · ${esc(c.issuedLabel || c.year)}</span>
               </button>
@@ -11597,20 +11627,7 @@ None identified`;
         </ul>
       </section>`;
 
-    const bridgeHtml = `
-      <section class="credentials-section" aria-labelledby="cred-bridge-heading">
-        <div class="credential-bridge">
-          <h2 id="cred-bridge-heading">Credentials are one part of the evidence</h2>
-          <p>See how these foundations are being developed into practice — and where applied work already exists.</p>
-          <div class="credential-bridge-actions">
-            <a class="btn btn-primary" href="#/learning" data-nav-link="learning">View Learning</a>
-            <a class="btn btn-ghost" href="#/projects" data-nav-link="projects">Projects</a>
-            <a class="btn btn-ghost" href="#/capabilities" data-nav-link="capabilities">Capabilities</a>
-            <a class="btn btn-ghost" href="#/support-lab" data-nav-link="support-lab">Support Lab</a>
-          </div>
-        </div>
-      </section>
-
+    const lineageHtml = `
       <section class="credentials-section" aria-labelledby="cred-lineage-heading">
         <div class="credentials-section-head">
           <p class="mono-label">05 / From credential to practice</p>
@@ -11632,7 +11649,21 @@ None identified`;
         </div>
       </section>`;
 
-    grid.innerHTML = featuredHtml + timelineHtml + relevantHtml + supportingHtml + bridgeHtml;
+    const bridgeHtml = `
+      <section class="credentials-section" aria-labelledby="cred-bridge-heading">
+        <div class="credential-bridge">
+          <h2 id="cred-bridge-heading">Credentials are one part of the evidence</h2>
+          <p>See how these foundations are being developed into practice — and where applied work already exists.</p>
+          <div class="credential-bridge-actions">
+            <a class="btn btn-primary" href="#/learning" data-nav-link="learning">View Learning</a>
+            <a class="btn btn-ghost" href="#/projects" data-nav-link="projects">Projects</a>
+            <a class="btn btn-ghost" href="#/capabilities" data-nav-link="capabilities">Capabilities</a>
+            <a class="btn btn-ghost" href="#/support-lab" data-nav-link="support-lab">Support Lab</a>
+          </div>
+        </div>
+      </section>`;
+
+    grid.innerHTML = featuredHtml + timelineHtml + relevantHtml + supportingHtml + lineageHtml + bridgeHtml;
 
     $$('[data-cert-id]', grid).forEach(el => {
       el.addEventListener('click', () => openCert(el.dataset.certId));
@@ -11669,9 +11700,16 @@ None identified`;
       c.issuer,
       c.issuedLabel || c.year,
       c.statusLabel,
-      c.score ? 'Score ' + c.score : null
+      c.score ? 'Exam score ' + c.score : null
     ].filter(Boolean).join(' · ');
     body.appendChild(meta);
+
+    if (c.supports) {
+      const supports = document.createElement('p');
+      supports.className = 'cert-dialog-meta';
+      supports.textContent = 'Supports: ' + c.supports;
+      body.appendChild(supports);
+    }
 
     if (c.file.toLowerCase().endsWith('.pdf')) {
       const shell = document.createElement('div');
