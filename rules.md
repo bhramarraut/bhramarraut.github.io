@@ -90,6 +90,15 @@ No other production files may be created without explicit permission.
 
 ---
 
+# 1.1 PACKAGE MANAGER & TOOLING RULE
+
+Always use **`pnpm`** instead of `npm` (or `yarn` / `npx`) for all package management, script execution, and CLI tooling:
+
+- Use `pnpm` for any package installations, executions, or scripts (`pnpm add`, `pnpm run`, `pnpm exec`, `pnpm dlx`).
+- **DO NOT use `npm` or `npx`** under any circumstances.
+
+---
+
 # 2. NEVER CREATE THESE FILES OR DIRECTORIES
 
 DO NOT create:
