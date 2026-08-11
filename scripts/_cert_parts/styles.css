@@ -146,6 +146,11 @@ html[data-theme="dark"] #view-certifications {
   border-top: 1px solid var(--cr-featured-border);
 }
 
+.credential-featured-side > div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
 .credential-featured-side .mono-label {
   color: var(--cr-featured-meta);
   margin-bottom: 4px;

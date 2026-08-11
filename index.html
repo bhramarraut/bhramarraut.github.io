@@ -7,7 +7,7 @@
 <meta name="author" content="Bhramar Raut">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://bhramarraut.github.io/">
-<meta id="meta-theme-color" name="theme-color" content="#E8E9E3">
+<meta id="meta-theme-color" name="theme-color" content="#DCD9D2">
 <meta id="meta-description" name="description" content="Bhramar Raut — Former Wipro Project Engineer targeting Product Support, Application Support and Implementation roles. PSM I, AI-assisted product delivery, functional validation, Skillverse & Catalyx project work. Immediate joiner.">
 <meta property="og:type" content="website">
 <meta id="og-title" property="og:title" content="Bhramar Raut — Product Support & Implementation">
@@ -54,8 +54,16 @@
     {
       "@type": "ScholarlyArticle",
       "headline": "Economic Impact on Construction Sector Due to COVID-19",
-      "author": { "@type": "Person", "name": "Bhramar Raut" },
+      "author": [
+        { "@type": "Person", "name": "Monica R Seth" },
+        { "@type": "Person", "name": "Kunal Gupta" },
+        { "@type": "Person", "name": "Akshat Waghmare" },
+        { "@type": "Person", "name": "Arudati Manhas" },
+        { "@type": "Person", "name": "Sumit Mishra" },
+        { "@type": "Person", "name": "Bhramar Raut" }
+      ],
       "datePublished": "2020",
+      "pagination": "2522-2528",
       "isPartOf": { "@type": "PublicationIssue", "issueNumber": "8", "isPartOf": { "@type": "PublicationVolume", "volumeNumber": "15", "isPartOf": { "@type": "Periodical", "name": "Journal of Seybold Report", "issn": "1533-9211" } } }
     },
     {
@@ -77,7 +85,7 @@
     }
     document.documentElement.setAttribute('data-theme', t);
     var meta = document.getElementById('meta-theme-color');
-    if (meta) meta.setAttribute('content', t === 'dark' ? '#18181a' : '#E8E9E3');
+    if (meta) meta.setAttribute('content', t === 'dark' ? '#18181a' : '#DCD9D2');
   } catch (e) {}
 })();
 </script>
@@ -94,13 +102,19 @@ table{border-collapse:collapse}
 
 /* TOKENS — LIME / CHARCOAL SYSTEM */
 :root{
-  /* Light: warm editorial neutrals — lime is accent only */
-  --bg-outer:#E8E9E3;
+  /* Light: cool outer frame · warm stone workspace · warm-white surfaces */
+  --bg-outer:#DCD9D2;
+  --canvas-frame:#E4E1DA;
+  --canvas-frame-glow-lavender:rgba(178,168,210,.18);
+  --canvas-frame-glow-warm:rgba(196,190,175,.14);
   --shell:#232325;
   --shell-deep:#1c1c1e;
-  --workspace:#F3F3EF;
-  --surface:#FCFCFA;
-  --surface-soft:#EBEBE7;
+  --canvas-app:#EDE9E2;
+  --canvas-glow-lavender:rgba(186,176,212,.16);
+  --canvas-glow-warm:rgba(202,196,180,.12);
+  --workspace:var(--canvas-app);
+  --surface:#FAF9F6;
+  --surface-soft:#EDEBE6;
   --ink:#171717;
   --muted:#666964;
   --lime:#daf163;
@@ -113,7 +127,9 @@ table{border-collapse:collapse}
   --surface-page:var(--workspace);
   --surface-primary:var(--surface);
   --surface-secondary:var(--surface-soft);
-  --surface-elevated:#FFFFFF;
+  --surface-elevated:#FFFEFB;
+  --surface-lavender:var(--lavender-soft);
+  --surface-dark:var(--shell-deep);
   --nav-muted:rgba(255,255,255,.55);
   --nav-text:#f4f4f4;
   --font-display:'Montserrat',system-ui,sans-serif;
@@ -137,12 +153,12 @@ table{border-collapse:collapse}
   --ease-out:cubic-bezier(.22,1,.36,1);
   --dur-fast:150ms;--dur-normal:220ms;--dur-slow:480ms;
   --z-overlay:300;--z-dialog:400;--z-toast:500;
-  --shadow-shell:0 24px 64px rgba(23,23,23,.16);
+  --shadow-shell:0 28px 72px rgba(23,23,23,.14),0 2px 0 rgba(255,255,255,.04) inset;
   --focus-ring:2px solid var(--lime);
   --scrollbar-thumb:rgba(23,23,23,.22);
   --scrollbar-thumb-hover:rgba(23,23,23,.36);
   --scrollbar-track:transparent;
-  --theme-browser:#E8E9E3;
+  --theme-browser:#DCD9D2;
   /* Skillverse / home project surface */
   --skillverse-surface:#D5D1E5;
   --skillverse-hover:#CAC5DC;
@@ -159,7 +175,7 @@ table{border-collapse:collapse}
   --project-skillverse-text:#171717;
   --project-skillverse-muted:#5a5668;
   --project-skillverse-meta:#6d687a;
-  --project-skillverse-stage:rgba(252,252,250,.55);
+  --project-skillverse-stage:rgba(250,249,246,.55);
   --project-skillverse-border:rgba(23,23,23,.1);
   /* Catalyx light: warm graphite card + contained dark ops panel */
   --project-catalyx-bg:#D8D7D3;
@@ -185,7 +201,7 @@ table{border-collapse:collapse}
   --catalyx-panel:var(--project-catalyx-panel);
   --catalyx-panel-text:var(--project-catalyx-panel-text);
   /* Capabilities page semantic tokens */
-  --cap-support-bg:#FCFCFA;
+  --cap-support-bg:var(--surface);
   --cap-support-text:#171717;
   --cap-support-muted:#666964;
   --cap-support-meta:#7a7a74;
@@ -200,7 +216,7 @@ table{border-collapse:collapse}
   --cap-delivery-muted:#5c5c58;
   --cap-delivery-meta:#6e6e6a;
   --cap-delivery-border:rgba(23,23,23,.12);
-  --cap-depth-bg:#FCFCFA;
+  --cap-depth-bg:var(--surface);
   --cap-depth-border:rgba(23,23,23,.1);
   --cap-hands-marker:var(--lime);
   --cap-foundation-marker:var(--lavender);
@@ -210,9 +226,9 @@ table{border-collapse:collapse}
   --knowledge-featured-text:#171717;
   --knowledge-featured-muted:#5a5668;
   --knowledge-featured-meta:#6d687a;
-  --knowledge-card-bg:#FCFCFA;
+  --knowledge-card-bg:var(--surface);
   --knowledge-card-border:rgba(23,23,23,.1);
-  --knowledge-discovery-bg:#FCFCFA;
+  --knowledge-discovery-bg:var(--surface);
   --contact-cta-bg:#d5d0e8;
   --contact-cta-hover:#cac4e0;
   --contact-cta-text:#171717;
@@ -233,6 +249,10 @@ html[data-theme="dark"]{
   --bg-outer:#111113;
   --shell:#18181a;
   --shell-deep:#141416;
+  --canvas-app:#212124;
+  --canvas-frame:var(--bg-outer);
+  --canvas-frame-glow-lavender:transparent;
+  --canvas-frame-glow-warm:transparent;
   --workspace:#212124;
   --surface:#2f2f33;
   --surface-soft:#38383d;
@@ -253,31 +273,33 @@ html[data-theme="dark"]{
   --surface-primary:var(--surface);
   --surface-secondary:var(--surface-soft);
   --surface-elevated:#3a3a3f;
-  --skillverse-surface:#514E63;
-  --skillverse-hover:#5c5872;
+  --surface-lavender:var(--lavender-soft);
+  --surface-dark:var(--shell-deep);
+  --skillverse-surface:#494557;
+  --skillverse-hover:#534f63;
   --skillverse-text:#f3f1f8;
   --skillverse-muted:rgba(243,241,248,.72);
   --skillverse-meta:rgba(243,241,248,.58);
   --skillverse-border:rgba(255,255,255,.1);
-  --skillverse-circle-req:#7a7494;
-  --skillverse-circle-test:#9a94b3;
+  --skillverse-circle-req:#6d6787;
+  --skillverse-circle-test:#8b85a6;
   --skillverse-circle-ink:#f3f1f8;
-  --project-skillverse-bg:#514D60;
-  --project-skillverse-hover:#5c5872;
+  --project-skillverse-bg:#494557;
+  --project-skillverse-hover:#534f63;
   --project-skillverse-text:#f3f1f8;
   --project-skillverse-muted:rgba(243,241,248,.72);
   --project-skillverse-meta:rgba(243,241,248,.58);
   --project-skillverse-stage:rgba(255,255,255,.06);
   --project-skillverse-border:rgba(255,255,255,.1);
-  --project-catalyx-bg:#151517;
-  --project-catalyx-hover:#1c1c1f;
+  --project-catalyx-bg:#19191c;
+  --project-catalyx-hover:#202024;
   --project-catalyx-text:#f4f4f4;
   --project-catalyx-muted:rgba(244,244,244,.68);
   --project-catalyx-meta:rgba(244,244,244,.55);
-  --project-catalyx-border:rgba(255,255,255,.1);
-  --project-catalyx-panel:rgba(255,255,255,.06);
+  --project-catalyx-border:rgba(255,255,255,.12);
+  --project-catalyx-panel:rgba(255,255,255,.05);
   --project-catalyx-panel-text:#f4f4f4;
-  --project-catalyx-cell:rgba(255,255,255,.1);
+  --project-catalyx-cell:rgba(255,255,255,.08);
   --project-secondary-bg:var(--surface);
   --project-secondary-alt:#2e2b3d;
   --project-brick-bg:#35353a;
@@ -331,6 +353,19 @@ html[data-theme="dark"] .nav-item.active{
   color:var(--nav-text);
   box-shadow:none;
 }
+html[data-theme="dark"] .app-shell{
+  border-color:rgba(255,255,255,.06);
+}
+html[data-theme="dark"] .app-frame{
+  background-color:var(--bg-outer);
+  background-image:none;
+}
+html[data-theme="dark"] .workspace{
+  background-image:none;
+}
+html[data-theme="dark"] .workspace-topbar{
+  border-bottom-color:rgba(255,255,255,.06);
+}
 html[data-theme="dark"] .status-hands-on,
 html[data-theme="dark"] .status-foundation,
 html[data-theme="dark"] .chip.active,
@@ -367,9 +402,44 @@ p:last-child{margin-bottom:0}
 .metric-big{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;line-height:1;letter-spacing:-.03em}
 .metric-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:var(--space-2)}
 
-/* APP FRAME */
-.app-frame{display:grid;place-items:center;min-height:100svh;padding:clamp(16px,2.5vw,40px)}
-.app-shell{width:min(var(--shell-max-width),100%);min-height:min(var(--shell-max-height),calc(100svh - clamp(24px,5vw,80px)));background:var(--shell);border-radius:var(--radius-shell);box-shadow:var(--shadow-shell);display:flex;overflow:hidden}
+/* APP FRAME — light: editorial stone atmosphere (not flat white) */
+.app-frame{
+  display:grid;
+  place-items:center;
+  min-height:100svh;
+  padding:clamp(16px,2.5vw,40px);
+  background-color:var(--canvas-frame);
+  background-image:
+    radial-gradient(
+      circle at 88% 4%,
+      var(--canvas-frame-glow-lavender),
+      transparent clamp(15rem, 40vw, 42rem)
+    ),
+    radial-gradient(
+      circle at 8% 96%,
+      var(--canvas-frame-glow-warm),
+      transparent clamp(13rem, 34vw, 36rem)
+    ),
+    linear-gradient(
+      148deg,
+      #EAE7E0 0%,
+      var(--canvas-frame) 52%,
+      #E8E4ED 100%
+    );
+  background-repeat:no-repeat;
+  background-attachment:local;
+}
+.app-shell{
+  width:min(var(--shell-max-width),100%);
+  min-height:min(var(--shell-max-height),calc(100svh - clamp(24px,5vw,80px)));
+  background:var(--shell);
+  border-radius:var(--radius-shell);
+  box-shadow:var(--shadow-shell);
+  display:flex;
+  overflow:hidden;
+  border:1px solid rgba(20,20,20,.06);
+  background-clip:padding-box;
+}
 .app{display:flex;width:100%;min-height:inherit}
 
 /* NAV SIDEBAR */
@@ -397,14 +467,43 @@ p:last-child{margin-bottom:0}
   .nav-brand img{width:36px;height:36px}
 }
 
-/* WORKSPACE */
-.workspace{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--workspace);border-radius:var(--radius-module) 0 0 var(--radius-module)}
+/* WORKSPACE — warm editorial canvas (light) / charcoal (dark) */
+.workspace{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  border-radius:var(--radius-module) 0 0 var(--radius-module);
+  background-color:var(--canvas-app);
+  background-image:
+    radial-gradient(
+      circle at 78% 6%,
+      var(--canvas-glow-lavender),
+      transparent clamp(14rem, 34vw, 36rem)
+    ),
+    radial-gradient(
+      circle at 10% 94%,
+      var(--canvas-glow-warm),
+      transparent clamp(12rem, 28vw, 28rem)
+    );
+  background-repeat:no-repeat;
+  background-attachment:local;
+}
 .workspace-scroll{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track)}
 .workspace-scroll::-webkit-scrollbar{width:6px}
 .workspace-scroll::-webkit-scrollbar-track{background:var(--scrollbar-track)}
 .workspace-scroll::-webkit-scrollbar-thumb{background:var(--scrollbar-thumb);border-radius:var(--radius-pill)}
 .workspace-scroll::-webkit-scrollbar-thumb:hover{background:var(--scrollbar-thumb-hover)}
-.workspace-topbar{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--page-inline-padding);min-height:var(--header-h);flex-shrink:0}
+.workspace-topbar{
+  display:flex;
+  align-items:center;
+  gap:var(--space-3);
+  padding:var(--space-3) var(--page-inline-padding);
+  min-height:var(--header-h);
+  flex-shrink:0;
+  background:transparent;
+  border-bottom:1px solid color-mix(in srgb, var(--line) 55%, transparent);
+}
 .topbar-context{min-width:0;flex:1 1 auto;max-width:min(280px,32vw);display:flex;flex-direction:column;justify-content:center;gap:2px}
 .topbar-context-kicker{font-family:var(--font-mono);font-size:.625rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);line-height:1.2}
 .topbar-context-title{font-family:var(--font-display);font-weight:700;font-size:1rem;line-height:1.2;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -503,19 +602,19 @@ p:last-child{margin-bottom:0}
 .status-aware{background:var(--surface-soft);color:var(--muted)}
 
 /* HERO MODULE */
-.hero-module{display:grid;grid-template-columns:1fr;gap:var(--space-5);align-items:end}
+.hero-module{display:grid;grid-template-columns:1fr;gap:var(--space-4);align-items:end}
 @media(min-width:1024px){
-  .hero-module{grid-template-columns:minmax(0,1.35fr) minmax(160px,.75fr);align-items:center;gap:var(--space-6)}
+  .hero-module{grid-template-columns:minmax(0,1.35fr) minmax(140px,.65fr);align-items:center;gap:var(--space-5)}
 }
-.hero-portrait-wrap{max-width:220px;margin:0 auto}
+.hero-portrait-wrap{max-width:180px;margin:0 auto}
 .hero-portrait{width:100%;aspect-ratio:4/5;border-radius:var(--radius-module);object-fit:cover;object-position:center top}
-.hero-statement{font-size:clamp(1rem,1.8vw,1.15rem);font-weight:500;line-height:1.55;margin-top:var(--space-4);max-width:36ch;color:var(--ink)}
-.hero-sub{font-family:var(--font-mono);font-size:.8125rem;color:var(--muted);margin-top:var(--space-4);letter-spacing:.02em;line-height:1.5}
-.hero-cta,.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);margin-top:var(--space-5)}
-.hero-focus{font-size:clamp(.9375rem,1.5vw,1.05rem);color:var(--ink);font-weight:500;line-height:1.45;margin-top:var(--space-3)}
+.hero-statement{font-size:clamp(1rem,1.8vw,1.15rem);font-weight:500;line-height:1.55;margin-top:var(--space-3);max-width:36ch;color:var(--ink)}
+.hero-sub{font-family:var(--font-mono);font-size:.8125rem;color:var(--muted);margin-top:var(--space-2);letter-spacing:.02em;line-height:1.5}
+.hero-cta,.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);margin-top:var(--space-4)}
+.hero-focus{font-size:clamp(.9375rem,1.5vw,1.05rem);color:var(--ink);font-weight:500;line-height:1.45;margin-top:var(--space-2)}
 .hero-focus strong{color:var(--ink)}
 .hero-meta{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-3)}
-.hero-cred{margin-top:var(--space-2);font-size:.875rem;color:var(--muted);line-height:1.5}
+.hero-cred{margin-top:var(--space-1);font-size:.875rem;color:var(--muted);line-height:1.5}
 
 /* VIZ — CIRCLES */
 .viz-circles{display:flex;align-items:center;justify-content:center;gap:0;margin:var(--space-5) 0;flex-wrap:wrap}
@@ -2129,282 +2228,694 @@ html[data-theme="dark"] .article-framework-num{
   .article-body{font-size:1.0625rem;line-height:1.7}
 }
 
-/* RECRUITER MODE */
-.recruiter-page{max-width:1120px;margin:0 auto}
-.recruiter-shell{display:flex;flex-direction:column;gap:var(--grid-gap)}
-.recruiter-toolbar{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:var(--space-3);
-  padding:var(--space-3) var(--space-4);
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
+/* RECRUITER MODE — EXECUTIVE BRIEF DESIGN SYSTEM */
+.recruiter-page {
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.recruiter-toolbar-secondary{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-left:auto}
-.recruiter-toolbar .btn{min-height:40px}
-.recruiter-identity{
-  display:grid;
-  grid-template-columns:minmax(0,1.4fr) minmax(220px,0.8fr);
-  gap:var(--space-5);
-  align-items:start;
-  padding:var(--module-padding);
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
+.recruiter-shell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
 }
-.recruiter-identity-main h1{
-  font-size:clamp(1.75rem,3vw,2.35rem);
-  margin:0 0 var(--space-2);
-  letter-spacing:-.03em;
-  line-height:1.1;
+
+/* TOOLBAR */
+.recruiter-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
-.recruiter-role{
-  margin:0;
-  font-family:var(--font-display);
-  font-weight:600;
-  font-size:clamp(1rem,1.6vw,1.15rem);
-  line-height:1.35;
-  color:var(--ink);
+.recruiter-toolbar-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-left: auto;
 }
-.recruiter-subline{
-  margin:var(--space-3) 0 0;
-  font-size:.9375rem;
-  color:var(--muted);
-  line-height:1.5;
+.recruiter-toolbar .btn-primary {
+  background: var(--lime);
+  color: #111;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
-.recruiter-identity-aside{
-  display:flex;
-  flex-direction:column;
-  gap:var(--space-3);
-  padding:var(--space-4);
-  background:var(--surface-soft);
-  border-radius:var(--radius-control);
+.recruiter-toolbar .btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
 }
-.recruiter-identity-aside .status-available{margin:0}
-.recruiter-aside-meta{
-  margin:0;
-  font-size:.8125rem;
-  line-height:1.55;
-  color:var(--muted);
+.recruiter-toolbar .btn-secondary {
+  background: var(--surface-soft);
+  color: var(--ink);
+  border: 1px solid var(--line);
 }
-.recruiter-grid-2{
-  display:grid;
-  grid-template-columns:minmax(0,1.35fr) minmax(240px,0.9fr);
-  gap:var(--grid-gap);
+.recruiter-toolbar .btn-text {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  transition: color var(--dur-fast), background var(--dur-fast);
 }
-.recruiter-card{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
-  padding:var(--module-padding);
-  min-width:0;
+.recruiter-toolbar .btn-text:hover {
+  color: var(--ink);
+  background: var(--surface-soft);
 }
-.recruiter-card-title{
-  font-family:var(--font-mono);
-  font-size:.6875rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin:0 0 var(--space-4);
+
+/* IDENTITY HERO HEADER */
+.recruiter-identity {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-5);
+  align-items: start;
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
 }
-.recruiter-summary{
-  margin:0;
-  font-size:.9375rem;
-  line-height:1.65;
-  color:var(--ink);
-  max-width:62ch;
+.recruiter-identity-main h1 {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  margin: 0 0 var(--space-2);
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  color: var(--ink);
 }
-.recruiter-snapshot-list{display:grid;gap:var(--space-3);margin:0;padding:0}
-.recruiter-snapshot-list div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-3);align-items:baseline}
-.recruiter-snapshot-list dt{
-  font-family:var(--font-mono);
-  font-size:.625rem;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--muted);
+.recruiter-role {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(0.875rem, 1.3vw, 1rem);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--lime-dark, #4a7c00);
 }
-.recruiter-snapshot-list dd{margin:0;font-weight:700;font-size:.875rem;color:var(--ink);text-align:right}
-.recruiter-timeline{display:grid;gap:0}
-.recruiter-timeline-item{
-  display:grid;
-  grid-template-columns:110px minmax(0,1fr) auto;
-  gap:var(--space-4);
-  align-items:start;
-  padding:var(--space-4) 0;
-  border-top:1px solid var(--line);
+html[data-theme="dark"] .recruiter-role {
+  color: var(--lime);
 }
-.recruiter-timeline-item:first-child{border-top:0;padding-top:0}
-.recruiter-timeline-date{
-  font-family:var(--font-mono);
-  font-size:.75rem;
-  color:var(--muted);
-  line-height:1.4;
+.recruiter-subline {
+  margin: var(--space-2) 0 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.4;
 }
-.recruiter-timeline-org{
-  margin:0;
-  font-family:var(--font-display);
-  font-weight:700;
-  font-size:1rem;
-  line-height:1.25;
+.recruiter-contact-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--line);
 }
-.recruiter-timeline-role{
-  margin:4px 0 0;
-  font-size:.875rem;
-  color:var(--muted);
-  line-height:1.4;
+.recruiter-contact-inline a {
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.recruiter-type{
-  display:inline-flex;
-  align-items:center;
-  padding:4px 10px;
-  border-radius:var(--radius-pill);
-  background:var(--surface-soft);
-  font-family:var(--font-mono);
-  font-size:.625rem;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--muted);
-  white-space:nowrap;
+.recruiter-contact-inline a:hover {
+  color: var(--lime-dark, #4a7c00);
+  text-decoration: underline;
 }
-.recruiter-type--full{background:var(--lime-soft);color:var(--ink)}
-.recruiter-projects-wrap{display:grid;gap:var(--space-3)}
-.recruiter-projects-wrap > .recruiter-card-title{margin-bottom:0}
-.recruiter-projects{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:var(--grid-gap);
+html[data-theme="dark"] .recruiter-contact-inline a:hover {
+  color: var(--lime);
 }
-.recruiter-project{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
-  padding:var(--module-padding);
-  text-decoration:none;
-  color:inherit;
-  display:flex;
-  flex-direction:column;
-  gap:var(--space-3);
-  transition:transform var(--dur-fast),background var(--dur-fast);
-  break-inside:avoid;
+.recruiter-identity-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+  min-width: 220px;
+  text-align: right;
 }
-.recruiter-project:hover{transform:translateY(-1px);background:var(--surface-soft)}
-.recruiter-project--skillverse{background:var(--skillverse-surface);border-color:var(--skillverse-border);color:var(--skillverse-text)}
-.recruiter-project--skillverse:hover{background:var(--skillverse-hover)}
-.recruiter-project--skillverse .recruiter-card-title,
-.recruiter-project--skillverse .recruiter-project-meta,
-.recruiter-project--skillverse .recruiter-project-flow{color:var(--skillverse-meta)}
-.recruiter-project--skillverse h3,
-.recruiter-project--skillverse .recruiter-project-metric{color:var(--skillverse-text)}
-.recruiter-project--skillverse .project-link{color:var(--lime)}
-.recruiter-project h3{margin:0;font-size:1.15rem}
-.recruiter-project-metric{
-  font-family:var(--font-display);
-  font-weight:800;
-  font-size:1.5rem;
-  line-height:1;
-  letter-spacing:-.02em;
+.recruiter-identity-aside .status-available {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
 }
-.recruiter-project-meta{margin:0;font-size:.8125rem;color:var(--muted)}
-.recruiter-project-flow{margin:0;font-size:.8125rem;line-height:1.55;color:var(--muted)}
-.recruiter-project .project-link{margin-top:auto}
-.recruiter-cap-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:var(--space-4);
+.recruiter-aside-meta {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
 }
-.recruiter-cap-col h3{
-  margin:0 0 var(--space-3);
-  font-size:.8125rem;
-  font-family:var(--font-mono);
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--muted);
+
+/* SNAPSHOT STRIP */
+.recruiter-snapshot-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-3);
 }
-.recruiter-cap-col ul{margin:0;padding:0;display:grid;gap:8px}
-.recruiter-cap-col li{font-size:.875rem;line-height:1.4;color:var(--ink)}
-.recruiter-skills{
-  display:grid;
-  gap:var(--space-4);
+.snapshot-tile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
-.recruiter-skill-level{
-  display:grid;
-  grid-template-columns:140px minmax(0,1fr);
-  gap:var(--space-4);
-  align-items:start;
-  padding-top:var(--space-4);
-  border-top:1px solid var(--line);
+.snapshot-val {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.recruiter-skill-level:first-child{border-top:0;padding-top:0}
-.recruiter-skill-level h3{margin:0;font-size:.875rem}
-.recruiter-skill-level p{margin:0;font-size:.875rem;line-height:1.55;color:var(--muted)}
-.recruiter-skill-level--hands h3{color:var(--ink)}
-.recruiter-skill-level--foundation h3{color:var(--muted)}
-.recruiter-skill-level--learning h3{color:var(--warning)}
-.recruiter-credentials{display:grid;gap:0}
-.recruiter-credential{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  gap:var(--space-3);
-  align-items:start;
-  padding:var(--space-3) 0;
-  border-top:1px solid var(--line);
-  break-inside:avoid;
+.snapshot-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
 }
-.recruiter-credential:first-child{border-top:0;padding-top:0}
-.recruiter-credential strong{display:block;font-size:.9375rem;line-height:1.3}
-.recruiter-credential span{display:block;margin-top:4px;font-size:.75rem;color:var(--muted)}
-.recruiter-cred-status{
-  font-family:var(--font-mono);
-  font-size:.625rem;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  padding:4px 8px;
-  border-radius:8px;
-  background:var(--lime-soft);
-  color:var(--ink);
-  white-space:nowrap;
+
+/* CARDS COMMON */
+.recruiter-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+  padding: var(--space-5) var(--space-6);
+  min-width: 0;
 }
-.recruiter-cred-status--history{background:rgba(234,179,8,.15);color:var(--warning)}
-.recruiter-secondary{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:var(--grid-gap);
+.recruiter-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
 }
-.recruiter-secondary p{margin:0;font-size:.875rem;line-height:1.5;color:var(--muted)}
-.recruiter-secondary strong{display:block;color:var(--ink);margin-bottom:4px}
-.recruiter-footer-cta{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  gap:var(--space-4);
-  padding:var(--module-padding);
-  background:var(--contact-cta-bg);
-  color:var(--contact-cta-text);
-  border:1px solid var(--contact-cta-border);
-  border-radius:var(--radius-module);
+.recruiter-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
 }
-.recruiter-footer-cta h2{
-  margin:0 0 var(--space-2);
-  font-size:clamp(1.25rem,2vw,1.5rem);
-  color:var(--contact-cta-text);
+.recruiter-card-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
 }
-.recruiter-footer-cta p{margin:0;color:var(--contact-cta-muted);font-size:.875rem}
-.recruiter-footer-actions{display:flex;flex-wrap:wrap;gap:var(--space-3)}
-.recruiter-link-list{margin:0;padding:0;list-style:none;display:grid;gap:var(--space-3)}
-.recruiter-link-list li{min-width:0}
-.recruiter-link-list strong{display:block;color:var(--ink);margin-bottom:4px}
-.recruiter-link-list a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);font-size:.875rem}
-.recruiter-link-list a:hover{border-bottom-color:var(--lime)}
-.recruiter-link-list a:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
-.recruiter-print-header{display:none}
-.recruiter-timeline-item,.recruiter-credential,.recruiter-secondary .recruiter-card{break-inside:avoid}
+.recruiter-card-link:hover {
+  text-decoration: underline;
+}
+
+/* VALUE PROPOSITION & WHAT I BRING */
+.recruiter-summary {
+  margin: 0 0 var(--space-5);
+  font-size: 0.965rem;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 76ch;
+}
+.recruiter-bring-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+.bring-col h3 {
+  margin: 0 0 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.bring-col h3 i {
+  color: var(--lime-dark, #4a7c00);
+}
+html[data-theme="dark"] .bring-col h3 i {
+  color: var(--lime);
+}
+.bring-col p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* EXPERIENCE TIMELINE */
+.recruiter-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.recruiter-timeline-item {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line);
+}
+.recruiter-timeline-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.recruiter-timeline-item:last-child {
+  padding-bottom: 0;
+}
+.recruiter-timeline-date {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.recruiter-timeline-org {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.recruiter-timeline-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--lime-soft);
+  color: var(--ink);
+}
+.recruiter-timeline-role {
+  margin: 2px 0 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.recruiter-timeline-desc {
+  margin: 0;
+  font-size: 0.84375rem;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 72ch;
+}
+.recruiter-type {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.recruiter-type--full {
+  background: var(--lime-soft);
+  color: var(--ink);
+  border-color: transparent;
+}
+
+/* SELECTED PRODUCT EVIDENCE */
+.recruiter-projects-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.recruiter-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+.recruiter-project {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--dur-fast), background var(--dur-fast);
+}
+.recruiter-project:hover {
+  transform: translateY(-1px);
+  background: var(--surface-soft);
+}
+.recruiter-project--skillverse {
+  background: var(--skillverse-surface);
+  border-color: var(--skillverse-border);
+  color: var(--skillverse-text);
+}
+.recruiter-project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recruiter-project h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.recruiter-project-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.recruiter-project-metrics-row {
+  display: flex;
+  gap: var(--space-5);
+  align-items: baseline;
+}
+.recruiter-project-metric {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.75rem;
+  line-height: 1;
+  margin: 0;
+}
+.recruiter-project-metric.font-small {
+  font-size: 1.1rem;
+}
+.recruiter-project-meta {
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+.recruiter-project-flow {
+  margin: 0;
+  font-size: 0.84375rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+.recruiter-project-footer {
+  margin-top: auto;
+  padding-top: var(--space-2);
+}
+.recruiter-project .project-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+}
+.recruiter-project .project-link:hover {
+  text-decoration: underline;
+}
+
+/* WHAT I CAN CONTRIBUTE NOW */
+.recruiter-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+.recruiter-cap-col h3 {
+  margin: 0 0 var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.recruiter-cap-col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.recruiter-cap-col li {
+  font-size: 0.84375rem;
+  line-height: 1.45;
+  color: var(--ink);
+  position: relative;
+  padding-left: 14px;
+}
+.recruiter-cap-col li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--lime-dark, #4a7c00);
+  font-weight: bold;
+}
+html[data-theme="dark"] .recruiter-cap-col li::before {
+  color: var(--lime);
+}
+
+/* TECHNICAL PROFILE */
+.recruiter-skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.recruiter-skill-level {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+.recruiter-skill-level:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.skill-label-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.skill-label-wrap h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.skill-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-block;
+  color: var(--muted);
+}
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  color: var(--ink);
+}
+.chip--accent {
+  background: var(--lime-soft);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+/* CREDENTIALS, EDUCATION & PUBLICATION */
+.recruiter-grid-2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: var(--space-4);
+}
+.recruiter-credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.recruiter-credential {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--line);
+}
+.recruiter-credential:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.recruiter-credential strong {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.recruiter-credential span {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78125rem;
+  color: var(--muted);
+}
+.recruiter-cred-status {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.recruiter-cred-status--valid {
+  background: var(--lime-soft);
+  color: var(--ink);
+}
+.recruiter-cred-status--history {
+  background: rgba(234,179,8,.15);
+  color: var(--warning);
+}
+.recruiter-cred-status--course,
+.recruiter-cred-status--training {
+  background: var(--surface-soft);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+.recruiter-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.edu-degree, .pub-title {
+  margin: 0 0 2px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.edu-school, .pub-meta {
+  margin: 0 0 4px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.edu-meta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+.pub-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.pub-link:hover {
+  text-decoration: underline;
+}
+
+/* CLOSING CTA */
+.recruiter-footer-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+}
+.recruiter-footer-cta h2 {
+  margin: 0 0 4px;
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.recruiter-footer-cta p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.recruiter-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.recruiter-print-header { display: none; }
+
+/* RESPONSIVE DESKTOP & MOBILE */
+@media (max-width: 1023px) {
+  .recruiter-snapshot-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .recruiter-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .recruiter-projects {
+    grid-template-columns: 1fr;
+  }
+  .recruiter-bring-grid, .recruiter-cap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .recruiter-identity {
+    grid-template-columns: 1fr;
+  }
+  .recruiter-identity-aside {
+    text-align: left;
+  }
+  .recruiter-snapshot-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .recruiter-timeline-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .recruiter-skill-level {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
 @media(max-width:1023px){
   .recruiter-identity,
   .recruiter-grid-2,
@@ -2437,7 +2948,7 @@ html[data-theme="dark"] .article-framework-num{
   --cr-featured-muted: #5a5668;
   --cr-featured-meta: #6d687a;
   --cr-featured-border: rgba(23, 23, 23, 0.08);
-  --cr-card-bg: #FCFCFA;
+  --cr-card-bg: var(--surface);
   --cr-card-border: rgba(23, 23, 23, 0.1);
   --cr-stone: #D8D7D3;
   --cr-stone-text: #171717;
@@ -2576,6 +3087,11 @@ html[data-theme="dark"] #view-certifications {
 .credential-featured-side > div {
   padding-top: 10px;
   border-top: 1px solid var(--cr-featured-border);
+}
+
+.credential-featured-side > div:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .credential-featured-side .mono-label {
@@ -2994,7 +3510,7 @@ html[data-theme="dark"] #view-certifications {
 /* WORKBENCH */
 /* ===== SUPPORT LAB ===== */
 #view-support-lab {
-  --lab-surface: #FCFCFA;
+  --lab-surface: var(--surface);
   --lab-surface-text: #171717;
   --lab-surface-muted: #666964;
   --lab-surface-border: rgba(23, 23, 23, 0.1);
@@ -3553,151 +4069,240 @@ html[data-theme="dark"] #view-support-lab {
 
 
 /* CONTACT PAGE */
-.contact-page{max-width:1080px;margin:0 auto}
-.contact-page-head{margin-bottom:var(--space-6);max-width:42rem}
-.contact-page-head .lead{margin-top:var(--space-3);margin-bottom:0}
-.contact-layout{
-  display:grid;
-  grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);
-  gap:var(--grid-gap);
-  align-items:stretch;
+.contact-page {
+  max-width: 1080px;
+  margin: 0 auto;
 }
-.contact-profile,
-.contact-panel{
-  border-radius:var(--radius-module);
-  padding:var(--module-padding);
-  border:1px solid var(--line);
-  min-width:0;
+.contact-page-head {
+  margin-bottom: var(--space-6);
+  max-width: 42rem;
 }
-.contact-profile{
-  background:var(--lavender-soft);
-  display:flex;
-  flex-direction:column;
-  gap:var(--space-5);
+.contact-page-head .lead {
+  margin-top: var(--space-3);
+  margin-bottom: 0;
 }
-.contact-profile-media{width:min(100%,240px)}
-.contact-profile-photo{
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  object-position:center top;
-  border-radius:var(--radius-module);
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) 1px minmax(0, 1.2fr);
+  gap: var(--space-6);
+  align-items: start;
 }
-.contact-profile-name{
-  font-family:var(--font-display);
-  font-size:clamp(1.25rem,2vw,1.5rem);
-  font-weight:700;
-  line-height:1.15;
-  margin:0 0 var(--space-2);
-  color:var(--ink);
+.contact-layout-rule {
+  background: var(--line);
+  width: 1px;
+  height: 100%;
+  align-self: stretch;
 }
-.contact-profile-location{
-  margin:0;
-  color:var(--muted);
-  font-size:.9375rem;
-  line-height:1.45;
+
+/* LEFT: PROFILE */
+.contact-profile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-right: var(--space-3);
 }
-.contact-profile-note{
-  margin:var(--space-3) 0 0;
-  font-size:.8125rem;
-  line-height:1.45;
-  color:var(--muted);
+.contact-profile-media {
+  width: min(100%, 220px);
 }
-.contact-panel{
-  background:var(--surface);
-  display:flex;
-  flex-direction:column;
-  gap:var(--space-5);
+.contact-profile-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-module);
+  background: var(--lavender-soft);
+  padding: 4px;
 }
-.contact-panel .status-available{margin:0}
-.contact-targets{padding-bottom:var(--space-4);border-bottom:1px solid var(--line)}
-.contact-targets .mono-label{margin-bottom:var(--space-2)}
-.contact-targets-text{
-  margin:0;
-  font-size:.9375rem;
-  line-height:1.55;
-  color:var(--ink);
-  font-weight:600;
+.contact-profile-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
 }
-.contact-targets-secondary{
-  color:var(--muted);
-  font-weight:500;
+.contact-profile-location {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.45;
 }
-.contact-details{display:grid;gap:0}
-.contact-detail{
-  display:grid;
-  gap:var(--space-2);
-  padding:var(--space-4) 0;
-  border-bottom:1px solid var(--line);
+.contact-profile-availability {
+  margin-top: var(--space-3);
 }
-.contact-detail:first-child{padding-top:0}
-.contact-detail:last-child{border-bottom:0;padding-bottom:0}
-.contact-detail-label{
-  font-family:var(--font-mono);
-  font-size:.625rem;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--muted);
+.contact-profile-availability .status-available {
+  margin-bottom: var(--space-2);
 }
-.contact-detail-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:var(--space-3);
-  min-width:0;
+.contact-profile-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
 }
-.contact-detail-value{
-  font-size:1rem;
-  font-weight:600;
-  color:var(--ink);
-  word-break:break-word;
-  min-width:0;
+
+/* RIGHT: PANEL */
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-left: var(--space-3);
 }
-.contact-detail-value:hover{text-decoration:underline;text-underline-offset:3px}
-.contact-copy{
-  flex-shrink:0;
-  min-height:36px;
-  padding:6px 12px;
-  border-radius:var(--radius-pill);
-  background:var(--surface-soft);
-  color:var(--ink);
-  font-family:var(--font-display);
-  font-size:.75rem;
-  font-weight:700;
-  border:none;
-  transition:background var(--dur-fast);
+.contact-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--space-4);
 }
-.contact-copy:hover{background:var(--workspace)}
-.contact-copy.is-copied{
-  background:var(--lime);
-  color:#171717;
+.contact-details {
+  display: grid;
+  gap: var(--space-4);
 }
-.contact-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:var(--space-3);
-  margin-top:auto;
-  padding-top:var(--space-2);
+.contact-detail {
+  display: grid;
+  gap: var(--space-2);
 }
-.contact-actions .btn{min-height:44px}
-@media(max-width:1023px){
-  .contact-layout{grid-template-columns:1fr}
-  .contact-profile{
-    flex-direction:row;
-    align-items:center;
-    gap:var(--space-4);
+.contact-detail-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.contact-detail-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+.contact-detail-value {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  word-break: break-word;
+  min-width: 0;
+}
+.contact-actions-inline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.contact-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  border: none;
+  transition: all var(--dur-fast);
+}
+.contact-copy:hover {
+  background: var(--workspace);
+  transform: translateY(-1px);
+}
+.contact-copy.is-copied {
+  background: var(--lime);
+  color: #171717;
+}
+.contact-professional {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.contact-professional-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.contact-professional-links .btn-text {
+  font-size: 0.9375rem;
+}
+.contact-save {
+  margin-top: var(--space-2);
+}
+
+.contact-targets {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  margin-top: var(--space-2);
+}
+.contact-targets-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 600;
+}
+.contact-targets-secondary {
+  color: var(--muted);
+  font-weight: 500;
+}
+.contact-next {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.contact-next p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media(max-width: 1023px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
   }
-  .contact-profile-media{width:min(140px,36vw);flex-shrink:0}
-  .contact-page-head{margin-bottom:var(--space-5)}
+  .contact-layout-rule {
+    display: none;
+  }
+  .contact-profile {
+    flex-direction: row;
+    align-items: center;
+    padding-right: 0;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-profile-media {
+    width: min(140px, 36vw);
+    flex-shrink: 0;
+  }
+  .contact-panel {
+    padding-left: 0;
+  }
 }
-@media(max-width:560px){
-  .contact-profile{flex-direction:column;align-items:flex-start}
-  .contact-profile-media{width:min(160px,56vw)}
-  .contact-actions{display:grid;grid-template-columns:1fr 1fr}
-  .contact-actions .btn-primary{grid-column:1 / -1}
-  .contact-detail-row{align-items:flex-start}
+@media(max-width: 560px) {
+  .contact-profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contact-profile-media {
+    width: min(160px, 56vw);
+  }
+  .contact-detail-row {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .contact-actions-inline {
+    width: 100%;
+    margin-top: var(--space-2);
+  }
 }
+
 
 /* HOME CONTACT CTA */
 .contact-cta{
@@ -3800,7 +4405,954 @@ html[data-theme="dark"] #view-support-lab {
   .home-credentials{height:100%;align-self:stretch}
 }
 .seo-quiet{padding:var(--space-5);font-size:.875rem;color:var(--muted);line-height:1.7;margin-top:var(--space-4)}
-.research-hero{padding:var(--space-6) 0;margin-bottom:var(--space-5)}
+
+/* ===== RESEARCH ===== */
+#view-research {
+  --rs-surface: var(--surface);
+  --rs-surface-text: #171717;
+  --rs-muted: #666964;
+  --rs-meta: #7a7a74;
+  --rs-stone: #D8D7D3;
+  --rs-stone-text: #171717;
+  --rs-stone-muted: #5c5c58;
+  --rs-paper: #F7F5F0;
+  --rs-paper-ink: #1a1a1a;
+  --rs-paper-muted: #5a574f;
+  --rs-paper-rule: rgba(26, 26, 26, 0.12);
+  --rs-lavender: #DCD8EF;
+  --rs-lavender-text: #171717;
+  --rs-lavender-muted: #5a5668;
+  --rs-border: rgba(23, 23, 23, 0.1);
+  --rs-estimate: #8a7340;
+}
+
+html[data-theme="dark"] #view-research {
+  --rs-surface: #2f2f33;
+  --rs-surface-text: #f4f4f4;
+  --rs-muted: rgba(244, 244, 244, 0.68);
+  --rs-meta: rgba(244, 244, 244, 0.5);
+  --rs-stone: #1a1a1d;
+  --rs-stone-text: #f4f4f4;
+  --rs-stone-muted: rgba(244, 244, 244, 0.68);
+  --rs-paper: #F7F5F0;
+  --rs-paper-ink: #1a1a1a;
+  --rs-paper-muted: #5a574f;
+  --rs-paper-rule: rgba(26, 26, 26, 0.12);
+  --rs-lavender: #3a3650;
+  --rs-lavender-text: #f3f1f8;
+  --rs-lavender-muted: rgba(243, 241, 248, 0.7);
+  --rs-border: rgba(255, 255, 255, 0.1);
+  --rs-estimate: #d4b56a;
+}
+
+#view-research .page-inner {
+  max-width: 1080px;
+}
+
+.research-section {
+  margin: 0 0 var(--space-8);
+}
+
+.research-section-head {
+  margin: 0 0 var(--space-4);
+  max-width: 62ch;
+}
+
+.research-section-head .mono-label {
+  margin-bottom: 8px;
+}
+
+.research-section-head h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
+}
+
+.research-section-head p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.research-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(14rem, 0.85fr);
+  gap: 20px 28px;
+  margin: 0 0 var(--space-7);
+  align-items: start;
+}
+
+.research-hero-main .mono-label {
+  margin-bottom: 12px;
+}
+
+.research-title {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.research-title-break {
+  display: block;
+}
+
+.research-hero-role {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.research-hero-role strong {
+  font-weight: 600;
+}
+
+.research-hero-affil {
+  margin: 0 0 14px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.research-summary {
+  margin: 0 0 18px;
+  max-width: 54ch;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.research-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.research-snapshot {
+  padding: 20px;
+  border-radius: var(--radius-module);
+  background: var(--rs-lavender);
+  color: var(--rs-lavender-text);
+  border: 1px solid var(--rs-border);
+}
+
+.research-snapshot .mono-label {
+  color: var(--rs-lavender-muted);
+  margin-bottom: 14px;
+}
+
+.research-snapshot dl {
+  display: grid;
+  gap: 12px;
+}
+
+.research-snapshot dt {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rs-lavender-muted);
+  margin-bottom: 2px;
+}
+
+.research-snapshot dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.research-glance {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 var(--space-8);
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.research-glance-item {
+  min-width: 0;
+}
+
+.research-glance-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.research-glance-item span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rs-meta);
+}
+
+.research-focus {
+  padding: 22px clamp(18px, 3vw, 26px);
+  border-radius: var(--radius-module);
+  background: var(--rs-surface);
+  border: 1px solid var(--rs-border);
+  color: var(--rs-surface-text);
+}
+
+.research-focus p {
+  margin: 0 0 14px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 58ch;
+}
+
+.research-focus-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.research-focus-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border: 1px solid var(--rs-border);
+  border-radius: 999px;
+  color: var(--rs-muted);
+}
+
+.research-context-note {
+  margin: 14px 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.research-flow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.research-flow li {
+  padding: 12px 10px;
+  border-top: 2px solid var(--line-strong);
+}
+
+.research-flow strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rs-meta);
+  margin-bottom: 6px;
+}
+
+.research-flow span {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.research-scope {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 18px;
+}
+
+.research-scope-center {
+  padding: 22px;
+  border-radius: var(--radius-module);
+  background: var(--rs-stone);
+  color: var(--rs-stone-text);
+  display: grid;
+  align-content: center;
+  gap: 8px;
+}
+
+.research-scope-center .mono-label {
+  color: var(--rs-stone-muted);
+}
+
+.research-scope-center strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.research-scope-center p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--rs-stone-muted);
+  line-height: 1.5;
+}
+
+.research-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.research-scope-item {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+  background: transparent;
+}
+
+.research-scope-item .mono-label {
+  margin-bottom: 4px;
+  color: var(--rs-meta);
+}
+
+.research-scope-item p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.research-evidence-base {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.research-findings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.research-finding {
+  padding: 18px 18px 16px;
+  border-top: 2px solid var(--line-strong);
+  background: transparent;
+}
+
+.research-finding .mono-label {
+  margin-bottom: 8px;
+  color: var(--rs-meta);
+}
+
+.research-finding-value {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.research-finding h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  font-family: var(--font-display);
+}
+
+.research-finding p {
+  margin: 0 0 10px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.research-finding-source {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rs-estimate);
+}
+
+.research-system-map {
+  padding: 20px clamp(16px, 2.5vw, 24px);
+  border-radius: var(--radius-module);
+  background: var(--rs-surface);
+  border: 1px solid var(--rs-border);
+  color: var(--rs-surface-text);
+}
+
+.research-system-map-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.1fr);
+  gap: 12px 16px;
+  align-items: center;
+}
+
+.research-system-inputs,
+.research-system-outputs {
+  display: grid;
+  gap: 8px;
+}
+
+.research-system-chip {
+  font-size: 0.8125rem;
+  padding: 8px 12px;
+  border: 1px solid var(--rs-border);
+  border-radius: 8px;
+}
+
+.research-system-core {
+  text-align: center;
+  padding: 18px 14px;
+  border-radius: var(--radius-module);
+  background: var(--rs-lavender);
+  color: var(--rs-lavender-text);
+  min-width: 8.5rem;
+}
+
+.research-system-core strong {
+  display: block;
+  font-family: var(--font-display);
+  margin-bottom: 4px;
+}
+
+.research-system-core span {
+  font-size: 0.75rem;
+  color: var(--rs-lavender-muted);
+}
+
+.research-system-note {
+  margin: 14px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.research-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.research-figure {
+  appearance: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 18px;
+  border-radius: var(--radius-module);
+  border: 1px solid var(--rs-border);
+  background: var(--rs-surface);
+  color: var(--rs-surface-text);
+  font: inherit;
+}
+
+.research-figure:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+.research-figure .mono-label {
+  margin-bottom: 8px;
+  color: var(--rs-meta);
+}
+
+.research-figure h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.research-figure p {
+  margin: 0 0 10px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--rs-muted);
+}
+
+.research-figure-cta {
+  font-size: 0.8125rem;
+  color: var(--rs-surface-text);
+}
+
+.research-scenarios {
+  display: grid;
+  gap: 14px;
+}
+
+.research-scenario-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.research-scenario-rail span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.research-scenario-rail span.is-base {
+  background: var(--rs-stone);
+  color: var(--rs-stone-text);
+  border-color: transparent;
+}
+
+.research-scenario-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.research-scenario-metric {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-module);
+}
+
+.research-scenario-metric strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.research-scenario-metric span {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.research-scenario-note {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.research-recs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.research-rec-col {
+  padding: 18px;
+  border-radius: var(--radius-module);
+  background: var(--rs-surface);
+  border: 1px solid var(--rs-border);
+  color: var(--rs-surface-text);
+}
+
+.research-rec-col > .mono-label {
+  margin-bottom: 12px;
+  color: var(--rs-meta);
+}
+
+.research-rec-block {
+  margin: 0 0 14px;
+}
+
+.research-rec-block:last-child {
+  margin-bottom: 0;
+}
+
+.research-rec-block h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.research-rec-block ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.research-rec-block li {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--rs-muted);
+  padding-left: 12px;
+  position: relative;
+}
+
+.research-rec-block li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lavender);
+}
+
+.research-highlight {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--lavender);
+}
+
+.research-highlight h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.research-highlight p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.research-demonstrates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+}
+
+.research-demonstrates article {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.research-demonstrates h3 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.research-demonstrates p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.research-role-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 16px;
+}
+
+.research-role-card,
+.research-team {
+  padding: 18px;
+  border-radius: var(--radius-module);
+  border: 1px solid var(--rs-border);
+  background: var(--rs-surface);
+  color: var(--rs-surface-text);
+}
+
+.research-role-card p,
+.research-team p {
+  margin: 0 0 10px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--rs-muted);
+}
+
+.research-team ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.research-team li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: baseline;
+  font-size: 0.875rem;
+}
+
+.research-team li strong {
+  font-weight: 600;
+}
+
+.research-team li span {
+  font-size: 0.75rem;
+  color: var(--rs-muted);
+}
+
+.research-you {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--lime);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.research-limitations {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.research-limitations ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  max-width: 70ch;
+}
+
+.research-limitations li {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+  padding-left: 14px;
+  position: relative;
+}
+
+.research-limitations li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--rs-meta);
+}
+
+.research-paper-block {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.85fr) minmax(0, 1.15fr);
+  gap: 18px;
+  padding: 20px;
+  border-radius: var(--radius-module);
+  background: var(--rs-lavender);
+  color: var(--rs-lavender-text);
+}
+
+.research-paper-preview {
+  background: var(--rs-paper);
+  color: var(--rs-paper-ink);
+  border-radius: 10px;
+  padding: 18px 16px;
+  min-height: 220px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.research-paper-preview .mono-label {
+  color: var(--rs-paper-muted);
+  margin-bottom: 10px;
+}
+
+.research-paper-preview h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.research-paper-preview p {
+  margin: 0 0 8px;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: var(--rs-paper-muted);
+}
+
+.research-paper-preview .research-paper-rule {
+  height: 1px;
+  background: var(--rs-paper-rule);
+  margin: 10px 0;
+}
+
+.research-paper-copy h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.research-paper-copy p {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--rs-lavender-muted);
+  max-width: 48ch;
+}
+
+.research-record {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 18px;
+}
+
+.research-record dl {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 8px 12px;
+  font-size: 0.875rem;
+}
+
+.research-record dt {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rs-meta);
+  padding-top: 3px;
+}
+
+.research-record dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.research-citation {
+  padding: 18px;
+  border-radius: var(--radius-module);
+  background: var(--rs-surface);
+  border: 1px solid var(--rs-border);
+  color: var(--rs-surface-text);
+}
+
+.research-citation .mono-label {
+  margin-bottom: 10px;
+  color: var(--rs-meta);
+}
+
+.research-citation cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--rs-muted);
+  margin-bottom: 12px;
+}
+
+.research-why {
+  padding: 22px clamp(18px, 3vw, 26px);
+  border-radius: var(--radius-module);
+  background: var(--rs-stone);
+  color: var(--rs-stone-text);
+}
+
+.research-why h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.research-why p {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--rs-stone-muted);
+  max-width: 58ch;
+}
+
+.research-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.research-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  font-size: 0.875rem;
+}
+
+.research-related a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+#research-figure-dialog[open] {
+  width: min(720px, calc(100vw - 32px));
+  max-height: min(80dvh, 720px);
+  margin: auto;
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+#research-figure-dialog .modal-body {
+  max-height: none;
+}
+
+@media (max-width: 900px) {
+  .research-hero,
+  .research-scope,
+  .research-findings,
+  .research-figures,
+  .research-recs,
+  .research-demonstrates,
+  .research-role-grid,
+  .research-paper-block,
+  .research-record,
+  .research-scenario-metrics,
+  .research-system-map-grid,
+  .research-flow,
+  .research-glance {
+    grid-template-columns: 1fr;
+  }
+
+  .research-glance {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .research-system-map-grid {
+    justify-items: stretch;
+  }
+
+  .research-system-core {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .research-findings,
+  .research-figures,
+  .research-recs,
+  .research-demonstrates,
+  .research-scenario-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .research-hero-actions,
+  .research-cta,
+  .research-figure-cta,
+  .research-related,
+  #research-figure-dialog {
+    display: none !important;
+  }
+
+  .research-snapshot,
+  .research-paper-block,
+  .research-focus,
+  .research-rec-col,
+  .research-why {
+    background: transparent !important;
+    color: #000 !important;
+    border: 1px solid #999 !important;
+  }
+}
+
 
 /* MENU MOBILE */
 .menu-overlay{position:fixed;inset:0;background:rgba(17,17,17,.5);backdrop-filter:blur(6px);z-index:var(--z-overlay);opacity:0;visibility:hidden;transition:opacity var(--dur-normal);pointer-events:none}
@@ -3966,24 +5518,11 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 .concept-cell{min-height:48px;display:grid;place-items:center;padding:10px;border-radius:10px;background:rgba(255,255,255,.08);color:#f4f4f4;font-family:var(--font-mono);font-size:.7rem;font-weight:700;text-transform:uppercase}
 .concept-cell--lime{background:var(--lime);color:#111}
 .concept-cell--lavender{background:var(--lavender);color:#111}
-.support-loop-track{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--space-2);margin-top:var(--space-5);align-items:start}
-.support-loop-step{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);text-align:left;position:relative;padding:var(--space-3) var(--space-3) var(--space-3) 0}
-.support-loop-step span{font-family:var(--font-mono);font-size:.75rem;color:var(--lime);font-weight:700;letter-spacing:.06em}
-.support-loop-step strong{font-size:.8125rem;color:rgba(255,255,255,.9);text-transform:uppercase;line-height:1.3;letter-spacing:.04em;font-weight:700}
-.support-loop-step:not(:last-child)::after{content:"";position:absolute;right:0;top:1.35rem;width:calc(100% - 2.5rem);height:1px;background:linear-gradient(90deg,rgba(218,241,103,.45),rgba(255,255,255,.12));pointer-events:none}
-.support-loop-step:not(:last-child)::before{content:"→";position:absolute;right:-2px;top:.85rem;color:rgba(218,241,103,.55);font-size:.75rem;z-index:1}
-@media(max-width:900px){
-  .support-loop-track{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
-  .support-loop-step:nth-child(3)::after,
-  .support-loop-step:nth-child(3)::before,
-  .support-loop-step:nth-child(6)::after,
-  .support-loop-step:nth-child(6)::before{content:none}
-}
-@media(max-width:560px){
-  .support-loop-track{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .support-loop-step::after,
-  .support-loop-step::before{content:none!important}
-}
+.support-loop-track{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:var(--space-5)}
+.support-loop-step{display:flex;align-items:center;gap:6px}
+.support-loop-step span{font-family:var(--font-mono);font-size:.65rem;color:var(--lime);font-weight:700;letter-spacing:.06em}
+.support-loop-step strong{font-size:.75rem;color:rgba(255,255,255,.9);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.support-loop-step:not(:last-child)::after{content:"→";color:rgba(218,241,103,.55);font-size:.75rem;margin-left:6px;font-family:var(--font-mono)}
 .credential-home-list{display:flex;flex-direction:column;gap:var(--space-3);margin-top:var(--space-4);flex:1}
 .credential-home-row{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);border-radius:var(--radius-control);background:var(--surface-secondary)}
 .credential-home-tag{font-family:var(--font-mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);flex-shrink:0}
@@ -3999,7 +5538,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   margin-bottom:4px;
 }
 .credential-home-status--active{background:var(--lime-soft);color:var(--ink)}
-.credential-home-status--history{background:rgba(234,179,8,.15);color:var(--warning)}
+.credential-home-status--history{background:var(--surface-soft);color:var(--muted)}
 .credential-home-badge{
   width:44px;
   height:44px;
@@ -5260,7 +6799,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
 /* Toolbox page — editorial open layout (no outer <style> tags) */
 
 #view-toolbox {
-  --tb-playbook-bg: #FCFCFA;
+  --tb-playbook-bg: var(--surface);
   --tb-playbook-text: #171717;
   --tb-playbook-muted: #666964;
   --tb-playbook-meta: #7a7a74;
@@ -6588,7 +8127,7 @@ html[data-theme="dark"] .toolbox-tco .btn-text {
   --ln-now: var(--lime);
   --ln-deepening: var(--lavender);
   --ln-later: var(--muted);
-  --ln-surface: #FCFCFA;
+  --ln-surface: var(--surface);
   --ln-surface-text: #171717;
   --ln-surface-muted: #666964;
   --ln-surface-border: rgba(23, 23, 23, 0.1);
@@ -7289,66 +8828,264 @@ html[data-theme="dark"] .learning-platform-layers li {
   }
 }
 
-/* PRINT */
-@page{size:A4;margin:12mm 14mm}
-@media print{
-  html,body{height:auto!important;overflow:visible!important;background:#fff!important;color:#111!important}
-  body{overflow:visible!important}
-  .app-frame,.app-shell,.app,.workspace,.workspace-scroll,.main-content,.content-area,.page-inner{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;height:auto!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#fff!important;overflow:visible!important}
-  .nav-sidebar,.mobile-header,.workspace-topbar,.menu-overlay,.site-menu,.no-print,.read-progress,.skip-link{display:none!important}
-  .view{display:none!important}
-  #view-recruiter.view.active,#print-target{display:block!important}
-  .recruiter-page,.recruiter-shell{max-width:none;gap:10px}
-  .recruiter-toolbar,.recruiter-footer-cta .recruiter-footer-actions,.recruiter-project .project-link{display:none!important}
-  .recruiter-print-header{
-    display:flex!important;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:16px;
-    padding-bottom:10px;
-    margin-bottom:10px;
-    border-bottom:2px solid #111;
+/* PRINT — 2-PAGE SERIOUS EXECUTIVE RESUME */
+@page {
+  size: A4;
+  margin: 10mm 12mm;
+}
+
+@media print {
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 9.5pt !important;
   }
-  .recruiter-print-header h1{font-size:22pt;margin:0 0 4px;color:#111}
-  .recruiter-print-header p{margin:0;color:#333;font-size:10pt}
-  .recruiter-identity{display:none!important}
-  .recruiter-card,
-  .recruiter-project,
-  .recruiter-footer-cta{
-    background:#fff!important;
-    color:#111!important;
-    border:1px solid #d6d6d6!important;
-    box-shadow:none!important;
-    break-inside:avoid;
-    page-break-inside:avoid;
+
+  .app-frame, .app-shell, .app, .workspace, .workspace-scroll, .main-content, .content-area, .page-inner {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    overflow: visible !important;
   }
-  .recruiter-project--skillverse{background:#f4f2f8!important;color:#111!important}
-  .recruiter-project--skillverse .recruiter-card-title,
-  .recruiter-project--skillverse .recruiter-project-meta,
-  .recruiter-project--skillverse .recruiter-project-flow,
-  .recruiter-project--skillverse h3,
-  .recruiter-project--skillverse .recruiter-project-metric{color:#111!important}
-  .recruiter-card-title,.recruiter-snapshot-list dt,.recruiter-timeline-date,.recruiter-cap-col h3{color:#555!important}
-  .recruiter-summary,.recruiter-timeline-org,.recruiter-cap-col li,.recruiter-credential strong,.recruiter-secondary strong{color:#111!important}
-  .recruiter-subline,.recruiter-aside-meta,.recruiter-timeline-role,.recruiter-project-meta,.recruiter-project-flow,.recruiter-skill-level p,.recruiter-credential span,.recruiter-secondary p,.recruiter-footer-cta p{color:#444!important}
-  .recruiter-type{background:#eee!important;color:#333!important;border:1px solid #ccc}
-  .recruiter-type--full{background:#e8f6a6!important;color:#111!important}
-  .recruiter-cred-status{background:#e8f6a6!important;color:#111!important}
-  .recruiter-cred-status--history{background:#fff3cd!important;color:#8a5a00!important}
-  .recruiter-footer-cta{background:#f7f5fb!important;color:#111!important}
-  .recruiter-footer-cta h2{color:#111!important}
-  .status-available{color:#333!important}
-  .status-dot{background:#c8e84a!important;box-shadow:none!important}
-  a{color:#111!important;text-decoration:none!important}
-  .recruiter-grid-2,.recruiter-projects,.recruiter-cap-grid{grid-template-columns:1fr 1fr!important}
-  .recruiter-timeline-item{grid-template-columns:90px 1fr auto!important;padding:8px 0}
-  .recruiter-skill-level{grid-template-columns:120px 1fr!important;padding-top:8px}
-  .recruiter-card,.recruiter-project,.recruiter-footer-cta{padding:12px!important}
-  .recruiter-summary,.recruiter-cap-col li,.recruiter-skill-level p{font-size:9.5pt;line-height:1.4}
-  .recruiter-identity-main h1,.recruiter-print-header h1{color:#111!important}
-  .recruiter-project-metric{font-size:16pt}
-  .recruiter-link-list a{border-bottom:0;color:#111!important}
-  .recruiter-timeline-item{break-inside:avoid;page-break-inside:avoid}
+
+  /* Hide web controls & chrome */
+  .nav-sidebar, .mobile-header, .workspace-topbar, .menu-overlay, .site-menu, .no-print, .read-progress, .skip-link, .recruiter-toolbar, .site-footer {
+    display: none !important;
+  }
+
+  /* Force Recruiter view display */
+  .view {
+    display: none !important;
+  }
+  #view-recruiter.view.active, body.is-printing #view-recruiter, body.is-printing #print-target {
+    display: block !important;
+  }
+
+  .recruiter-page, .recruiter-shell {
+    max-width: none !important;
+    gap: 8px !important;
+  }
+
+  /* Print Header */
+  .recruiter-print-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #111111;
+  }
+  .recruiter-print-header h1 {
+    font-size: 20pt !important;
+    font-weight: 800 !important;
+    margin: 0 0 2px !important;
+    color: #111111 !important;
+  }
+  .print-role {
+    margin: 0 !important;
+    font-size: 9.5pt !important;
+    font-weight: 700 !important;
+    color: #222222 !important;
+  }
+  .print-subline {
+    margin: 2px 0 0 !important;
+    font-size: 8.5pt !important;
+    color: #444444 !important;
+  }
+  .print-contact-block {
+    text-align: right !important;
+    font-size: 8.5pt !important;
+    line-height: 1.3 !important;
+    color: #222222 !important;
+  }
+  .print-contact-block p {
+    margin: 0 !important;
+  }
+
+  /* Structural Cards in Print */
+  .recruiter-card, .recruiter-project, .recruiter-footer-cta, .snapshot-tile {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    padding: 8px 10px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .recruiter-snapshot-strip {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+  .snapshot-val {
+    font-size: 9.5pt !important;
+  }
+  .snapshot-lbl {
+    font-size: 5.5pt !important;
+  }
+
+  .recruiter-card-title {
+    color: #444444 !important;
+    font-size: 7.5pt !important;
+    margin-bottom: 6px !important;
+  }
+  .recruiter-summary {
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 6px !important;
+    color: #111111 !important;
+  }
+  .recruiter-bring-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    padding-top: 6px !important;
+  }
+  .bring-col h3 {
+    font-size: 8.5pt !important;
+    color: #111111 !important;
+  }
+  .bring-col p {
+    font-size: 8pt !important;
+  }
+
+  .recruiter-timeline-item {
+    grid-template-columns: 100px minmax(0, 1fr) auto !important;
+    padding: 6px 0 !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .recruiter-timeline-date {
+    font-size: 8pt !important;
+    color: #444444 !important;
+  }
+  .recruiter-timeline-org {
+    font-size: 9.5pt !important;
+    color: #111111 !important;
+  }
+  .recruiter-timeline-role {
+    font-size: 8.5pt !important;
+    color: #333333 !important;
+  }
+  .recruiter-timeline-desc {
+    font-size: 8pt !important;
+    color: #222222 !important;
+  }
+  .recruiter-type {
+    background: #f0f0f0 !important;
+    color: #222222 !important;
+    border: 1px solid #ccc !important;
+    font-size: 6pt !important;
+    padding: 2px 6px !important;
+  }
+  .recruiter-type--full {
+    background: #e8f6a6 !important;
+    color: #111111 !important;
+  }
+
+  .recruiter-projects {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .recruiter-project {
+    break-inside: avoid !important;
+  }
+  .recruiter-project h3 {
+    font-size: 10pt !important;
+    color: #111111 !important;
+  }
+  .recruiter-project-metric {
+    font-size: 13pt !important;
+    color: #111111 !important;
+  }
+  .recruiter-project-flow {
+    font-size: 8pt !important;
+    color: #333333 !important;
+  }
+
+  .recruiter-cap-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .recruiter-cap-col h3 {
+    font-size: 8.5pt !important;
+  }
+  .recruiter-cap-col li {
+    font-size: 8pt !important;
+    line-height: 1.3 !important;
+  }
+
+  .recruiter-skill-level {
+    grid-template-columns: 120px minmax(0, 1fr) !important;
+    padding-top: 4px !important;
+    break-inside: avoid !important;
+  }
+  .chip {
+    background: #f5f5f5 !important;
+    border: 1px solid #ddd !important;
+    color: #111111 !important;
+    font-size: 7.5pt !important;
+    padding: 2px 6px !important;
+  }
+  .chip--accent {
+    background: #e8f6a6 !important;
+    border-color: transparent !important;
+  }
+
+  .recruiter-grid-2 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .recruiter-credential {
+    padding: 4px 0 !important;
+    break-inside: avoid !important;
+  }
+  .recruiter-credential strong {
+    font-size: 8.5pt !important;
+  }
+  .recruiter-credential span {
+    font-size: 7.5pt !important;
+  }
+  .recruiter-cred-status {
+    font-size: 6pt !important;
+    padding: 2px 6px !important;
+  }
+  .recruiter-cred-status--valid {
+    background: #e8f6a6 !important;
+    color: #111111 !important;
+  }
+
+  .recruiter-footer-cta {
+    background: #f9f9f9 !important;
+    border: 1px solid #ccc !important;
+    padding: 8px 12px !important;
+    break-inside: avoid !important;
+  }
+  .recruiter-footer-cta h2 {
+    font-size: 9.5pt !important;
+    margin-bottom: 2px !important;
+  }
+  .recruiter-footer-cta p {
+    font-size: 8.5pt !important;
+  }
+
+  a {
+    color: #111111 !important;
+    text-decoration: none !important;
+  }
 }
 
 </style>
@@ -9242,26 +10979,436 @@ html[data-theme="dark"] .learning-platform-layers li {
 
 <!-- VIEW: RESEARCH -->
 <section id="view-research" class="view" data-route="research" aria-labelledby="research-heading">
-<div class="page-inner">
+<div class="page-inner research-page">
   <header class="page-head">
     <p class="mono-label">Proof / Research</p>
     <h1 id="research-heading" class="display-page">Research</h1>
-    <p class="lead">Co-authored publication on construction sector economics during COVID-19.</p>
+    <p class="lead">A team study of construction-sector disruption during COVID-19 — from economic impact to project recovery measures.</p>
   </header>
-  <article class="feature-panel">
-    <span class="tag">RESEARCH</span>
-    <h2 style="margin:12px 0">Economic Impact on Construction Sector Due to COVID-19</h2>
-    <p class="text-secondary text-sm"><strong>Co-authored</strong> — Bhramar Raut</p>
-    <dl class="text-sm" style="margin:16px 0">
-      <dt><strong>Journal:</strong></dt><dd>Journal of Seybold Report</dd>
-      <dt style="margin-top:8px"><strong>Volume / Issue:</strong></dt><dd>15 (8)</dd>
-      <dt style="margin-top:8px"><strong>Year:</strong></dt><dd>2020</dd>
-      <dt style="margin-top:8px"><strong>ISSN:</strong></dt><dd>1533-9211</dd>
-      <dt style="margin-top:8px"><strong>Affiliation:</strong></dt><dd>Department of Civil Engineering, Shri Ramdeobaba College of Engineering and Management, Nagpur</dd>
-    </dl>
-    <p class="text-sm text-secondary">Topics: economic impact on construction, GVA, employment, labour availability, project delays, supply chain disruption, construction costs and recovery measures.</p>
-    <p class="text-sm text-muted" style="margin-top:12px">No local copy of the paper is available in this repository.</p>
+
+  <article class="research-hero" aria-labelledby="research-paper-title">
+    <div class="research-hero-main">
+      <p class="mono-label">Academic research · 2020</p>
+      <h2 id="research-paper-title" class="research-title">
+        <span class="research-title-break">Economic Impact on</span>
+        <span class="research-title-break">Construction Sector</span>
+        <span class="research-title-break">Due to COVID-19</span>
+      </h2>
+      <p class="research-hero-role"><strong>Co-author</strong> · Civil Engineering research team</p>
+      <p class="research-hero-affil">Department of Civil Engineering, Shri Ramdeobaba College of Engineering and Management, Nagpur</p>
+      <p class="research-summary">A study of how lockdown conditions affected construction economics, employment, labour availability, project schedules, materials and recovery planning in India — presented here as an archival academic evidence case study.</p>
+      <div class="research-hero-actions">
+        <a class="btn btn-primary" id="research-open-pdf" href="./assets/research/economic-impact-construction-covid19.pdf" target="_blank" rel="noopener noreferrer">Read original paper</a>
+        <button type="button" class="btn btn-ghost" id="research-scroll-focus">Research summary ↓</button>
+        <button type="button" class="btn btn-ghost" id="research-copy-citation">Copy citation</button>
+      </div>
+    </div>
+    <aside class="research-snapshot" aria-label="Publication snapshot">
+      <p class="mono-label">Publication snapshot</p>
+      <dl>
+        <div>
+          <dt>Year</dt>
+          <dd>2020</dd>
+        </div>
+        <div>
+          <dt>Volume / Issue</dt>
+          <dd>15 / 8</dd>
+        </div>
+        <div>
+          <dt>Pages</dt>
+          <dd>2522–2528</dd>
+        </div>
+        <div>
+          <dt>Length</dt>
+          <dd>7 pages</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>Co-author</dd>
+        </div>
+        <div>
+          <dt>Institution</dt>
+          <dd>RCOEM, Nagpur</dd>
+        </div>
+      </dl>
+    </aside>
   </article>
+
+  <div class="research-glance" aria-label="Research at a glance">
+    <div class="research-glance-item"><strong>2020</strong><span>Publication year</span></div>
+    <div class="research-glance-item"><strong>7</strong><span>Pages</span></div>
+    <div class="research-glance-item"><strong>6</strong><span>Authors</span></div>
+    <div class="research-glance-item"><strong>Civil</strong><span>Engineering</span></div>
+    <div class="research-glance-item"><strong>India</strong><span>Context</span></div>
+  </div>
+
+  <section class="research-section" id="research-focus" aria-labelledby="research-focus-heading">
+    <div class="research-section-head">
+      <p class="mono-label">01 / Research focus</p>
+      <h2 id="research-focus-heading">The question the paper investigates</h2>
+    </div>
+    <div class="research-focus">
+      <p>How did COVID-19 lockdown conditions affect the Indian construction sector across economic output, investment, employment, labour, project delivery, materials and recovery?</p>
+      <div class="research-focus-tags" aria-label="Focus dimensions">
+        <span>GVA</span>
+        <span>Investment</span>
+        <span>Employment</span>
+        <span>Labour</span>
+        <span>Project delivery</span>
+        <span>Supply chain</span>
+        <span>Worker conditions</span>
+        <span>Recovery</span>
+      </div>
+    </div>
+    <p class="research-context-note">Unlike many digital sectors, construction could not simply shift to work-from-home. The paper examines lockdown disruption to labour movement, material availability, projects under execution, equipment movement, supply chains, worker safety and investment.</p>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-approach-heading">
+    <div class="research-section-head">
+      <p class="mono-label">02 / Approach</p>
+      <h2 id="research-approach-heading">How the paper is structured</h2>
+      <p>Framed as approach rather than a formal methodology section — reflecting secondary-source synthesis and scenario comparison as presented in the publication.</p>
+    </div>
+    <ol class="research-flow" aria-label="Research flow">
+      <li><strong>01</strong><span>COVID-19 lockdown</span></li>
+      <li><strong>02</strong><span>Sector disruption</span></li>
+      <li><strong>03</strong><span>Economic / employment / project effects</span></li>
+      <li><strong>04</strong><span>Scenario comparison</span></li>
+      <li><strong>05</strong><span>Recovery requirements</span></li>
+      <li><strong>06</strong><span>Short- and long-term measures</span></li>
+    </ol>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-scope-heading">
+    <div class="research-section-head">
+      <p class="mono-label">03 / What the paper examined</p>
+      <h2 id="research-scope-heading">Research scope map</h2>
+    </div>
+    <div class="research-scope">
+      <div class="research-scope-center">
+        <p class="mono-label">Center</p>
+        <strong>COVID-19 / Lockdown</strong>
+        <p>Construction-sector disruption in India as an interdependent economic and project system.</p>
+      </div>
+      <div class="research-scope-grid">
+        <div class="research-scope-item"><p class="mono-label">Economic output</p><p>GVA and sector performance context</p></div>
+        <div class="research-scope-item"><p class="mono-label">Investment</p><p>Construction projects and capital activity</p></div>
+        <div class="research-scope-item"><p class="mono-label">Employment</p><p>Construction workforce effects</p></div>
+        <div class="research-scope-item"><p class="mono-label">Labour</p><p>Availability, wages and migration pressure</p></div>
+        <div class="research-scope-item"><p class="mono-label">Project delivery</p><p>Delay and implementation-cost pressure</p></div>
+        <div class="research-scope-item"><p class="mono-label">Supply chain</p><p>Materials, equipment and imports</p></div>
+        <div class="research-scope-item"><p class="mono-label">Worker conditions</p><p>Safety, housing and hygiene concerns</p></div>
+        <div class="research-scope-item"><p class="mono-label">Recovery</p><p>Government and contractor responses</p></div>
+      </div>
+    </div>
+    <p class="research-evidence-base"><strong>Evidence base.</strong> The paper draws on cited secondary material and scenario analyses — including government/economic sources, sector reports and published reporting referenced inside the bibliography (for example KPMG analysis, MOSPI / Government of India material, Labour Bureau-related data, Economic Times and The Hindu, among other cited sources). Figures below are <em>reported in the paper</em>, not independent 2026 recalculations.</p>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-findings-heading">
+    <div class="research-section-head">
+      <p class="mono-label">04 / Key findings</p>
+      <h2 id="research-findings-heading">Findings reported in the paper</h2>
+      <p>2020 paper estimates / cited scenario ranges — not presented as current realized outcomes.</p>
+    </div>
+    <div class="research-findings">
+      <article class="research-finding">
+        <p class="mono-label">Economic output</p>
+        <p class="research-finding-value">15–34%</p>
+        <h3>GVA</h3>
+        <p>GVA reduction range reported across the cited scenarios relative to the paper’s baseline/FY21 context.</p>
+        <p class="research-finding-source">2020 paper · reported / cited scenario</p>
+      </article>
+      <article class="research-finding">
+        <p class="mono-label">Project investment</p>
+        <p class="research-finding-value">13–30%</p>
+        <h3>Investment</h3>
+        <p>Potential reduction range relative to baseline in the scenario analysis referenced by the paper.</p>
+        <p class="research-finding-source">2020 paper · reported / cited scenario</p>
+      </article>
+      <article class="research-finding">
+        <p class="mono-label">Workforce</p>
+        <p class="research-finding-value">11–25%</p>
+        <h3>Employment</h3>
+        <p>Reported scenario range for construction employment impact in the source material.</p>
+        <p class="research-finding-source">2020 paper · reported / cited scenario</p>
+      </article>
+      <article class="research-finding">
+        <p class="mono-label">Project delivery</p>
+        <p class="research-finding-value">~2–3 mo</p>
+        <h3>Potential delay</h3>
+        <p>Project delay discussed in the source material; implementation-cost pressure is also noted in specified contexts (around 2–5%).</p>
+        <p class="research-finding-source">2020 paper · discussed estimate</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-system-heading">
+    <div class="research-section-head">
+      <p class="mono-label">05 / Systems view</p>
+      <h2 id="research-system-heading">Construction as an interdependent system</h2>
+      <p>The paper’s sector-dependency discussion treats construction as connected to upstream inputs and downstream economic activity — not only site shutdowns.</p>
+    </div>
+    <div class="research-system-map">
+      <div class="research-system-map-grid">
+        <div class="research-system-inputs" aria-label="Pressures into construction">
+          <div class="research-system-chip">Labour availability</div>
+          <div class="research-system-chip">Materials &amp; imports</div>
+          <div class="research-system-chip">Equipment movement</div>
+          <div class="research-system-chip">Investment / projects</div>
+          <div class="research-system-chip">Worker safety &amp; housing</div>
+        </div>
+        <div class="research-system-core">
+          <strong>Construction sector</strong>
+          <span>Lockdown disruption</span>
+        </div>
+        <div class="research-system-outputs" aria-label="Effects and responses">
+          <div class="research-system-chip">GVA / economic impact</div>
+          <div class="research-system-chip">Employment effects</div>
+          <div class="research-system-chip">Project delay &amp; cost</div>
+          <div class="research-system-chip">Supply-chain knock-ons</div>
+          <div class="research-system-chip">Recovery measures</div>
+        </div>
+      </div>
+      <p class="research-system-note">Editorial systems map synthesising themes discussed in the paper (including sectors feeding into construction and sectors dependent on construction). Not a redrawn chart from a specific figure.</p>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-figures-heading">
+    <div class="research-section-head">
+      <p class="mono-label">06 / Inside the paper</p>
+      <h2 id="research-figures-heading">Evidence chapters in the publication</h2>
+      <p>Open the original PDF for the authentic figures, tables and captions. These cards summarise what those sections cover — without approximating chart values.</p>
+    </div>
+    <div class="research-figures">
+      <button type="button" class="research-figure" data-research-figure="gva" data-paper-page="4">
+        <p class="mono-label">Fig. / Paper p. 4</p>
+        <h3>GVA comparison</h3>
+        <p>Sector GVA context used to frame construction’s economic exposure during lockdown.</p>
+        <span class="research-figure-cta">Open paper evidence →</span>
+      </button>
+      <button type="button" class="research-figure" data-research-figure="dependencies" data-paper-page="4">
+        <p class="mono-label">Fig. / Paper p. 4</p>
+        <h3>Sector dependencies</h3>
+        <p>Sectors feeding into construction and sectors dependent on construction — ripple-effect framing.</p>
+        <span class="research-figure-cta">Open paper evidence →</span>
+      </button>
+      <button type="button" class="research-figure" data-research-figure="labour" data-paper-page="5">
+        <p class="mono-label">Fig. / Paper p. 5</p>
+        <h3>Labour &amp; materials pressure</h3>
+        <p>Human and supply-side pressures: migration/availability, wage pressure and material-price effects.</p>
+        <span class="research-figure-cta">Open paper evidence →</span>
+      </button>
+      <button type="button" class="research-figure" data-research-figure="scenarios" data-paper-page="6">
+        <p class="mono-label">Fig. / Table · Paper p. 6</p>
+        <h3>Scenario analysis</h3>
+        <p>Multiple construction-sector scenarios comparing potential effects on employment, investment and GVA.</p>
+        <span class="research-figure-cta">Open paper evidence →</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-scenarios-heading">
+    <div class="research-section-head">
+      <p class="mono-label">07 / Scenario thinking</p>
+      <h2 id="research-scenarios-heading">Comparing lockdown / growth assumptions</h2>
+      <p>The paper includes multiple scenarios based on different growth and lockdown assumptions. Aggregate ranges below are those reported in the publication; individual scenario cell values are left in the PDF to avoid approximation.</p>
+    </div>
+    <div class="research-scenarios">
+      <div class="research-scenario-rail" aria-label="Scenario structure">
+        <span class="is-base">Baseline</span>
+        <span>Scenario 1</span>
+        <span>Scenario 2</span>
+        <span>Scenario 3</span>
+        <span>Scenario 4</span>
+      </div>
+      <div class="research-scenario-metrics">
+        <div class="research-scenario-metric"><strong>11–25%</strong><span>Employment impact range</span></div>
+        <div class="research-scenario-metric"><strong>13–30%</strong><span>Investment impact range</span></div>
+        <div class="research-scenario-metric"><strong>15–34%</strong><span>GVA impact range</span></div>
+      </div>
+      <p class="research-scenario-note">Source context: scenario analysis presented in the 2020 paper, including cited sector analysis (KPMG in India analysis as referenced by the paper). Historical estimate — not a 2026 update.</p>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-recs-heading">
+    <div class="research-section-head">
+      <p class="mono-label">08 / From impact to recovery</p>
+      <h2 id="research-recs-heading">Recommendations summarised from the paper</h2>
+      <p>Themes proposed in the publication for government and developer/contractor action — not claimed as implemented professional work by Bhramar.</p>
+    </div>
+    <div class="research-recs">
+      <div class="research-rec-col">
+        <p class="mono-label">Short term</p>
+        <div class="research-rec-block">
+          <h3>Government</h3>
+          <ul>
+            <li>Prioritise pending / essential projects</li>
+            <li>Fiscal and material-related relief measures</li>
+            <li>Retention-oriented workforce support</li>
+          </ul>
+        </div>
+        <div class="research-rec-block">
+          <h3>Developer / contractor</h3>
+          <ul>
+            <li>Strengthen worker facilities and site readiness</li>
+            <li>Staff preparation and training for resumed work</li>
+            <li>Greater use of digital processes in tenders and contracts</li>
+          </ul>
+        </div>
+      </div>
+      <div class="research-rec-col">
+        <p class="mono-label">Long term</p>
+        <div class="research-rec-block">
+          <h3>Government</h3>
+          <ul>
+            <li>Standard operating protocols for disruption</li>
+            <li>Worker housing and healthcare support</li>
+            <li>Broader construction-ecosystem / infrastructure support</li>
+          </ul>
+        </div>
+        <div class="research-rec-block">
+          <h3>Developer / contractor</h3>
+          <ul>
+            <li>Risk management and early-warning habits</li>
+            <li>Business continuity planning</li>
+            <li>Technology adoption and monitoring for resilience</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="research-highlight">
+      <h3>Digitalisation note</h3>
+      <p>The paper recommended greater use of digital processes and technology within construction-sector contracts and future resilience planning — a recommendation theme, not a claim that the team designed a digital-transformation architecture.</p>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-demonstrates-heading">
+    <div class="research-section-head">
+      <p class="mono-label">09 / What this artifact demonstrates</p>
+      <h2 id="research-demonstrates-heading">Transferable academic working habits</h2>
+      <p>Not claimed as professional economics expertise — evidence of structured investigation and communication.</p>
+    </div>
+    <div class="research-demonstrates">
+      <article><h3>Problem framing</h3><p>Looking at a broad disruption through multiple dimensions.</p></article>
+      <article><h3>Evidence synthesis</h3><p>Bringing together published economic and sector information.</p></article>
+      <article><h3>Data interpretation</h3><p>Working with charts, scenario comparisons and reported indicators.</p></article>
+      <article><h3>Systems thinking</h3><p>Considering labour, materials, investment and downstream effects together.</p></article>
+      <article><h3>Recommendation thinking</h3><p>Moving from observed impact toward short- and long-term responses.</p></article>
+      <article><h3>Collaborative research</h3><p>Working as part of a student research team under faculty guidance.</p></article>
+      <article><h3>Academic writing</h3><p>Contributing to a structured publication record.</p></article>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-role-heading">
+    <div class="research-section-head">
+      <p class="mono-label">10 / Role &amp; team</p>
+      <h2 id="research-role-heading">Verified contribution scope</h2>
+    </div>
+    <div class="research-role-grid">
+      <div class="research-role-card">
+        <p class="mono-label">Role</p>
+        <p><strong>Student co-author / research-team member.</strong></p>
+        <p>The publication establishes co-authorship. It does not itemise individual ownership of datasets, figures, analysis or recommendation sections — so this page does not invent that breakdown.</p>
+        <p>Academic context: Civil Engineering · RCOEM Nagpur · 2020.</p>
+      </div>
+      <div class="research-team">
+        <p class="mono-label">Research team · publication order</p>
+        <ol>
+          <li><strong>Dr Monica R Seth</strong><span>Faculty / author</span></li>
+          <li><strong>Kunal Gupta</strong><span>Student co-author</span></li>
+          <li><strong>Akshat Waghmare</strong><span>Student co-author</span></li>
+          <li><strong>Arudati Manhas</strong><span>Student co-author</span></li>
+          <li><strong>Sumit Mishra</strong><span>Student co-author</span></li>
+          <li><strong>Bhramar Raut</strong><span>Student co-author</span><span class="research-you">You</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-limitations-heading">
+    <div class="research-section-head">
+      <p class="mono-label">11 / Context &amp; limitations</p>
+      <h2 id="research-limitations-heading">How to read this artifact</h2>
+    </div>
+    <div class="research-limitations">
+      <ul>
+        <li>Written during the rapidly changing 2020 pandemic context.</li>
+        <li>Several estimates rely on cited external sector analyses and forecasts available at the time.</li>
+        <li>Reported figures reflect scenario thinking rather than a claim of final realised outcomes.</li>
+        <li>Presented here as a historical academic artifact — not a current assessment of the construction sector.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-paper-heading">
+    <div class="research-section-head">
+      <p class="mono-label">12 / Original publication</p>
+      <h2 id="research-paper-heading">Primary evidence</h2>
+    </div>
+    <div class="research-paper-block">
+      <div class="research-paper-preview" aria-hidden="true">
+        <p class="mono-label">Journal of Seybold Report · Vol. 15 · Issue 8</p>
+        <h3>Economic Impact on Construction Sector Due to COVID-19</h3>
+        <p>Dr Monica R Seth · Kunal Gupta · Akshat Waghmare · Arudati Manhas · Sumit Mishra · Bhramar Raut</p>
+        <div class="research-paper-rule"></div>
+        <p>Department of Civil Engineering<br>Shri Ramdeobaba College of Engineering and Management, Nagpur</p>
+        <div class="research-paper-rule"></div>
+        <p>Pages 2522–2528 · ISSN 1533-9211 · 2020</p>
+      </div>
+      <div class="research-paper-copy">
+        <h3>Read the original 7-page paper</h3>
+        <p>The publication itself is the primary proof. Use the local archival PDF for title page, author list, figures, scenario material and recommendations.</p>
+        <div class="research-cta">
+          <a class="btn btn-primary" href="./assets/research/economic-impact-construction-covid19.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read original research paper: Economic Impact on Construction Sector Due to COVID-19">Open PDF</a>
+          <button type="button" class="btn btn-ghost" id="research-copy-citation-secondary">Copy citation</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-record-heading">
+    <div class="research-section-head">
+      <p class="mono-label">13 / Publication record</p>
+      <h2 id="research-record-heading">Bibliographic details</h2>
+    </div>
+    <div class="research-record">
+      <dl>
+        <dt>Title</dt><dd>Economic Impact on Construction Sector Due to COVID-19</dd>
+        <dt>Publication</dt><dd>Journal of Seybold Report</dd>
+        <dt>Volume</dt><dd>15</dd>
+        <dt>Issue</dt><dd>8</dd>
+        <dt>Year</dt><dd>2020</dd>
+        <dt>Pages</dt><dd>2522–2528</dd>
+        <dt>ISSN</dt><dd>1533-9211</dd>
+        <dt>Role</dt><dd>Co-author</dd>
+        <dt>Affiliation</dt><dd>Department of Civil Engineering, Shri Ramdeobaba College of Engineering and Management, Nagpur</dd>
+      </dl>
+      <div class="research-citation">
+        <p class="mono-label">Cite this work</p>
+        <cite id="research-citation-text">Seth, M. R., Gupta, K., Waghmare, A., Manhas, A., Mishra, S., &amp; Raut, B. (2020). Economic Impact on Construction Sector Due to COVID-19. Journal of Seybold Report, 15(8), 2522–2528.</cite>
+        <button type="button" class="btn btn-ghost btn-sm" id="research-copy-citation-record">Copy citation</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="research-section" aria-labelledby="research-why-heading">
+    <div class="research-why">
+      <h2 id="research-why-heading">Different domain. Transferable working habits.</h2>
+      <p>The domain changed. The underlying habits remain useful: structure an ambiguous problem, identify relevant evidence, compare scenarios, document findings, coordinate as a team, and turn analysis into recommendations. That is why this Civil Engineering research artifact still belongs in a Product Support / Implementation portfolio — without claiming technical equivalence.</p>
+      <div class="research-cta">
+        <a class="btn btn-primary" href="./assets/research/economic-impact-construction-covid19.pdf" target="_blank" rel="noopener noreferrer">Read paper</a>
+        <a class="btn btn-ghost" href="#/projects" data-nav-link="projects">View Projects</a>
+        <a class="btn btn-ghost" href="#/knowledge" data-nav-link="knowledge">Knowledge</a>
+        <a class="btn btn-ghost" href="#/experience" data-nav-link="experience">Experience</a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="research-related" aria-label="Related portfolio evidence">
+    <a href="#/projects" data-nav-link="projects">Related early work: NDB-II Highway Project (Projects)</a>
+    <a href="#/knowledge" data-nav-link="knowledge">Academic research → continuous Knowledge notes</a>
+    <a href="#/capabilities" data-nav-link="capabilities">Capabilities: documentation &amp; evidence habits</a>
+  </nav>
 </div>
 </section>
 
@@ -9515,92 +11662,132 @@ html[data-theme="dark"] .learning-platform-layers li {
 <div class="page-inner recruiter-page">
   <div class="recruiter-shell" id="print-target">
     <div class="recruiter-toolbar no-print">
-      <button type="button" class="btn btn-primary btn-sm" id="recruiter-print"><i class="bi bi-printer" aria-hidden="true"></i> Print / Save PDF</button>
-      <button type="button" class="btn btn-ghost btn-sm" id="recruiter-copy"><i class="bi bi-clipboard" aria-hidden="true"></i> Copy summary</button>
+      <button type="button" class="btn btn-primary btn-sm" id="recruiter-print" aria-label="Print or save résumé as PDF"><i class="bi bi-printer-fill" aria-hidden="true"></i> Print / Save PDF</button>
+      <button type="button" class="btn btn-secondary btn-sm" id="recruiter-copy" aria-label="Copy profile summary"><i class="bi bi-clipboard" aria-hidden="true"></i> Copy summary</button>
       <div class="recruiter-toolbar-secondary">
-        <a href="mailto:raut.bhramar@gmail.com" class="btn btn-ghost btn-sm"><i class="bi bi-envelope" aria-hidden="true"></i> Email</a>
-        <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn</a>
-        <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>
+        <a href="mailto:raut.bhramar@gmail.com?subject=Application%20%2F%20Opportunity%20%E2%80%94%20Bhramar%20Raut" class="btn-text"><i class="bi bi-envelope-fill" aria-hidden="true"></i> Email</a>
+        <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn-text"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn-text"><i class="bi bi-github" aria-hidden="true"></i> GitHub</a>
       </div>
     </div>
 
     <header class="recruiter-print-header">
       <div>
         <h1>Bhramar Raut</h1>
-        <p>Product Support · Application Support · Implementation</p>
-        <p>Former Wipro Project Engineer · PSM I</p>
+        <p class="print-role">PRODUCT SUPPORT · APPLICATION SUPPORT · IMPLEMENTATION</p>
+        <p class="print-subline">Former Wipro Project Engineer · PSM I · Immediate joiner</p>
       </div>
-      <div>
-        <p><strong>Immediate joiner</strong></p>
-        <p><a href="mailto:raut.bhramar@gmail.com">raut.bhramar@gmail.com</a></p>
-        <p><a href="tel:+918989412921">+91 89894 12921</a></p>
-        <p>Pandhurna, India · Open to relocation</p>
-        <p><a href="https://www.linkedin.com/in/bhramarraut">linkedin.com/in/bhramarraut</a></p>
+      <div class="print-contact-block">
+        <p><strong>Pandhurna, India · Open to relocation / Remote</strong></p>
+        <p>Email: raut.bhramar@gmail.com | Tel: +91 89894 12921</p>
+        <p>Portfolio: bhramarraut.github.io | LinkedIn: linkedin.com/in/bhramarraut</p>
       </div>
     </header>
 
     <header class="recruiter-identity no-print">
       <div class="recruiter-identity-main">
         <h1 id="recruiter-heading">Bhramar Raut</h1>
-        <p class="recruiter-role">Product Support / Application Support / Implementation</p>
-        <p class="recruiter-subline">Former Wipro Project Engineer · PSM I</p>
+        <p class="recruiter-role">PRODUCT SUPPORT · APPLICATION SUPPORT · IMPLEMENTATION</p>
+        <p class="recruiter-subline">Former Wipro Project Engineer · PSM I · Immediate joiner</p>
+        <div class="recruiter-contact-inline">
+          <a href="mailto:raut.bhramar@gmail.com"><i class="bi bi-envelope" aria-hidden="true"></i> raut.bhramar@gmail.com</a>
+          <a href="tel:+918989412921"><i class="bi bi-telephone" aria-hidden="true"></i> +91 89894 12921</a>
+          <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Pandhurna, India</span>
+        </div>
       </div>
       <aside class="recruiter-identity-aside">
-        <p class="status-available"><span class="status-dot" aria-hidden="true"></span> Immediate joiner</p>
-        <p class="recruiter-aside-meta">Pandhurna, India<br>Open to relocation · Remote India<br>raut.bhramar@gmail.com</p>
+        <div class="status-available"><span class="status-dot" aria-hidden="true"></span> IMMEDIATE JOINER</div>
+        <p class="recruiter-aside-meta">
+          <strong>India</strong><br>
+          Open to relocation · Remote India
+        </p>
       </aside>
     </header>
 
-    <div class="recruiter-grid-2">
-      <section class="recruiter-card" aria-labelledby="recruiter-profile-title">
-        <h2 class="recruiter-card-title" id="recruiter-profile-title">Profile</h2>
-        <p class="recruiter-summary" id="recruiter-summary-text">Former Wipro Project Engineer with 2+ years of enterprise IT exposure, formal Java Full Stack training, and recent project-based experience in AI-assisted product delivery, workflow decomposition, functional validation and technical documentation. PSM I certified, with hands-on exposure to OpenProject, Cursor/Codex and troubleshooting, while strengthening SQL, REST APIs, ITSM, Linux and networking for Product/Application Support and Implementation roles.</p>
-      </section>
-      <section class="recruiter-card" aria-labelledby="recruiter-snapshot-title">
-        <h2 class="recruiter-card-title" id="recruiter-snapshot-title">At a glance</h2>
-        <dl class="recruiter-snapshot-list">
-          <div><dt>Formal experience</dt><dd>Wipro · 2y 4m</dd></div>
-          <div><dt>Availability</dt><dd>Immediate</dd></div>
-          <div><dt>Location</dt><dd>India</dd></div>
-          <div><dt>Relocation</dt><dd>Open</dd></div>
-          <div><dt>Certification</dt><dd>PSM I</dd></div>
-          <div><dt>Focus</dt><dd>Support / Implementation</dd></div>
-        </dl>
-      </section>
-    </div>
+    <section class="recruiter-snapshot-strip" aria-label="Recruiter Key Metrics">
+      <div class="snapshot-tile">
+        <span class="snapshot-val">2y 4m</span>
+        <span class="snapshot-lbl">Formal Wipro Employment</span>
+      </div>
+      <div class="snapshot-tile">
+        <span class="snapshot-val">Immediate</span>
+        <span class="snapshot-lbl">Availability</span>
+      </div>
+      <div class="snapshot-tile">
+        <span class="snapshot-val">Support / Implementation</span>
+        <span class="snapshot-lbl">Target Direction</span>
+      </div>
+      <div class="snapshot-tile">
+        <span class="snapshot-val">PSM I</span>
+        <span class="snapshot-lbl">Current Credential</span>
+      </div>
+      <div class="snapshot-tile">
+        <span class="snapshot-val">Skillverse + Catalyx</span>
+        <span class="snapshot-lbl">Recent Evidence</span>
+      </div>
+    </section>
+
+    <section class="recruiter-card" aria-labelledby="recruiter-profile-title">
+      <h2 class="recruiter-card-title" id="recruiter-profile-title">Profile &amp; Value Proposition</h2>
+      <p class="recruiter-summary" id="recruiter-summary-text">Former Wipro Project Engineer with 2+ years of enterprise IT environment exposure and recent project-based work in AI-assisted product delivery, requirements/workflow decomposition, functional validation and documentation. PSM I certified with hands-on exposure to OpenProject, Windows/macOS troubleshooting and AI-assisted delivery workflows. Currently strengthening SQL, REST APIs, Postman, ITSM, Linux and networking for Product/Application Support and Implementation roles.</p>
+      <div class="recruiter-bring-grid">
+        <div class="bring-col">
+          <h3><i class="bi bi-check2-circle" aria-hidden="true"></i> Validation</h3>
+          <p>Issue reproduction, functional testing, expected-vs-actual documentation, fix verification, UAT-style testing.</p>
+        </div>
+        <div class="bring-col">
+          <h3><i class="bi bi-diagram-3" aria-hidden="true"></i> Workflow &amp; Product</h3>
+          <p>Requirements decomposition, workflow mapping, role/permission logic, process documentation, user journeys.</p>
+        </div>
+        <div class="bring-col">
+          <h3><i class="bi bi-lightning-charge" aria-hidden="true"></i> Delivery &amp; Operations</h3>
+          <p>Technology troubleshooting, work-item tracking (OpenProject), structured follow-up, AI-assisted execution.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="recruiter-card" aria-labelledby="recruiter-experience-title">
-      <h2 class="recruiter-card-title" id="recruiter-experience-title">Experience</h2>
+      <div class="recruiter-card-header">
+        <h2 class="recruiter-card-title" id="recruiter-experience-title">Experience</h2>
+        <a href="#/experience" class="recruiter-card-link no-print" data-nav-link="experience">View full experience →</a>
+      </div>
       <div class="recruiter-timeline">
         <article class="recruiter-timeline-item">
           <p class="recruiter-timeline-date">Apr–Jul 2026</p>
-          <div>
+          <div class="recruiter-timeline-content">
             <h3 class="recruiter-timeline-org">Analytika Improva SV</h3>
-            <p class="recruiter-timeline-role">AI-Assisted Product Delivery</p>
+            <p class="recruiter-timeline-role">AI-Assisted Product Delivery &amp; Product Operations</p>
+            <p class="recruiter-timeline-desc">Decomposed product requirements, mapped user journeys, performed functional validation, reproduced issues, verified fixes, and prepared delivery documentation.</p>
           </div>
           <span class="recruiter-type">Project-based</span>
         </article>
+
         <article class="recruiter-timeline-item">
           <p class="recruiter-timeline-date">Nov 2024–Mar 2025</p>
-          <div>
+          <div class="recruiter-timeline-content">
             <h3 class="recruiter-timeline-org">BrickBillion Properties</h3>
-            <p class="recruiter-timeline-role">Business Operations Support</p>
+            <p class="recruiter-timeline-role">Business Operations &amp; Digital Execution</p>
+            <p class="recruiter-timeline-desc">Supported digital presence execution, landing-page creation, operational documentation, structured enquiry follow-up, and information organization.</p>
           </div>
           <span class="recruiter-type">Project-based</span>
         </article>
+
         <article class="recruiter-timeline-item">
           <p class="recruiter-timeline-date">Sep 2022–Jan 2025</p>
-          <div>
-            <h3 class="recruiter-timeline-org">Wipro Limited</h3>
-            <p class="recruiter-timeline-role">Project Engineer · Enterprise exposure &amp; training</p>
+          <div class="recruiter-timeline-content">
+            <h3 class="recruiter-timeline-org">Wipro Limited <span class="recruiter-timeline-badge">2y 4m Enterprise Employment</span></h3>
+            <p class="recruiter-timeline-role">Project Engineer · Enterprise IT environment &amp; technical training</p>
+            <p class="recruiter-timeline-desc">Formal enterprise employment in structured IT corporate environment. Completed Java Full Stack training, internal assessments, security/compliance protocols, technical documentation, and structured team workflows.</p>
           </div>
           <span class="recruiter-type recruiter-type--full">Full-time</span>
         </article>
+
         <article class="recruiter-timeline-item">
           <p class="recruiter-timeline-date">Dec 2021–Jun 2022</p>
-          <div>
+          <div class="recruiter-timeline-content">
             <h3 class="recruiter-timeline-org">Arcons</h3>
             <p class="recruiter-timeline-role">Project Engineering Intern</p>
+            <p class="recruiter-timeline-desc">~18 km state-highway project exposure, site supervision, survey/design reporting, laboratory testing documentation, and tender-related activities.</p>
           </div>
           <span class="recruiter-type">Internship</span>
         </article>
@@ -9608,138 +11795,204 @@ html[data-theme="dark"] .learning-platform-layers li {
     </section>
 
     <section class="recruiter-projects-wrap" aria-labelledby="recruiter-projects-title">
-      <h2 class="recruiter-card-title" id="recruiter-projects-title">Selected product work</h2>
+      <div class="recruiter-card-header">
+        <h2 class="recruiter-card-title" id="recruiter-projects-title">Selected product work</h2>
+        <a href="#/projects" class="recruiter-card-link no-print" data-nav-link="projects">All projects →</a>
+      </div>
       <div class="recruiter-projects">
-        <a href="#/projects/skillverse" class="recruiter-project recruiter-project--skillverse" data-nav-link="projects/skillverse">
-          <h3>Skillverse.in</h3>
-          <p class="recruiter-project-metric">6+</p>
-          <p class="recruiter-project-meta">Product areas</p>
-          <p class="recruiter-project-flow">Requirements → Workflows → Functional validation → Issue reproduction → Fix validation</p>
-          <p class="recruiter-project-meta">AI-assisted delivery with human accountability</p>
-          <span class="project-link">View case study →</span>
-        </a>
-        <a href="#/projects/catalyx" class="recruiter-project" data-nav-link="projects/catalyx">
-          <h3>Catalyx</h3>
-          <p class="recruiter-project-metric">10+ / 7</p>
-          <p class="recruiter-project-meta">Operational modules · Role concepts</p>
+        <div class="recruiter-project recruiter-project--skillverse">
+          <div class="recruiter-project-head">
+            <h3>Skillverse.in</h3>
+            <span class="recruiter-project-badge">Project Evidence</span>
+          </div>
+          <div class="recruiter-project-metrics-row">
+            <div>
+              <p class="recruiter-project-metric">6+</p>
+              <p class="recruiter-project-meta">Product areas</p>
+            </div>
+            <div>
+              <p class="recruiter-project-metric font-small">AI Delivery</p>
+              <p class="recruiter-project-meta">Human-accountable validation</p>
+            </div>
+          </div>
+          <p class="recruiter-project-flow">Requirements → Workflows → Functional validation → Issue reproduction → Fix verification</p>
+          <div class="recruiter-project-footer no-print">
+            <a href="#/projects/skillverse" class="project-link" data-nav-link="projects/skillverse">View case study →</a>
+          </div>
+        </div>
+
+        <div class="recruiter-project">
+          <div class="recruiter-project-head">
+            <h3>Catalyx</h3>
+            <span class="recruiter-project-badge">Project Evidence</span>
+          </div>
+          <div class="recruiter-project-metrics-row">
+            <div>
+              <p class="recruiter-project-metric">10+</p>
+              <p class="recruiter-project-meta">Operational modules</p>
+            </div>
+            <div>
+              <p class="recruiter-project-metric">7</p>
+              <p class="recruiter-project-meta">Role concepts</p>
+            </div>
+          </div>
           <p class="recruiter-project-flow">Workflow definition · Role-based behavior · Permissions · Functional validation · Delivery tracking</p>
-          <span class="project-link">View case study →</span>
-        </a>
+          <div class="recruiter-project-footer no-print">
+            <a href="#/projects/catalyx" class="project-link" data-nav-link="projects/catalyx">View case study →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recruiter-card" aria-labelledby="recruiter-capabilities-title">
+      <h2 class="recruiter-card-title" id="recruiter-capabilities-title">What I can contribute now</h2>
+      <div class="recruiter-cap-grid">
+        <div class="recruiter-cap-col">
+          <h3>Support &amp; Validation</h3>
+          <ul>
+            <li>Issue reproduction &amp; triage</li>
+            <li>Expected-vs-actual docs</li>
+            <li>Functional validation &amp; testing</li>
+            <li>Fix verification &amp; regression checks</li>
+            <li>UAT-style acceptance testing</li>
+            <li>Technology troubleshooting</li>
+          </ul>
+        </div>
+        <div class="recruiter-cap-col">
+          <h3>Product &amp; Workflow</h3>
+          <ul>
+            <li>Requirements decomposition</li>
+            <li>Workflow &amp; user journey mapping</li>
+            <li>Role &amp; permission concept validation</li>
+            <li>Operational process documentation</li>
+            <li>User-journey edge case identification</li>
+          </ul>
+        </div>
+        <div class="recruiter-cap-col">
+          <h3>Delivery &amp; Operations</h3>
+          <ul>
+            <li>Structured work-item tracking (OpenProject)</li>
+            <li>Structured cross-team follow-up</li>
+            <li>Technical handover documentation</li>
+            <li>AI-assisted execution with human accountability</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="recruiter-card" aria-labelledby="recruiter-tech-title">
+      <h2 class="recruiter-card-title" id="recruiter-tech-title">Technical profile &amp; readiness</h2>
+      <div class="recruiter-skills">
+        <div class="recruiter-skill-level recruiter-skill-level--hands">
+          <div class="skill-label-wrap">
+            <h3>Practical / Used</h3>
+            <span class="skill-badge skill-badge--used">Hands-on</span>
+          </div>
+          <div class="skill-chips">
+            <span class="chip">Windows troubleshooting</span>
+            <span class="chip">macOS troubleshooting</span>
+            <span class="chip">Functional testing / UAT</span>
+            <span class="chip">OpenProject</span>
+            <span class="chip">Cursor / Codex</span>
+            <span class="chip">Workflow documentation</span>
+          </div>
+        </div>
+
+        <div class="recruiter-skill-level recruiter-skill-level--foundation">
+          <div class="skill-label-wrap">
+            <h3>Foundation</h3>
+            <span class="skill-badge skill-badge--foundation">Base</span>
+          </div>
+          <div class="skill-chips">
+            <span class="chip">Java / Full Stack concepts</span>
+            <span class="chip">SQL fundamentals</span>
+            <span class="chip">AWS fundamentals</span>
+            <span class="chip">Excel</span>
+          </div>
+        </div>
+
+        <div class="recruiter-skill-level recruiter-skill-level--learning">
+          <div class="skill-label-wrap">
+            <h3>Building Now</h3>
+            <span class="skill-badge skill-badge--learning">Sprint Focus</span>
+          </div>
+          <div class="skill-chips">
+            <span class="chip chip--accent">Practical SQL</span>
+            <span class="chip chip--accent">REST APIs</span>
+            <span class="chip chip--accent">JSON</span>
+            <span class="chip chip--accent">Postman</span>
+            <span class="chip chip--accent">ITSM</span>
+            <span class="chip chip--accent">Linux</span>
+            <span class="chip chip--accent">Networking</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="recruiter-grid-2">
-      <section class="recruiter-card" aria-labelledby="recruiter-capabilities-title">
-        <h2 class="recruiter-card-title" id="recruiter-capabilities-title">Core capabilities</h2>
-        <div class="recruiter-cap-grid">
-          <div class="recruiter-cap-col">
-            <h3>Product / Support</h3>
-            <ul>
-              <li>Issue reproduction</li>
-              <li>Expected-vs-actual docs</li>
-              <li>Functional validation</li>
-              <li>UAT-style testing</li>
-            </ul>
-          </div>
-          <div class="recruiter-cap-col">
-            <h3>Delivery</h3>
-            <ul>
-              <li>Requirements breakdown</li>
-              <li>Workflow mapping</li>
-              <li>Fix validation</li>
-              <li>OpenProject tracking</li>
-            </ul>
-          </div>
-          <div class="recruiter-cap-col">
-            <h3>Operations</h3>
-            <ul>
-              <li>Process documentation</li>
-              <li>Tech troubleshooting</li>
-              <li>Structured follow-up</li>
-              <li>Human-accountable AI use</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="recruiter-card" aria-labelledby="recruiter-skills-title">
-        <h2 class="recruiter-card-title" id="recruiter-skills-title">Technical profile</h2>
-        <div class="recruiter-skills">
-          <div class="recruiter-skill-level recruiter-skill-level--hands">
-            <h3>Hands-on</h3>
-            <p>Windows/macOS troubleshooting · Functional testing · OpenProject · Cursor / Codex · Workflow documentation</p>
-          </div>
-          <div class="recruiter-skill-level recruiter-skill-level--foundation">
-            <h3>Foundation</h3>
-            <p>Java concepts · SQL fundamentals · AWS fundamentals · Excel</p>
-          </div>
-          <div class="recruiter-skill-level recruiter-skill-level--learning">
-            <h3>Strengthening</h3>
-            <p>Practical SQL · REST APIs · Postman · ITSM · Linux · Networking</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="recruiter-grid-2">
       <section class="recruiter-card" aria-labelledby="recruiter-credentials-title">
-        <h2 class="recruiter-card-title" id="recruiter-credentials-title">Credentials</h2>
+        <div class="recruiter-card-header">
+          <h2 class="recruiter-card-title" id="recruiter-credentials-title">Credentials</h2>
+          <a href="#/certifications" class="recruiter-card-link no-print" data-nav-link="certifications">All credentials →</a>
+        </div>
         <div class="recruiter-credentials">
           <div class="recruiter-credential">
             <div>
-              <strong>PSM I</strong>
+              <strong>PSM I (Professional Scrum Master I)</strong>
               <span>Scrum.org · 2026</span>
             </div>
-            <span class="recruiter-cred-status">Active</span>
+            <span class="recruiter-cred-status recruiter-cred-status--valid">VALID</span>
           </div>
           <div class="recruiter-credential">
             <div>
               <strong>AWS Certified Cloud Practitioner</strong>
               <span>Earned 2023 · Expired Apr 2026</span>
             </div>
-            <span class="recruiter-cred-status recruiter-cred-status--history">History</span>
+            <span class="recruiter-cred-status recruiter-cred-status--history">HISTORICAL</span>
           </div>
           <div class="recruiter-credential">
             <div>
               <strong>Databases and SQL for Data Science with Python</strong>
-              <span>IBM / Coursera</span>
+              <span>Coursera / IBM · 2025</span>
             </div>
+            <span class="recruiter-cred-status recruiter-cred-status--course">COURSE</span>
           </div>
           <div class="recruiter-credential">
             <div>
               <strong>Java Full Stack</strong>
-              <span>StackRoute / Wipro Velocity</span>
+              <span>StackRoute / Wipro Velocity · 2022</span>
             </div>
+            <span class="recruiter-cred-status recruiter-cred-status--training">TRAINING</span>
           </div>
         </div>
       </section>
+
       <div class="recruiter-secondary">
         <section class="recruiter-card" aria-labelledby="recruiter-education-title">
           <h2 class="recruiter-card-title" id="recruiter-education-title">Education</h2>
-          <p><strong>B.E. Civil Engineering</strong>RCOEM Nagpur · 2018–2022 · CGPA 7.81/10</p>
+          <p class="edu-degree"><strong>B.E. Civil Engineering</strong></p>
+          <p class="edu-school">Shri Ramdeobaba College of Engineering and Management (RCOEM), Nagpur</p>
+          <p class="edu-meta">2018–2022 · CGPA 7.81 / 10</p>
         </section>
+
         <section class="recruiter-card" aria-labelledby="recruiter-publication-title">
           <h2 class="recruiter-card-title" id="recruiter-publication-title">Publication</h2>
-          <p><strong>Economic Impact on Construction Sector Due to COVID-19</strong>Journal of Seybold Report · 2020 · Co-author</p>
-        </section>
-        <section class="recruiter-card" aria-labelledby="recruiter-links-title">
-          <h2 class="recruiter-card-title" id="recruiter-links-title">Links</h2>
-          <ul class="recruiter-link-list">
-            <li><strong>Portfolio</strong><a href="https://bhramarraut.github.io/">bhramarraut.github.io</a></li>
-            <li><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer">linkedin.com/in/bhramarraut</a></li>
-            <li><strong>GitHub</strong><a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer">github.com/bhramarraut</a></li>
-          </ul>
+          <p class="pub-title"><strong>Economic Impact on Construction Sector Due to COVID-19</strong></p>
+          <p class="pub-meta">Journal of Seybold Report · 2020 · Co-author</p>
+          <a href="#/research" class="pub-link no-print" data-nav-link="research">View publication detail →</a>
         </section>
       </div>
     </div>
 
     <section class="recruiter-footer-cta" aria-labelledby="recruiter-cta-title">
       <div>
-        <h2 id="recruiter-cta-title">Interested in discussing a role?</h2>
-        <p>raut.bhramar@gmail.com · +91 89894 12921</p>
+        <h2 id="recruiter-cta-title">OPEN TO PRODUCT / APPLICATION SUPPORT &amp; IMPLEMENTATION ROLES</h2>
+        <p>Immediate joiner · India · Open to relocation / Remote India</p>
       </div>
       <div class="recruiter-footer-actions no-print">
-        <a href="mailto:raut.bhramar@gmail.com" class="btn btn-primary btn-sm">Email me</a>
-        <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">LinkedIn</a>
+        <a href="mailto:raut.bhramar@gmail.com?subject=Application%20%2F%20Opportunity%20%E2%80%94%20Bhramar%20Raut" class="btn btn-primary btn-sm"><i class="bi bi-envelope-fill" aria-hidden="true"></i> Email Bhramar</a>
+        <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn →</a>
+        <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm"><i class="bi bi-github" aria-hidden="true"></i> GitHub →</a>
       </div>
     </section>
   </div>
@@ -9758,45 +12011,68 @@ html[data-theme="dark"] .learning-platform-layers li {
   <div class="contact-layout">
     <aside class="contact-profile">
       <div class="contact-profile-media">
-        <img class="contact-profile-photo" src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut" width="240" height="300" loading="lazy">
+        <img class="contact-profile-photo" src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut" width="220" height="275" loading="lazy">
       </div>
       <div class="contact-profile-copy">
         <h2 class="contact-profile-name">Bhramar Raut</h2>
         <p class="contact-profile-location">Pandhurna, Madhya Pradesh, India</p>
-        <p class="contact-profile-note">Immediate joiner · Open to relocation · Remote India</p>
+        <div class="contact-profile-availability">
+          <p class="status-available"><span class="status-dot" aria-hidden="true"></span> Available now</p>
+          <p class="contact-profile-note">Immediate joiner · Open to relocation · Remote India</p>
+        </div>
       </div>
     </aside>
 
+    <div class="contact-layout-rule" aria-hidden="true"></div>
+
     <div class="contact-panel">
-      <p class="status-available"><span class="status-dot" aria-hidden="true"></span> Available now</p>
-
-      <div class="contact-targets">
-        <p class="mono-label">Looking for</p>
-        <p class="contact-targets-text">Product Support · Application Support · Implementation<span class="contact-targets-secondary"> · Product Operations</span></p>
-      </div>
-
       <div class="contact-details">
         <div class="contact-detail">
           <span class="contact-detail-label">Email</span>
           <div class="contact-detail-row">
             <a class="contact-detail-value" href="mailto:raut.bhramar@gmail.com">raut.bhramar@gmail.com</a>
-            <button type="button" class="contact-copy" id="copy-email" aria-label="Copy email address">Copy</button>
+            <div class="contact-actions-inline">
+              <a href="mailto:raut.bhramar@gmail.com" class="btn btn-primary btn-sm">Email me</a>
+              <button type="button" class="contact-copy" id="copy-email" aria-label="Copy email address">
+                <i class="bi bi-copy" aria-hidden="true"></i> Copy
+              </button>
+            </div>
           </div>
         </div>
+        
         <div class="contact-detail">
           <span class="contact-detail-label">Phone</span>
           <div class="contact-detail-row">
             <a class="contact-detail-value" href="tel:+918989412921">+91 89894 12921</a>
-            <button type="button" class="contact-copy" id="copy-phone" aria-label="Copy phone number">Copy</button>
+            <div class="contact-actions-inline">
+              <a href="tel:+918989412921" class="btn btn-secondary btn-sm">Call</a>
+              <button type="button" class="contact-copy" id="copy-phone" aria-label="Copy phone number">
+                <i class="bi bi-copy" aria-hidden="true"></i> Copy
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="contact-actions">
-        <a href="mailto:raut.bhramar@gmail.com" class="btn btn-primary">Email me</a>
-        <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn <span aria-hidden="true">↗</span></a>
-        <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub <span aria-hidden="true">↗</span></a>
-        <button type="button" class="btn btn-ghost" id="download-vcard">Save contact</button>
+      <div class="contact-professional">
+        <span class="contact-detail-label">Professional</span>
+        <div class="contact-professional-links">
+          <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn-text">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn-text">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="contact-save">
+          <button type="button" class="btn btn-ghost btn-sm" id="download-vcard"><i class="bi bi-person-badge" aria-hidden="true"></i> Save contact (.vcf)</button>
+        </div>
+      </div>
+
+      <div class="contact-targets">
+        <span class="contact-detail-label">Looking for</span>
+        <p class="contact-targets-text">Product Support · Application Support · Implementation<span class="contact-targets-secondary"> · Product Operations</span></p>
+      </div>
+
+      <div class="contact-next">
+        <p>Review the full profile</p>
+        <a href="#/recruiter" class="btn btn-ghost btn-sm" data-nav-link="recruiter">Recruiter view →</a>
       </div>
     </div>
   </div>
@@ -9849,6 +12125,17 @@ html[data-theme="dark"] .learning-platform-layers li {
   </div>
 </dialog>
 
+<dialog id="research-figure-dialog" class="research-figure-dialog" aria-labelledby="research-figure-dialog-title">
+  <div class="modal-header">
+    <h2 id="research-figure-dialog-title" style="font-size:1rem">Paper evidence</h2>
+    <button type="button" class="btn-icon" id="research-figure-dialog-close" aria-label="Close"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  </div>
+  <div class="modal-body" id="research-figure-dialog-body"></div>
+  <div class="modal-footer">
+    <a id="research-figure-dialog-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Open in original PDF</a>
+  </div>
+</dialog>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
 /* Portfolio app logic - will be inlined into index.html */
@@ -9873,12 +12160,63 @@ html[data-theme="dark"] .learning-platform-layers li {
     'knowledge': { view: 'view-knowledge', title: 'Knowledge Center — Bhramar Raut', label: 'Knowledge', contextGroup: 'THINKING', shortTitle: 'Knowledge' },
     'toolbox': { view: 'view-toolbox', title: 'Toolbox — Bhramar Raut', label: 'Toolbox', contextGroup: 'THINKING', shortTitle: 'Toolbox' },
     'certifications': { view: 'view-certifications', title: 'Certifications — Bhramar Raut', label: 'Certifications', contextGroup: 'PROOF', shortTitle: 'Certifications', description: 'External evidence of structured learning, technical foundations and professional development.' },
-    'research': { view: 'view-research', title: 'Research — Bhramar Raut', label: 'Research', contextGroup: 'PROOF', shortTitle: 'Research' },
+    'research': { view: 'view-research', title: 'Research — Bhramar Raut', label: 'Research', contextGroup: 'PROOF', shortTitle: 'Research', description: 'A team study of construction-sector disruption during COVID-19 — from economic impact to project recovery measures.' },
     'learning': { view: 'view-learning', title: 'Learning System — Bhramar Raut', label: 'Learning', contextGroup: 'THINKING', shortTitle: 'Learning' },
     'support-lab': { view: 'view-support-lab', title: 'Support Lab — Bhramar Raut', label: 'Support Lab', contextGroup: 'THINKING', shortTitle: 'Support Lab' },
     'recruiter': { view: 'view-recruiter', title: 'Recruiter Mode — Bhramar Raut', label: 'Recruiter Mode', contextGroup: 'RECRUITER', shortTitle: 'Quick Profile' },
     'contact': { view: 'view-contact', title: 'Contact — Bhramar Raut', label: 'Contact', contextGroup: 'CONTACT', shortTitle: 'Contact' },
     '404': { view: 'view-404', title: 'Not Found — Bhramar Raut', label: 'Page Not Found', contextGroup: 'PORTFOLIO', shortTitle: 'Page not found' }
+  };
+
+  const RESEARCH = {
+    title: 'Economic Impact on Construction Sector Due to COVID-19',
+    year: 2020,
+    journal: 'Journal of Seybold Report',
+    volume: 15,
+    issue: 8,
+    pages: '2522–2528',
+    issn: '1533-9211',
+    role: 'Co-author',
+    institution: 'Department of Civil Engineering, Shri Ramdeobaba College of Engineering and Management, Nagpur',
+    pdf: './assets/research/economic-impact-construction-covid19.pdf',
+    authors: [
+      { name: 'Dr Monica R Seth', role: 'Faculty / author' },
+      { name: 'Kunal Gupta', role: 'Student co-author' },
+      { name: 'Akshat Waghmare', role: 'Student co-author' },
+      { name: 'Arudati Manhas', role: 'Student co-author' },
+      { name: 'Sumit Mishra', role: 'Student co-author' },
+      { name: 'Bhramar Raut', role: 'Student co-author', you: true }
+    ],
+    citation: 'Seth, M. R., Gupta, K., Waghmare, A., Manhas, A., Mishra, S., & Raut, B. (2020). Economic Impact on Construction Sector Due to COVID-19. Journal of Seybold Report, 15(8), 2522–2528.',
+    figures: {
+      gva: {
+        title: 'GVA comparison',
+        page: 4,
+        summary: 'The paper presents sector GVA context used to frame construction’s economic exposure during lockdown. Open the PDF for the original figure and caption.'
+      },
+      dependencies: {
+        title: 'Construction-sector dependencies',
+        page: 4,
+        summary: 'The paper maps sectors feeding into construction and sectors dependent on construction — showing ripple effects in both directions.'
+      },
+      labour: {
+        title: 'Labour and materials pressure',
+        page: 5,
+        summary: 'Human and supply-side pressures discussed in the paper include migration/availability, wage pressure and material-price effects alongside project delay and cost themes.'
+      },
+      scenarios: {
+        title: 'Scenario analysis',
+        page: 6,
+        summary: 'Multiple construction-sector scenarios compare potential effects on employment, investment and GVA. Aggregate ranges are summarised on this page; exact scenario cells remain in the original figure/table.'
+      }
+    },
+    // Source ranges as reported in the 2020 paper / cited scenario analysis (historical).
+    findings: [
+      { id: 'gva', label: 'GVA', value: '15–34%', sourcePage: 6 },
+      { id: 'investment', label: 'Investment', value: '13–30%', sourcePage: 6 },
+      { id: 'employment', label: 'Employment', value: '11–25%', sourcePage: 6 },
+      { id: 'delay', label: 'Project delay', value: '~2–3 months', sourcePage: 5 }
+    ]
   };
 
   const CREDENTIAL_TYPES = {
@@ -10616,7 +12954,7 @@ None identified`;
   function updateThemeColorMeta(mode) {
     const meta = $('#meta-theme-color');
     if (meta) {
-      meta.setAttribute('content', mode === 'dark' ? '#18181a' : '#E8E9E3');
+      meta.setAttribute('content', mode === 'dark' ? '#18181a' : '#DCD9D2');
     }
   }
 
@@ -11743,6 +14081,88 @@ None identified`;
     else dlg.setAttribute('open', '');
   }
 
+  function researchPdfUrl(page) {
+    const base = RESEARCH.pdf;
+    return page ? `${base}#page=${page}` : base;
+  }
+
+  function copyResearchCitation() {
+    copyText(RESEARCH.citation, 'Citation');
+  }
+
+  function openResearchFigure(id) {
+    const fig = RESEARCH.figures[id];
+    if (!fig) return;
+    const dlg = $('#research-figure-dialog');
+    if (!dlg) {
+      window.open(researchPdfUrl(fig.page), '_blank', 'noopener,noreferrer');
+      return;
+    }
+    $('#research-figure-dialog-title').textContent = fig.title;
+    const body = $('#research-figure-dialog-body');
+    body.innerHTML = '';
+    const meta = document.createElement('p');
+    meta.className = 'text-sm text-secondary';
+    meta.textContent = `Paper p. ${fig.page} · ${RESEARCH.journal} · ${RESEARCH.year}`;
+    const summary = document.createElement('p');
+    summary.className = 'text-sm';
+    summary.style.marginTop = '12px';
+    summary.style.lineHeight = '1.55';
+    summary.textContent = fig.summary;
+    const note = document.createElement('p');
+    note.className = 'text-sm text-muted';
+    note.style.marginTop = '12px';
+    note.textContent = 'Original figure/table values are preserved in the PDF. This dialog does not recreate chart data.';
+    body.append(meta, summary, note);
+    const link = $('#research-figure-dialog-link');
+    link.href = researchPdfUrl(fig.page);
+    link.setAttribute('aria-label', `Open original paper at page ${fig.page}: ${fig.title}`);
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+  }
+
+  function bindResearchPage() {
+    const root = $('#view-research');
+    if (!root || root.dataset.bound === '1') return;
+    root.dataset.bound = '1';
+
+    ['research-copy-citation', 'research-copy-citation-secondary', 'research-copy-citation-record']
+      .forEach(id => {
+        $(`#${id}`)?.addEventListener('click', copyResearchCitation);
+      });
+
+    $('#research-scroll-focus')?.addEventListener('click', () => {
+      const target = $('#research-focus');
+      if (!target) return;
+      const owner = typeof getActiveScrollOwner === 'function' ? getActiveScrollOwner() : window;
+      if (owner === window) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else {
+        const ownerRect = owner.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        owner.scrollTo({ top: owner.scrollTop + (targetRect.top - ownerRect.top) - 24, behavior: 'smooth' });
+      }
+    });
+
+    $$('[data-research-figure]', root).forEach(btn => {
+      btn.addEventListener('click', () => openResearchFigure(btn.dataset.researchFigure));
+    });
+
+    $('#research-figure-dialog-close')?.addEventListener('click', () => {
+      const dlg = $('#research-figure-dialog');
+      if (dlg && typeof dlg.close === 'function') dlg.close();
+      else dlg?.removeAttribute('open');
+    });
+
+    bindNavLinks(root);
+
+    // Soft-check archival PDF presence (does not block the page).
+    fetch(RESEARCH.pdf, { method: 'HEAD' }).then(res => {
+      if (!res.ok) console.info('Research PDF not found at', RESEARCH.pdf, '— place the archival file to enable local evidence links.');
+    }).catch(() => {
+      console.info('Research PDF not reachable yet at', RESEARCH.pdf);
+    });
+  }
+
   // COMMAND PALETTE
   function buildSearchIndex() {
     const items = [];
@@ -12313,7 +14733,7 @@ None identified`;
 
   function forceActiveViewVisible(root) {
     if (!root) return;
-    root.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .lab-featured, .lab-card, .lab-panel, .credential-featured, .credential-card, .credential-bridge, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card').forEach(el => {
+    root.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .lab-featured, .lab-card, .lab-panel, .credential-featured, .credential-card, .credential-bridge, .research-hero, .research-finding, .research-figure, .research-why, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card').forEach(el => {
       gsap?.killTweensOf(el);
       el.style.opacity = '';
       el.style.transform = '';
@@ -12332,7 +14752,7 @@ None identified`;
       animateHomeBento();
       return;
     }
-    const targets = active.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .lab-featured, .lab-card, .lab-panel, .credential-featured, .credential-card, .credential-bridge, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card');
+    const targets = active.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .lab-featured, .lab-card, .lab-panel, .credential-featured, .credential-card, .credential-bridge, .research-hero, .research-finding, .research-figure, .research-why, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card');
     if (targets.length) {
       gsap.fromTo(targets, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .38, stagger: .04, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
     }
@@ -12434,6 +14854,7 @@ None identified`;
     initToolboxCompare();
     renderLearning();
     renderCerts();
+    bindResearchPage();
 
     initGsap();
     $$('.theme-toggle').forEach(b => b.addEventListener('click', toggleTheme));
@@ -12497,37 +14918,80 @@ None identified`;
     bindCopyControl($('#copy-email'), CONFIG.email, 'Email');
     bindCopyControl($('#copy-phone'), CONFIG.phone, 'Phone');
     $('#download-vcard')?.addEventListener('click', downloadVCard);
-    $('#recruiter-print')?.addEventListener('click', () => window.print());
-    $('#recruiter-copy')?.addEventListener('click', () => {
+    function handlePrintResume() {
+      const originalTitle = document.title;
+      document.title = 'Bhramar-Raut-Resume';
+      document.body.classList.add('is-printing');
+
+      const restoreTitle = () => {
+        document.title = originalTitle;
+        document.body.classList.remove('is-printing');
+        window.removeEventListener('afterprint', restoreTitle);
+      };
+
+      window.addEventListener('afterprint', restoreTitle);
+
+      requestAnimationFrame(() => {
+        window.print();
+      });
+    }
+
+    function handleCopySummary() {
       const summary = [
-        'Bhramar Raut',
-        'Product Support / Application Support / Implementation',
+        'BHRAMAR RAUT',
+        'Product Support · Application Support · Implementation',
         'Former Wipro Project Engineer · PSM I · Immediate joiner',
-        'Pandhurna, India · Open to relocation · Remote India',
+        'Location: Pandhurna, India · Open to relocation & Remote India',
+        'Email: raut.bhramar@gmail.com · Phone: +91 89894 12921',
         '',
-        $('#recruiter-summary-text')?.textContent?.trim() || '',
+        'PROFILE SUMMARY:',
+        'Former Wipro Project Engineer with 2+ years of enterprise IT environment exposure and recent project-based work in AI-assisted product delivery, requirements/workflow decomposition, functional validation and documentation. PSM I certified with hands-on exposure to OpenProject, Windows/macOS troubleshooting and AI-assisted delivery workflows. Currently strengthening SQL, REST APIs, Postman, ITSM, Linux and networking for Product/Application Support and Implementation roles.',
         '',
-        'Experience:',
-        '- Analytika Improva SV (Apr–Jul 2026) — AI-Assisted Product Delivery, project-based',
-        '- BrickBillion Properties (Nov 2024–Mar 2025) — Business Operations Support, project-based',
-        '- Wipro Limited (Sep 2022–Jan 2025) — Project Engineer, full-time',
-        '- Arcons (Dec 2021–Jun 2022) — Project Engineering Intern',
+        'EXPERIENCE:',
+        '- Analytika Improva SV (Apr–Jul 2026) — AI-Assisted Product Delivery & Operations [PROJECT-BASED]',
+        '- BrickBillion Properties (Nov 2024–Mar 2025) — Business Operations & Digital Execution [PROJECT-BASED]',
+        '- Wipro Limited (Sep 2022–Jan 2025) — Project Engineer (2y 4m Enterprise IT environment & training) [FULL-TIME]',
+        '- Arcons (Dec 2021–Jun 2022) — Project Engineering Intern [INTERNSHIP]',
         '',
-        'Projects:',
-        '- Skillverse.in — 6+ product areas, functional validation, AI-assisted delivery',
-        '- Catalyx — 10+ modules, 7 role concepts, workflow & RBAC validation',
+        'PRODUCT EVIDENCE:',
+        '- Skillverse.in — 6+ product areas, requirements → workflows → functional validation → issue reproduction → fix verification',
+        '- Catalyx — 10+ operational modules, 7 role concepts, role-aware workflow & permission validation',
         '',
-        'Hands-on: Windows/macOS troubleshooting, functional testing, OpenProject, Cursor/Codex, workflow documentation',
-        'Foundation: Java concepts, SQL fundamentals, AWS fundamentals, Excel',
-        'Strengthening: Practical SQL, REST APIs, Postman, ITSM, Linux, networking',
+        'TECHNICAL PROFILE:',
+        '- Practical / Used: Windows/macOS troubleshooting, Functional testing/UAT, OpenProject, Cursor/Codex, Workflow documentation',
+        '- Foundation: Java concepts, SQL fundamentals, AWS fundamentals, Excel',
+        '- Building Now: Practical SQL, REST APIs, Postman, ITSM, Linux, Networking',
         '',
-        'Credentials: PSM I (active) · AWS Cloud Practitioner (earned 2023, expired Apr 2026) · IBM SQL · Java Full Stack',
+        'CREDENTIALS & EDUCATION:',
+        '- PSM I (Scrum.org · 2026) [Valid]',
+        '- AWS Certified Cloud Practitioner (Earned 2023, Expired Apr 2026) [Historical]',
+        '- IBM Databases and SQL (Coursera / IBM · 2025) [Course]',
+        '- Java Full Stack (StackRoute / Wipro Velocity · 2022) [Training]',
+        '- B.E. Civil Engineering (RCOEM Nagpur, 2018–2022, CGPA 7.81/10)',
+        '- Publication: Economic Impact on Construction Sector Due to COVID-19 (Co-author, 2020)',
         '',
-        'Contact: raut.bhramar@gmail.com · +91 89894 12921',
+        'LINKS:',
+        'Portfolio: https://bhramarraut.github.io/',
         'LinkedIn: https://www.linkedin.com/in/bhramarraut',
-        'Portfolio: https://bhramarraut.github.io/'
+        'GitHub: https://github.com/bhramarraut'
       ].join('\n');
-      copyText(summary, 'Summary');
+      copyText(summary, 'Profile summary');
+    }
+
+    $('#recruiter-print')?.addEventListener('click', handlePrintResume);
+    $('#recruiter-copy')?.addEventListener('click', handleCopySummary);
+
+    document.addEventListener('click', (e) => {
+      const printBtn = e.target.closest('#recruiter-print');
+      if (printBtn) {
+        e.preventDefault();
+        handlePrintResume();
+      }
+      const copyBtn = e.target.closest('#recruiter-copy');
+      if (copyBtn) {
+        e.preventDefault();
+        handleCopySummary();
+      }
     });
 
     window.addEventListener('hashchange', () => {
