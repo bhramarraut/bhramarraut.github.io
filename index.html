@@ -2430,32 +2430,1097 @@ html[data-theme="dark"] .article-framework-num{
   .recruiter-project:hover{transform:none}
 }
 
-/* CERT */
-.cert-feature{padding:var(--space-6);background:var(--lavender-soft);border-radius:var(--radius-module);margin-bottom:var(--space-4)}
-.cert-grid{display:grid;gap:var(--space-4);grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-.cert-card{padding:var(--space-5);background:var(--surface);border-radius:var(--radius-control);cursor:pointer;transition:transform var(--dur-fast)}
-.cert-card:hover{transform:translateY(-2px)}
+/* ===== CERTIFICATIONS / CREDENTIALS ===== */
+#view-certifications {
+  --cr-featured-bg: #DCD8EF;
+  --cr-featured-text: #171717;
+  --cr-featured-muted: #5a5668;
+  --cr-featured-meta: #6d687a;
+  --cr-featured-border: rgba(23, 23, 23, 0.08);
+  --cr-card-bg: #FCFCFA;
+  --cr-card-border: rgba(23, 23, 23, 0.1);
+  --cr-stone: #D8D7D3;
+  --cr-stone-text: #171717;
+  --cr-stone-muted: #5c5c58;
+  --cr-valid: var(--lime);
+  --cr-expired: #b0893d;
+  --cr-meta: #7a7a74;
+}
+
+html[data-theme="dark"] #view-certifications {
+  --cr-featured-bg: #3a3650;
+  --cr-featured-text: #f3f1f8;
+  --cr-featured-muted: rgba(243, 241, 248, 0.7);
+  --cr-featured-meta: rgba(243, 241, 248, 0.55);
+  --cr-featured-border: rgba(255, 255, 255, 0.1);
+  --cr-card-bg: #2f2f33;
+  --cr-card-border: rgba(255, 255, 255, 0.1);
+  --cr-stone: #1a1a1d;
+  --cr-stone-text: #f4f4f4;
+  --cr-stone-muted: rgba(244, 244, 244, 0.68);
+  --cr-expired: #d4b56a;
+  --cr-meta: rgba(244, 244, 244, 0.5);
+}
+
+#view-certifications .page-inner {
+  max-width: 1080px;
+}
+
+.credentials-micro {
+  margin: var(--space-3) 0 0;
+  max-width: 58ch;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.credentials-read {
+  margin: var(--space-5) 0 var(--space-7);
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  max-width: 62ch;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.credentials-read strong {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.credentials-section {
+  margin: 0 0 var(--space-8);
+}
+
+.credentials-section-head {
+  margin: 0 0 var(--space-4);
+  max-width: 60ch;
+}
+
+.credentials-section-head .mono-label {
+  margin-bottom: 8px;
+}
+
+.credentials-section-head h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
+}
+
+.credentials-section-head p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.credential-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(12rem, 0.8fr);
+  gap: 18px 28px;
+  padding: 24px clamp(18px, 3vw, 28px);
+  border-radius: var(--radius-module);
+  background: var(--cr-featured-bg);
+  color: var(--cr-featured-text);
+  border: 1px solid var(--cr-featured-border);
+}
+
+.credential-featured-main .mono-label {
+  color: var(--cr-featured-meta);
+  margin-bottom: 8px;
+}
+
+.credential-featured h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  letter-spacing: -0.02em;
+}
+
+.credential-featured-short {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--cr-featured-meta);
+}
+
+.credential-featured-issuer {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  color: var(--cr-featured-muted);
+}
+
+.credential-featured-summary {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--cr-featured-muted);
+  max-width: 48ch;
+}
+
+.credential-featured-side {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.credential-featured-side > div {
+  padding-top: 10px;
+  border-top: 1px solid var(--cr-featured-border);
+}
+
+.credential-featured-side .mono-label {
+  color: var(--cr-featured-meta);
+  margin-bottom: 4px;
+}
+
+.credential-featured-side p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--cr-featured-text);
+}
+
+.credential-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.credential-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cr-meta);
+}
+
+.credential-status--valid::before {
+  background: var(--cr-valid);
+}
+
+.credential-status--expired::before {
+  background: var(--cr-expired);
+}
+
+.credential-status--completed::before {
+  background: var(--lavender);
+}
+
+.credential-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.credential-timeline-item {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 12px 16px;
+  padding: 12px 0 12px 16px;
+  border-left: 2px solid var(--line);
+  position: relative;
+}
+
+.credential-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.credential-timeline-item--now {
+  border-left-color: var(--cr-valid);
+}
+
+.credential-timeline-item--now::before {
+  background: var(--cr-valid);
+}
+
+.credential-timeline-when {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 2px;
+}
+
+.credential-timeline-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.credential-timeline-item span {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.credential-card {
+  padding: 20px;
+  border-radius: var(--radius-module);
+  background: var(--cr-card-bg);
+  border: 1px solid var(--cr-card-border);
+  text-align: left;
+  cursor: pointer;
+  height: auto;
+  color: inherit;
+  width: 100%;
+  appearance: none;
+  font: inherit;
+}
+
+.credential-card:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+.credential-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.credential-type {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cr-meta);
+}
+
+.credential-card h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+}
+
+.credential-card-meta {
+  margin: 0 0 10px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.credential-card-supports {
+  margin: 0 0 12px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.credential-card-cta {
+  font-size: 0.8125rem;
+  color: var(--ink);
+}
+
+.credential-card--history .credential-status--expired {
+  color: var(--cr-expired);
+}
+
+.credential-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.credential-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.credential-list button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+
+.credential-list button:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+.credential-list strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.credential-list span {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.credential-list .credential-type {
+  justify-self: end;
+}
+
+.credential-lineage {
+  display: grid;
+  gap: 12px;
+}
+
+.credential-lineage-item {
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.credential-lineage-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.credential-lineage-item h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.credential-lineage-item p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.credential-bridge {
+  padding: 24px clamp(18px, 3vw, 28px);
+  border-radius: var(--radius-module);
+  background: var(--cr-stone);
+  color: var(--cr-stone-text);
+}
+
+.credential-bridge h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.credential-bridge p {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--cr-stone-muted);
+  max-width: 52ch;
+}
+
+.credential-bridge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#cert-dialog.cert-dialog {
+  border: none;
+}
+
+#cert-dialog[open] {
+  width: min(1080px, calc(100vw - 48px));
+  height: min(800px, calc(100dvh - 48px));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+#cert-dialog .modal-header {
+  min-height: 72px;
+  align-items: center;
+  padding: 18px 24px;
+}
+
+#cert-dialog .modal-body {
+  padding: 16px;
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+#cert-dialog .modal-footer {
+  padding: 14px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.cert-preview-shell {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #202020;
+}
+
+.cert-pdf {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.cert-fallback {
+  padding: 20px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.cert-dialog-meta {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .credential-featured,
+  .credential-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .credential-list li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .credential-list .credential-type {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 700px) {
+  #cert-dialog[open] {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  #cert-dialog .modal-header {
+    padding: 14px 16px;
+  }
+
+  #cert-dialog .modal-body {
+    padding: 8px;
+  }
+
+  #cert-dialog .modal-footer {
+    padding: 10px 16px;
+  }
+}
+
+@media print {
+  #cert-dialog {
+    display: none !important;
+  }
+}
+
 
 /* WORKBENCH */
-.workbench{background:var(--surface);border-radius:var(--radius-module);overflow:hidden}
-.workbench-tabs{display:flex;gap:4px;padding:var(--space-4) var(--space-4) 0;overflow-x:auto}
-.workbench-tab{padding:10px 16px;border-radius:var(--radius-pill);font-family:var(--font-mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;color:var(--muted);cursor:pointer;min-height:44px}
-.workbench-tab.active{background:var(--lime);color:var(--ink)}
-.workbench-body{padding:var(--space-5)}
-.workbench-panel{display:none}
-.workbench-panel.active{display:block}
-.lab-output{padding:var(--space-5);background:var(--shell-deep);color:#f4f4f4;border-radius:var(--radius-control);margin-top:var(--space-4);font-family:var(--font-mono);font-size:.8125rem;white-space:pre-wrap}
-.lab-output--ticket{background:var(--shell-deep);color:#e8e8e8}
-.form-control{width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:var(--radius-control);background:var(--surface);color:var(--ink);min-height:44px}
-.form-control:focus{outline:var(--focus-ring);border-color:transparent}
-.form-control::placeholder{color:var(--muted);opacity:.85}
-.form-group{margin-bottom:var(--space-4)}
-.form-group label{display:block;font-size:.75rem;font-weight:700;margin-bottom:var(--space-2);font-family:var(--font-mono);text-transform:uppercase;color:var(--muted)}
-.chip-group{display:flex;flex-wrap:wrap;gap:var(--space-2)}
-.chip{padding:8px 14px;border-radius:var(--radius-pill);font-size:.8125rem;cursor:pointer;background:var(--surface-soft);color:var(--muted);font-weight:600;min-height:44px}
-.chip:hover,.chip.active{background:var(--lavender-soft);color:var(--ink)}
-.uat-checklist li{display:flex;gap:var(--space-3);padding:var(--space-3) 0;border-bottom:1px solid var(--line);font-size:.875rem}
-.uat-checklist input{accent-color:var(--lime)}
+/* ===== SUPPORT LAB ===== */
+#view-support-lab {
+  --lab-surface: #FCFCFA;
+  --lab-surface-text: #171717;
+  --lab-surface-muted: #666964;
+  --lab-surface-border: rgba(23, 23, 23, 0.1);
+  --lab-evidence-bg: #DCD8EF;
+  --lab-evidence-text: #171717;
+  --lab-evidence-muted: #5a5668;
+  --lab-evidence-border: rgba(23, 23, 23, 0.08);
+  --lab-stone: #D8D7D3;
+  --lab-stone-text: #171717;
+  --lab-stone-muted: #5c5c58;
+  --lab-snippet: #1c1c1e;
+  --lab-snippet-text: #f4f4f4;
+  --lab-now: var(--lime);
+  --lab-meta: #7a7a74;
+}
+
+html[data-theme="dark"] #view-support-lab {
+  --lab-surface: #2f2f33;
+  --lab-surface-text: #f4f4f4;
+  --lab-surface-muted: rgba(244, 244, 244, 0.68);
+  --lab-surface-border: rgba(255, 255, 255, 0.1);
+  --lab-evidence-bg: #3a3650;
+  --lab-evidence-text: #f3f1f8;
+  --lab-evidence-muted: rgba(243, 241, 248, 0.7);
+  --lab-evidence-border: rgba(255, 255, 255, 0.1);
+  --lab-stone: #1a1a1d;
+  --lab-stone-text: #f4f4f4;
+  --lab-stone-muted: rgba(244, 244, 244, 0.68);
+  --lab-snippet: #121214;
+  --lab-snippet-text: #f4f4f4;
+  --lab-meta: rgba(244, 244, 244, 0.5);
+}
+
+#view-support-lab .page-inner {
+  max-width: 1120px;
+}
+
+.lab-micro {
+  margin: var(--space-3) 0 0;
+  max-width: 60ch;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.lab-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: var(--space-4) 0 var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lab-status-row strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.lab-section {
+  margin: 0 0 var(--space-8);
+}
+
+.lab-section-head {
+  margin: 0 0 var(--space-4);
+  max-width: 62ch;
+}
+
+.lab-section-head .mono-label {
+  margin-bottom: 8px;
+}
+
+.lab-section-head h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  letter-spacing: -0.02em;
+}
+
+.lab-section-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.lab-pipeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 6px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lab-pipeline li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lab-pipeline li:not(:last-child)::after {
+  content: "→";
+  color: var(--lab-now);
+}
+
+.lab-principle {
+  margin: var(--space-4) 0 0;
+  max-width: 56ch;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.lab-principle strong {
+  color: var(--ink);
+}
+
+.lab-featured {
+  padding: 26px clamp(18px, 3vw, 30px);
+  border-radius: var(--radius-module);
+  background: var(--lab-evidence-bg);
+  color: var(--lab-evidence-text);
+  border: 1px solid var(--lab-evidence-border);
+}
+
+.lab-featured .mono-label {
+  color: var(--lab-evidence-muted);
+  margin-bottom: 8px;
+}
+
+.lab-featured h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.lab-featured-report {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.lab-featured p {
+  margin: 0 0 10px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--lab-evidence-muted);
+}
+
+.lab-featured-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 12px 0 16px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--lab-evidence-muted);
+}
+
+.lab-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.lab-filter {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.lab-filter[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--workspace);
+  border-color: var(--ink);
+}
+
+.lab-library {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.lab-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border-radius: var(--radius-module);
+  background: var(--lab-surface);
+  color: var(--lab-surface-text);
+  border: 1px solid var(--lab-surface-border);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 100%;
+}
+
+.lab-card[disabled],
+.lab-card.is-planned {
+  cursor: default;
+  opacity: 0.78;
+}
+
+.lab-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--lab-meta);
+}
+
+.lab-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  color: inherit;
+}
+
+.lab-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--lab-surface-muted);
+  flex: 1;
+}
+
+.lab-card-cta {
+  margin-top: 6px;
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.lab-bridge {
+  padding: 22px;
+  border-radius: var(--radius-module);
+  background: var(--lab-stone);
+  color: var(--lab-stone-text);
+}
+
+.lab-bridge h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.lab-bridge p {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--lab-stone-muted);
+}
+
+.lab-bridge-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.lab-bridge-links a {
+  color: inherit;
+  font-size: 0.875rem;
+}
+
+/* Workspace */
+.lab-workspace {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.lab-workspace[hidden] {
+  display: none !important;
+}
+
+.lab-landing[hidden] {
+  display: none !important;
+}
+
+.lab-ws-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+}
+
+.lab-ws-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 16px;
+  align-items: baseline;
+}
+
+.lab-ws-header h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  letter-spacing: -0.02em;
+}
+
+.lab-ws-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.lab-panel {
+  padding: 20px;
+  border-radius: var(--radius-module);
+  background: var(--lab-surface);
+  color: var(--lab-surface-text);
+  border: 1px solid var(--lab-surface-border);
+}
+
+.lab-panel--evidence {
+  background: var(--lab-evidence-bg);
+  color: var(--lab-evidence-text);
+  border-color: var(--lab-evidence-border);
+}
+
+.lab-panel h3 {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.lab-panel p,
+.lab-panel li {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--lab-surface-muted);
+}
+
+.lab-panel--evidence p,
+.lab-panel--evidence li {
+  color: var(--lab-evidence-muted);
+}
+
+.lab-panel dl {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.lab-panel dt {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--lab-meta);
+}
+
+.lab-panel dd {
+  margin: 0 0 8px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.lab-triage {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.lab-triage li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.lab-triage strong {
+  display: block;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.lab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lab-action {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  min-height: 42px;
+  text-align: left;
+}
+
+.lab-action:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.lab-action:not(:disabled):hover {
+  border-color: var(--ink);
+}
+
+.lab-action-feedback {
+  margin: 10px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.lab-snippet {
+  margin: 10px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--lab-snippet);
+  color: var(--lab-snippet-text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.lab-log,
+.lab-evidence-list,
+.lab-hypotheses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.lab-log li,
+.lab-evidence-list li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lab-log .mono-label,
+.lab-evidence-list .mono-label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.lab-hypotheses li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.875rem;
+}
+
+.lab-hyp-state {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lab-hyp-state.is-more {
+  color: var(--lab-now);
+}
+
+.lab-hyp-state.is-less {
+  opacity: 0.7;
+}
+
+.lab-doc,
+.lab-report {
+  white-space: pre-wrap;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--lab-snippet);
+  color: var(--lab-snippet-text);
+  max-height: 320px;
+  overflow: auto;
+}
+
+.lab-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.lab-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 0.875rem;
+}
+
+.lab-empty {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 900px) {
+  .lab-library,
+  .lab-ws-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-pipeline li:not(:last-child)::after {
+    content: "↓";
+  }
+}
+
+@media (max-width: 640px) {
+  .lab-filters {
+    flex-direction: column;
+  }
+
+  .lab-filter {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 
 /* CONTACT PAGE */
 .contact-page{max-width:1080px;margin:0 auto}
@@ -8134,12 +9199,13 @@ html[data-theme="dark"] .learning-platform-layers li {
 
 <!-- VIEW: CERTIFICATIONS -->
 <section id="view-certifications" class="view" data-route="certifications" aria-labelledby="cert-heading">
-<div class="page-inner">
+<div class="page-inner credentials-page">
   <header class="page-head">
     <p class="mono-label">Proof / Certifications</p>
     <h1 id="cert-heading" class="display-page">Certifications</h1>
-    <p class="lead">Verified credentials with evidence from repository assets.</p>
+    <p class="lead">External evidence of structured learning, technical foundations and professional development.</p>
   </header>
+  <p class="credentials-read"><strong>How to read this page</strong>Credentials show formal learning evidence. Projects and labs show how that learning is applied. Credential ≠ capability.</p>
   <div id="cert-grid"></div>
 </div>
 </section>
@@ -8354,95 +9420,63 @@ html[data-theme="dark"] .learning-platform-layers li {
 
 <!-- VIEW: SUPPORT LAB -->
 <section id="view-support-lab" class="view" data-route="support-lab" aria-labelledby="lab-heading">
-<div class="page-inner">
-  <header class="page-head">
-    <p class="mono-label">Thinking / Support Lab</p>
-    <h1 id="lab-heading" class="display-page">Support Lab</h1>
-    <p class="lead">Self-directed practice demonstrations — not production incident history.</p>
-  </header>
-  <div class="callout callout-warn text-sm"><strong>Label:</strong> Learning demonstrations of support thinking, not claims of production experience.</div>
-  <div class="workbench" id="support-workbench">
-    <div class="workbench-tabs" role="tablist">
-      <button type="button" class="workbench-tab active" data-lab-tab="triage" role="tab">Triage</button>
-      <button type="button" class="workbench-tab" data-lab-tab="http" role="tab">HTTP</button>
-      <button type="button" class="workbench-tab" data-lab-tab="bug" role="tab">Bug report</button>
-      <button type="button" class="workbench-tab" data-lab-tab="uat" role="tab">UAT</button>
-    </div>
-    <div class="workbench-body">
-      <div class="workbench-panel active" id="lab-panel-triage" role="tabpanel" aria-labelledby="tab-triage">
-        <div class="lab-split">
-          <div class="lab-controls">
-            <p class="text-sm text-secondary">Select an issue type to see a structured troubleshooting framework.</p>
-            <div class="chip-group" id="triage-chips" style="margin-top:var(--space-4)">
-              <button type="button" class="chip" data-triage="login">Login issue</button>
-              <button type="button" class="chip" data-triage="crash">App crash</button>
-              <button type="button" class="chip" data-triage="network">Network issue</button>
-              <button type="button" class="chip" data-triage="permission">Permission issue</button>
-              <button type="button" class="chip" data-triage="api">API error</button>
-            </div>
-          </div>
-          <div class="lab-output" id="triage-output">Select an issue type above.</div>
+<div class="page-inner support-lab-page">
+  <div id="lab-landing">
+    <header class="page-head">
+      <p class="mono-label">Thinking / Support Lab</p>
+      <h1 id="lab-heading" class="display-page">Support Lab</h1>
+      <p class="lead">Practice the layers behind an application issue.</p>
+      <p class="lab-micro">Interactive troubleshooting scenarios across applications, APIs, data, systems, networking and service workflows.</p>
+      <p class="lab-status-row"><strong>Practice environment</strong><span>Scenario-based · Evidence-driven</span><span>Simulations unless linked to project evidence</span></p>
+    </header>
+
+    <section class="lab-section" aria-labelledby="lab-pipeline-heading">
+      <div class="lab-section-head">
+        <p class="mono-label">01 / Process</p>
+        <h2 id="lab-pipeline-heading">Support loop</h2>
+      </div>
+      <ol class="lab-pipeline" aria-label="Support investigation loop">
+        <li>Triage</li>
+        <li>Reproduce</li>
+        <li>Observe</li>
+        <li>Isolate</li>
+        <li>Investigate</li>
+        <li>Document</li>
+        <li>Validate</li>
+        <li>Hand over</li>
+      </ol>
+      <p class="lab-principle"><strong>The goal is not to try the most fixes.</strong> The goal is to remove uncertainty — one controlled test at a time.</p>
+    </section>
+
+    <section class="lab-section" aria-labelledby="lab-featured-heading">
+      <div id="lab-featured" class="lab-featured"></div>
+    </section>
+
+    <section class="lab-section" aria-labelledby="lab-library-heading">
+      <div class="lab-section-head">
+        <p class="mono-label">02 / Library</p>
+        <h2 id="lab-library-heading">Scenario library</h2>
+        <p>Quality over quantity — simulations for structured practice, not production incident history.</p>
+      </div>
+      <div class="lab-filters" id="lab-filters" role="group" aria-label="Filter scenarios"></div>
+      <div class="lab-library" id="lab-library"></div>
+    </section>
+
+    <section class="lab-section" aria-labelledby="lab-bridge-heading">
+      <div class="lab-bridge">
+        <h2 id="lab-bridge-heading">Learning → Lab → Evidence</h2>
+        <p>Support Lab is where concepts become repeatable practice. Knowledge explains the models. Learning sets the tracks. Toolbox explains tool choice. Projects show applied delivery work.</p>
+        <div class="lab-bridge-links">
+          <a href="#/learning" data-nav-link="learning">Learning →</a>
+          <a href="#/knowledge" data-nav-link="knowledge">Knowledge →</a>
+          <a href="#/toolbox" data-nav-link="toolbox">Toolbox →</a>
+          <a href="#/projects" data-nav-link="projects">Projects →</a>
         </div>
       </div>
-      <div class="workbench-panel" id="lab-panel-http" role="tabpanel" aria-labelledby="tab-http" hidden>
-        <div class="lab-split">
-          <div class="lab-controls">
-            <p class="text-sm text-secondary">HTTP status meanings and what I would check before escalation.</p>
-            <select class="form-control" id="http-select" aria-label="Select HTTP status code" style="margin-top:var(--space-4)">
-              <option value="">Select a status code…</option>
-              <option value="200">200 OK</option>
-              <option value="201">201 Created</option>
-              <option value="204">204 No Content</option>
-              <option value="400">400 Bad Request</option>
-              <option value="401">401 Unauthorized</option>
-              <option value="403">403 Forbidden</option>
-              <option value="404">404 Not Found</option>
-              <option value="409">409 Conflict</option>
-              <option value="422">422 Unprocessable</option>
-              <option value="429">429 Too Many Requests</option>
-              <option value="500">500 Internal Server Error</option>
-              <option value="502">502 Bad Gateway</option>
-              <option value="503">503 Service Unavailable</option>
-            </select>
-          </div>
-          <div class="lab-output" id="http-output">Select a status code.</div>
-        </div>
-      </div>
-      <div class="workbench-panel" id="lab-panel-bug" role="tabpanel" aria-labelledby="tab-bug" hidden>
-        <div class="lab-split">
-          <div class="lab-controls">
-            <div class="form-group"><label for="bug-summary">Summary</label><input type="text" class="form-control" id="bug-summary" placeholder="Brief issue description"></div>
-            <div class="form-group"><label for="bug-env">Environment</label><input type="text" class="form-control" id="bug-env" placeholder="OS, browser, app version"></div>
-            <div class="form-group"><label for="bug-steps">Steps to reproduce</label><textarea class="form-control" id="bug-steps" rows="3" placeholder="1. Go to… 2. Click…"></textarea></div>
-            <div class="form-group"><label for="bug-expected">Expected</label><textarea class="form-control" id="bug-expected" rows="2"></textarea></div>
-            <div class="form-group"><label for="bug-actual">Actual</label><textarea class="form-control" id="bug-actual" rows="2"></textarea></div>
-            <div class="form-group"><label for="bug-evidence">Evidence</label><textarea class="form-control" id="bug-evidence" rows="2" placeholder="Screenshot, log snippet, request ID"></textarea></div>
-            <div class="form-group"><label for="bug-impact">Impact</label><input type="text" class="form-control" id="bug-impact" placeholder="Who is blocked and how severely"></div>
-            <button type="button" class="btn btn-primary btn-sm" id="bug-generate">Generate preview</button>
-            <button type="button" class="btn btn-ghost btn-sm" id="bug-copy">Copy report</button>
-          </div>
-          <div class="lab-output lab-output--ticket" id="bug-output" style="margin-top:var(--space-4)"></div>
-        </div>
-      </div>
-      <div class="workbench-panel" id="lab-panel-uat" role="tabpanel" aria-labelledby="tab-uat" hidden>
-        <div class="lab-split">
-          <div class="lab-controls">
-            <p class="text-sm text-secondary">Self-directed UAT demonstration — mark items complete, then reset.</p>
-            <div class="chip-group" id="uat-chips" style="margin-top:var(--space-4)">
-              <button type="button" class="chip" data-uat="auth">Authentication</button>
-              <button type="button" class="chip" data-uat="onboarding">Onboarding</button>
-              <button type="button" class="chip" data-uat="payments">Payments</button>
-              <button type="button" class="chip" data-uat="permissions">Permissions</button>
-            </div>
-            <button type="button" class="btn btn-ghost btn-sm" id="uat-reset" style="margin-top:var(--space-4)">Reset checklist</button>
-          </div>
-          <div class="uat-output-panel">
-            <ul class="uat-checklist" id="uat-checklist" style="margin-top:var(--space-4)"></ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
+
+  <div id="lab-workspace" class="lab-workspace" hidden></div>
 </div>
 </section>
 
@@ -8808,7 +9842,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     'capabilities': { view: 'view-capabilities', title: 'Capabilities — Bhramar Raut', label: 'Capabilities', contextGroup: 'WORK', shortTitle: 'Capabilities' },
     'knowledge': { view: 'view-knowledge', title: 'Knowledge Center — Bhramar Raut', label: 'Knowledge', contextGroup: 'THINKING', shortTitle: 'Knowledge' },
     'toolbox': { view: 'view-toolbox', title: 'Toolbox — Bhramar Raut', label: 'Toolbox', contextGroup: 'THINKING', shortTitle: 'Toolbox' },
-    'certifications': { view: 'view-certifications', title: 'Certifications — Bhramar Raut', label: 'Certifications', contextGroup: 'PROOF', shortTitle: 'Certifications' },
+    'certifications': { view: 'view-certifications', title: 'Certifications — Bhramar Raut', label: 'Certifications', contextGroup: 'PROOF', shortTitle: 'Certifications', description: 'External evidence of structured learning, technical foundations and professional development.' },
     'research': { view: 'view-research', title: 'Research — Bhramar Raut', label: 'Research', contextGroup: 'PROOF', shortTitle: 'Research' },
     'learning': { view: 'view-learning', title: 'Learning System — Bhramar Raut', label: 'Learning', contextGroup: 'THINKING', shortTitle: 'Learning' },
     'support-lab': { view: 'view-support-lab', title: 'Support Lab — Bhramar Raut', label: 'Support Lab', contextGroup: 'THINKING', shortTitle: 'Support Lab' },
@@ -8817,16 +9851,172 @@ html[data-theme="dark"] .learning-platform-layers li {
     '404': { view: 'view-404', title: 'Not Found — Bhramar Raut', label: 'Page Not Found', contextGroup: 'PORTFOLIO', shortTitle: 'Page not found' }
   };
 
+  const CREDENTIAL_TYPES = {
+    certification: 'Professional certification',
+    certification_history: 'Certification history',
+    training: 'Formal training',
+    course: 'Course completion',
+    awareness: 'Corporate awareness'
+  };
+
   const CREDENTIALS = [
-    { id: 'psm1', name: 'Professional Scrum Master I (PSM I)', issuer: 'Scrum.org', year: '2026', status: 'Valid', file: './Certification/Professional Scrum Master I.pdf', featured: true },
-    { id: 'aws-clf', name: 'AWS Certified Cloud Practitioner (CLF-C01)', issuer: 'Amazon Web Services', year: '2023', status: 'Earned 2023 · Expired Apr 2026', score: '754/1000', file: './Certification/AWS Certified Cloud Practitioner certificate.pdf', featured: true },
-    { id: 'ibm-sql', name: 'Databases and SQL for Data Science with Python', issuer: 'IBM / Coursera', year: 'Nov 2025', status: 'Course completion', file: './Certification/Coursera DB3FW2MT3J9T.pdf' },
-    { id: 'java-fs', name: 'Certificate Program in Java Full Stack', issuer: 'StackRoute / Wipro Velocity', year: 'Jul 2022', status: 'Training certificate', file: './Certification/Certificate Program in Java Full Stack.pdf', featured: true },
-    { id: 'aws-essentials', name: 'AWS Cloud Practitioner Essentials', issuer: 'AWS Training', year: 'Nov 2022', status: 'Course completion', file: './Certification/AWS Training & Certification - Certificate of Completion.pdf' },
-    { id: 'data-privacy', name: 'Data Privacy Awareness', issuer: 'Wipro', year: 'Oct 2022', status: 'Training certificate', file: './Certification/Data Privacy Awareness Certificate.pdf' },
-    { id: 'digital-marketing', name: 'Fundamentals of Digital Marketing', issuer: 'Google Digital Garage', year: 'Nov 2021', status: 'Course certificate', file: './Certification/The Fundamentals of Digital Marketing Certificate.pdf' },
-    { id: 'robotics', name: 'Robotics: Aerial Robotics', issuer: 'University of Pennsylvania / Coursera', year: 'Oct 2021', status: 'Course completion', file: './Certification/Coursera 8K8XIRBAIJMV.pdf' }
+    {
+      id: 'psm1',
+      name: 'Professional Scrum Master I',
+      shortTitle: 'PSM I',
+      issuer: 'Scrum.org',
+      year: '2026',
+      issuedLabel: '2026',
+      type: 'certification',
+      status: 'valid',
+      statusLabel: 'Valid',
+      relevance: 'current',
+      featured: true,
+      priority: 1,
+      file: './Certification/Professional Scrum Master I.pdf',
+      summary: 'Validates Scrum-framework knowledge — empiricism, accountabilities, events and artifacts.',
+      supports: 'Scrum framework knowledge for delivery visibility, requirements and validation work.',
+      lineage: 'scrum'
+    },
+    {
+      id: 'aws-clf',
+      name: 'AWS Certified Cloud Practitioner (CLF-C01)',
+      shortTitle: 'AWS CLF-C01',
+      issuer: 'Amazon Web Services',
+      year: '2023',
+      issuedLabel: '2023',
+      expiresLabel: 'Apr 2026',
+      type: 'certification_history',
+      status: 'expired',
+      statusLabel: 'Expired Apr 2026',
+      score: '754 / 1000',
+      relevance: 'foundational',
+      featured: false,
+      priority: 2,
+      file: './Certification/AWS Certified Cloud Practitioner certificate.pdf',
+      summary: 'Historical AWS foundational certification demonstrating prior formal knowledge of core cloud concepts.',
+      supports: 'Cloud concepts, shared responsibility and core service awareness.',
+      lineage: 'cloud'
+    },
+    {
+      id: 'java-fs',
+      name: 'Certificate Program in Java Full Stack',
+      shortTitle: 'Java Full Stack',
+      issuer: 'StackRoute / Wipro Velocity',
+      year: 'Jul 2022',
+      issuedLabel: 'Jul 2022',
+      type: 'training',
+      status: 'completed',
+      statusLabel: 'Completed',
+      relevance: 'foundational',
+      featured: false,
+      priority: 3,
+      file: './Certification/Certificate Program in Java Full Stack.pdf',
+      summary: 'Formal technical training completed through Wipro’s learning program.',
+      supports: 'Java, application architecture, databases, APIs and software-delivery concepts.',
+      lineage: 'software'
+    },
+    {
+      id: 'ibm-sql',
+      name: 'Databases and SQL for Data Science with Python',
+      shortTitle: 'IBM SQL',
+      issuer: 'IBM / Coursera',
+      year: 'Nov 2025',
+      issuedLabel: 'Nov 2025',
+      type: 'course',
+      status: 'completed',
+      statusLabel: 'Completed',
+      relevance: 'foundational',
+      featured: false,
+      priority: 4,
+      file: './Certification/Coursera DB3FW2MT3J9T.pdf',
+      summary: 'Course foundation in relational databases and SQL concepts.',
+      supports: 'SQL / data foundation — practical SQL depth is currently being strengthened.',
+      lineage: 'software'
+    },
+    {
+      id: 'aws-essentials',
+      name: 'AWS Cloud Practitioner Essentials',
+      shortTitle: 'AWS Essentials',
+      issuer: 'AWS Training',
+      year: 'Nov 2022',
+      issuedLabel: 'Nov 2022',
+      type: 'course',
+      status: 'completed',
+      statusLabel: 'Completed',
+      relevance: 'foundational',
+      featured: false,
+      priority: 5,
+      file: './Certification/AWS Training & Certification - Certificate of Completion.pdf',
+      summary: 'Course completion supporting the later AWS Cloud Practitioner certification path.',
+      supports: 'Introductory cloud concepts ahead of certification.',
+      lineage: 'cloud'
+    },
+    {
+      id: 'data-privacy',
+      name: 'Data Privacy Awareness',
+      shortTitle: 'Data Privacy',
+      issuer: 'Wipro',
+      year: 'Oct 2022',
+      issuedLabel: 'Oct 2022',
+      type: 'awareness',
+      status: 'completed',
+      statusLabel: 'Completed',
+      relevance: 'supporting',
+      featured: false,
+      priority: 6,
+      file: './Certification/Data Privacy Awareness Certificate.pdf',
+      summary: 'Corporate awareness training on data privacy and compliance expectations.',
+      supports: 'Enterprise privacy/compliance awareness — not specialist privacy expertise.',
+      lineage: 'corporate'
+    },
+    {
+      id: 'digital-marketing',
+      name: 'Fundamentals of Digital Marketing',
+      shortTitle: 'Digital Marketing',
+      issuer: 'Google Digital Garage',
+      year: 'Nov 2021',
+      issuedLabel: 'Nov 2021',
+      type: 'course',
+      status: 'completed',
+      statusLabel: 'Completed',
+      relevance: 'earlier',
+      featured: false,
+      priority: 7,
+      file: './Certification/The Fundamentals of Digital Marketing Certificate.pdf',
+      summary: 'Earlier business / digital learning exploration.',
+      supports: 'Foundational digital marketing concepts.',
+      lineage: 'explore'
+    },
+    {
+      id: 'robotics',
+      name: 'Robotics: Aerial Robotics',
+      shortTitle: 'Aerial Robotics',
+      issuer: 'University of Pennsylvania / Coursera',
+      year: 'Oct 2021',
+      issuedLabel: 'Oct 2021',
+      type: 'course',
+      status: 'completed',
+      statusLabel: 'Completed',
+      relevance: 'earlier',
+      featured: false,
+      priority: 8,
+      file: './Certification/Coursera 8K8XIRBAIJMV.pdf',
+      summary: 'Earlier technical exploration outside current support/implementation focus.',
+      supports: 'Technical curiosity and structured online learning.',
+      lineage: 'explore'
+    }
   ];
+
+  const CREDENTIAL_TIMELINE = [
+    { when: '2021', label: 'Exploration', detail: 'Aerial Robotics · Digital Marketing' },
+    { when: '2022', label: 'Technical foundation', detail: 'Java Full Stack · AWS Essentials · Data Privacy' },
+    { when: '2023', label: 'Cloud certification', detail: 'AWS Certified Cloud Practitioner (CLF-C01)' },
+    { when: '2025', label: 'Data foundation', detail: 'IBM Databases and SQL course' },
+    { when: '2026', label: 'Scrum credential', detail: 'Professional Scrum Master I — valid' },
+    { when: 'Now', label: 'Practical depth', detail: 'SQL · APIs · ITSM · Linux · Networking', current: true }
+  ];
+
 
   const TOOL_LEVELS = {
     used: { id: 'used', label: 'Used', short: 'USED' },
@@ -9299,36 +10489,8 @@ None identified`;
     }
   }
 
-  const HTTP_STATUSES = {
-    '200': '200 OK\n\nMeaning: Request succeeded.\n\nTypical causes: Normal successful operation.\n\nWhat I would check: Response body matches expected contract.\n\nBefore escalation: Confirm this is the expected success path.',
-    '201': '201 CREATED\n\nMeaning: Resource created successfully.\n\nTypical causes: POST created a new entity.\n\nWhat I would check: Response includes ID/location if applicable.\n\nBefore escalation: Verify entity exists via GET.',
-    '204': '204 NO CONTENT\n\nMeaning: Success with empty body.\n\nTypical causes: DELETE or update with no return payload.\n\nWhat I would check: Side effect occurred (resource removed/updated).\n\nBefore escalation: Confirm via follow-up read.',
-    '400': '400 BAD REQUEST\n\nMeaning: Client sent invalid syntax or parameters.\n\nTypical causes: Malformed JSON, missing required fields, wrong types.\n\nWhat I would check: Payload schema, required fields, Content-Type.\n\nBefore escalation: Capture request body and API docs reference.',
-    '401': '401 UNAUTHORIZED\n\nMeaning: Authentication required or failed.\n\nTypical causes: Missing/expired token, wrong credentials, clock skew on JWT.\n\nWhat I would check: Auth header, token expiry, login state, API key scope.\n\nBefore escalation: Screenshot of error, token metadata (not secret), reproduction steps.',
-    '403': '403 FORBIDDEN\n\nMeaning: Authenticated but not permitted.\n\nTypical causes: Role lacks permission, branch/org scope, feature flag.\n\nWhat I would check: User role, resource scope, recent permission changes.\n\nBefore escalation: Compare with working user same role; document expected vs actual access.',
-    '404': '404 NOT FOUND\n\nMeaning: Resource or endpoint does not exist.\n\nTypical causes: Wrong URL, deleted resource, routing misconfiguration.\n\nWhat I would check: URL path, API version, resource ID validity.\n\nBefore escalation: Full URL, method, environment, timestamp.',
-    '409': '409 CONFLICT\n\nMeaning: Request conflicts with current state.\n\nTypical causes: Duplicate unique field, concurrent edit, state transition violation.\n\nWhat I would check: Existing record, idempotency key, current state.\n\nBefore escalation: Request payload and current entity state.',
-    '422': '422 UNPROCESSABLE\n\nMeaning: Well-formed request failed validation.\n\nTypical causes: Business rule violation, invalid field combination.\n\nWhat I would check: Validation error details in response body.\n\nBefore escalation: Full error response and input values.',
-    '429': '429 TOO MANY REQUESTS\n\nMeaning: Rate limited.\n\nTypical causes: Too many requests in window, burst limit exceeded.\n\nWhat I would check: Retry-After header, request frequency, shared IP limits.\n\nBefore escalation: Timestamps of requests, rate limit headers.',
-    '500': '500 INTERNAL SERVER ERROR\n\nMeaning: Server-side failure.\n\nTypical causes: Unhandled exception, dependency failure, misconfiguration.\n\nWhat I would check: Correlation/request ID, time of failure, scope (all users vs one).\n\nBefore escalation: Reproduction steps, request ID, response body if any.',
-    '502': '502 BAD GATEWAY\n\nMeaning: Upstream server error.\n\nTypical causes: Backend down, proxy misroute, timeout to upstream.\n\nWhat I would check: Infrastructure status, recent deployments, other endpoints.\n\nBefore escalation: Timestamp, endpoint, whether intermittent or persistent.',
-    '503': '503 SERVICE UNAVAILABLE\n\nMeaning: Server overloaded or maintenance.\n\nTypical causes: Maintenance window, capacity exhaustion, health check failure.\n\nWhat I would check: Status page, Retry-After, scope of outage.\n\nBefore escalation: Time range, affected services, user impact.'
-  };
 
-  const TRIAGE = {
-    login: 'LOGIN ISSUE FRAMEWORK\n1. Verify credentials and account status\n2. Check error message (invalid password vs locked vs MFA)\n3. Test another browser/device\n4. Check session/cookie issues\n5. Verify auth service status\n6. Document exact error and reproduction steps',
-    crash: 'APP CRASH FRAMEWORK\n1. When does crash occur? (startup, specific action)\n2. Reproduce consistently?\n3. Check logs/crash reports\n4. Recent updates or config changes?\n5. Resource constraints (memory/disk)\n6. Isolate: clean profile vs extension conflict',
-    network: 'NETWORK ISSUE FRAMEWORK\n1. ping/tracert to target\n2. DNS resolution (nslookup)\n3. VPN/proxy interference\n4. Firewall rules\n5. Scope: one user vs all users\n6. Document timestamps and error codes',
-    permission: 'PERMISSION ISSUE FRAMEWORK\n1. Confirm user role and expected access\n2. Compare with working user same role\n3. Check branch/org scope restrictions\n4. Review recent permission changes\n5. Test denied vs allowed actions explicitly\n6. Document role, resource, expected vs actual',
-    api: 'API ERROR FRAMEWORK\n1. Capture request/response (status, body)\n2. Verify endpoint, method, headers, auth token\n3. Compare with API documentation\n4. Check idempotency and payload format\n5. Server vs client error classification\n6. Document correlation/request IDs'
-  };
 
-  const UAT_CHECKLISTS = {
-    auth: ['Login with valid credentials', 'Login with invalid credentials (error message)', 'Logout and session expiry', 'Password reset flow', 'MFA if applicable', 'Concurrent session behavior'],
-    onboarding: ['New user registration', 'Email verification if required', 'Profile completion steps', 'Skip/back navigation', 'Incomplete onboarding restrictions', 'Welcome content accuracy'],
-    payments: ['Successful payment flow', 'Failed payment handling', 'Entitlement granted after payment', 'Receipt/confirmation display', 'Refund/cancel edge cases', 'Currency and tax display'],
-    permissions: ['Role A can access allowed modules', 'Role A blocked from restricted modules', 'Branch-level data isolation', 'Admin override behavior', 'Audit log entries for sensitive actions']
-  };
 
   const NAV_GROUPS = {
     home: 'home',
@@ -9342,6 +10504,7 @@ None identified`;
     toolbox: 'thinking',
     learning: 'thinking',
     'support-lab': 'thinking',
+    // nested lab routes resolve via startsWith in updateNav if needed
     certifications: 'proof',
     research: 'proof',
     recruiter: 'proof',
@@ -9490,6 +10653,10 @@ None identified`;
       const slug = path.replace('knowledge/', '');
       if (ARTICLES.some(a => a.slug === slug)) return { type: 'article', slug, path };
     }
+    if (path.startsWith('support-lab/') && path !== 'support-lab') {
+      const slug = path.replace('support-lab/', '');
+      return { type: 'lab', slug, path };
+    }
     if (ROUTES[path]) return { type: 'route', path };
     return { type: '404', path: '404' };
   }
@@ -9521,9 +10688,15 @@ None identified`;
 
   function navigate(path, push) {
     const isArticle = path.startsWith('knowledge/') && path !== 'knowledge';
+    const isLab = path.startsWith('support-lab/') && path !== 'support-lab';
     const valid = isArticle
       ? ARTICLES.some(a => a.slug === path.replace('knowledge/', ''))
-      : Boolean(ROUTES[path]);
+      : isLab
+        ? (() => {
+            const s = getLabScenario(path.replace('support-lab/', ''));
+            return Boolean(s && (s.status === 'available' || s.status === 'building'));
+          })()
+        : Boolean(ROUTES[path]);
     const safePath = valid ? path : '404';
     const targetHash = '#/' + safePath;
     if (push && window.location.hash !== targetHash) {
@@ -9532,6 +10705,10 @@ None identified`;
     }
     if (safePath.startsWith('knowledge/')) {
       showArticle(safePath.replace('knowledge/', ''));
+    } else if (safePath.startsWith('support-lab/') && safePath !== 'support-lab') {
+      showSupportLab(safePath.replace('support-lab/', ''));
+    } else if (safePath === 'support-lab') {
+      showSupportLab();
     } else {
       showRoute(safePath);
     }
@@ -9545,6 +10722,12 @@ None identified`;
     if (path && path.startsWith('knowledge/') && path !== 'knowledge') {
       kickerEl.textContent = 'Knowledge';
       titleEl.textContent = articleTitle || 'Article';
+      titleEl.title = articleTitle || '';
+      return;
+    }
+    if (path && path.startsWith('support-lab/') && path !== 'support-lab') {
+      kickerEl.textContent = 'Support Lab';
+      titleEl.textContent = articleTitle || 'Scenario';
       titleEl.title = articleTitle || '';
       return;
     }
@@ -9570,6 +10753,7 @@ None identified`;
     if (path === 'knowledge') renderKnowledgeList();
     if (path === 'toolbox') renderToolbox();
     if (path === 'learning') renderLearning();
+    if (path === 'support-lab') showSupportLab();
     if (path === 'certifications') renderCerts();
     hideReadProgress();
   }
@@ -9729,6 +10913,8 @@ None identified`;
         ? 'projects'
         : active.startsWith('knowledge/')
         ? 'knowledge'
+        : active.startsWith('support-lab/')
+        ? 'support-lab'
         : active;
 
     $$('.nav-item[data-nav]').forEach(item => {
@@ -10294,49 +11480,172 @@ None identified`;
   }
 
   // CERTIFICATIONS
+  function credentialTypeLabel(type) {
+    return CREDENTIAL_TYPES[type] || 'Credential';
+  }
+
+  function credentialStatusClass(status) {
+    if (status === 'valid') return 'credential-status--valid';
+    if (status === 'expired') return 'credential-status--expired';
+    return 'credential-status--completed';
+  }
+
   function renderCerts() {
     const grid = $('#cert-grid');
     if (!grid) return;
 
-    const psm = CREDENTIALS.find(c => c.id === 'psm1');
-    const others = CREDENTIALS.filter(c => c.id !== 'psm1');
+    const featured = CREDENTIALS.find(c => c.featured && c.id === 'psm1') || CREDENTIALS.find(c => c.featured);
+    const relevant = CREDENTIALS.filter(c => c.relevance === 'foundational').sort((a, b) => a.priority - b.priority);
+    const supporting = CREDENTIALS.filter(c => c.relevance === 'supporting' || c.relevance === 'earlier').sort((a, b) => a.priority - b.priority);
 
-    let html = '';
-    if (psm) {
-      html += `
-        <section class="cert-feature-module cert-card" data-cert-id="${psm.id}" role="button" tabindex="0">
-          <span class="mono-label">Featured credential</span>
-          <h2>${esc(psm.name)}</h2>
-          <p class="text-sm text-muted">${esc(psm.issuer)} · ${esc(psm.year)} · Valid</p>
-          <p class="text-sm" style="margin-top:12px;color:var(--lime)">View credential →</p>
-        </section>`;
-    }
+    const timelineHtml = `
+      <section class="credentials-section" aria-labelledby="cred-timeline-heading">
+        <div class="credentials-section-head">
+          <p class="mono-label">02 / Journey</p>
+          <h2 id="cred-timeline-heading">Learning / credential journey</h2>
+          <p>Formal learning milestones — not employment history.</p>
+        </div>
+        <ol class="credential-timeline">
+          ${CREDENTIAL_TIMELINE.map(item => `
+            <li class="credential-timeline-item${item.current ? ' credential-timeline-item--now' : ''}">
+              <span class="credential-timeline-when">${esc(item.when)}</span>
+              <div>
+                <strong>${esc(item.label)}</strong>
+                <span>${esc(item.detail)}</span>
+              </div>
+            </li>
+          `).join('')}
+        </ol>
+      </section>`;
 
-    html += '<div class="cert-compact-list">' + others.map(c => {
-      const statusTag = (() => {
-        const s = (c.status || '').toLowerCase();
-        if (s.includes('valid')) return '<span class="status-label status-hands-on">VALID CREDENTIAL</span>';
-        if (s.includes('expired')) return '<span class="status-label status-learning">EARNED 2023 · EXPIRED APR 2026</span>';
-        if (s.includes('training')) return '<span class="status-label status-foundation">TRAINING CERTIFICATE</span>';
-        if (s.includes('course')) return '<span class="status-label status-learning">COURSE COMPLETION</span>';
-        return '<span class="status-label status-aware">' + esc(c.status) + '</span>';
-      })();
-      return `
-      <div class="cert-compact-row cert-card" data-cert-id="${c.id}" role="button" tabindex="0">
-        ${statusTag}
-        <h3>${esc(c.name)}</h3>
-        <p class="text-sm text-muted">${esc(c.issuer)} · ${esc(c.year)}</p>
-        <p class="text-sm ${c.status.toLowerCase().includes('expired') ? 'cert-expired' : ''}">${esc(c.status)}</p>
-        ${c.score ? '<p class="text-xs text-muted">Score: ' + esc(c.score) + '</p>' : ''}
-      </div>`;
-    }).join('') + '</div>';
+    const featuredHtml = featured ? `
+      <section class="credentials-section" aria-labelledby="cred-featured-heading">
+        <div class="credentials-section-head">
+          <p class="mono-label">01 / Current credential</p>
+          <h2 id="cred-featured-heading">Professional certification</h2>
+        </div>
+        <article class="credential-featured">
+          <div class="credential-featured-main">
+            <p class="mono-label">${esc(credentialTypeLabel(featured.type))}</p>
+            <h2>${esc(featured.name)}</h2>
+            <p class="credential-featured-short">${esc(featured.shortTitle || '')}</p>
+            <p class="credential-featured-issuer">${esc(featured.issuer)} · ${esc(featured.issuedLabel || featured.year)}</p>
+            <p class="credential-featured-summary">${esc(featured.summary || '')}</p>
+          </div>
+          <div class="credential-featured-side">
+            <div>
+              <p class="mono-label">Status</p>
+              <p class="credential-status ${credentialStatusClass(featured.status)}" aria-label="Status: ${esc(featured.statusLabel)}">${esc(featured.statusLabel)}</p>
+            </div>
+            <div>
+              <p class="mono-label">Issuer</p>
+              <p>${esc(featured.issuer)}</p>
+            </div>
+            <div>
+              <p class="mono-label">What it supports</p>
+              <p>${esc(featured.supports || '')}</p>
+            </div>
+            <div>
+              <p class="mono-label">Evidence</p>
+              <button type="button" class="btn btn-primary btn-sm" data-cert-id="${esc(featured.id)}">View ${esc(featured.shortTitle || featured.name)} credential</button>
+            </div>
+          </div>
+        </article>
+      </section>` : '';
 
-    grid.innerHTML = html;
+    const relevantHtml = `
+      <section class="credentials-section" aria-labelledby="cred-relevant-heading">
+        <div class="credentials-section-head">
+          <p class="mono-label">03 / Role-relevant foundations</p>
+          <h2 id="cred-relevant-heading">Currently relevant credentials</h2>
+          <p>Technical foundations most useful for Product/Application Support and Implementation positioning.</p>
+        </div>
+        <div class="credential-grid">
+          ${relevant.map(c => `
+            <button type="button" class="credential-card${c.status === 'expired' ? ' credential-card--history' : ''}" data-cert-id="${esc(c.id)}">
+              <div class="credential-card-top">
+                <span class="credential-type">${esc(credentialTypeLabel(c.type))}</span>
+                <span class="credential-status ${credentialStatusClass(c.status)}" aria-label="Status: ${esc(c.statusLabel)}">${esc(c.statusLabel)}</span>
+              </div>
+              <h3>${esc(c.name)}</h3>
+              <p class="credential-card-meta">${esc(c.issuer)} · ${esc(c.issuedLabel || c.year)}${c.expiresLabel ? ' · Expired ' + esc(c.expiresLabel) : ''}${c.score ? ' · Score ' + esc(c.score) : ''}</p>
+              <p class="credential-card-supports">${esc(c.supports || c.summary || '')}</p>
+              <span class="credential-card-cta">View ${esc(c.shortTitle || 'credential')} evidence →</span>
+            </button>
+          `).join('')}
+        </div>
+      </section>`;
 
-    $$('.cert-card').forEach(card => {
-      card.addEventListener('click', () => openCert(card.dataset.certId));
-      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCert(card.dataset.certId); } });
+    const supportingHtml = `
+      <section class="credentials-section" aria-labelledby="cred-support-heading">
+        <div class="credentials-section-head">
+          <p class="mono-label">04 / Supporting / earlier learning</p>
+          <h2 id="cred-support-heading">Secondary credentials</h2>
+          <p>Legitimate learning evidence with lower visual priority for current role targeting.</p>
+        </div>
+        <ul class="credential-list">
+          ${supporting.map(c => `
+            <li>
+              <button type="button" data-cert-id="${esc(c.id)}">
+                <strong>${esc(c.name)}</strong>
+                <span>${esc(c.issuer)} · ${esc(c.issuedLabel || c.year)}</span>
+              </button>
+              <span>${esc(c.summary || '')}</span>
+              <span class="credential-type">${esc(credentialTypeLabel(c.type))}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </section>`;
+
+    const bridgeHtml = `
+      <section class="credentials-section" aria-labelledby="cred-bridge-heading">
+        <div class="credential-bridge">
+          <h2 id="cred-bridge-heading">Credentials are one part of the evidence</h2>
+          <p>See how these foundations are being developed into practice — and where applied work already exists.</p>
+          <div class="credential-bridge-actions">
+            <a class="btn btn-primary" href="#/learning" data-nav-link="learning">View Learning</a>
+            <a class="btn btn-ghost" href="#/projects" data-nav-link="projects">Projects</a>
+            <a class="btn btn-ghost" href="#/capabilities" data-nav-link="capabilities">Capabilities</a>
+            <a class="btn btn-ghost" href="#/support-lab" data-nav-link="support-lab">Support Lab</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="credentials-section" aria-labelledby="cred-lineage-heading">
+        <div class="credentials-section-head">
+          <p class="mono-label">05 / From credential to practice</p>
+          <h2 id="cred-lineage-heading">How formal learning connects</h2>
+        </div>
+        <div class="credential-lineage">
+          <article class="credential-lineage-item">
+            <h3>Scrum</h3>
+            <p>PSM I → framework knowledge → delivery visibility, requirements and validation mindset in project work.</p>
+          </article>
+          <article class="credential-lineage-item">
+            <h3>Cloud</h3>
+            <p>AWS Essentials → AWS Cloud Practitioner (historical) → current cloud / platform refresh in Learning.</p>
+          </article>
+          <article class="credential-lineage-item">
+            <h3>Software / data</h3>
+            <p>Java Full Stack training → IBM SQL course → practical SQL, REST and Postman building now.</p>
+          </article>
+        </div>
+      </section>`;
+
+    grid.innerHTML = featuredHtml + timelineHtml + relevantHtml + supportingHtml + bridgeHtml;
+
+    $$('[data-cert-id]', grid).forEach(el => {
+      el.addEventListener('click', () => openCert(el.dataset.certId));
+      if (el.tagName === 'BUTTON') {
+        el.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openCert(el.dataset.certId);
+          }
+        });
+      }
     });
+    bindNavLinks(grid);
   }
 
   function openCert(id) {
@@ -10344,11 +11653,26 @@ None identified`;
     if (!c) return;
     certDialogLastFocus = document.activeElement;
     const dlg = $('#cert-dialog');
-    $('#cert-dialog-title').textContent = c.name;
+    const title = c.shortTitle ? `${c.name} (${c.shortTitle})` : c.name;
+    $('#cert-dialog-title').textContent = title;
     const body = $('#cert-dialog-body');
     body.innerHTML = '';
     const link = $('#cert-dialog-link');
     link.href = c.file;
+    link.textContent = 'Open ' + (c.shortTitle || 'credential') + ' PDF in new tab';
+    link.setAttribute('aria-label', 'Open ' + c.name + ' PDF in new tab');
+
+    const meta = document.createElement('p');
+    meta.className = 'cert-dialog-meta';
+    meta.textContent = [
+      credentialTypeLabel(c.type),
+      c.issuer,
+      c.issuedLabel || c.year,
+      c.statusLabel,
+      c.score ? 'Score ' + c.score : null
+    ].filter(Boolean).join(' · ');
+    body.appendChild(meta);
+
     if (c.file.toLowerCase().endsWith('.pdf')) {
       const shell = document.createElement('div');
       shell.className = 'cert-preview-shell';
@@ -10368,11 +11692,19 @@ None identified`;
       shell.appendChild(obj);
       body.appendChild(shell);
     } else {
-      body.innerHTML = '<p><a href="' + c.file + '" target="_blank" rel="noopener noreferrer">Open file</a></p>';
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = c.file;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = 'Open file';
+      p.appendChild(a);
+      body.appendChild(p);
     }
     if (typeof dlg.showModal === 'function') dlg.showModal();
     else dlg.setAttribute('open', '');
   }
+
   // COMMAND PALETTE
   function buildSearchIndex() {
     const items = [];
@@ -10429,116 +11761,476 @@ None identified`;
   }
 
   // SUPPORT LAB
-  let currentUatKey = null;
+  // SUPPORT LAB
+  let SUPPORT_LAB_DATA = { version: 1, featured: '', categories: [], scenarios: [] };
+  let supportLabReady = false;
+  let supportLabFilter = 'all';
+  let labRuntime = null;
+  const LAB_STORAGE_KEY = 'supportLabProgress_v1';
 
-  function renderUatChecklist(key) {
-    const list = $('#uat-checklist');
-    if (!list) return;
-    currentUatKey = key;
-    const items = UAT_CHECKLISTS[key] || [];
-    list.innerHTML = items.map((text, i) =>
-      `<li><input type="checkbox" id="uat-item-${i}" data-uat-idx="${i}"><label for="uat-item-${i}">${esc(text)}</label></li>`
-    ).join('') || '<li class="text-muted">Select a workflow area.</li>';
+  function getLabScenario(slug) {
+    return (SUPPORT_LAB_DATA.scenarios || []).find(s => s.slug === slug) || null;
   }
 
-  function initSupportLab() {
-    const tabs = $$('.workbench-tab');
-    tabs.forEach(tab => {
-      const id = tab.dataset.labTab;
-      tab.id = 'tab-' + id;
-      tab.setAttribute('role', 'tab');
-      tab.setAttribute('aria-controls', 'lab-panel-' + id);
-      tab.setAttribute('aria-selected', tab.classList.contains('active') ? 'true' : 'false');
-      tab.setAttribute('tabindex', tab.classList.contains('active') ? '0' : '-1');
+  function loadLabProgress() {
+    try {
+      return JSON.parse(localStorage.getItem(LAB_STORAGE_KEY) || '{}') || {};
+    } catch (_) {
+      return {};
+    }
+  }
 
-      const panel = $('#lab-panel-' + id);
-      if (panel) {
-        panel.setAttribute('role', 'tabpanel');
-        panel.setAttribute('aria-labelledby', 'tab-' + id);
+  function saveLabProgress(map) {
+    try {
+      localStorage.setItem(LAB_STORAGE_KEY, JSON.stringify(map));
+    } catch (_) { /* ignore quota / private mode */ }
+  }
+
+  function persistLabRuntime() {
+    if (!labRuntime) return;
+    const map = loadLabProgress();
+    map[labRuntime.slug] = {
+      completed: labRuntime.completed,
+      taken: Array.from(labRuntime.taken),
+      evidence: labRuntime.evidence,
+      log: labRuntime.log,
+      hypotheses: labRuntime.hypotheses,
+      lastFeedback: labRuntime.lastFeedback || '',
+      lastSnippet: labRuntime.lastSnippet || ''
+    };
+    saveLabProgress(map);
+  }
+
+  async function loadSupportLabData() {
+    try {
+      const res = await fetch('data/support-lab.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      SUPPORT_LAB_DATA = await res.json();
+      supportLabReady = true;
+    } catch (err) {
+      supportLabReady = false;
+      console.error('[support-lab] Failed to load data/support-lab.json', err);
+      SUPPORT_LAB_DATA = { version: 1, featured: '', categories: [{ id: 'all', label: 'All' }], scenarios: [] };
+    }
+    return SUPPORT_LAB_DATA;
+  }
+
+  function createLabRuntime(scenario, saved) {
+    const hyp = {};
+    (scenario.hypotheses || []).forEach(h => {
+      hyp[h.id] = (saved && saved.hypotheses && saved.hypotheses[h.id]) || 'unknown';
+    });
+    return {
+      slug: scenario.slug,
+      taken: new Set((saved && saved.taken) || []),
+      evidence: (saved && saved.evidence) || [],
+      log: (saved && saved.log) || [],
+      hypotheses: hyp,
+      completed: Boolean(saved && saved.completed),
+      noteUnlocked: false,
+      validationUnlocked: false,
+      lastFeedback: (saved && saved.lastFeedback) || '',
+      lastSnippet: (saved && saved.lastSnippet) || ''
+    };
+  }
+
+  function labEvidenceCount(rt) {
+    return (rt.evidence || []).length;
+  }
+
+  function labCanDocument(scenario, rt) {
+    const need = (scenario.completion && scenario.completion.minEvidence) || 3;
+    return labEvidenceCount(rt) >= need;
+  }
+
+  function renderLabLanding() {
+    const landing = $('#lab-landing');
+    const workspace = $('#lab-workspace');
+    if (landing) landing.hidden = false;
+    if (workspace) {
+      workspace.hidden = true;
+      workspace.innerHTML = '';
+    }
+    labRuntime = null;
+
+    const featuredRoot = $('#lab-featured');
+    const filtersRoot = $('#lab-filters');
+    const libraryRoot = $('#lab-library');
+    if (!featuredRoot || !filtersRoot || !libraryRoot) return;
+
+    if (!supportLabReady || !(SUPPORT_LAB_DATA.scenarios || []).length) {
+      featuredRoot.innerHTML = '<p class="lab-empty">Support Lab scenarios could not be loaded. Serve this folder over HTTP so <code>data/support-lab.json</code> is available.</p>';
+      filtersRoot.innerHTML = '';
+      libraryRoot.innerHTML = '';
+      return;
+    }
+
+    const featured = getLabScenario(SUPPORT_LAB_DATA.featured) || (SUPPORT_LAB_DATA.scenarios || []).find(s => s.status === 'available');
+    if (featured) {
+      featuredRoot.innerHTML = `
+        <p class="mono-label" id="lab-featured-heading">Featured lab</p>
+        <h3>${esc(featured.title)}</h3>
+        <p class="lab-featured-report">“${esc(featured.report || featured.summary)}”</p>
+        <p><strong>Objective:</strong> ${esc(featured.objective || '')}</p>
+        <div class="lab-featured-meta">
+          <span>${esc((featured.difficulty || '').toUpperCase())}</span>
+          <span>${esc((featured.layers || []).join(' · '))}</span>
+          <span>${esc((featured.skills || []).slice(0, 4).join(' · '))}</span>
+        </div>
+        <button type="button" class="btn btn-primary" data-lab-start="${esc(featured.slug)}">Start investigation</button>
+      `;
+      featuredRoot.querySelector('[data-lab-start]')?.addEventListener('click', () => {
+        navigate('support-lab/' + featured.slug, true);
+      });
+    }
+
+    const cats = SUPPORT_LAB_DATA.categories || [{ id: 'all', label: 'All' }];
+    filtersRoot.innerHTML = cats.map(c => `
+      <button type="button" class="lab-filter" data-lab-filter="${esc(c.id)}" aria-pressed="${String(supportLabFilter === c.id)}">${esc(c.label)}</button>
+    `).join('');
+    $$('.lab-filter', filtersRoot).forEach(btn => {
+      btn.addEventListener('click', () => {
+        supportLabFilter = btn.dataset.labFilter || 'all';
+        renderLabLanding();
+      });
+    });
+
+    const progress = loadLabProgress();
+    const list = (SUPPORT_LAB_DATA.scenarios || []).filter(s => {
+      if (supportLabFilter === 'all') return true;
+      return s.category === supportLabFilter;
+    });
+
+    libraryRoot.innerHTML = list.map(s => {
+      const planned = s.status === 'planned' || s.status === 'building';
+      const done = progress[s.slug]?.completed;
+      const meta = `${(s.difficulty || '').toUpperCase()} · ${(s.status || 'available').toUpperCase()}${done ? ' · COMPLETED LOCALLY' : ''}`;
+      if (planned) {
+        return `
+          <article class="lab-card is-planned" aria-disabled="true">
+            <div class="lab-card-top"><span>${esc((s.category || '').toUpperCase())}</span><span>${esc(meta)}</span></div>
+            <h3>${esc(s.title)}</h3>
+            <p>${esc(s.summary || 'Queued practice scenario.')}</p>
+            <span class="lab-card-cta">Planned</span>
+          </article>
+        `;
       }
+      return `
+        <a class="lab-card" href="#/support-lab/${esc(s.slug)}" data-nav-link="support-lab/${esc(s.slug)}">
+          <div class="lab-card-top"><span>${esc((s.category || '').toUpperCase())}</span><span>${esc(meta)}</span></div>
+          <h3>${esc(s.title)}</h3>
+          <p>${esc(s.summary || '')}</p>
+          <span class="lab-card-cta">Start lab →</span>
+        </a>
+      `;
+    }).join('') || '<p class="lab-empty">No scenarios in this filter.</p>';
 
-      tab.addEventListener('click', () => activateLabTab(id));
-      tab.addEventListener('keydown', e => {
-        const idx = tabs.indexOf(tab);
-        let next = null;
-        if (e.key === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
-        else if (e.key === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
-        else if (e.key === 'Home') next = tabs[0];
-        else if (e.key === 'End') next = tabs[tabs.length - 1];
-        if (next) {
-          e.preventDefault();
-          activateLabTab(next.dataset.labTab);
-          next.focus();
-        }
-      });
+    bindNavLinks(libraryRoot);
+  }
+
+  function buildLabSupportNote(scenario, rt) {
+    const env = scenario.environment || {};
+    const evidence = (rt.evidence || []).map((e, i) => `E${String(i + 1).padStart(2, '0')}  ${e}`).join('\n') || '—';
+    const hyp = (scenario.hypotheses || [])
+      .map(h => `- ${h.label}: ${rt.hypotheses[h.id] || 'unknown'}`)
+      .join('\n');
+    return [
+      'SUPPORT NOTE (SIMULATION)',
+      'Summary: ' + scenario.title,
+      'Environment: ' + [env.env, env.browser, env.role].filter(Boolean).join(' · '),
+      env.record ? ('Record: ' + env.record) : null,
+      'Impact: ' + (scenario.impact || '—'),
+      '',
+      'Initial report:',
+      scenario.report || scenario.summary || '—',
+      '',
+      'Objective:',
+      scenario.objective || '—',
+      '',
+      'Evidence:',
+      evidence,
+      '',
+      'Working hypotheses:',
+      hyp || '—',
+      '',
+      'Tests performed:',
+      (rt.log || []).map(l => `- ${l.label}: ${l.result}`).join('\n') || '—',
+      '',
+      'Next action: Continue investigation or escalate with evidence above.',
+      '',
+      'Label: Practice simulation — not production incident history.'
+    ].filter(x => x !== null).join('\n');
+  }
+
+  function buildLabReport(scenario, rt) {
+    return [
+      'LAB REPORT',
+      'Scenario: ' + scenario.title,
+      'Slug: ' + scenario.slug,
+      'Difficulty: ' + (scenario.difficulty || ''),
+      '',
+      'Objective:',
+      scenario.objective || '',
+      '',
+      'Investigation:',
+      (rt.log || []).map((l, i) => `${String(i + 1).padStart(2, '0')}  ${l.label}\n→ ${l.result}`).join('\n\n') || '—',
+      '',
+      'Key evidence:',
+      (rt.evidence || []).map((e, i) => `- E${i + 1}: ${e}`).join('\n') || '—',
+      '',
+      'Working hypothesis states:',
+      (scenario.hypotheses || []).map(h => `- ${h.label}: ${rt.hypotheses[h.id] || 'unknown'}`).join('\n') || '—',
+      '',
+      'Status: ' + (rt.completed ? 'Completed simulation (local)' : 'In progress'),
+      '',
+      'Practice note: This is a simulation for structured troubleshooting practice.'
+    ].join('\n');
+  }
+
+  function buildLabMarkdown(scenario, rt) {
+    const today = new Date().toISOString().slice(0, 10);
+    return [
+      '---',
+      `lab: "${scenario.title.replace(/"/g, '\\"')}"`,
+      `date: ${today}`,
+      'type: "support-practice"',
+      `status: "${rt.completed ? 'completed' : 'in-progress'}"`,
+      '---',
+      '',
+      `# ${scenario.title}`,
+      '',
+      '## Scenario',
+      '',
+      scenario.summary || '',
+      '',
+      '> ' + (scenario.report || ''),
+      '',
+      '## Evidence',
+      '',
+      ...(rt.evidence || []).map((e, i) => `${i + 1}. ${e}`),
+      '',
+      '## Investigation log',
+      '',
+      ...(rt.log || []).map(l => `- **${l.label}** — ${l.result}`),
+      '',
+      '## Working hypotheses',
+      '',
+      ...(scenario.hypotheses || []).map(h => `- ${h.label}: ${rt.hypotheses[h.id] || 'unknown'}`),
+      '',
+      '## Label',
+      '',
+      'Practice simulation — not production incident history.',
+      ''
+    ].join('\n');
+  }
+
+  function takeLabAction(scenario, actionId) {
+    if (!labRuntime) return;
+    const action = (scenario.actions || []).find(a => a.id === actionId);
+    if (!action) return;
+    if (labRuntime.taken.has(actionId)) return;
+
+    labRuntime.taken.add(actionId);
+    labRuntime.log.push({
+      label: action.label,
+      result: action.result || '',
+      value: action.value || 'useful',
+      feedback: action.feedback || ''
     });
-
-    function activateLabTab(id) {
-      $$('.workbench-tab').forEach(t => {
-        const active = t.dataset.labTab === id;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', String(active));
-        t.setAttribute('tabindex', active ? '0' : '-1');
-      });
-      $$('.workbench-panel').forEach(p => {
-        const show = p.id === 'lab-panel-' + id;
-        p.classList.toggle('active', show);
-        p.hidden = !show;
+    if (action.evidence) labRuntime.evidence.push(action.evidence);
+    if (action.hypothesisEffects) {
+      Object.entries(action.hypothesisEffects).forEach(([hid, effect]) => {
+        labRuntime.hypotheses[hid] = effect;
       });
     }
+    labRuntime.lastFeedback = `${(action.value || 'useful').toUpperCase()} — ${action.feedback || ''}`.trim();
+    labRuntime.lastSnippet = action.snippet || '';
 
-    $$('#triage-chips .chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        $$('#triage-chips .chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        $('#triage-output').textContent = TRIAGE[chip.dataset.triage] || '';
-      });
-    });
-
-    const httpSelect = $('#http-select');
-    if (httpSelect) httpSelect.addEventListener('change', e => {
-      $('#http-output').textContent = HTTP_STATUSES[e.target.value] || 'Select a status code.';
-    });
-
-    function buildBugReport() {
-      return ['SUMMARY', ($('#bug-summary').value || '—'),
-        '', 'ENVIRONMENT', ($('#bug-env').value || '—'),
-        '', 'STEPS TO REPRODUCE', $('#bug-steps').value || '—',
-        '', 'EXPECTED', $('#bug-expected').value || '—',
-        '', 'ACTUAL', $('#bug-actual').value || '—',
-        '', 'EVIDENCE', $('#bug-evidence').value || '—',
-        '', 'IMPACT', ($('#bug-impact').value || '—')].join('\n');
+    if (labCanDocument(scenario, labRuntime)) labRuntime.noteUnlocked = true;
+    if (scenario.completion?.unlockValidation && labEvidenceCount(labRuntime) >= (scenario.completion.minEvidence || 3)) {
+      labRuntime.validationUnlocked = true;
     }
-    $('#bug-generate')?.addEventListener('click', () => {
-      $('#bug-output').textContent = buildBugReport();
-    });
-    $('#bug-copy')?.addEventListener('click', () => {
-      const text = $('#bug-output').textContent || buildBugReport();
-      if (!text.trim()) { $('#bug-output').textContent = buildBugReport(); }
-      copyText($('#bug-output').textContent || buildBugReport(), 'Bug report');
-    });
+    if (action.id === 'prepare-escalation' || action.id === 'generate-report' || action.id === 'complete-validation') {
+      labRuntime.completed = true;
+    }
+    persistLabRuntime();
+    renderLabWorkspace(scenario);
+  }
 
-    $$('#uat-chips .chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        $$('#uat-chips .chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        renderUatChecklist(chip.dataset.uat);
-      });
-    });
-    $('#uat-reset')?.addEventListener('click', () => {
-      if (currentUatKey) renderUatChecklist(currentUatKey);
-    });
+  function renderLabWorkspace(scenario) {
+    const landing = $('#lab-landing');
+    const workspace = $('#lab-workspace');
+    if (!workspace) return;
+    if (landing) landing.hidden = true;
+    workspace.hidden = false;
 
-    const bugOutput = $('#bug-output');
-    if (bugOutput && !bugOutput.textContent.trim()) {
-      bugOutput.innerHTML = '<span class="lab-placeholder">Complete the fields and generate a structured ticket.</span>';
+    const saved = loadLabProgress()[scenario.slug];
+    if (!labRuntime || labRuntime.slug !== scenario.slug) {
+      labRuntime = createLabRuntime(scenario, saved);
+      if (labCanDocument(scenario, labRuntime)) labRuntime.noteUnlocked = true;
     }
 
-    const firstTriage = $('#triage-chips [data-triage="login"]');
-    if (firstTriage) firstTriage.click();
+    const rt = labRuntime;
+    const actions = (scenario.actions || []).filter(a => !rt.taken.has(a.id));
+    const relatedK = (scenario.relatedKnowledge || [])
+      .map(slug => {
+        const a = ARTICLES.find(x => x.slug === slug);
+        return a ? { label: a.title, href: '#/knowledge/' + slug, path: 'knowledge/' + slug } : null;
+      })
+      .filter(Boolean);
+    const relatedP = (scenario.relatedProjects || []).map(id => ({
+      label: id === 'catalyx' ? 'Catalyx' : id === 'skillverse' ? 'Skillverse' : id,
+      href: '#/projects/' + id,
+      path: 'projects/' + id
+    }));
 
-    const firstUat = $('#uat-chips [data-uat="auth"]');
-    if (firstUat) firstUat.click();
+    const note = buildLabSupportNote(scenario, rt);
+    const report = buildLabReport(scenario, rt);
+
+    workspace.innerHTML = `
+      <div class="lab-ws-nav">
+        <a href="#/support-lab" class="btn-text" data-nav-link="support-lab">← Back to scenarios</a>
+        <button type="button" class="btn btn-ghost btn-sm" id="lab-reset">Reset lab</button>
+      </div>
+      <header class="lab-ws-header">
+        <div>
+          <p class="mono-label">Lab · ${esc((scenario.difficulty || '').toUpperCase())} · Simulation</p>
+          <h2 id="lab-heading">${esc(scenario.title)}</h2>
+        </div>
+        <p class="mono-label">${esc((scenario.layers || []).join(' · '))}</p>
+      </header>
+      ${scenario.note ? `<p class="lab-micro">${esc(scenario.note)}</p>` : ''}
+
+      <div class="lab-ws-grid">
+        <section class="lab-panel" aria-labelledby="lab-context-heading">
+          <h3 id="lab-context-heading">Scenario</h3>
+          <dl>
+            <dt>Initial report</dt>
+            <dd>“${esc(scenario.report || scenario.summary || '')}”</dd>
+            <dt>Objective</dt>
+            <dd>${esc(scenario.objective || '')}</dd>
+            <dt>Impact</dt>
+            <dd>${esc(scenario.impact || '—')}</dd>
+            <dt>Environment</dt>
+            <dd>${esc([scenario.environment?.env, scenario.environment?.browser, scenario.environment?.role, scenario.environment?.record].filter(Boolean).join(' · ') || '—')}</dd>
+            <dt>Tools in this lab</dt>
+            <dd>${esc((scenario.tools || []).join(' · ') || '—')}</dd>
+          </dl>
+          <h3 style="margin-top:16px">Triage context</h3>
+          <ul class="lab-triage">
+            ${(scenario.triage || []).map(t => `<li><strong>${esc(t.question)}</strong>${esc(t.answer)}</li>`).join('') || '<li class="lab-empty">No triage prompts.</li>'}
+          </ul>
+        </section>
+
+        <section class="lab-panel lab-panel--evidence" aria-labelledby="lab-evidence-heading">
+          <h3 id="lab-evidence-heading">Evidence</h3>
+          <ul class="lab-evidence-list">
+            ${rt.evidence.length ? rt.evidence.map((e, i) => `<li><span class="mono-label">E${String(i + 1).padStart(2, '0')}</span>${esc(e)}</li>`).join('') : '<li class="lab-empty">No evidence yet — take an investigation action.</li>'}
+          </ul>
+          <h3 style="margin-top:16px">Hypotheses</h3>
+          <ul class="lab-hypotheses">
+            ${(scenario.hypotheses || []).map(h => {
+              const state = rt.hypotheses[h.id] || 'unknown';
+              const label = state === 'more' ? 'More plausible' : state === 'less' ? 'Less plausible' : 'Unknown';
+              return `<li><span>${esc(h.label)}</span><span class="lab-hyp-state ${state === 'more' ? 'is-more' : state === 'less' ? 'is-less' : ''}">${esc(label)}</span></li>`;
+            }).join('') || '<li class="lab-empty">None listed.</li>'}
+          </ul>
+        </section>
+      </div>
+
+      <section class="lab-panel" aria-labelledby="lab-actions-heading">
+        <h3 id="lab-actions-heading">Investigation actions</h3>
+        <p class="lab-empty" style="margin-bottom:10px">Change one variable at a time. Prefer high-information tests that narrow uncertainty.</p>
+        <div class="lab-actions">
+          ${actions.length ? actions.map(a => `<button type="button" class="lab-action" data-lab-action="${esc(a.id)}">${esc(a.label)}</button>`).join('') : '<p class="lab-empty">All listed actions taken. Review evidence and documentation below.</p>'}
+        </div>
+        ${rt.lastFeedback ? `<p class="lab-action-feedback">${esc(rt.lastFeedback)}</p>` : ''}
+        ${rt.lastSnippet ? `<pre class="lab-snippet">${esc(rt.lastSnippet)}</pre>` : ''}
+      </section>
+
+      <section class="lab-panel" aria-labelledby="lab-log-heading">
+        <h3 id="lab-log-heading">Investigation log</h3>
+        <ol class="lab-log">
+          ${rt.log.length ? rt.log.map((l, i) => `<li><span class="mono-label">Step ${String(i + 1).padStart(2, '0')} · ${(l.value || '').toUpperCase()}</span><strong>${esc(l.label)}</strong><div>${esc(l.result)}</div></li>`).join('') : '<li class="lab-empty">Log is empty.</li>'}
+        </ol>
+      </section>
+
+      <section class="lab-panel" aria-labelledby="lab-doc-heading">
+        <h3 id="lab-doc-heading">Support note / lab report</h3>
+        ${labCanDocument(scenario, rt) ? `
+          <p class="lab-empty" style="margin-bottom:10px">Enough evidence to draft a structured note. Refine as you continue.</p>
+          <pre class="lab-doc" id="lab-doc-text">${esc(note)}</pre>
+          <div class="lab-toolbar">
+            <button type="button" class="btn btn-primary btn-sm" id="lab-copy-note">Copy support note</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="lab-copy-report">Copy lab report</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="lab-copy-md">Copy as Markdown</button>
+          </div>
+          <pre class="lab-report" id="lab-report-text" hidden>${esc(report)}</pre>
+        ` : `<p class="lab-empty">Documentation unlocks after about ${(scenario.completion && scenario.completion.minEvidence) || 3} evidence items. Keep investigating.</p>`}
+        ${scenario.completion?.fixMessage && rt.validationUnlocked ? `<p class="lab-action-feedback" style="margin-top:12px"><strong>Simulated update:</strong> ${esc(scenario.completion.fixMessage)}</p>` : ''}
+      </section>
+
+      <section class="lab-panel" aria-labelledby="lab-related-heading">
+        <h3 id="lab-related-heading">Related</h3>
+        <div class="lab-related">
+          ${relatedK.map(l => `<a href="${esc(l.href)}" data-nav-link="${esc(l.path)}">${esc(l.label)} →</a>`).join('')}
+          ${relatedP.map(l => `<a href="${esc(l.href)}" data-nav-link="${esc(l.path)}">${esc(l.label)} →</a>`).join('')}
+          <a href="#/learning" data-nav-link="learning">Learning system →</a>
+          <a href="#/toolbox" data-nav-link="toolbox">Toolbox →</a>
+        </div>
+      </section>
+    `;
+
+    bindNavLinks(workspace);
+
+    $$('[data-lab-action]', workspace).forEach(btn => {
+      btn.addEventListener('click', () => takeLabAction(scenario, btn.dataset.labAction));
+    });
+
+    $('#lab-reset')?.addEventListener('click', () => {
+      if (rt.log.length && !window.confirm('Reset this lab? Investigation progress for this scenario will be cleared locally.')) return;
+      const map = loadLabProgress();
+      delete map[scenario.slug];
+      saveLabProgress(map);
+      labRuntime = createLabRuntime(scenario, null);
+      renderLabWorkspace(scenario);
+    });
+
+    $('#lab-copy-note')?.addEventListener('click', () => copyText(note, 'Support note'));
+    $('#lab-copy-report')?.addEventListener('click', () => copyText(report, 'Lab report'));
+    $('#lab-copy-md')?.addEventListener('click', () => copyText(buildLabMarkdown(scenario, rt), 'Markdown'));
+  }
+
+  function showSupportLab(slug) {
+    const view = $('#view-support-lab');
+    if (!view) return;
+    $$('.view').forEach(v => v.classList.remove('active'));
+    view.classList.add('active');
+    updateNav('support-lab');
+    closeMobileNav();
+    resetActiveScroll();
+
+    if (!slug) {
+      updatePageMeta('Support Lab — Bhramar Raut', 'Practice troubleshooting simulations across application, API, systems, networking and service workflows.');
+      updateTopbarContext('support-lab');
+      renderLabLanding();
+      animateView();
+      return;
+    }
+
+    const scenario = getLabScenario(slug);
+    if (!scenario || (scenario.status !== 'available' && scenario.status !== 'building')) {
+      showRoute('404');
+      return;
+    }
+    updatePageMeta(scenario.title + ' — Support Lab — Bhramar Raut', scenario.summary || scenario.title);
+    updateTopbarContext('support-lab/' + slug, scenario.title);
+    renderLabWorkspace(scenario);
+    animateView();
+  }
+
+  async function initSupportLab() {
+    await loadSupportLabData();
   }
 
   // TIMELINE — experience entries are always visible (no accordion)
@@ -10583,7 +12275,7 @@ None identified`;
 
   function forceActiveViewVisible(root) {
     if (!root) return;
-    root.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .workbench, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card').forEach(el => {
+    root.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .lab-featured, .lab-card, .lab-panel, .credential-featured, .credential-card, .credential-bridge, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card').forEach(el => {
       gsap?.killTweensOf(el);
       el.style.opacity = '';
       el.style.transform = '';
@@ -10602,7 +12294,7 @@ None identified`;
       animateHomeBento();
       return;
     }
-    const targets = active.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .workbench, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card');
+    const targets = active.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .lab-featured, .lab-card, .lab-panel, .credential-featured, .credential-card, .credential-bridge, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card');
     if (targets.length) {
       gsap.fromTo(targets, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .38, stagger: .04, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
     }
@@ -10698,7 +12390,7 @@ None identified`;
     });
 
     bindNavLinks();
-    initSupportLab();
+    await initSupportLab();
     renderKnowledgeList();
     renderToolbox();
     initToolboxCompare();
@@ -10803,12 +12495,14 @@ None identified`;
     window.addEventListener('hashchange', () => {
       const r = parseRoute();
       if (r.type === 'article') showArticle(r.slug);
+      else if (r.type === 'lab') showSupportLab(r.slug);
       else if (r.type === 'route') showRoute(r.path);
       else showRoute('404');
     });
 
     const r = parseRoute();
     if (r.type === 'article') showArticle(r.slug);
+    else if (r.type === 'lab') showSupportLab(r.slug);
     else if (r.type === 'route') showRoute(r.path);
     else showRoute('home');
   }

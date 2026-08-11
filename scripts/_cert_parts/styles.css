@@ -1,0 +1,559 @@
+/* ===== CERTIFICATIONS / CREDENTIALS ===== */
+#view-certifications {
+  --cr-featured-bg: #DCD8EF;
+  --cr-featured-text: #171717;
+  --cr-featured-muted: #5a5668;
+  --cr-featured-meta: #6d687a;
+  --cr-featured-border: rgba(23, 23, 23, 0.08);
+  --cr-card-bg: #FCFCFA;
+  --cr-card-border: rgba(23, 23, 23, 0.1);
+  --cr-stone: #D8D7D3;
+  --cr-stone-text: #171717;
+  --cr-stone-muted: #5c5c58;
+  --cr-valid: var(--lime);
+  --cr-expired: #b0893d;
+  --cr-meta: #7a7a74;
+}
+
+html[data-theme="dark"] #view-certifications {
+  --cr-featured-bg: #3a3650;
+  --cr-featured-text: #f3f1f8;
+  --cr-featured-muted: rgba(243, 241, 248, 0.7);
+  --cr-featured-meta: rgba(243, 241, 248, 0.55);
+  --cr-featured-border: rgba(255, 255, 255, 0.1);
+  --cr-card-bg: #2f2f33;
+  --cr-card-border: rgba(255, 255, 255, 0.1);
+  --cr-stone: #1a1a1d;
+  --cr-stone-text: #f4f4f4;
+  --cr-stone-muted: rgba(244, 244, 244, 0.68);
+  --cr-expired: #d4b56a;
+  --cr-meta: rgba(244, 244, 244, 0.5);
+}
+
+#view-certifications .page-inner {
+  max-width: 1080px;
+}
+
+.credentials-micro {
+  margin: var(--space-3) 0 0;
+  max-width: 58ch;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.credentials-read {
+  margin: var(--space-5) 0 var(--space-7);
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  max-width: 62ch;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.credentials-read strong {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.credentials-section {
+  margin: 0 0 var(--space-8);
+}
+
+.credentials-section-head {
+  margin: 0 0 var(--space-4);
+  max-width: 60ch;
+}
+
+.credentials-section-head .mono-label {
+  margin-bottom: 8px;
+}
+
+.credentials-section-head h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: -0.02em;
+}
+
+.credentials-section-head p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.credential-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(12rem, 0.8fr);
+  gap: 18px 28px;
+  padding: 24px clamp(18px, 3vw, 28px);
+  border-radius: var(--radius-module);
+  background: var(--cr-featured-bg);
+  color: var(--cr-featured-text);
+  border: 1px solid var(--cr-featured-border);
+}
+
+.credential-featured-main .mono-label {
+  color: var(--cr-featured-meta);
+  margin-bottom: 8px;
+}
+
+.credential-featured h2 {
+  margin: 0 0 4px;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  letter-spacing: -0.02em;
+}
+
+.credential-featured-short {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--cr-featured-meta);
+}
+
+.credential-featured-issuer {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  color: var(--cr-featured-muted);
+}
+
+.credential-featured-summary {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--cr-featured-muted);
+  max-width: 48ch;
+}
+
+.credential-featured-side {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.credential-featured-side > div {
+  padding-top: 10px;
+  border-top: 1px solid var(--cr-featured-border);
+}
+
+.credential-featured-side .mono-label {
+  color: var(--cr-featured-meta);
+  margin-bottom: 4px;
+}
+
+.credential-featured-side p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--cr-featured-text);
+}
+
+.credential-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.credential-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cr-meta);
+}
+
+.credential-status--valid::before {
+  background: var(--cr-valid);
+}
+
+.credential-status--expired::before {
+  background: var(--cr-expired);
+}
+
+.credential-status--completed::before {
+  background: var(--lavender);
+}
+
+.credential-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.credential-timeline-item {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 12px 16px;
+  padding: 12px 0 12px 16px;
+  border-left: 2px solid var(--line);
+  position: relative;
+}
+
+.credential-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.credential-timeline-item--now {
+  border-left-color: var(--cr-valid);
+}
+
+.credential-timeline-item--now::before {
+  background: var(--cr-valid);
+}
+
+.credential-timeline-when {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 2px;
+}
+
+.credential-timeline-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.credential-timeline-item span {
+  display: block;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.credential-card {
+  padding: 20px;
+  border-radius: var(--radius-module);
+  background: var(--cr-card-bg);
+  border: 1px solid var(--cr-card-border);
+  text-align: left;
+  cursor: pointer;
+  height: auto;
+  color: inherit;
+  width: 100%;
+  appearance: none;
+  font: inherit;
+}
+
+.credential-card:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+.credential-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.credential-type {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cr-meta);
+}
+
+.credential-card h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+}
+
+.credential-card-meta {
+  margin: 0 0 10px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.credential-card-supports {
+  margin: 0 0 12px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.credential-card-cta {
+  font-size: 0.8125rem;
+  color: var(--ink);
+}
+
+.credential-card--history .credential-status--expired {
+  color: var(--cr-expired);
+}
+
+.credential-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.credential-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.credential-list button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+
+.credential-list button:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+.credential-list strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.credential-list span {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.credential-list .credential-type {
+  justify-self: end;
+}
+
+.credential-lineage {
+  display: grid;
+  gap: 12px;
+}
+
+.credential-lineage-item {
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.credential-lineage-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.credential-lineage-item h3 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.credential-lineage-item p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.credential-bridge {
+  padding: 24px clamp(18px, 3vw, 28px);
+  border-radius: var(--radius-module);
+  background: var(--cr-stone);
+  color: var(--cr-stone-text);
+}
+
+.credential-bridge h2 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.credential-bridge p {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--cr-stone-muted);
+  max-width: 52ch;
+}
+
+.credential-bridge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#cert-dialog.cert-dialog {
+  border: none;
+}
+
+#cert-dialog[open] {
+  width: min(1080px, calc(100vw - 48px));
+  height: min(800px, calc(100dvh - 48px));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+#cert-dialog .modal-header {
+  min-height: 72px;
+  align-items: center;
+  padding: 18px 24px;
+}
+
+#cert-dialog .modal-body {
+  padding: 16px;
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+#cert-dialog .modal-footer {
+  padding: 14px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.cert-preview-shell {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #202020;
+}
+
+.cert-pdf {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.cert-fallback {
+  padding: 20px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.cert-dialog-meta {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .credential-featured,
+  .credential-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .credential-list li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .credential-list .credential-type {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 700px) {
+  #cert-dialog[open] {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  #cert-dialog .modal-header {
+    padding: 14px 16px;
+  }
+
+  #cert-dialog .modal-body {
+    padding: 8px;
+  }
+
+  #cert-dialog .modal-footer {
+    padding: 10px 16px;
+  }
+}
+
+@media print {
+  #cert-dialog {
+    display: none !important;
+  }
+
+  .credential-featured,
+  .credential-card,
+  .credential-bridge {
+    background: transparent !important;
+    color: #000 !important;
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+  }
+
+  .credential-featured-summary,
+  .credential-featured-issuer,
+  .credential-featured-short,
+  .credential-card-meta,
+  .credential-card-supports,
+  .credential-bridge p,
+  .credential-timeline-item span {
+    color: #333 !important;
+  }
+
+  .credential-bridge-actions,
+  .credential-card-cta,
+  .credential-featured-side .btn {
+    display: none !important;
+  }
+
+  .credential-status::before {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
