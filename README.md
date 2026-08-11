@@ -91,7 +91,7 @@ The website includes:
 - Learning roadmap
 - Recruiter Mode
 - Print / Save-as-PDF recruiter profile
-- Dark / Light / Auto theme
+- Dark / Light theme
 - Responsive mobile design
 - Command palette
 - Client-side search
@@ -140,9 +140,47 @@ This site is intentionally built as a lightweight static portfolio using:
 - Montserrat
 - GitHub Pages
 
-No React, Next.js, backend, database, or build system is required.
+No React, Next.js, backend, database, or CMS is required.
 
-The portfolio is designed as a **single-file application-style website** while remaining deployable directly through GitHub Pages.
+The UI stays vanilla HTML/CSS/JS in `index.html`. Knowledge content lives in Markdown (Obsidian-compatible) and is discovered via a generated manifest so the site stays deployable on GitHub Pages.
+
+---
+
+## Knowledge library (Obsidian → portfolio)
+
+Source of truth: `knowledge/*.md` with YAML frontmatter.
+
+```
+knowledge/*.md
+        ↓
+node scripts/build_knowledge_index.mjs
+        ↓
+knowledge-index.json
+        ↓
+index.html Knowledge UI
+```
+
+**Local workflow**
+
+1. Open `knowledge/` in Obsidian (or any Markdown editor).
+2. Add or edit a note with frontmatter (`title`, `slug`, `category`, `tags`, `status`, etc.).
+3. Rebuild the catalog:
+
+```bash
+node scripts/build_knowledge_index.mjs
+```
+
+4. Preview over HTTP (required — `fetch` will not work from `file://`):
+
+```bash
+npx --yes serve .
+```
+
+5. Commit both the Markdown and updated `knowledge-index.json` (or push Markdown only and let CI regenerate the index).
+
+**CI:** `.github/workflows/build-knowledge-index.yml` rebuilds `knowledge-index.json` when `knowledge/**` changes and commits the result.
+
+Do not embed articles in `index.html`. The browser never directory-scans `knowledge/`; it only loads the generated manifest.
 
 ---
 
