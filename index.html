@@ -12815,8 +12815,6 @@ None identified`;
     { id: 'capabilities', label: 'Capabilities', href: '#/capabilities', group: 'Work', icon: 'bi-grid' },
     { id: 'knowledge', label: 'Knowledge', href: '#/knowledge', group: 'Thinking', icon: 'bi-book' },
     { id: 'toolbox', label: 'Toolbox', href: '#/toolbox', group: 'Thinking', icon: 'bi-tools' },
-    { id: 'learning', label: 'Learning', href: '#/learning', group: 'Thinking', icon: 'bi-mortarboard' },
-    { id: 'support-lab', label: 'Support Lab', href: '#/support-lab', group: 'Thinking', icon: 'bi-wrench' },
     { id: 'certifications', label: 'Certifications', href: '#/certifications', group: 'Proof', icon: 'bi-award' },
     { id: 'research', label: 'Research', href: '#/research', group: 'Proof', icon: 'bi-journal-text' },
     { id: 'recruiter', label: 'Recruiter Mode', href: '#/recruiter', group: 'Proof', icon: 'bi-clipboard-check' },
@@ -12838,11 +12836,15 @@ None identified`;
 
   function toast(msg) {
     const c = $('#toast-container');
+    if (!c) return;
+    while (c.children.length >= 3) {
+      c.removeChild(c.firstChild);
+    }
     const t = document.createElement('div');
     t.className = 'toast';
     t.textContent = msg;
     c.appendChild(t);
-    setTimeout(() => t.remove(), 3000);
+    setTimeout(() => { if (t.parentNode) t.remove(); }, 3000);
   }
 
   function copyText(text, label) {
@@ -14198,20 +14200,20 @@ None identified`;
     cmdActive = 0;
     
     if (filtered.length === 0) {
-      results.innerHTML = \`<p class="text-muted text-sm" style="padding:12px;text-align:center">No results for "\${esc(q)}"<br><span style="font-size:0.8em;opacity:0.8;display:block;margin-top:8px">Try searching for a project, article, or tool.</span></p>\`;
+      results.innerHTML = `<p class="text-muted text-sm" style="padding:12px;text-align:center">No results for "${esc(q)}"<br><span style="font-size:0.8em;opacity:0.8;display:block;margin-top:8px">Try searching for a project, article, or tool.</span></p>`;
       results._items = [];
       $('#cmd-input').removeAttribute('aria-activedescendant');
       return;
     }
 
     results.innerHTML = filtered.map((item, i) =>
-      \`<div class="cmd-item\${i === 0 ? ' active' : ''}" role="option" aria-selected="\${i === 0}" id="cmd-opt-\${i}" data-cmd-idx="\${i}" data-path="\${item.path || ''}" data-action="\${item.action ? '1' : ''}">
-        <i class="bi \${item.icon}" aria-hidden="true"></i><span>\${esc(item.label)}</span>
-        <span class="cmd-item-type" style="margin-left:auto;font-size:0.7em;opacity:0.5;text-transform:uppercase">\${esc(item.type)}</span>
-      </div>\`).join('');
+      `<div class="cmd-item${i === 0 ? ' active' : ''}" role="option" aria-selected="${i === 0}" id="cmd-opt-${i}" data-cmd-idx="${i}" data-path="${item.path || ''}" data-action="${item.action ? '1' : ''}">
+        <i class="bi ${item.icon}" aria-hidden="true"></i><span>${esc(item.label)}</span>
+        <span class="cmd-item-type" style="margin-left:auto;font-size:0.7em;opacity:0.5;text-transform:uppercase">${esc(item.type)}</span>
+      </div>`).join('');
       
     results._items = filtered;
-    $('#cmd-input').setAttribute('aria-activedescendant', \`cmd-opt-0\`);
+    $('#cmd-input').setAttribute('aria-activedescendant', `cmd-opt-0`);
 
     $$('.cmd-item', results).forEach((el, i) => {
       el.addEventListener('click', () => executeCmd(filtered[i]));
@@ -14486,7 +14488,7 @@ None identified`;
       '',
       '## Working hypotheses',
       '',
-      ...(scenario.hypotheses || []).map(h => `- ${h.label}: ${rt.hypotheses[h.id] || 'unknown'}`),
+      ...(scenario.hypotheses || []).map(h => `- ${h.label}: ${h.label}: ${rt.hypotheses[h.id] || 'unknown'}`),
       '',
       '## Label',
       '',

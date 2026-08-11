@@ -61,7 +61,7 @@ A debloat script may:
 - Require administrator rights.
 - Change hundreds of settings at once.
 - Remove packages needed by another feature.
-- weaken security controls or updating.
+- Weaken security controls or updating.
 - Become outdated after a Windows release.
 - Make support documentation no longer match the machine.
 
@@ -80,4 +80,3 @@ I keep current backups, note the original state, verify that Windows Update work
 On an employer-managed device, I do not debloat. Management agents, security software, and policies belong to the organization.
 
 > A stable computer with three unused icons is better than a “clean” computer whose next update becomes an incident.
-
