@@ -5374,13 +5374,13 @@ body.menu-open{overflow:hidden;touch-action:none;position:fixed;width:100%;left:
 
 /* DIALOGS */
 dialog{border:none;border-radius:var(--radius-module);padding:0;background:var(--surface);color:var(--ink);max-width:92vw;box-shadow:var(--shadow-shell)}
-dialog::backdrop{background:rgba(17,17,17,.55);backdrop-filter:blur(4px)}
+dialog::backdrop{background:rgba(17,17,17,.4);backdrop-filter:blur(2px)}
 .modal-header{display:flex;justify-content:space-between;padding:var(--space-5) var(--space-6);border-bottom:1px solid var(--line)}
 .modal-body{padding:var(--space-6);overflow-y:auto;max-height:min(70dvh,70vh)}
 .modal-footer{padding:var(--space-4) var(--space-6);border-top:1px solid var(--line);display:flex;gap:var(--space-3);justify-content:flex-end}
-.cmd-palette{width:min(600px,94vw)}
-.cmd-input{width:100%;padding:var(--space-5) var(--space-6);border:none;border-bottom:1px solid var(--line);background:transparent;font-size:1.0625rem}
-.cmd-results{max-height:min(400px,50dvh);overflow-y:auto;padding:var(--space-2);scrollbar-width:thin;scrollbar-color:var(--scrollbar-thumb) var(--scrollbar-track)}
+.cmd-palette{width:min(600px, calc(100vw - 24px));margin:0;position:fixed;top:12vh;left:50%;transform:translateX(-50%);max-height:min(75dvh,600px);display:flex;flex-direction:column;overflow:hidden}
+.cmd-input{flex-shrink:0;width:100%;padding:var(--space-5) var(--space-6);border:none;border-bottom:1px solid var(--line);background:transparent;font-size:1.0625rem;outline:none}
+.cmd-results{flex:1;overflow-y:auto;padding:var(--space-2);scrollbar-width:thin;scrollbar-color:var(--scrollbar-thumb) transparent}
 .cmd-results::-webkit-scrollbar{width:6px}
 .cmd-results::-webkit-scrollbar-thumb{background:var(--scrollbar-thumb);border-radius:var(--radius-pill)}
 .cmd-item{display:flex;align-items:center;gap:var(--space-4);padding:12px var(--space-4);border-radius:var(--radius-control);cursor:pointer}
@@ -14176,14 +14176,28 @@ None identified`;
     items.push({ type: 'action', label: 'Open GitHub', action: () => window.open('https://github.com/bhramarraut', '_blank', 'noopener,noreferrer'), icon: 'bi-github' });
     items.push({ type: 'action', label: 'Copy Email', action: () => copyText(CONFIG.email, 'Email'), icon: 'bi-envelope' });
     items.push({ type: 'action', label: 'Toggle Theme', action: toggleTheme, icon: 'bi-circle-half' });
-    items.push({ type: 'action', label: 'Print Recruiter Profile', action: () => { navigate('recruiter', true); setTimeout(() => window.print(), 300); }, icon: 'bi-printer' });
+    items.push({ type: 'action', label: 'Print Recruiter Profile', action: () => printRecruiterResume(), icon: 'bi-printer' });
+    
+    items.forEach(item => {
+      item.searchString = item.label.toLowerCase();
+      if (item.label === 'Recruiter Mode') item.searchString += ' resume cv';
+      if (item.label === 'Support Lab') item.searchString += ' support';
+      if (item.label === 'Knowledge') item.searchString += ' support sql';
+      if (item.label === 'Capabilities') item.searchString += ' support';
+      if (item.label === 'Certifications') item.searchString += ' aws';
+      if (item.label === 'Learning') item.searchString += ' aws sql';
+      if (item.label === 'Skillverse') item.searchString += ' project';
+      if (item.label === 'Catalyx') item.searchString += ' project';
+    });
     return items;
   }
 
   let searchIndex = [];
   let cmdActive = 0;
+  let cmdLastFocus = null;
 
   function openCommandPalette() {
+    cmdLastFocus = document.activeElement;
     searchIndex = buildSearchIndex();
     const dlg = $('#cmd-dialog');
     const input = $('#cmd-input');
@@ -14191,30 +14205,82 @@ None identified`;
     renderCmdResults('');
     if (typeof dlg.showModal === 'function') dlg.showModal();
     animateCommandPalette();
+    setTimeout(() => input.focus(), 10);
+  }
+
+  function highlightCmd() {
+    $$('.cmd-item').forEach((el, i) => {
+      const isActive = i === cmdActive;
+      el.classList.toggle('active', isActive);
+      el.setAttribute('aria-selected', isActive);
+    });
+    const activeEl = $$('.cmd-item')[cmdActive];
+    if (activeEl) {
+      $('#cmd-input').setAttribute('aria-activedescendant', activeEl.id);
+      activeEl.scrollIntoView({ block: 'nearest' });
+    }
   }
 
   function renderCmdResults(q) {
     const results = $('#cmd-results');
-    const ql = q.toLowerCase();
-    const filtered = searchIndex.filter(i => !ql || i.label.toLowerCase().includes(ql)).slice(0, 12);
+    const ql = q.trim().toLowerCase();
+    let filtered = [];
+
+    if (!ql) {
+      filtered = searchIndex.filter(i => i.type === 'page' || i.type === 'action');
+    } else {
+      const scored = searchIndex.map(item => {
+        let score = 0;
+        const s = item.searchString;
+        if (s === ql) score = 100;
+        else if (s.startsWith(ql)) score = 50;
+        else if (s.includes(' ' + ql)) score = 30;
+        else if (s.includes(ql)) score = 10;
+        if (score > 0 && item.type === 'page') score += 5;
+        return { item, score };
+      }).filter(x => x.score > 0);
+      scored.sort((a, b) => b.score - a.score);
+      filtered = scored.map(x => x.item);
+    }
+    
+    filtered = filtered.slice(0, 50);
     cmdActive = 0;
+    
+    if (filtered.length === 0) {
+      results.innerHTML = \`<p class="text-muted text-sm" style="padding:12px;text-align:center">No results for "\${esc(q)}"<br><span style="font-size:0.8em;opacity:0.8;display:block;margin-top:8px">Try searching for a project, article, or tool.</span></p>\`;
+      results._items = [];
+      $('#cmd-input').removeAttribute('aria-activedescendant');
+      return;
+    }
+
     results.innerHTML = filtered.map((item, i) =>
-      `<div class="cmd-item${i === 0 ? ' active' : ''}" role="option" data-cmd-idx="${i}" data-path="${item.path || ''}" data-action="${item.action ? '1' : ''}">
-        <i class="bi ${item.icon}" aria-hidden="true"></i><span>${esc(item.label)}</span>
-      </div>`).join('') || '<p class="text-muted text-sm" style="padding:12px">No results</p>';
+      \`<div class="cmd-item\${i === 0 ? ' active' : ''}" role="option" aria-selected="\${i === 0}" id="cmd-opt-\${i}" data-cmd-idx="\${i}" data-path="\${item.path || ''}" data-action="\${item.action ? '1' : ''}">
+        <i class="bi \${item.icon}" aria-hidden="true"></i><span>\${esc(item.label)}</span>
+        <span class="cmd-item-type" style="margin-left:auto;font-size:0.7em;opacity:0.5;text-transform:uppercase">\${esc(item.type)}</span>
+      </div>\`).join('');
+      
     results._items = filtered;
+    $('#cmd-input').setAttribute('aria-activedescendant', \`cmd-opt-0\`);
+
     $$('.cmd-item', results).forEach((el, i) => {
       el.addEventListener('click', () => executeCmd(filtered[i]));
+      el.addEventListener('mousemove', () => {
+        if (cmdActive !== i) {
+          cmdActive = i;
+          highlightCmd();
+        }
+      });
     });
   }
 
   function executeCmd(item) {
-    $('#cmd-dialog').close?.() || $('#cmd-dialog').removeAttribute('open');
+    const dlg = $('#cmd-dialog');
+    if (dlg.close) dlg.close();
+    else dlg.removeAttribute('open');
     if (item.action) item.action();
     else if (item.path) navigate(item.path, true);
   }
 
-  // SUPPORT LAB
   // SUPPORT LAB
   let SUPPORT_LAB_DATA = { version: 1, featured: '', categories: [], scenarios: [] };
   let supportLabReady = false;
@@ -14761,7 +14827,7 @@ None identified`;
   function animateCommandPalette() {
     if (reducedMotion || typeof gsap === 'undefined') return;
     const dlg = $('#cmd-dialog');
-    if (dlg) gsap.fromTo(dlg, { opacity: 0, y: -8, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.22, ease: 'power2.out' });
+    if (dlg) gsap.fromTo(dlg, { opacity: 0, y: -8, scale: 0.98, xPercent: -50 }, { opacity: 1, y: 0, scale: 1, xPercent: -50, duration: 0.22, ease: 'power2.out', clearProps: 'transform' });
   }
 
   // VCARD
@@ -14864,9 +14930,15 @@ None identified`;
       if (e.key === 'Enter' && items[cmdActive]) { e.preventDefault(); executeCmd(items[cmdActive]); }
     });
 
-    function highlightCmd() {
-      $$('.cmd-item').forEach((el, i) => el.classList.toggle('active', i === cmdActive));
-    }
+    $('#cmd-dialog')?.addEventListener('click', e => {
+      if (e.target.id === 'cmd-dialog') {
+        if (e.target.close) e.target.close();
+        else e.target.removeAttribute('open');
+      }
+    });
+    $('#cmd-dialog')?.addEventListener('close', () => {
+      if (cmdLastFocus && cmdLastFocus.focus) cmdLastFocus.focus();
+    });
 
     $('#cert-dialog-close').addEventListener('click', () => {
       const dlg = $('#cert-dialog');
