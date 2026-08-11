@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhramar Raut — Product Support, Implementation & Product Operations</title>
+<meta name="description" content="Bhramar Raut — Former Wipro Project Engineer targeting Product Support, Application Support and Implementation roles. PSM I, AI-assisted product delivery, functional validation, Skillverse & Catalyx project work. Immediate joiner.">
+<meta name="author" content="Bhramar Raut">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://bhramarraut.github.io/">
+<meta name="theme-color" content="#1a1d24" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f8f9fc" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bhramar Raut — Product Support & Implementation">
+<meta property="og:description" content="Former Wipro Project Engineer. Product Support, Implementation, functional validation, PSM I. Immediate joiner.">
+<meta property="og:url" content="https://bhramarraut.github.io/">
+<meta property="og:image" content="https://bhramarraut.github.io/Profile%20Pic/Profile_Pic.jpg">
+<meta property="og:site_name" content="Bhramar Raut Portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bhramar Raut — Product Support & Implementation">
+<meta name="twitter:description" content="Former Wipro Project Engineer. Product Support, Implementation, functional validation, PSM I.">
+<meta name="twitter:image" content="https://bhramarraut.github.io/Profile%20Pic/Profile_Pic.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Bhramar Raut",
+      "url": "https://bhramarraut.github.io/",
+      "email": "raut.bhramar@gmail.com",
+      "telephone": "+918989412921",
+      "jobTitle": "Product Support Professional",
+      "address": { "@type": "PostalAddress", "addressLocality": "Pandhurna", "addressRegion": "Madhya Pradesh", "addressCountry": "IN" },
+      "sameAs": ["https://www.linkedin.com/in/bhramarraut", "https://github.com/bhramarraut"],
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Shri Ramdeobaba College of Engineering and Management" },
+      "knowsAbout": ["functional testing", "UAT", "product workflows", "technical troubleshooting", "Scrum", "OpenProject", "AI-assisted product delivery", "SQL fundamentals", "REST API fundamentals", "Windows troubleshooting"]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Bhramar Raut Portfolio",
+      "url": "https://bhramarraut.github.io/",
+      "author": { "@type": "Person", "name": "Bhramar Raut" }
+    },
+    {
+      "@type": "ProfilePage",
+      "mainEntity": { "@type": "Person", "name": "Bhramar Raut" },
+      "url": "https://bhramarraut.github.io/"
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Economic Impact on Construction Sector Due to COVID-19",
+      "author": { "@type": "Person", "name": "Bhramar Raut" },
+      "datePublished": "2020",
+      "isPartOf": { "@type": "PublicationIssue", "issueNumber": "8", "isPartOf": { "@type": "PublicationVolume", "volumeNumber": "15", "isPartOf": { "@type": "Periodical", "name": "Journal of Seybold Report", "issn": "1533-9211" } } }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Professional Scrum Master I (PSM I)",
+      "credentialCategory": "certification",
+      "recognizedBy": { "@type": "Organization", "name": "Scrum.org" },
+      "dateCreated": "2026"
+    }
+  ]
+}
+</script>
+<style>
+/* RESET */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+img,picture,video,svg{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+table{border-collapse:collapse}
+
+/* TOKENS */
+:root{
+  --font-sans:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-mono:ui-monospace,'Cascadia Code','Segoe UI Mono',Consolas,monospace;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-full:999px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 20px rgba(0,0,0,.08);
+  --transition:180ms ease;--sidebar-w:280px;--header-h:56px;
+  --content-max:1200px;--article-max:72ch;
+  --accent:#3b5bdb;--accent-hover:#2f4ac4;--accent-soft:rgba(59,91,219,.12);
+  --success:#2b8a3e;--warning:#e67700;--danger:#c92a2a;
+  --bg:#f8f9fc;--bg-elevated:#fff;--bg-subtle:#eef1f7;
+  --text:#1a1d24;--text-secondary:#4a5568;--text-muted:#6b7280;
+  --border:#d8dee9;--border-subtle:#e8ecf3;
+  --grid-color:rgba(59,91,219,.04);
+  --focus-ring:2px solid var(--accent);
+}
+html[data-theme="dark"]{
+  --accent:#6c8cff;--accent-hover:#8ba3ff;--accent-soft:rgba(108,140,255,.15);
+  --bg:#111318;--bg-elevated:#1a1d24;--bg-subtle:#22262f;
+  --text:#e8eaef;--text-secondary:#a0aec0;--text-muted:#7a8494;
+  --border:#2d3340;--border-subtle:#252a33;
+  --grid-color:rgba(108,140,255,.05);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 4px 24px rgba(0,0,0,.4);
+}
+@media(prefers-color-scheme:dark){
+  html[data-theme="auto"]{
+    --accent:#6c8cff;--accent-hover:#8ba3ff;--accent-soft:rgba(108,140,255,.15);
+    --bg:#111318;--bg-elevated:#1a1d24;--bg-subtle:#22262f;
+    --text:#e8eaef;--text-secondary:#a0aec0;--text-muted:#7a8494;
+    --border:#2d3340;--border-subtle:#252a33;
+    --grid-color:rgba(108,140,255,.05);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);--shadow-md:0 4px 24px rgba(0,0,0,.4);
+  }
+}
+
+/* BASE */
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
+  background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);
+  background-size:48px 48px;}
+::selection{background:var(--accent-soft);color:var(--text)}
+:focus-visible{outline:var(--focus-ring);outline-offset:2px}
+.skip-link{position:absolute;top:-100px;left:16px;z-index:10000;padding:10px 16px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);font-weight:600}
+.skip-link:focus{top:16px}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4,h5,h6{line-height:1.25;font-weight:700;color:var(--text)}
+h1{font-size:clamp(1.75rem,4vw,2.5rem)}
+h2{font-size:clamp(1.35rem,3vw,1.75rem)}
+h3{font-size:clamp(1.1rem,2.5vw,1.25rem)}
+p{margin-bottom:1rem}
+p:last-child{margin-bottom:0}
+.text-secondary{color:var(--text-secondary)}
+.text-muted{color:var(--text-muted)}
+.text-sm{font-size:.875rem}
+.text-xs{font-size:.75rem}
+.eyebrow{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)}
+
+/* LAYOUT */
+.app{display:flex;min-height:100vh}
+.main-wrap{flex:1;display:flex;flex-direction:column;min-width:0}
+.content-area{flex:1;padding:24px 20px 40px;max-width:100%}
+.page-inner{max-width:var(--content-max);margin:0 auto}
+.page-header{margin-bottom:28px}
+.page-header h1{margin-bottom:8px}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.8125rem;color:var(--text-muted);margin-bottom:12px}
+.breadcrumb a{color:var(--accent)}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* APP SHELL / NAV */
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--bg-elevated);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:200;transition:transform var(--transition)}
+.sidebar-brand{padding:20px 20px 16px;border-bottom:1px solid var(--border-subtle)}
+.sidebar-brand a{display:flex;align-items:center;gap:12px}
+.sidebar-brand img{width:40px;height:40px;border-radius:var(--radius-full);object-fit:cover;border:2px solid var(--border)}
+.sidebar-brand span{font-weight:700;font-size:.9375rem}
+.nav-list{flex:1;padding:12px 10px;overflow-y:auto}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius-md);font-size:.875rem;font-weight:500;color:var(--text-secondary);transition:background var(--transition),color var(--transition);position:relative}
+.nav-item i{font-size:1.1rem;width:20px;text-align:center}
+.nav-item:hover{background:var(--bg-subtle);color:var(--text)}
+.nav-item.active{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.nav-item.active::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--accent);border-radius:0 3px 3px 0}
+.sidebar-footer{padding:12px 10px;border-top:1px solid var(--border-subtle);display:flex;gap:8px;flex-wrap:wrap}
+.mobile-header{display:none;position:sticky;top:0;z-index:150;height:var(--header-h);background:var(--bg-elevated);border-bottom:1px solid var(--border);align-items:center;padding:0 16px;gap:12px}
+.mobile-header .brand{font-weight:700;font-size:.9375rem;flex:1}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190}
+.main-content{margin-left:var(--sidebar-w);flex:1;min-width:0}
+
+/* COMPONENTS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:var(--radius-md);font-weight:600;font-size:.875rem;transition:all var(--transition);border:1px solid transparent;min-height:42px}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+.btn-ghost:hover{background:var(--bg-subtle);border-color:var(--text-muted)}
+.btn-sm{padding:6px 12px;font-size:.8125rem;min-height:34px}
+.btn-icon{width:40px;height:40px;padding:0;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--bg-elevated);color:var(--text)}
+.btn-icon:hover{background:var(--bg-subtle)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:var(--radius-full);font-size:.75rem;font-weight:600;background:var(--bg-subtle);color:var(--text-secondary);border:1px solid var(--border-subtle)}
+.pill-accent{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.pill-success{background:rgba(43,138,62,.12);color:var(--success)}
+.pill-warning{background:rgba(230,119,0,.12);color:var(--warning)}
+.card{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:box-shadow var(--transition),transform var(--transition)}
+.card:hover{box-shadow:var(--shadow-md)}
+.card-interactive{cursor:pointer}
+.card-interactive:hover{transform:translateY(-2px)}
+.grid-2{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.grid-3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tag{display:inline-block;padding:3px 8px;border-radius:var(--radius-sm);font-size:.6875rem;font-weight:600;background:var(--bg-subtle);color:var(--text-secondary);border:1px solid var(--border-subtle)}
+.callout{padding:16px 18px;border-radius:var(--radius-md);border-left:4px solid var(--accent);background:var(--accent-soft);margin:1.25rem 0}
+.callout-warn{border-left-color:var(--warning);background:rgba(230,119,0,.1)}
+.callout-info{border-left-color:var(--accent)}
+.status-label{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:var(--radius-sm)}
+.status-hands-on{background:rgba(43,138,62,.15);color:var(--success)}
+.status-foundation{background:rgba(59,91,219,.15);color:var(--accent)}
+.status-learning{background:rgba(230,119,0,.15);color:var(--warning)}
+.status-aware{background:var(--bg-subtle);color:var(--text-muted)}
+
+/* HERO */
+.hero{display:grid;gap:24px;grid-template-columns:1fr;align-items:start}
+@media(min-width:768px){.hero{grid-template-columns:auto 1fr;gap:32px}}
+.hero-image{width:140px;height:140px;border-radius:var(--radius-lg);object-fit:cover;border:3px solid var(--border);box-shadow:var(--shadow-md)}
+.hero-eyebrow{margin-bottom:12px}
+.hero-title{margin-bottom:8px}
+.hero-statement{font-size:clamp(1rem,2vw,1.125rem);color:var(--text-secondary);max-width:60ch;margin-bottom:16px}
+.role-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.credibility-strip{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.cred-item{padding:12px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);text-align:center;cursor:pointer;transition:all var(--transition)}
+.cred-item:hover{border-color:var(--accent);background:var(--accent-soft)}
+.cred-item strong{display:block;font-size:.8125rem;margin-bottom:2px}
+.cred-item span{font-size:.6875rem;color:var(--text-muted)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:16px}
+.timeline-item::before{content:'';position:absolute;left:-22px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg-elevated)}
+.timeline-card{border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-elevated);overflow:hidden}
+.timeline-header{padding:16px 18px;cursor:pointer;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.timeline-header:hover{background:var(--bg-subtle)}
+.timeline-body{padding:0 18px 18px;border-top:1px solid var(--border-subtle)}
+.timeline-body[hidden]{display:none}
+.timeline-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.8125rem;color:var(--text-muted)}
+
+/* PROJECTS */
+.process-diagram{display:flex;flex-direction:column;gap:8px;margin:24px 0}
+.process-step{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg-subtle);border-radius:var(--radius-md);border:1px solid var(--border-subtle)}
+.process-arrow{text-align:center;color:var(--text-muted);font-size:.75rem}
+
+/* ARTICLES */
+.article-body{max-width:var(--article-max);font-size:.9375rem}
+.article-body h2{margin-top:1.75rem;margin-bottom:.75rem}
+.article-body h3{margin-top:1.25rem;margin-bottom:.5rem}
+.article-body ul,.article-body ol{margin:0 0 1rem 1.25rem}
+.article-body ul{list-style:disc}
+.article-body ol{list-style:decimal}
+.article-body li{margin-bottom:.35rem}
+.article-body code{font-family:var(--font-mono);font-size:.875em;background:var(--bg-subtle);padding:2px 6px;border-radius:4px}
+.article-body pre{background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;overflow-x:auto;margin:1rem 0;font-family:var(--font-mono);font-size:.8125rem;line-height:1.5}
+.article-meta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;font-size:.8125rem;color:var(--text-muted)}
+.article-toc{position:sticky;top:24px;padding:16px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);font-size:.8125rem}
+.article-toc h4{margin-bottom:10px;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
+.article-toc a{display:block;padding:4px 0;color:var(--text-secondary)}
+.article-toc a:hover{color:var(--accent)}
+.article-layout{display:grid;gap:24px}
+@media(min-width:1024px){.article-layout{grid-template-columns:1fr 220px}}
+
+/* RECRUITER */
+.recruiter-mode{background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;max-width:800px}
+.recruiter-mode h1{font-size:1.5rem}
+.recruiter-section{margin-top:24px;padding-top:24px;border-top:1px solid var(--border-subtle)}
+.recruiter-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+
+/* MODALS */
+dialog{border:none;border-radius:var(--radius-lg);padding:0;background:var(--bg-elevated);color:var(--text);max-width:90vw;max-height:90vh;box-shadow:var(--shadow-md)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.modal-body{padding:20px;overflow-y:auto;max-height:70vh}
+.modal-footer{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
+
+/* COMMAND PALETTE */
+.cmd-palette{width:min(560px,92vw)}
+.cmd-input{width:100%;padding:14px 18px;border:none;border-bottom:1px solid var(--border);background:transparent;font-size:1rem}
+.cmd-input:focus{outline:none}
+.cmd-results{max-height:360px;overflow-y:auto;padding:8px}
+.cmd-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-md);cursor:pointer}
+.cmd-item:hover,.cmd-item.active{background:var(--accent-soft)}
+.cmd-item kbd{font-size:.6875rem;padding:2px 6px;background:var(--bg-subtle);border-radius:4px;border:1px solid var(--border);font-family:var(--font-mono)}
+
+/* TOAST */
+.toast-container{position:fixed;bottom:24px;right:24px;z-index:10000;display:flex;flex-direction:column;gap:8px}
+.toast{padding:12px 18px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-md);font-size:.875rem;animation:toast-in .3s ease}
+@keyframes toast-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* SUPPORT LAB */
+.lab-panel{padding:20px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-elevated);margin-bottom:16px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.8125rem;font-weight:600;margin-bottom:6px}
+.form-control{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg);color:var(--text)}
+.form-control:focus{outline:var(--focus-ring);border-color:var(--accent)}
+.lab-output{padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);margin-top:12px;font-size:.875rem;white-space:pre-wrap}
+.chip-group{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 14px;border-radius:var(--radius-full);border:1px solid var(--border);font-size:.8125rem;cursor:pointer;background:var(--bg-elevated)}
+.chip:hover,.chip.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+
+/* SKILL MATRIX */
+.skill-level{margin-bottom:28px}
+.skill-level h3{margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.skill-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.skill-item{padding:10px 12px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);font-size:.8125rem}
+
+/* VIEWS */
+.view{display:none;animation:fade-in .25s ease}
+.view.active{display:block}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+.no-js .view{display:block!important;margin-bottom:48px;border-bottom:2px solid var(--border);padding-bottom:32px}
+.no-js .sidebar,.no-js .mobile-header,.no-js .nav-overlay,.no-js .cmd-trigger{display:none!important}
+.no-js .main-content{margin-left:0!important}
+
+/* FOOTER */
+.site-footer{margin-top:40px;padding:24px 20px;border-top:1px solid var(--border);text-align:center;font-size:.8125rem;color:var(--text-muted)}
+.site-footer a{color:var(--accent)}
+
+/* ACCESSIBILITY */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+
+/* RESPONSIVE */
+@media(max-width:1023px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .nav-overlay.open{display:block}
+  .main-content{margin-left:0}
+  .mobile-header{display:flex}
+  .article-toc-collapsible{margin-bottom:16px}
+}
+@media(max-width:480px){
+  .content-area{padding:16px 14px 32px}
+  .hero-image{width:100px;height:100px}
+  .credibility-strip{grid-template-columns:repeat(2,1fr)}
+}
+
+/* PRINT */
+@media print{
+  body{background:#fff!important;color:#000!important;background-image:none!important}
+  .sidebar,.mobile-header,.nav-overlay,.sidebar-footer,.btn-icon,.cmd-trigger,.theme-toggle,.recruiter-actions,.no-print{display:none!important}
+  .main-content{margin-left:0!important}
+  .view{display:none!important}
+  .view.active,.view#print-target{display:block!important}
+  #print-target{display:block!important}
+  .card,.timeline-card{border:1px solid #ccc;box-shadow:none}
+  a{color:#000;text-decoration:underline}
+  .recruiter-mode{border:none;padding:0;max-width:100%}
+}
+</style>
+</head>
+<body class="js-enabled">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<noscript><style>.js-enabled .view{display:block!important;margin-bottom:40px}</style></noscript>
+
+<div class="app" id="app">
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="sidebar-brand">
+      <a href="#/home" data-nav="home">
+        <img src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut profile photo" width="40" height="40" loading="eager">
+        <span>Bhramar Raut</span>
+      </a>
+    </div>
+    <nav class="nav-list" role="navigation">
+      <a href="#/home" class="nav-item" data-nav="home"><i class="bi bi-house" aria-hidden="true"></i> Home</a>
+      <a href="#/profile" class="nav-item" data-nav="profile"><i class="bi bi-person" aria-hidden="true"></i> Profile</a>
+      <a href="#/experience" class="nav-item" data-nav="experience"><i class="bi bi-briefcase" aria-hidden="true"></i> Experience</a>
+      <a href="#/projects" class="nav-item" data-nav="projects"><i class="bi bi-folder" aria-hidden="true"></i> Projects</a>
+      <a href="#/capabilities" class="nav-item" data-nav="capabilities"><i class="bi bi-grid" aria-hidden="true"></i> Capabilities</a>
+      <a href="#/knowledge" class="nav-item" data-nav="knowledge"><i class="bi bi-book" aria-hidden="true"></i> Knowledge</a>
+      <a href="#/toolbox" class="nav-item" data-nav="toolbox"><i class="bi bi-tools" aria-hidden="true"></i> Toolbox</a>
+      <a href="#/certifications" class="nav-item" data-nav="certifications"><i class="bi bi-award" aria-hidden="true"></i> Certifications</a>
+      <a href="#/research" class="nav-item" data-nav="research"><i class="bi bi-journal-text" aria-hidden="true"></i> Research</a>
+      <a href="#/learning" class="nav-item" data-nav="learning"><i class="bi bi-mortarboard" aria-hidden="true"></i> Learning</a>
+      <a href="#/support-lab" class="nav-item" data-nav="support-lab"><i class="bi bi-wrench" aria-hidden="true"></i> Support Lab</a>
+      <a href="#/recruiter" class="nav-item" data-nav="recruiter"><i class="bi bi-clipboard-check" aria-hidden="true"></i> Recruiter Mode</a>
+      <a href="#/contact" class="nav-item" data-nav="contact"><i class="bi bi-envelope" aria-hidden="true"></i> Contact</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button type="button" class="btn-icon theme-toggle" id="theme-toggle" aria-label="Toggle theme"><i class="bi bi-circle-half" aria-hidden="true"></i></button>
+      <button type="button" class="btn-icon cmd-trigger" id="cmd-trigger" aria-label="Open command palette (Ctrl+K)"><i class="bi bi-search" aria-hidden="true"></i></button>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="mobile-header no-print">
+      <button type="button" class="btn-icon" id="menu-toggle" aria-label="Open menu"><i class="bi bi-list" aria-hidden="true"></i></button>
+      <span class="brand">Bhramar Raut</span>
+      <button type="button" class="btn-icon theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle theme"><i class="bi bi-circle-half" aria-hidden="true"></i></button>
+      <button type="button" class="btn-icon cmd-trigger-mobile" id="cmd-trigger-mobile" aria-label="Search"><i class="bi bi-search" aria-hidden="true"></i></button>
+    </header>
+
+    <main class="main-content" id="main-content">
+      <div class="content-area">
+
+<!-- VIEW: HOME -->
+<section id="view-home" class="view active" data-route="home" aria-labelledby="home-heading">
+<div class="page-inner">
+  <div class="hero">
+    <img class="hero-image" src="./Profile Pic/Profile_Pic.jpg" alt="Bhramar Raut — professional headshot" width="140" height="140" loading="eager" fetchpriority="high">
+    <div>
+      <p class="hero-eyebrow eyebrow">Former Wipro Project Engineer • PSM I • <span class="pill pill-success">Immediate Joiner</span></p>
+      <h1 id="home-heading" class="hero-title">Bhramar Raut</h1>
+      <p class="hero-statement">I turn product requirements, workflows and issues into structured, testable and documented outcomes.</p>
+      <p class="text-secondary text-sm" style="margin-bottom:16px">Enterprise IT exposure + AI-assisted product delivery + functional validation + support-focused technical learning.</p>
+      <div class="role-chips">
+        <span class="pill">Product Support</span>
+        <span class="pill">Application Support</span>
+        <span class="pill">Implementation</span>
+        <span class="pill">Product Operations</span>
+      </div>
+      <div class="cta-row">
+        <a href="#/projects" class="btn btn-primary" data-nav-link="projects"><i class="bi bi-folder" aria-hidden="true"></i> View Proof of Work</a>
+        <a href="#/recruiter" class="btn btn-ghost" data-nav-link="recruiter"><i class="bi bi-clipboard-check" aria-hidden="true"></i> Recruiter Mode</a>
+        <a href="#/contact" class="btn btn-ghost" data-nav-link="contact"><i class="bi bi-envelope" aria-hidden="true"></i> Contact Me</a>
+      </div>
+      <div class="credibility-strip">
+        <a href="#/experience" class="cred-item" data-nav-link="experience"><strong>WIPRO</strong><span>2+ Years Employment</span></a>
+        <a href="#/certifications" class="cred-item" data-nav-link="certifications"><strong>PSM I</strong><span>Scrum.org</span></a>
+        <a href="#/projects" class="cred-item" data-nav-link="projects"><strong>PRODUCT WORK</strong><span>Skillverse + Catalyx</span></a>
+        <a href="#/research" class="cred-item" data-nav-link="research"><strong>RESEARCH</strong><span>Co-Author</span></a>
+        <a href="#/experience" class="cred-item" data-nav-link="experience"><strong>PROJECT EXECUTION</strong><span>18 km Highway Internship</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section style="margin-top:40px" aria-labelledby="help-heading">
+    <h2 id="help-heading">What I Can Help With</h2>
+    <p class="text-secondary text-sm" style="margin-bottom:16px">A preview of capabilities — see <a href="#/capabilities" data-nav-link="capabilities">Capabilities</a> for detail.</p>
+    <div class="grid-3">
+      <div class="card"><h3>Reproduce &amp; Document Issues</h3><p class="text-sm text-secondary">Compare expected vs actual behavior, capture steps and document observations clearly.</p></div>
+      <div class="card"><h3>Validate User Workflows</h3><p class="text-sm text-secondary">Walk through workflows and verify intended behavior matches actual behavior.</p></div>
+      <div class="card"><h3>Requirements to Structure</h3><p class="text-sm text-secondary">Break requirements into flows, states, permissions and validation criteria.</p></div>
+    </div>
+  </section>
+
+  <section style="margin-top:40px" aria-labelledby="direction-heading">
+    <h2 id="direction-heading">Current Direction</h2>
+    <p class="text-secondary">Building toward Product Support, Application Support, Implementation and SaaS Operations with deepening technical skills in SQL, APIs, Linux, networking, ITSM and cloud fundamentals.</p>
+    <p class="text-sm text-muted" style="margin-top:8px">My goal is to grow from functional/product troubleshooting into technically deeper support, integrations, implementation and solutions-oriented work.</p>
+  </section>
+
+  <section style="margin-top:40px" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Quick Answers</h2>
+    <div class="grid-2">
+      <div class="card"><h3>What roles is Bhramar looking for?</h3><p class="text-sm text-secondary">Product Support, Application Support, SaaS Support, Implementation, Product Operations and Project Coordination / PMO Support.</p></div>
+      <div class="card"><h3>What projects has Bhramar worked on?</h3><p class="text-sm text-secondary">Skillverse.in and Catalyx (AI-assisted product delivery and validation), plus infrastructure internship and a 2020 research publication.</p></div>
+      <div class="card"><h3>What certifications does Bhramar have?</h3><p class="text-sm text-secondary">PSM I (2026), AWS CLF-C01 (earned 2023, expired Apr 2026), IBM SQL Coursera, Java Full Stack (Wipro Velocity), and additional corporate and online credentials.</p></div>
+      <div class="card"><h3>What can Bhramar help a product team with?</h3><p class="text-sm text-secondary">Requirements decomposition, workflow validation, issue reproduction and documentation, fix validation, OpenProject tracking and AI-assisted delivery with human accountability.</p></div>
+    </div>
+  </section>
+
+  <section style="margin-top:40px" aria-labelledby="about-bhramar-heading">
+    <h2 id="about-bhramar-heading">About Bhramar Raut</h2>
+    <p>Bhramar Raut is a former Wipro Project Engineer and Civil Engineering graduate from RCOEM Nagpur, currently building toward Product Support, Application Support and Implementation roles. His background combines 2+ years of enterprise employment at Wipro, formal Java Full Stack training, PSM I certification, project-based AI-assisted product delivery, functional/UAT-style validation, workflow documentation and hands-on technology troubleshooting. His recent project work includes Skillverse.in and Catalyx, where he translated requirements into structured workflows, reviewed AI-assisted implementation output, reproduced issues and validated fixes.</p>
+  </section>
+</div>
+</section>
+
+<!-- VIEW: PROFILE -->
+<section id="view-profile" class="view" data-route="profile" aria-labelledby="profile-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="profile-heading">Profile</h1><p class="text-secondary">Background, working style and current direction.</p></header>
+  <div class="card" style="margin-bottom:20px">
+    <h2>Background</h2>
+    <p>Civil engineering graduate who entered enterprise technology through Wipro Velocity, developed exposure to structured IT environments, later worked around early-stage business operations and AI-assisted product delivery, and is now intentionally building toward support and implementation roles.</p>
+    <p>Bhramar began in Civil Engineering and gained structured project exposure through infrastructure work. He entered enterprise technology through Wipro Velocity and spent more than two years inside Wipro's corporate IT environment, gaining formal technical training and enterprise-process exposure. His later project-based work moved closer to digital products, where he worked on requirements, workflows, AI-assisted implementation review, functional validation and documentation.</p>
+  </div>
+  <div class="grid-2">
+    <div class="card"><h3>How I Work</h3><ul style="list-style:disc;margin-left:1.25rem"><li>Understand before acting</li><li>Reproduce before escalating</li><li>Document so another person can continue</li><li>Separate assumptions from evidence</li><li>Validate fixes against original expectations</li></ul></div>
+    <div class="card"><h3>What I Value</h3><ul style="list-style:disc;margin-left:1.25rem"><li>Transparency about experience level</li><li>Structured thinking over buzzwords</li><li>Evidence over claims</li><li>Continuous learning made visible</li><li>Practical tools that solve real problems</li></ul></div>
+    <div class="card"><h3>Current Direction</h3><p>Product Support, Application Support, Implementation and Product Operations — with deepening SQL, API, ITSM, Linux and networking capability.</p></div>
+    <div class="card"><h3>Operating Principles</h3><ul style="list-style:disc;margin-left:1.25rem"><li>Use AI to accelerate judgment, not replace judgment</li><li>Prefer simple tools that solve the actual problem</li><li>Keep learning visible</li><li>Document workflows and handover notes</li></ul></div>
+  </div>
+  <div class="card" style="margin-top:20px">
+    <h2>Education</h2>
+    <p><strong>Bachelor of Engineering — Civil Engineering</strong><br>Shri Ramdeobaba College of Engineering and Management, Nagpur · 2018–2022 · CGPA 7.81/10</p>
+    <p class="text-sm text-muted" style="margin-top:8px">Macro Vision Academy, Burhanpur — Science/PCM, 2016–2018, 74.4%</p>
+  </div>
+  <div class="callout" style="margin-top:20px"><strong>How to read this portfolio</strong><br><span class="text-sm">Hands-on = directly used in project work · Foundation = formally learned or previously certified · Learning = actively building · Awareness = introductory familiarity</span></div>
+</div>
+</section>
+
+<!-- VIEW: EXPERIENCE -->
+<section id="view-experience" class="view" data-route="experience" aria-labelledby="exp-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="exp-heading">Experience</h1><p class="text-secondary">Career timeline with honest context labels.</p></header>
+  <div class="timeline" id="experience-timeline">
+    <article class="timeline-item">
+      <div class="timeline-card">
+        <button type="button" class="timeline-header" aria-expanded="false" data-timeline-toggle>
+          <div><strong>Analytika Improva SV</strong> <span class="tag">PROJECT-BASED</span></div>
+          <div class="timeline-meta"><time>Apr 2026 – Jul 2026</time></div>
+        </button>
+        <div class="timeline-body" hidden>
+          <p><strong>AI-Assisted Product Delivery &amp; Product Operations</strong></p>
+          <p>Explained requirements, decomposed them into workflows, described expected functionality, mapped user journeys, defined acceptance expectations, prompted AI coding agents, iterated AI-generated output, reviewed behavior against requirements, manually tested workflows, reproduced bugs, documented expected-versus-actual behavior, requested corrections, validated fixes, tracked tasks in OpenProject and worked with permissions/role-aware behavior.</p>
+          <p class="text-sm text-muted">Tools: Cursor, OpenAI Codex, Antigravity, Ollama, OpenProject</p>
+        </div>
+      </div>
+    </article>
+    <article class="timeline-item">
+      <div class="timeline-card">
+        <button type="button" class="timeline-header" aria-expanded="false" data-timeline-toggle>
+          <div><strong>BrickBillion Properties</strong> <span class="tag">PROJECT-BASED</span></div>
+          <div class="timeline-meta"><time>Nov 2024 – Mar 2025</time> · Pune</div>
+        </button>
+        <div class="timeline-body" hidden>
+          <p><strong>Business Operations Support — Project-Based</strong></p>
+          <p>Supported early-stage operations through online research, information organization, enquiry follow-ups, documentation and next-action tracking for customer/property enquiries in a small real-estate channel-partner business.</p>
+        </div>
+      </div>
+    </article>
+    <article class="timeline-item">
+      <div class="timeline-card">
+        <button type="button" class="timeline-header" aria-expanded="false" data-timeline-toggle>
+          <div><strong>Wipro Limited</strong> <span class="tag">FULL-TIME</span></div>
+          <div class="timeline-meta"><time>Sep 2022 – Jan 2025</time></div>
+        </button>
+        <div class="timeline-body" hidden>
+          <p><strong>Project Engineer</strong></p>
+          <p>Worked within Wipro's structured enterprise technology environment, completing technical/corporate training and internal assessments while building familiarity with enterprise documentation standards, security/compliance expectations, Agile terminology, application architecture and cloud fundamentals. Entered through Wipro Velocity / StackRoute Java Full Stack training.</p>
+          <div class="callout callout-warn text-sm"><strong>Role scope:</strong> This tenure did not include sustained production client-project ownership. I distinguish enterprise exposure and formal training from hands-on production experience.</div>
+        </div>
+      </div>
+    </article>
+    <article class="timeline-item">
+      <div class="timeline-card">
+        <button type="button" class="timeline-header" aria-expanded="false" data-timeline-toggle>
+          <div><strong>Wipro Velocity / StackRoute</strong> <span class="tag">TRAINING</span></div>
+          <div class="timeline-meta"><time>Apr 2022 – Jul 2022</time></div>
+        </button>
+        <div class="timeline-body" hidden>
+          <p><strong>Certificate Program in Java Full Stack</strong></p>
+          <p>Formal training in Java Full Stack concepts, application architecture, databases, APIs and software delivery concepts. Training ≠ production software development.</p>
+        </div>
+      </div>
+    </article>
+    <article class="timeline-item">
+      <div class="timeline-card">
+        <button type="button" class="timeline-header" aria-expanded="false" data-timeline-toggle>
+          <div><strong>Arcons Infrastructures &amp; Constructions Pvt. Ltd.</strong> <span class="tag">INTERNSHIP</span></div>
+          <div class="timeline-meta"><time>Dec 2021 – Jun 2022</time> · Chhindwara</div>
+        </button>
+        <div class="timeline-body" hidden>
+          <p><strong>Project Engineering Intern</strong></p>
+          <p>Supported an approximately 18 km state-highway upgradation and reconstruction project through site supervision, survey/design reporting, laboratory-test documentation and tender-related activities. Received a 46/50 Industry Mentor Assessment.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
+<!-- VIEW: PROJECTS -->
+<section id="view-projects" class="view" data-route="projects" aria-labelledby="projects-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="projects-heading">Projects</h1><p class="text-secondary">Proof of work — digital products and structured project execution.</p></header>
+  <h2>Featured</h2>
+  <div class="grid-2" style="margin-bottom:32px">
+    <a href="#/projects/skillverse" class="card card-interactive" data-nav-link="projects/skillverse">
+      <span class="tag">PROJECT</span>
+      <h3 style="margin:8px 0">Skillverse.in</h3>
+      <p class="text-sm text-secondary">AI-Assisted Product Delivery &amp; Functional Validation — 6+ product areas including onboarding, authentication, courses, library, payments and administration.</p>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px"><span class="tag">Requirements</span><span class="tag">UAT</span><span class="tag">OpenProject</span></div>
+      <p class="text-sm" style="margin-top:12px;color:var(--accent)">View Case Study →</p>
+    </a>
+    <a href="#/projects/catalyx" class="card card-interactive" data-nav-link="projects/catalyx">
+      <span class="tag">PROJECT</span>
+      <h3 style="margin:8px 0">Catalyx</h3>
+      <p class="text-sm text-secondary">Workflow Design, Role-Aware Validation &amp; Product Operations — 10+ modules, 7 role concepts.</p>
+      <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px"><span class="tag">RBAC</span><span class="tag">Workflows</span><span class="tag">Documentation</span></div>
+      <p class="text-sm" style="margin-top:12px;color:var(--accent)">View Case Study →</p>
+    </a>
+  </div>
+  <h2>Additional</h2>
+  <div class="grid-2">
+    <div class="card"><h3>NDB-II Highway Project</h3><p class="text-sm text-secondary">18 km state-highway upgradation internship at Arcons — site supervision, reporting, documentation. 46/50 mentor assessment.</p></div>
+    <a href="#/research" class="card card-interactive" data-nav-link="research"><h3>Research Publication</h3><p class="text-sm text-secondary">Co-authored paper on economic impact on construction sector due to COVID-19 (2020).</p></a>
+  </div>
+</div>
+</section>
+
+<!-- VIEW: SKILLVERSE CASE STUDY -->
+<section id="view-project-skillverse" class="view" data-route="projects/skillverse" aria-labelledby="skillverse-heading">
+<div class="page-inner">
+  <nav class="breadcrumb"><a href="#/projects" data-nav-link="projects">Projects</a><span>/</span><span>Skillverse.in</span></nav>
+  <header class="page-header"><h1 id="skillverse-heading">Skillverse.in</h1><p class="text-secondary">AI-Assisted Product Delivery &amp; Functional Validation — Multi-role EdTech platform</p></header>
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="card"><h3>Context</h3><p class="text-sm">Skillverse.in is a multi-role EdTech platform spanning registration, onboarding, authentication, courses, library, payments, entitlements and administration — 6+ core product areas.</p></div>
+    <div class="card"><h3>My Role</h3><p class="text-sm">Requirements → workflows → AI-assisted output → validation. Used AI coding tools as execution partners while retaining human responsibility for requirements, workflow definition, validation and iteration.</p></div>
+  </div>
+  <h2>Problem Space</h2>
+  <p>Multi-role workflows, onboarding flows, authentication states, payment entitlements and administrative controls required structured decomposition before implementation could be validated.</p>
+  <h2>Workflow</h2>
+  <div class="process-diagram" id="skillverse-diagram">
+    <div class="process-step">1. Understand requirement</div><div class="process-arrow">↓</div>
+    <div class="process-step">2. Define expected user journey</div><div class="process-arrow">↓</div>
+    <div class="process-step">3. Break into implementation behavior</div><div class="process-arrow">↓</div>
+    <div class="process-step">4. Prompt / iterate AI-assisted implementation</div><div class="process-arrow">↓</div>
+    <div class="process-step">5. Test behavior</div><div class="process-arrow">↓</div>
+    <div class="process-step">6. Reproduce defects</div><div class="process-arrow">↓</div>
+    <div class="process-step">7. Document expected vs actual</div><div class="process-arrow">↓</div>
+    <div class="process-step">8. Correct &amp; validate fix</div><div class="process-arrow">↓</div>
+    <div class="process-step">9. Track status in OpenProject</div>
+  </div>
+  <h2>What This Demonstrates</h2>
+  <div class="grid-3"><div class="card text-sm">Structured thinking</div><div class="card text-sm">Functional validation</div><div class="card text-sm">AI-assisted execution</div><div class="card text-sm">User-flow reasoning</div><div class="card text-sm">Documentation discipline</div><div class="card text-sm">Persistence through correction cycles</div></div>
+</div>
+</section>
+
+<!-- VIEW: CATALYX CASE STUDY -->
+<section id="view-project-catalyx" class="view" data-route="projects/catalyx" aria-labelledby="catalyx-heading">
+<div class="page-inner">
+  <nav class="breadcrumb"><a href="#/projects" data-nav-link="projects">Projects</a><span>/</span><span>Catalyx</span></nav>
+  <header class="page-header"><h1 id="catalyx-heading">Catalyx</h1><p class="text-secondary">Workflow Design, Role-Aware Validation &amp; Product Operations</p></header>
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="card"><h3>Context</h3><p class="text-sm">Admissions and revenue-operations product concept with lead management, tasks, follow-ups, counselors, branches, campaigns, reporting, notifications, audit log, admin, permissions and settings — 10+ operational modules across 7 role concepts.</p></div>
+    <div class="card"><h3>My Role</h3><p class="text-sm">Requirements decomposition, module workflow definition, user journey mapping, role/access behavior, product logic thinking, AI-assisted implementation coordination, output validation, documentation and OpenProject work tracking.</p></div>
+  </div>
+  <h2>Role-Aware Workflow Thinking</h2>
+  <p>Key concepts: branch-level restrictions, role-aware behavior, auditability, lead status, priority, scoring, follow-up aging, conversion tracking and operational reporting requirements.</p>
+  <div class="process-diagram" id="catalyx-diagram">
+    <div class="process-step">Business Requirement</div><div class="process-arrow">↓</div>
+    <div class="process-step">Module → Role → Permission</div><div class="process-arrow">↓</div>
+    <div class="process-step">Workflow → Expected Behavior</div><div class="process-arrow">↓</div>
+    <div class="process-step">Validation &amp; Documentation</div>
+  </div>
+  <h2>Value for Support &amp; Implementation</h2>
+  <p class="text-secondary">This work demonstrates thinking valuable for SaaS support, implementation, product operations, functional QA, customer onboarding and business workflow products.</p>
+</div>
+</section>
+
+<!-- VIEW: CAPABILITIES -->
+<section id="view-capabilities" class="view" data-route="capabilities" aria-labelledby="cap-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="cap-heading">Capabilities</h1><p class="text-secondary">What I can bring to a product or support team — translated from real evidence.</p></header>
+  <div class="grid-2">
+    <div class="card"><span class="eyebrow">01</span><h3>Reproduce &amp; Document Issues</h3><p class="text-sm text-secondary">Systematically compare expected and actual behavior, capture reproduction steps and document observations clearly.</p></div>
+    <div class="card"><span class="eyebrow">02</span><h3>Validate User Workflows</h3><p class="text-sm text-secondary">Walk through workflows and test whether intended behavior matches actual behavior.</p></div>
+    <div class="card"><span class="eyebrow">03</span><h3>Turn Requirements Into Structure</h3><p class="text-sm text-secondary">Break broad requirements into flows, states, steps, permissions, expected outcomes and validation criteria.</p></div>
+    <div class="card"><span class="eyebrow">04</span><h3>Validate Fixes</h3><p class="text-sm text-secondary">Return to previously identified issues and verify corrected behavior meets original expectations.</p></div>
+    <div class="card"><span class="eyebrow">05</span><h3>Document Processes</h3><p class="text-sm text-secondary">Write workflow notes, handover notes, issue descriptions, test observations and structured project documentation.</p></div>
+    <div class="card"><span class="eyebrow">06</span><h3>Track Work</h3><p class="text-sm text-secondary">Experience using OpenProject for work items, priorities, status, dependencies and delivery visibility.</p></div>
+    <div class="card"><span class="eyebrow">07</span><h3>AI-Assisted Execution</h3><p class="text-sm text-secondary">Use AI agents to explore problems, iterate output and verify results — human remains responsible for requirements, judgment, testing and correctness.</p></div>
+    <div class="card"><span class="eyebrow">08</span><h3>Technology Troubleshooting</h3><p class="text-sm text-secondary">Strong interest in Windows, macOS, applications, devices and systematic diagnostics.</p></div>
+    <div class="card"><span class="eyebrow">09</span><h3>Quick Tool Adoption</h3><p class="text-sm text-secondary">Demonstrated through Wipro Velocity, AWS learning, PSM I, Cursor, Codex, Ollama, OpenProject and SQL coursework.</p></div>
+  </div>
+  <section style="margin-top:32px" aria-labelledby="skills-heading">
+    <h2 id="skills-heading">Skill Truth Model</h2>
+    <div class="skill-level"><h3><span class="status-label status-hands-on">Level A</span> Hands-on / Defensible</h3>
+      <div class="skill-grid"><span class="skill-item">Windows troubleshooting</span><span class="skill-item">macOS troubleshooting</span><span class="skill-item">Workflow understanding</span><span class="skill-item">Requirements decomposition</span><span class="skill-item">Functional testing / UAT</span><span class="skill-item">Issue reproduction</span><span class="skill-item">Documentation</span><span class="skill-item">OpenProject</span><span class="skill-item">Cursor</span><span class="skill-item">OpenAI Codex</span><span class="skill-item">Antigravity</span><span class="skill-item">Ollama</span><span class="skill-item">Agile/Scrum terminology</span><span class="skill-item">PSM I foundation</span></div>
+    </div>
+    <div class="skill-level"><h3><span class="status-label status-foundation">Level B</span> Formal Foundation / Needs Refresh</h3>
+      <div class="skill-grid"><span class="skill-item">Java / Full Stack concepts</span><span class="skill-item">SQL fundamentals</span><span class="skill-item">AWS fundamentals</span><span class="skill-item">Excel working knowledge</span></div>
+    </div>
+    <div class="skill-level"><h3><span class="status-label status-learning">Level C</span> Currently Learning / Building</h3>
+      <div class="skill-grid"><span class="skill-item">Practical SQL</span><span class="skill-item">REST APIs</span><span class="skill-item">JSON</span><span class="skill-item">Postman</span><span class="skill-item">HTTP status codes</span><span class="skill-item">Jira Service Management</span><span class="skill-item">ITSM concepts</span><span class="skill-item">Linux fundamentals</span><span class="skill-item">Networking fundamentals</span><span class="skill-item">Power BI basics</span></div>
+    </div>
+  </section>
+</div>
+</section>
+
+<!-- VIEW: KNOWLEDGE -->
+<section id="view-knowledge" class="view" data-route="knowledge" aria-labelledby="knowledge-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="knowledge-heading">Knowledge Center</h1><p class="text-secondary">Notes documenting what I am learning and how I think — not claims of professional production experience.</p></header>
+  <div class="callout callout-warn text-sm"><strong>Disclaimer:</strong> These notes document learning and thinking. They are not claims of professional production experience.</div>
+  <div style="margin:20px 0;display:flex;flex-wrap:wrap;gap:8px" id="knowledge-filters">
+    <button type="button" class="chip active" data-filter="all">All</button>
+    <button type="button" class="chip" data-filter="support">Support</button>
+    <button type="button" class="chip" data-filter="product">Product</button>
+    <button type="button" class="chip" data-filter="scrum">Scrum</button>
+    <button type="button" class="chip" data-filter="ai">AI</button>
+    <button type="button" class="chip" data-filter="windows">Windows</button>
+    <button type="button" class="chip" data-filter="tools">Tools</button>
+    <button type="button" class="chip" data-filter="security">Security</button>
+  </div>
+  <input type="search" class="form-control" id="knowledge-search" placeholder="Search articles…" aria-label="Search knowledge articles" style="margin-bottom:20px">
+  <h2>Start Here</h2>
+  <div class="grid-2" style="margin-bottom:24px" id="knowledge-featured"></div>
+  <h2>All Articles</h2>
+  <div class="grid-2" id="knowledge-list"></div>
+</div>
+</section>
+
+<!-- VIEW: KNOWLEDGE ARTICLE (dynamic) -->
+<section id="view-knowledge-article" class="view" data-route="knowledge/article" aria-labelledby="article-heading">
+<div class="page-inner" id="article-container"></div>
+</section>
+
+<!-- VIEW: TOOLBOX -->
+<section id="view-toolbox" class="view" data-route="toolbox" aria-labelledby="toolbox-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="toolbox-heading">Toolbox</h1><p class="text-secondary">Tools I reach for — with honest relationship labels.</p></header>
+  <div id="toolbox-grid" class="grid-3"></div>
+</div>
+</section>
+
+<!-- VIEW: CERTIFICATIONS -->
+<section id="view-certifications" class="view" data-route="certifications" aria-labelledby="cert-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="cert-heading">Certifications</h1><p class="text-secondary">Verified credentials with evidence from repository assets.</p></header>
+  <div class="grid-2" id="cert-grid"></div>
+</div>
+</section>
+
+<!-- VIEW: RESEARCH -->
+<section id="view-research" class="view" data-route="research" aria-labelledby="research-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="research-heading">Research</h1><p class="text-secondary">Evidence of structured analysis and written communication.</p></header>
+  <article class="card">
+    <span class="tag">RESEARCH</span>
+    <h2 style="margin:12px 0">Economic Impact on Construction Sector Due to COVID-19</h2>
+    <p class="text-secondary text-sm"><strong>Co-authored</strong> — Bhramar Raut</p>
+    <dl class="text-sm" style="margin:16px 0">
+      <dt><strong>Journal:</strong></dt><dd>Journal of Seybold Report</dd>
+      <dt style="margin-top:8px"><strong>Volume / Issue:</strong></dt><dd>15 (8)</dd>
+      <dt style="margin-top:8px"><strong>Year:</strong></dt><dd>2020</dd>
+      <dt style="margin-top:8px"><strong>ISSN:</strong></dt><dd>1533-9211</dd>
+      <dt style="margin-top:8px"><strong>Affiliation:</strong></dt><dd>Department of Civil Engineering, Shri Ramdeobaba College of Engineering and Management, Nagpur</dd>
+    </dl>
+    <p class="text-sm text-secondary">Topics: economic impact on construction, GVA, employment, labour availability, project delays, supply chain disruption, construction costs and recovery measures.</p>
+    <p class="text-sm text-muted" style="margin-top:12px">No local copy of the paper is available in this repository.</p>
+  </article>
+</div>
+</section>
+
+<!-- VIEW: LEARNING -->
+<section id="view-learning" class="view" data-route="learning" aria-labelledby="learning-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="learning-heading">Learning Roadmap</h1><p class="text-secondary">Public evidence of intentional development — building practical depth.</p></header>
+  <div class="grid-3">
+    <div class="card"><h3>NOW</h3><p class="text-sm">Product/Application Support readiness — troubleshooting, ticket lifecycle, SLA, escalation, incident concepts, RCA fundamentals.</p></div>
+    <div class="card"><h3>NEXT</h3><p class="text-sm">L2 troubleshooting, integrations, practical SQL, REST APIs, Postman, Linux and networking fundamentals.</p></div>
+    <div class="card"><h3>LATER</h3><p class="text-sm">Solutions, implementation and technically deeper support roles.</p></div>
+  </div>
+  <h2 style="margin-top:28px">Current Focus Areas</h2>
+  <div class="grid-2" style="margin-top:16px">
+    <div class="card"><h4>Support Engineering</h4><ul style="list-style:disc;margin-left:1.25rem;font-size:.875rem"><li>Troubleshooting frameworks</li><li>Ticket lifecycle &amp; ITSM</li><li>SLA &amp; escalation</li><li>Incident / problem / change</li><li>RCA fundamentals</li></ul></div>
+    <div class="card"><h4>Systems</h4><ul style="list-style:disc;margin-left:1.25rem;font-size:.875rem"><li>Linux fundamentals</li><li>Networking fundamentals</li></ul></div>
+    <div class="card"><h4>Data &amp; API</h4><ul style="list-style:disc;margin-left:1.25rem;font-size:.875rem"><li>Practical SQL (SELECT, JOIN, GROUP BY)</li><li>REST, JSON, Postman</li><li>HTTP methods &amp; status codes</li></ul></div>
+    <div class="card"><h4>Operations</h4><ul style="list-style:disc;margin-left:1.25rem;font-size:.875rem"><li>Excel, PivotTables, Power Query</li><li>Power BI basics</li><li>Jira Service Management fundamentals</li></ul></div>
+  </div>
+</div>
+</section>
+
+<!-- VIEW: SUPPORT LAB -->
+<section id="view-support-lab" class="view" data-route="support-lab" aria-labelledby="lab-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="lab-heading">Support Lab</h1><p class="text-secondary">Self-directed practice demonstrations — not production incident history.</p></header>
+  <div class="callout callout-warn text-sm"><strong>Label:</strong> These are learning demonstrations of support thinking, not claims of production experience.</div>
+  <div class="lab-panel">
+    <h3>Issue Triage Flow</h3>
+    <p class="text-sm text-secondary">Select an issue type to see a structured troubleshooting framework.</p>
+    <div class="chip-group" id="triage-chips" style="margin-top:12px">
+      <button type="button" class="chip" data-triage="login">Login issue</button>
+      <button type="button" class="chip" data-triage="crash">App crash</button>
+      <button type="button" class="chip" data-triage="network">Network issue</button>
+      <button type="button" class="chip" data-triage="permission">Permission issue</button>
+      <button type="button" class="chip" data-triage="api">API error</button>
+    </div>
+    <div class="lab-output" id="triage-output">Select an issue type above.</div>
+  </div>
+  <div class="lab-panel">
+    <h3>HTTP Status Explorer</h3>
+    <select class="form-control" id="http-select" aria-label="Select HTTP status code">
+      <option value="">Select a status code…</option>
+      <option value="200">200 OK</option>
+      <option value="201">201 Created</option>
+      <option value="204">204 No Content</option>
+      <option value="400">400 Bad Request</option>
+      <option value="401">401 Unauthorized</option>
+      <option value="403">403 Forbidden</option>
+      <option value="404">404 Not Found</option>
+      <option value="409">409 Conflict</option>
+      <option value="422">422 Unprocessable</option>
+      <option value="429">429 Too Many Requests</option>
+      <option value="500">500 Internal Server Error</option>
+      <option value="502">502 Bad Gateway</option>
+      <option value="503">503 Service Unavailable</option>
+    </select>
+    <div class="lab-output" id="http-output">Select a status code.</div>
+  </div>
+  <div class="lab-panel">
+    <h3>Bug Report Builder</h3>
+    <div class="form-group"><label for="bug-summary">Summary</label><input type="text" class="form-control" id="bug-summary" placeholder="Brief issue description"></div>
+    <div class="form-group"><label for="bug-env">Environment</label><input type="text" class="form-control" id="bug-env" placeholder="OS, browser, app version"></div>
+    <div class="form-group"><label for="bug-steps">Steps to Reproduce</label><textarea class="form-control" id="bug-steps" rows="3" placeholder="1. Go to… 2. Click…"></textarea></div>
+    <div class="form-group"><label for="bug-expected">Expected</label><textarea class="form-control" id="bug-expected" rows="2"></textarea></div>
+    <div class="form-group"><label for="bug-actual">Actual</label><textarea class="form-control" id="bug-actual" rows="2"></textarea></div>
+    <button type="button" class="btn btn-primary btn-sm" id="bug-generate">Generate Preview</button>
+    <div class="lab-output" id="bug-output" style="margin-top:12px"></div>
+  </div>
+  <div class="lab-panel">
+    <h3>UAT Checklist Demo</h3>
+    <div class="chip-group" id="uat-chips">
+      <button type="button" class="chip" data-uat="auth">Authentication</button>
+      <button type="button" class="chip" data-uat="onboarding">Onboarding</button>
+      <button type="button" class="chip" data-uat="payments">Payments</button>
+      <button type="button" class="chip" data-uat="permissions">Permissions</button>
+    </div>
+    <div class="lab-output" id="uat-output">Select a workflow area.</div>
+  </div>
+</div>
+</section>
+
+<!-- VIEW: RECRUITER -->
+<section id="view-recruiter" class="view" data-route="recruiter" aria-labelledby="recruiter-heading">
+<div class="page-inner">
+  <div class="recruiter-mode" id="print-target">
+    <div class="recruiter-actions no-print">
+      <button type="button" class="btn btn-primary btn-sm" id="recruiter-print"><i class="bi bi-printer" aria-hidden="true"></i> Print / Save PDF</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="recruiter-copy"><i class="bi bi-clipboard" aria-hidden="true"></i> Copy Summary</button>
+      <a href="mailto:raut.bhramar@gmail.com" class="btn btn-ghost btn-sm"><i class="bi bi-envelope" aria-hidden="true"></i> Email</a>
+      <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">LinkedIn</a>
+      <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub</a>
+    </div>
+    <h1 id="recruiter-heading">Bhramar Raut</h1>
+    <p><span class="pill pill-success">Immediate Joiner</span> · Pandhurna, Madhya Pradesh, India</p>
+    <p class="text-sm" style="margin-top:8px"><strong>Target:</strong> Product Support / Application Support / Implementation</p>
+    <p class="text-sm">raut.bhramar@gmail.com · +91 89894 12921</p>
+    <div class="recruiter-section">
+      <h2>Profile (60 words)</h2>
+      <p id="recruiter-summary-text">Former Wipro Project Engineer with enterprise IT exposure, formal Java Full Stack training, PSM I certification and recent project-based experience in AI-assisted product delivery, requirements/workflow decomposition, functional validation and documentation. Hands-on with OpenProject, Cursor, Codex, Ollama and technology troubleshooting; currently strengthening SQL, REST APIs, ITSM, Linux and networking for Product/Application Support and Implementation roles.</p>
+    </div>
+    <div class="recruiter-section"><h2>Experience</h2>
+      <p class="text-sm"><strong>Analytika Improva SV</strong> (Apr–Jul 2026) — AI-Assisted Product Delivery, project-based</p>
+      <p class="text-sm"><strong>BrickBillion Properties</strong> (Nov 2024–Mar 2025) — Business Operations Support, project-based</p>
+      <p class="text-sm"><strong>Wipro Limited</strong> (Sep 2022–Jan 2025) — Project Engineer, full-time enterprise exposure</p>
+      <p class="text-sm"><strong>Arcons</strong> (Dec 2021–Jun 2022) — Project Engineering Intern</p>
+    </div>
+    <div class="recruiter-section"><h2>Projects</h2>
+      <p class="text-sm"><strong>Skillverse.in</strong> — 6+ product areas, functional validation, AI-assisted delivery</p>
+      <p class="text-sm"><strong>Catalyx</strong> — 10+ modules, 7 roles, workflow &amp; RBAC validation</p>
+    </div>
+    <div class="recruiter-section"><h2>Credentials</h2>
+      <p class="text-sm">PSM I (Scrum.org, 2026) · AWS CLF-C01 (earned 2023, expired Apr 2026) · IBM SQL (Coursera) · Java Full Stack (StackRoute/Wipro)</p>
+    </div>
+    <div class="recruiter-section"><h2>Education</h2>
+      <p class="text-sm">B.E. Civil Engineering, RCOEM Nagpur (2018–2022), CGPA 7.81/10</p>
+    </div>
+    <div class="recruiter-section"><h2>Publication</h2>
+      <p class="text-sm">Co-author — Economic Impact on Construction Sector Due to COVID-19, Journal of Seybold Report, 2020</p>
+    </div>
+    <div class="recruiter-section"><h2>Links</h2>
+      <p class="text-sm">Portfolio: bhramarraut.github.io · LinkedIn: linkedin.com/in/bhramarraut · GitHub: github.com/bhramarraut</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- VIEW: CONTACT -->
+<section id="view-contact" class="view" data-route="contact" aria-labelledby="contact-heading">
+<div class="page-inner">
+  <header class="page-header"><h1 id="contact-heading">Contact</h1><p class="text-secondary">Open to India-based opportunities, relocation and remote India roles.</p></header>
+  <div class="card" style="max-width:560px">
+    <h2>Bhramar Raut</h2>
+    <p class="text-secondary">Pandhurna, Madhya Pradesh, India</p>
+    <p style="margin-top:16px"><span class="pill pill-success">Immediate Joiner</span></p>
+    <address style="margin-top:16px;font-style:normal">
+      <p><i class="bi bi-envelope" aria-hidden="true"></i> <a href="mailto:raut.bhramar@gmail.com">raut.bhramar@gmail.com</a>
+        <button type="button" class="btn btn-ghost btn-sm" id="copy-email" style="margin-left:8px">Copy</button></p>
+      <p style="margin-top:8px"><i class="bi bi-phone" aria-hidden="true"></i> <a href="tel:+918989412921">+91 89894 12921</a>
+        <button type="button" class="btn btn-ghost btn-sm" id="copy-phone" style="margin-left:8px">Copy</button></p>
+    </address>
+    <div class="cta-row" style="margin-top:20px">
+      <a href="mailto:raut.bhramar@gmail.com" class="btn btn-primary"><i class="bi bi-envelope" aria-hidden="true"></i> Email Me</a>
+      <a href="tel:+918989412921" class="btn btn-ghost"><i class="bi bi-phone" aria-hidden="true"></i> Call</a>
+      <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+    </div>
+    <button type="button" class="btn btn-ghost btn-sm" id="download-vcard" style="margin-top:12px"><i class="bi bi-person-badge" aria-hidden="true"></i> Download vCard</button>
+    <p class="text-sm text-muted" style="margin-top:20px"><strong>Target roles:</strong> Product Support, Application Support, SaaS Support, Implementation, Product Operations, Project Coordination</p>
+  </div>
+</div>
+</section>
+
+<!-- VIEW: 404 -->
+<section id="view-404" class="view" data-route="404" aria-labelledby="404-heading">
+<div class="page-inner" style="text-align:center;padding:60px 20px">
+  <h1 id="404-heading">Page Not Found</h1>
+  <p class="text-secondary">This route doesn't exist.</p>
+  <a href="#/home" class="btn btn-primary" style="margin-top:20px" data-nav-link="home">Go Home</a>
+</div>
+</section>
+
+<!-- ARTICLES SOURCE (populated by JS for search; key content in views above) -->
+<div id="articles-source" hidden aria-hidden="true"></div>
+
+      </div>
+      <footer class="site-footer no-print">
+        <p><strong>Bhramar Raut</strong> — Product Support • Implementation • Product Operations</p>
+        <p>Pandhurna, Madhya Pradesh, India</p>
+        <p style="margin-top:8px">
+          <a href="mailto:raut.bhramar@gmail.com">Email</a> ·
+          <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+          <a href="https://github.com/bhramarraut" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+        <p class="text-xs" style="margin-top:12px">© <span id="footer-year"></span> Bhramar Raut. Designed as an AI-assisted personal portfolio and reviewed for factual accuracy.</p>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<dialog id="cmd-dialog" class="cmd-palette" aria-label="Command palette">
+  <input type="search" class="cmd-input" id="cmd-input" placeholder="Search pages, projects, articles, tools…" autocomplete="off" aria-label="Search">
+  <div class="cmd-results" id="cmd-results" role="listbox"></div>
+</dialog>
+
+<dialog id="cert-dialog" aria-label="Certificate viewer">
+  <div class="modal-header">
+    <h2 id="cert-dialog-title" style="font-size:1rem">Certificate</h2>
+    <button type="button" class="btn-icon" id="cert-dialog-close" aria-label="Close"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  </div>
+  <div class="modal-body" id="cert-dialog-body"></div>
+  <div class="modal-footer">
+    <a id="cert-dialog-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Open PDF in new tab</a>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script>
+/* Portfolio app logic - will be inlined into index.html */
+(function () {
+  'use strict';
+
+  const CONFIG = {
+    email: 'raut.bhramar@gmail.com',
+    phone: '+91 89894 12921',
+    siteUrl: 'https://bhramarraut.github.io/'
+  };
+
+  const ROUTES = {
+    'home': { view: 'view-home', title: 'Bhramar Raut — Product Support & Implementation' },
+    'profile': { view: 'view-profile', title: 'Profile — Bhramar Raut' },
+    'experience': { view: 'view-experience', title: 'Experience — Bhramar Raut' },
+    'projects': { view: 'view-projects', title: 'Projects — Bhramar Raut' },
+    'projects/skillverse': { view: 'view-project-skillverse', title: 'Skillverse Case Study — Bhramar Raut' },
+    'projects/catalyx': { view: 'view-project-catalyx', title: 'Catalyx Case Study — Bhramar Raut' },
+    'capabilities': { view: 'view-capabilities', title: 'Capabilities — Bhramar Raut' },
+    'knowledge': { view: 'view-knowledge', title: 'Knowledge Center — Bhramar Raut' },
+    'toolbox': { view: 'view-toolbox', title: 'Toolbox — Bhramar Raut' },
+    'certifications': { view: 'view-certifications', title: 'Certifications — Bhramar Raut' },
+    'research': { view: 'view-research', title: 'Research — Bhramar Raut' },
+    'learning': { view: 'view-learning', title: 'Learning — Bhramar Raut' },
+    'support-lab': { view: 'view-support-lab', title: 'Support Lab — Bhramar Raut' },
+    'recruiter': { view: 'view-recruiter', title: 'Recruiter Mode — Bhramar Raut' },
+    'contact': { view: 'view-contact', title: 'Contact — Bhramar Raut' },
+    '404': { view: 'view-404', title: 'Not Found — Bhramar Raut' }
+  };
+
+  const CREDENTIALS = [
+    { id: 'psm1', name: 'Professional Scrum Master I (PSM I)', issuer: 'Scrum.org', year: '2026', status: 'Valid', file: './Certification/Professional Scrum Master I.pdf', featured: true },
+    { id: 'aws-clf', name: 'AWS Certified Cloud Practitioner (CLF-C01)', issuer: 'Amazon Web Services', year: '2023', status: 'Earned 2023 • Credential expired Apr 2026', score: '754/1000', file: './Certification/AWS Certified Cloud Practitioner certificate.pdf', featured: true },
+    { id: 'ibm-sql', name: 'Databases and SQL for Data Science with Python', issuer: 'IBM / Coursera', year: 'Nov 2025', status: 'Completed', file: './Certification/Coursera DB3FW2MT3J9T.pdf' },
+    { id: 'java-fs', name: 'Certificate Program in Java Full Stack', issuer: 'StackRoute / Wipro Velocity', year: 'Jul 2022', status: 'Completed', file: './Certification/Certificate Program in Java Full Stack.pdf', featured: true },
+    { id: 'aws-essentials', name: 'AWS Cloud Practitioner Essentials', issuer: 'AWS Training', year: 'Nov 2022', status: 'Completed', file: './Certification/AWS Training & Certification - Certificate of Completion.pdf' },
+    { id: 'data-privacy', name: 'Data Privacy Awareness', issuer: 'Wipro', year: 'Oct 2022', status: 'Completed', file: './Certification/Data Privacy Awareness Certificate.pdf' },
+    { id: 'digital-marketing', name: 'Fundamentals of Digital Marketing', issuer: 'Google Digital Garage', year: 'Nov 2021', status: 'Completed', file: './Certification/The Fundamentals of Digital Marketing Certificate.pdf' },
+    { id: 'robotics', name: 'Robotics: Aerial Robotics', issuer: 'University of Pennsylvania / Coursera', year: 'Oct 2021', status: 'Completed', file: './Certification/Coursera 8K8XIRBAIJMV.pdf' }
+  ];
+
+  const TOOLBOX = [
+    { name: 'OpenProject', category: 'Project Management', relation: 'Hands-on' },
+    { name: 'Cursor', category: 'AI', relation: 'Hands-on' },
+    { name: 'OpenAI Codex', category: 'AI', relation: 'Hands-on' },
+    { name: 'Antigravity', category: 'AI', relation: 'Hands-on' },
+    { name: 'Ollama', category: 'AI', relation: 'Hands-on' },
+    { name: 'Windows', category: 'Operating Systems', relation: 'Hands-on' },
+    { name: 'macOS', category: 'Operating Systems', relation: 'Hands-on' },
+    { name: 'Excel', category: 'Productivity', relation: 'Working knowledge' },
+    { name: 'Obsidian', category: 'Productivity', relation: 'Used' },
+    { name: 'SQL', category: 'Databases', relation: 'Refreshing' },
+    { name: 'Postman', category: 'Development Assistance', relation: 'Learning' },
+    { name: 'AWS', category: 'Cloud Foundations', relation: 'Foundation / previous certification' },
+    { name: 'Java', category: 'Development Assistance', relation: 'Formal foundation' },
+    { name: '7-Zip', category: 'Utilities', relation: 'Used' },
+    { name: 'VLC', category: 'Utilities', relation: 'Used' },
+    { name: 'Rufus', category: 'Utilities', relation: 'Aware of' },
+    { name: 'LocalSend', category: 'Utilities', relation: 'Used' },
+    { name: 'OWASP ZAP', category: 'Security Awareness', relation: 'Learning' },
+    { name: 'Git', category: 'Development Assistance', relation: 'Learning' },
+    { name: 'Linux', category: 'Operating Systems', relation: 'Learning' }
+  ];
+
+  // Article helper - body stored as array of paragraphs for brevity in source
+  function art(slug, title, category, label, summary, minutes, bodyHtml, keywords) {
+    return { slug, title, category, label, summary, minutes, bodyHtml, keywords: keywords || [] };
+  }
+
+  const ARTICLES = [
+    art('approach-application-issue', 'How I Approach an Application Issue', 'support', 'PRACTICAL NOTE', 'Reproduce → Observe → Isolate → Document → Validate', 5,
+      '<p>When I encounter an application issue, I follow a consistent sequence before escalating.</p><h2>1. Reproduce</h2><p>Can I trigger the issue again with the same steps? If not, I note what differs between attempts.</p><h2>2. Observe</h2><p>What exactly happens? Error message, blank screen, wrong data, timing? I capture screenshots or logs when available.</p><h2>3. Isolate</h2><p>Is it user-specific, environment-specific, or data-specific? I test with another account, browser or device when possible.</p><h2>4. Document</h2><p>I write environment, steps, expected vs actual and evidence so another person can continue.</p><h2>5. Validate</h2><p>After a fix, I return to the original steps and confirm the original expectation is met.</p><div class="callout"><strong>My take:</strong> Escalation without reproduction wastes engineering time.</div>',
+      ['troubleshooting', 'support', 'reproduce']),
+    art('expected-vs-actual-bug-report', 'Expected vs Actual: Writing a Useful Bug Report', 'support', 'CHECKLIST', 'The simplest framework for actionable bug reports', 4,
+      '<p>The most useful bug reports answer two questions clearly: what should have happened, and what actually happened?</p><h2>Template</h2><ul><li><strong>Summary:</strong> One line describing the defect</li><li><strong>Environment:</strong> OS, browser, app version, user role</li><li><strong>Steps:</strong> Numbered reproduction steps</li><li><strong>Expected:</strong> Intended behavior</li><li><strong>Actual:</strong> Observed behavior</li><li><strong>Evidence:</strong> Screenshot, log snippet, request ID</li><li><strong>Impact:</strong> Who is blocked and how severely</li></ul><p>Separating expected from actual prevents ambiguous reports like "login broken."</p>',
+      ['bug report', 'UAT', 'documentation']),
+    art('support-escalation-structure', 'How I Would Structure a Support Escalation', 'support', 'EXPLAINER', 'What to include when handing off to engineering', 4,
+      '<p>A good escalation preserves context so engineering does not restart discovery.</p><ul><li>Issue summary and customer impact</li><li>Reproduction steps verified by support</li><li>Environment and scope (one user vs all users)</li><li>Timeline of when it started</li><li>What was already tried</li><li>Logs, IDs, screenshots attached</li><li>Original expected behavior reference</li></ul>',
+      ['escalation', 'support']),
+    art('priority-vs-severity', 'Priority vs Severity: Related but Not the Same', 'support', 'EXPLAINER', 'Why urgency and impact are different dimensions', 3,
+      '<p><strong>Severity</strong> describes how bad the issue is technically or for the user experience. <strong>Priority</strong> describes how soon it should be addressed given business context.</p><p>A low-severity cosmetic issue on a CEO demo screen may have high priority. A severe data corruption bug affecting one internal test account may have low priority.</p>',
+      ['priority', 'severity', 'ITSM']),
+    art('what-is-sla', 'What an SLA Means in Support Operations', 'support', 'EXPLAINER', 'Service level agreements in practical terms', 4,
+      '<p>An SLA defines expected response or resolution times for support requests, often tied to priority and contract tier.</p><p>Understanding SLA helps support teams prioritize work, communicate realistic timelines to customers and recognize when escalation is required to meet commitments.</p><p>SLAs are operational agreements — they do not replace good troubleshooting or documentation.</p>',
+      ['SLA', 'ITSM']),
+    art('incident-problem-change', 'Incident vs Problem vs Change: A Beginner Mental Model', 'support', 'EXPLAINER', 'ITSM concepts without overcomplication', 5,
+      '<p><strong>Incident:</strong> Unplanned interruption or quality degradation needing restoration of service.</p><p><strong>Problem:</strong> Underlying cause of one or more incidents — focuses on root cause and prevention.</p><p><strong>Change:</strong> Planned addition, modification or removal of something that could affect services.</p><p>Fixing an incident restores service; solving a problem reduces repeat incidents.</p>',
+      ['incident', 'problem', 'change', 'ITSM']),
+    art('rca-not-restart', 'Root Cause Analysis: Why "Restarted the App" Is Not a Root Cause', 'support', 'OPINION', 'Distinguishing workaround from cause', 4,
+      '<p>Restarting may restore service temporarily but rarely explains why the failure occurred.</p><p>A useful RCA asks: what changed, what dependency failed, what resource was exhausted, what configuration drift occurred?</p><p>Document workarounds separately from verified root cause.</p>',
+      ['RCA', 'root cause']),
+    art('uat-multirole-saas', 'A Practical UAT Checklist for a Multi-Role SaaS Product', 'product', 'CHECKLIST', 'Testing across roles and workflows', 6,
+      '<p>Multi-role products need validation per role, not just happy-path admin testing.</p><ul><li>Authentication and session behavior per role</li><li>Permission boundaries — can role A access role B data?</li><li>Onboarding flows for each persona</li><li>State transitions (pending → active → suspended)</li><li>Payment/entitlement alignment</li><li>Admin overrides and audit visibility</li><li>Error messages and empty states</li></ul>',
+      ['UAT', 'SaaS', 'RBAC']),
+    art('rbac-testing-strategy', 'How Role-Based Access Changes Testing Strategy', 'product', 'PRACTICAL NOTE', 'RBAC requires matrix thinking', 5,
+      '<p>RBAC testing is not one login test. Build a matrix of roles × actions × resources.</p><p>For each cell: should access be allowed or denied? Test both positive and negative cases.</p><p>Branch-level restrictions add another dimension — same role, different branch, different data scope.</p>',
+      ['RBAC', 'permissions', 'testing']),
+    art('auth-authz-permissions', 'Authentication, Authorization and Permissions', 'product', 'EXPLAINER', 'A product-support view of access control', 5,
+      '<p><strong>Authentication:</strong> Verifying who the user is (login, MFA).</p><p><strong>Authorization:</strong> Determining what an authenticated user may do.</p><p><strong>Permissions:</strong> Specific grants tied to roles or policies.</p><p>Support issues often cluster around session expiry, wrong role assignment, or missing permission grants.</p>',
+      ['authentication', 'authorization']),
+    art('windows-troubleshooting-checklist', 'My Windows Troubleshooting Checklist', 'windows', 'CHECKLIST', 'Systematic Windows diagnostics', 6,
+      '<p>Before assuming hardware failure:</p><ol><li>Recent software or update changes?</li><li>Reproducible after restart?</li><li>Event Viewer errors around failure time</li><li>Disk space and memory pressure</li><li>Network connectivity (if cloud-dependent)</li><li>User profile vs system-wide issue</li><li>Safe Mode behavior</li><li>Driver or peripheral changes</li></ol>',
+      ['Windows', 'troubleshooting']),
+    art('windows-commands-toolkit', 'Essential Windows Commands in My Toolkit', 'windows', 'LAB', 'Network and system commands with context', 8,
+      '<p><code>ipconfig</code> — View network adapter configuration. Useful for IP, gateway and DNS checks. Low risk.</p><p><code>ping</code> — Test reachability to host. Useful for basic connectivity.</p><p><code>tracert</code> — Trace route to host. Useful for network path issues.</p><p><code>nslookup</code> — DNS resolution queries.</p><p><code>netstat</code> — Active connections and listening ports.</p><p><code>tasklist</code> / <code>taskkill</code> — Process inspection; kill only when identified safely.</p><p><code>sfc /scannow</code> — System file check. Requires admin. Can take time.</p><p><code>DISM</code> — Image repair. Admin required. Use official Microsoft guidance.</p><p><code>chkdsk</code> — Disk check. Can be disruptive; schedule appropriately.</p><p><strong>Source:</strong> <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands" target="_blank" rel="noopener noreferrer">Microsoft Windows Commands</a></p>',
+      ['Windows', 'commands', 'cmd']),
+    art('windows-debloating-conservative', 'How I Think About Debloating Windows Conservatively', 'windows', 'OPINION', 'Stability over aggressive cleanup', 5,
+      '<p>I prefer conservative debloating: remove clearly unnecessary apps, create restore points, understand dependencies, avoid random scripts from unknown sources, verify before deleting services.</p><p>Breaking Windows for marginal disk savings creates support debt.</p>',
+      ['Windows', 'debloat']),
+    art('windows-startup-troubleshooting', 'Windows Startup Troubleshooting', 'windows', 'PRACTICAL NOTE', 'Checks before blaming hardware', 4,
+      '<p>Check boot errors in Event Viewer, disable non-essential startup items temporarily, test clean boot, verify recent updates/drivers, check disk health.</p>',
+      ['Windows', 'startup']),
+    art('dns-troubleshooting', 'DNS Troubleshooting for Non-Network Engineers', 'windows', 'EXPLAINER', 'When sites fail but internet works', 4,
+      '<p>Try alternate DNS, flush DNS cache (<code>ipconfig /flushdns</code>), compare nslookup results, check VPN/proxy interference, verify corporate DNS policies.</p>',
+      ['DNS', 'networking']),
+    art('android-debloating', 'Android Debloating: Convenience vs Stability', 'tools', 'OPINION', 'Trade-offs on device modification', 4,
+      '<p>Removing OEM apps can break dependencies. Consider update chain, banking app compatibility and warranty implications.</p>',
+      ['Android']),
+    art('modded-apps-security', 'Modded Android Apps: Why "Works for Free" Is Not Safe', 'security', 'LEARNING NOTE', 'Security awareness around modified APKs', 5,
+      '<p>Modified APKs may use unknown signing keys, carry malware, steal credentials, break update chains and violate licensing.</p><p>This note is for security awareness — not instructions for bypassing payments or DRM.</p>',
+      ['Android', 'security']),
+    art('local-file-sharing', 'Local File Sharing: Why I Like Local-First Tools', 'tools', 'OPINION', 'LocalSend and similar utilities', 4,
+      '<p>Local-first sharing avoids cloud upload latency and keeps files on your network. Useful for quick transfers between devices on same LAN.</p>',
+      ['LocalSend', 'file sharing']),
+    art('obsidian-knowledge-management', 'Why Obsidian Works for My Knowledge Management Style', 'tools', 'OPINION', 'Local Markdown notes', 5,
+      '<p>I prefer Obsidian for local files, Markdown, bidirectional links, extensibility and offline access. It is not universally best — it fits a local-first, text-based workflow.</p>',
+      ['Obsidian', 'productivity']),
+    art('ai-agents-without-fake-coding', 'How I Use AI Agents Without Pretending AI Output Is My Manual Coding', 'ai', 'CORE NOTE', 'Flagship article on human accountability', 8,
+      '<p>My workflow with Cursor, Codex, Antigravity and Ollama:</p><ol><li><strong>Define requirement</strong> — what should the system do?</li><li><strong>Constrain context</strong> — scope, constraints, acceptance criteria</li><li><strong>Generate</strong> — AI produces implementation</li><li><strong>Inspect</strong> — read output, don\'t blindly accept</li><li><strong>Test</strong> — run workflows manually</li><li><strong>Identify failures</strong> — expected vs actual</li><li><strong>Iterate</strong> — refine prompts and corrections</li><li><strong>Validate</strong> — confirm fix meets original expectation</li><li><strong>Document</strong> — record behavior and decisions</li></ol><div class="callout"><strong>Human accountability:</strong> Requirements, judgment, testing and correctness remain human responsibilities.</div>',
+      ['AI', 'Cursor', 'Codex', 'validation']),
+    art('agentic-vs-conventional-coding', 'Agentic Coding vs Conventional Coding', 'ai', 'LEARNING NOTE', 'What I learned as a learner', 5,
+      '<p>Conventional coding builds line-by-line understanding incrementally. Agentic coding produces larger chunks faster but demands stronger validation discipline.</p><p>I am a learner using both — not claiming senior software engineering authority.</p>',
+      ['AI', 'coding']),
+    art('ai-acceptance-criteria', 'AI Does Not Remove the Need for Acceptance Criteria', 'ai', 'EXPLAINER', 'Criteria before generation', 4,
+      '<p>Without acceptance criteria, AI output cannot be objectively validated. Define expected behavior before prompting.</p>',
+      ['AI', 'acceptance criteria']),
+    art('ai-assisted-requirements', 'What AI-Assisted Delivery Taught Me About Requirements', 'ai', 'PRACTICAL NOTE', 'Ambiguous requirements fail at validation', 5,
+      '<p>AI accelerates implementation but amplifies requirement gaps. Vague requirements produce plausible-but-wrong behavior. Structured workflows and explicit states help both humans and AI.</p>',
+      ['AI', 'requirements']),
+    art('psm-i-scrum-thinking', 'What PSM I Changed About How I Think About Scrum', 'scrum', 'LEARNING NOTE', 'Scrum.org foundation — not employment', 5,
+      '<p>PSM I reinforced empiricism, Scrum accountabilities, events as opportunities for inspection and adaptation, and that Scrum is a framework not a prescriptive methodology.</p><p>PSM I ≠ professional Scrum Master employment.</p><p><strong>Source:</strong> <a href="https://scrumguides.org/" target="_blank" rel="noopener noreferrer">Scrum Guide</a></p>',
+      ['PSM I', 'Scrum']),
+    art('scrum-not-meetings', 'Scrum Is Not a Meeting Framework', 'scrum', 'OPINION', 'Events serve empiricism', 3,
+      '<p>Scrum events exist to inspect and adapt toward the Sprint Goal. Meetings without outcomes are not Scrum.</p>',
+      ['Scrum']),
+    art('sprint-goal-vs-tasks', 'Sprint Goal vs Task List', 'scrum', 'EXPLAINER', 'Cohesion over checkbox completion', 3,
+      '<p>A Sprint Goal describes the objective. Tasks are means. Completing tasks without achieving the goal misses the point.</p>',
+      ['Scrum', 'sprint']),
+    art('definition-of-done', 'Definition of Done: Why Code Complete Is Not Always Done', 'scrum', 'EXPLAINER', 'Done means team agreement', 4,
+      '<p>Definition of Done includes testing, documentation, deployment readiness and quality standards agreed by the team — not merely merged code.</p>',
+      ['Scrum', 'DoD']),
+    art('scrum-master-not-pm', 'Why the Scrum Master Is Not the Project Manager', 'scrum', 'EXPLAINER', 'Different accountabilities', 4,
+      '<p>Scrum Master serves the team and Scrum effectiveness. Project Manager traditionally manages scope, schedule and resources in predictive contexts. Roles differ.</p>',
+      ['Scrum Master', 'PM']),
+    art('rufus-vs-balenaetcher', 'Rufus vs balenaEtcher: Choosing Bootable Media Tools', 'tools', 'COMPARISON', 'When I prefer each tool', 4,
+      '<p><strong>Rufus:</strong> I prefer for Windows bootable USB creation, especially Windows ISOs — fast and focused.</p><p><strong>balenaEtcher:</strong> I prefer for cross-platform simplicity and disk images where Etcher\'s workflow fits.</p>',
+      ['Rufus', 'balenaEtcher']),
+    art('zip-utilities-comparison', '7-Zip vs WinRAR vs WinZip', 'tools', 'COMPARISON', 'Utility and format trade-offs', 4,
+      '<p><strong>7-Zip:</strong> Free, broad format support, my default on Windows.</p><p><strong>WinRAR:</strong> Familiar UI, RAR creation strength.</p><p><strong>WinZip:</strong> Commercial, enterprise familiarity.</p>',
+      ['7-Zip', 'WinRAR']),
+    art('vlc-vs-potplayer', 'VLC vs PotPlayer', 'tools', 'COMPARISON', 'Desktop media players', 3,
+      '<p><strong>VLC:</strong> Cross-platform, plays almost everything, open source — my default.</p><p><strong>PotPlayer:</strong> Windows-focused, customization and codec flexibility for power users.</p>',
+      ['VLC', 'PotPlayer']),
+    art('popos-vs-ubuntu', 'Pop!_OS vs Ubuntu', 'tools', 'COMPARISON', 'Linux distributions for different users', 4,
+      '<p><strong>Pop!_OS:</strong> System76 polish, good for developers wanting curated desktop experience.</p><p><strong>Ubuntu:</strong> Broad documentation, enterprise familiarity, largest community support.</p>',
+      ['Pop!_OS', 'Ubuntu', 'Linux']),
+    art('debian-fedora-ubuntu', 'Debian vs Fedora vs Ubuntu', 'tools', 'COMPARISON', 'Stability, freshness and convenience', 5,
+      '<p><strong>Debian:</strong> Stability and free software purity — great for servers and conservative deployments.</p><p><strong>Fedora:</strong> Fresher packages, upstream innovation — shorter lifecycle.</p><p><strong>Ubuntu:</strong> Balance of convenience, LTS options and ecosystem.</p>',
+      ['Debian', 'Fedora', 'Ubuntu']),
+    art('localsend-comparison', 'LocalSend vs Other Local Sharing Tools', 'tools', 'COMPARISON', 'Local-first file transfer', 3,
+      '<p>LocalSend offers open-source cross-platform LAN transfer without cloud dependency. Alternatives exist — choice depends on platform mix and UI preference.</p>',
+      ['LocalSend']),
+    art('open-source-tco', 'Open-Source Software Is Free, but Operations Are Not', 'tools', 'EXPLAINER', 'Total cost of ownership thinking', 6,
+      '<p>Open-source may reduce license cost but organizations still pay for support, training, migration, integration, maintenance, security, governance and staff expertise.</p><p>Evaluate total cost of ownership, not just download price.</p>',
+      ['open source', 'TCO']),
+    art('openproject-work-tracking', 'Why I Used OpenProject for Work-Item Tracking', 'tools', 'PRACTICAL NOTE', 'Visibility across delivery', 4,
+      '<p>OpenProject helped track work items, priorities, status, dependencies and delivery visibility during AI-assisted product work. Open source, web-based project management.</p><p><strong>Source:</strong> <a href="https://www.openproject.org/docs/" target="_blank" rel="noopener noreferrer">OpenProject Documentation</a></p>',
+      ['OpenProject']),
+    art('requirement-to-work-items', 'Turning a Product Requirement Into Trackable Work', 'product', 'PRACTICAL NOTE', 'Decomposition for visibility', 4,
+      '<p>Break requirements into verifiable work items with clear acceptance criteria, dependencies and owner. One vague epic hides risk.</p>',
+      ['requirements', 'OpenProject']),
+    art('dependencies-thinking', 'How I Think About Dependencies', 'product', 'EXPLAINER', 'Sequencing and blockers', 3,
+      '<p>Dependencies clarify what must complete before other work can start. Visible dependencies prevent false "done" states and help prioritize unblockers.</p>',
+      ['dependencies']),
+    art('siem-soar-xdr-mdr', 'SIEM vs SOAR vs XDR vs MDR: My Mental Model', 'security', 'LEARNING NOTE', 'High-level security operations concepts', 5,
+      '<p><strong>SIEM:</strong> Aggregates and correlates security logs for detection.</p><p><strong>SOAR:</strong> Orchestrates and automates security response workflows.</p><p><strong>XDR:</strong> Extended detection across endpoints, network, cloud.</p><p><strong>MDR:</strong> Managed service provider operates detection and response.</p><p>I am not a cybersecurity professional — this is awareness-level understanding.</p>',
+      ['SIEM', 'SOAR', 'XDR', 'MDR']),
+    art('owasp-zap', 'What OWASP ZAP Is — and What It Is Not', 'security', 'LEARNING NOTE', 'Introductory web security testing', 4,
+      '<p>OWASP ZAP is a free security testing tool for finding vulnerabilities in web applications during authorized testing.</p><p>It is not a replacement for professional penetration testing or a tool for unauthorized scanning.</p><p><strong>Source:</strong> <a href="https://www.zaproxy.org/" target="_blank" rel="noopener noreferrer">OWASP ZAP</a></p>',
+      ['OWASP ZAP']),
+    art('owasp-wstg', 'OWASP Web Security Testing Guide', 'security', 'LEARNING NOTE', 'Structured security testing', 4,
+      '<p>OWASP WSTG provides a methodology for web application security testing — useful as a learning framework for defensive quality thinking.</p><p><strong>Source:</strong> <a href="https://owasp.org/www-project-web-security-testing-guide/" target="_blank" rel="noopener noreferrer">OWASP WSTG</a></p>',
+      ['OWASP', 'WSTG']),
+    art('free-security-testing-tools', 'Free Security Testing Tools: Where Learning Should Start', 'security', 'LEARNING NOTE', 'Ethical defensive learning', 4,
+      '<p>OWASP ZAP, WSTG methodology, and lab environments for authorized practice. Stay ethical, legal and defensive — no unauthorized intrusion.</p>',
+      ['security', 'OWASP'])
+  ];
+
+  // Mark featured articles
+  ARTICLES.find(a => a.slug === 'ai-agents-without-fake-coding').featured = true;
+  ARTICLES.find(a => a.slug === 'approach-application-issue').featured = true;
+  ARTICLES.find(a => a.slug === 'expected-vs-actual-bug-report').featured = true;
+  ARTICLES.find(a => a.slug === 'uat-multirole-saas').featured = true;
+  ARTICLES.find(a => a.slug === 'psm-i-scrum-thinking').featured = true;
+
+  const START_HERE = ['approach-application-issue', 'expected-vs-actual-bug-report', 'uat-multirole-saas', 'ai-agents-without-fake-coding', 'psm-i-scrum-thinking', 'windows-troubleshooting-checklist', 'owasp-zap', 'open-source-tco'];
+
+  const HTTP_STATUSES = {
+    '200': 'OK — Request succeeded. Standard success response.',
+    '201': 'Created — Resource successfully created (often after POST).',
+    '204': 'No Content — Success but no body returned (common for DELETE).',
+    '400': 'Bad Request — Client sent invalid syntax or parameters. Check request payload.',
+    '401': 'Unauthorized — Authentication required or failed. Check credentials/token.',
+    '403': 'Forbidden — Authenticated but not permitted. Check roles/permissions.',
+    '404': 'Not Found — Resource or endpoint does not exist. Check URL and routing.',
+    '409': 'Conflict — Request conflicts with current state (e.g., duplicate).',
+    '422': 'Unprocessable — Validation failed on well-formed request.',
+    '429': 'Too Many Requests — Rate limited. Retry after delay.',
+    '500': 'Internal Server Error — Server-side failure. Escalate with reproduction details.',
+    '502': 'Bad Gateway — Upstream server error. Often infrastructure.',
+    '503': 'Service Unavailable — Server overloaded or down for maintenance.'
+  };
+
+  const TRIAGE = {
+    login: 'LOGIN ISSUE FRAMEWORK\n1. Verify credentials and account status\n2. Check error message (invalid password vs locked vs MFA)\n3. Test another browser/device\n4. Check session/cookie issues\n5. Verify auth service status\n6. Document exact error and reproduction steps',
+    crash: 'APP CRASH FRAMEWORK\n1. When does crash occur? (startup, specific action)\n2. Reproduce consistently?\n3. Check logs/crash reports\n4. Recent updates or config changes?\n5. Resource constraints (memory/disk)\n6. Isolate: clean profile vs extension conflict',
+    network: 'NETWORK ISSUE FRAMEWORK\n1. ping/tracert to target\n2. DNS resolution (nslookup)\n3. VPN/proxy interference\n4. Firewall rules\n5. Scope: one user vs all users\n6. Document timestamps and error codes',
+    permission: 'PERMISSION ISSUE FRAMEWORK\n1. Confirm user role and expected access\n2. Compare with working user same role\n3. Check branch/org scope restrictions\n4. Review recent permission changes\n5. Test denied vs allowed actions explicitly\n6. Document role, resource, expected vs actual',
+    api: 'API ERROR FRAMEWORK\n1. Capture request/response (status, body)\n2. Verify endpoint, method, headers, auth token\n3. Compare with API documentation\n4. Check idempotency and payload format\n5. Server vs client error classification\n6. Document correlation/request IDs'
+  };
+
+  const UAT_CHECKLISTS = {
+    auth: 'AUTHENTICATION UAT\n□ Login with valid credentials\n□ Login with invalid credentials (error message)\n□ Logout and session expiry\n□ Password reset flow\n□ MFA if applicable\n□ Concurrent session behavior',
+    onboarding: 'ONBOARDING UAT\n□ New user registration\n□ Email verification if required\n□ Profile completion steps\n□ Skip/back navigation\n□ Incomplete onboarding restrictions\n□ Welcome content accuracy',
+    payments: 'PAYMENTS UAT\n□ Successful payment flow\n□ Failed payment handling\n□ Entitlement granted after payment\n□ Receipt/confirmation display\n□ Refund/cancel edge cases\n□ Currency and tax display',
+    permissions: 'PERMISSIONS UAT\n□ Role A can access allowed modules\n□ Role A blocked from restricted modules\n□ Branch-level data isolation\n□ Admin override behavior\n□ Audit log entries for sensitive actions'
+  };
+
+  let reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let scrollTriggers = [];
+
+  function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function $(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+
+  function toast(msg) {
+    const c = $('#toast-container');
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => t.remove(), 3000);
+  }
+
+  function copyText(text, label) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => toast(label + ' copied')).catch(() => toast('Copy failed'));
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); toast(label + ' copied'); } catch (e) { toast('Copy failed'); }
+      ta.remove();
+    }
+  }
+
+  // THEME
+  function getStoredTheme() { try { return localStorage.getItem('theme') || 'auto'; } catch (e) { return 'auto'; } }
+  function setTheme(mode) {
+    document.documentElement.dataset.theme = mode;
+    try { localStorage.setItem('theme', mode); } catch (e) {}
+    const modes = ['auto', 'light', 'dark'];
+    const next = modes[(modes.indexOf(mode) + 1) % modes.length];
+    $$('.theme-toggle, .theme-toggle-mobile').forEach(b => b.setAttribute('data-next-theme', next));
+  }
+  function cycleTheme() {
+    const cur = getStoredTheme();
+    const order = ['auto', 'light', 'dark'];
+    setTheme(order[(order.indexOf(cur) + 1) % order.length]);
+  }
+  (function initThemeEarly() {
+    const t = getStoredTheme();
+    document.documentElement.dataset.theme = t;
+  })();
+
+  // ROUTER
+  function parseRoute() {
+    const hash = window.location.hash.slice(1) || '/home';
+    const path = hash.startsWith('/') ? hash.slice(1) : hash;
+    if (path.startsWith('knowledge/') && path !== 'knowledge') {
+      const slug = path.replace('knowledge/', '');
+      if (ARTICLES.some(a => a.slug === slug)) return { type: 'article', slug, path };
+    }
+    if (ROUTES[path]) return { type: 'route', path };
+    return { type: '404', path: '404' };
+  }
+
+  function navigate(path, push) {
+    if (path.startsWith('knowledge/')) {
+      const slug = path.replace('knowledge/', '');
+      if (ARTICLES.some(a => a.slug === slug)) {
+        if (push) window.location.hash = '#/knowledge/' + slug;
+        showArticle(slug);
+        return;
+      }
+    }
+    if (!ROUTES[path]) path = '404';
+    if (push) window.location.hash = '#/' + path;
+    showRoute(path);
+  }
+
+  function showRoute(path) {
+    killScrollTriggers();
+    const route = ROUTES[path] || ROUTES['404'];
+    $$('.view').forEach(v => v.classList.remove('active'));
+    const view = $('#' + route.view);
+    if (view) view.classList.add('active');
+    document.title = route.title;
+    updateNav(path.split('/')[0] === 'projects' && path !== 'projects' ? 'projects' : path);
+    closeMobileNav();
+    const main = $('#main-content');
+    if (main) main.scrollTop = 0;
+    window.scrollTo(0, 0);
+    animateView();
+    if (path === 'knowledge') renderKnowledgeList();
+    if (path === 'toolbox') renderToolbox();
+    if (path === 'certifications') renderCerts();
+  }
+
+  function showArticle(slug) {
+    killScrollTriggers();
+    $$('.view').forEach(v => v.classList.remove('active'));
+    const article = ARTICLES.find(a => a.slug === slug);
+    if (!article) { showRoute('404'); return; }
+    $('#view-knowledge-article').classList.add('active');
+    document.title = article.title + ' — Bhramar Raut';
+    updateNav('knowledge');
+    const container = $('#article-container');
+    container.innerHTML = `
+      <nav class="breadcrumb"><a href="#/knowledge" data-nav-link="knowledge">Knowledge</a><span>/</span><span>${esc(article.title)}</span></nav>
+      <article class="article-layout">
+        <div>
+          <header class="page-header">
+            <span class="tag">${esc(article.label)}</span>
+            <h1 id="article-heading">${esc(article.title)}</h1>
+            <div class="article-meta"><span>${esc(article.category)}</span><span>${article.minutes} min read</span></div>
+            <p class="text-secondary">${esc(article.summary)}</p>
+          </header>
+          <div class="article-body">${article.bodyHtml}</div>
+          <p class="text-sm text-muted" style="margin-top:24px">Notes inspired by topics I discuss and learn about. <a href="https://www.linkedin.com/in/bhramarraut" target="_blank" rel="noopener noreferrer">Follow my posts on LinkedIn</a>.</p>
+        </div>
+      </article>`;
+    bindNavLinks(container);
+    closeMobileNav();
+    animateView();
+  }
+
+  function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+  function updateNav(active) {
+    $$('.nav-item').forEach(n => {
+      const nav = n.dataset.nav;
+      n.classList.toggle('active', nav === active || (active === 'support-lab' && nav === 'support-lab'));
+    });
+  }
+
+  function bindNavLinks(ctx) {
+    $$('a[data-nav-link], [data-nav-link].card-interactive', ctx || document).forEach(el => {
+      if (!el.hasAttribute('data-bound')) {
+        el.setAttribute('data-bound', '1');
+        el.addEventListener('click', e => {
+          const link = el.dataset.navLink || (el.getAttribute('href') || '').replace('#/', '');
+          if (link) { e.preventDefault(); navigate(link, true); }
+        });
+      }
+    });
+  }
+
+  // NAV MOBILE
+  function openMobileNav() { $('#sidebar').classList.add('open'); $('#nav-overlay').classList.add('open'); }
+  function closeMobileNav() { $('#sidebar').classList.remove('open'); $('#nav-overlay').classList.remove('open'); }
+
+  // KNOWLEDGE
+  function renderKnowledgeList(filterCat, search) {
+    const list = $('#knowledge-list');
+    const featured = $('#knowledge-featured');
+    if (!list) return;
+    const q = (search || '').toLowerCase();
+    const cat = filterCat || 'all';
+    const filtered = ARTICLES.filter(a => {
+      if (cat !== 'all' && a.category !== cat) return false;
+      if (q && !a.title.toLowerCase().includes(q) && !a.summary.toLowerCase().includes(q) && !a.keywords.some(k => k.includes(q))) return false;
+      return true;
+    });
+    const startArticles = START_HERE.map(s => ARTICLES.find(a => a.slug === s)).filter(Boolean).slice(0, 4);
+    featured.innerHTML = startArticles.map(a => articleCard(a)).join('');
+    list.innerHTML = filtered.map(a => articleCard(a)).join('') || '<p class="text-muted">No articles match.</p>';
+    bindArticleCards();
+  }
+
+  function articleCard(a) {
+    return `<a href="#/knowledge/${a.slug}" class="card card-interactive article-card" data-slug="${a.slug}">
+      <span class="tag">${esc(a.label)}</span>
+      <h3 style="margin:8px 0;font-size:1rem">${esc(a.title)}</h3>
+      <p class="text-sm text-secondary">${esc(a.summary)}</p>
+      <span class="text-xs text-muted">${a.minutes} min · ${esc(a.category)}</span>
+    </a>`;
+  }
+
+  function bindArticleCards() {
+    $$('.article-card').forEach(card => {
+      card.addEventListener('click', e => {
+        e.preventDefault();
+        navigate('knowledge/' + card.dataset.slug, true);
+      });
+    });
+  }
+
+  // TOOLBOX
+  function renderToolbox() {
+    const grid = $('#toolbox-grid');
+    if (!grid) return;
+    grid.innerHTML = TOOLBOX.map(t => {
+      const relClass = t.relation.toLowerCase().includes('learning') ? 'status-learning' : t.relation.toLowerCase().includes('foundation') || t.relation.toLowerCase().includes('formal') ? 'status-foundation' : t.relation.toLowerCase().includes('aware') ? 'status-aware' : 'status-hands-on';
+      return `<div class="card"><span class="tag">${esc(t.category)}</span><h3 style="margin:8px 0">${esc(t.name)}</h3><span class="status-label ${relClass}">${esc(t.relation)}</span></div>`;
+    }).join('');
+  }
+
+  // CERTIFICATIONS
+  function renderCerts() {
+    const grid = $('#cert-grid');
+    if (!grid) return;
+    grid.innerHTML = CREDENTIALS.map(c => `
+      <div class="card card-interactive cert-card" data-cert-id="${c.id}" role="button" tabindex="0">
+        <span class="tag">VERIFIED CREDENTIAL</span>
+        <h3 style="margin:8px 0">${esc(c.name)}</h3>
+        <p class="text-sm text-secondary">${esc(c.issuer)} · ${esc(c.year)}</p>
+        <p class="text-sm ${c.status.includes('expired') ? 'pill-warning' : ''}" style="margin-top:8px">${esc(c.status)}</p>
+        ${c.score ? '<p class="text-xs text-muted">Score: ' + esc(c.score) + '</p>' : ''}
+        <p class="text-sm" style="margin-top:12px;color:var(--accent)">View credential →</p>
+      </div>`).join('');
+    $$('.cert-card').forEach(card => {
+      card.addEventListener('click', () => openCert(card.dataset.certId));
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCert(card.dataset.certId); } });
+    });
+  }
+
+  function openCert(id) {
+    const c = CREDENTIALS.find(x => x.id === id);
+    if (!c) return;
+    const dlg = $('#cert-dialog');
+    $('#cert-dialog-title').textContent = c.name;
+    const body = $('#cert-dialog-body');
+    body.innerHTML = '';
+    const link = $('#cert-dialog-link');
+    link.href = c.file;
+    if (c.file.toLowerCase().endsWith('.pdf')) {
+      body.innerHTML = '<p class="text-sm text-muted">PDF preview loads on demand.</p>';
+      const obj = document.createElement('object');
+      obj.data = c.file;
+      obj.type = 'application/pdf';
+      obj.style.width = '100%';
+      obj.style.height = '480px';
+      obj.innerHTML = '<p>PDF cannot be displayed. <a href="' + c.file + '" target="_blank" rel="noopener noreferrer">Open PDF</a></p>';
+      body.appendChild(obj);
+    } else {
+      body.innerHTML = '<p><a href="' + c.file + '" target="_blank" rel="noopener noreferrer">Open file</a></p>';
+    }
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+  }
+
+  // COMMAND PALETTE
+  function buildSearchIndex() {
+    const items = [];
+    Object.keys(ROUTES).forEach(p => {
+      if (p === '404') return;
+      items.push({ type: 'page', label: ROUTES[p].title.split('—')[0].trim(), path: p, icon: 'bi-file' });
+    });
+    ARTICLES.forEach(a => items.push({ type: 'article', label: a.title, path: 'knowledge/' + a.slug, icon: 'bi-book' }));
+    CREDENTIALS.forEach(c => items.push({ type: 'cert', label: c.name, path: 'certifications', icon: 'bi-award' }));
+    TOOLBOX.forEach(t => items.push({ type: 'tool', label: t.name, path: 'toolbox', icon: 'bi-tools' }));
+    items.push({ type: 'action', label: 'Copy Email', action: () => copyText(CONFIG.email, 'Email'), icon: 'bi-envelope' });
+    items.push({ type: 'action', label: 'Toggle Theme', action: cycleTheme, icon: 'bi-circle-half' });
+    items.push({ type: 'action', label: 'Print Recruiter Profile', action: () => { navigate('recruiter', true); setTimeout(() => window.print(), 300); }, icon: 'bi-printer' });
+    return items;
+  }
+
+  let searchIndex = [];
+  let cmdActive = 0;
+
+  function openCommandPalette() {
+    searchIndex = buildSearchIndex();
+    const dlg = $('#cmd-dialog');
+    const input = $('#cmd-input');
+    input.value = '';
+    renderCmdResults('');
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+  }
+
+  function renderCmdResults(q) {
+    const results = $('#cmd-results');
+    const ql = q.toLowerCase();
+    const filtered = searchIndex.filter(i => !ql || i.label.toLowerCase().includes(ql)).slice(0, 12);
+    cmdActive = 0;
+    results.innerHTML = filtered.map((item, i) =>
+      `<div class="cmd-item${i === 0 ? ' active' : ''}" role="option" data-cmd-idx="${i}" data-path="${item.path || ''}" data-action="${item.action ? '1' : ''}">
+        <i class="bi ${item.icon}" aria-hidden="true"></i><span>${esc(item.label)}</span>
+      </div>`).join('') || '<p class="text-muted text-sm" style="padding:12px">No results</p>';
+    results._items = filtered;
+    $$('.cmd-item', results).forEach((el, i) => {
+      el.addEventListener('click', () => executeCmd(filtered[i]));
+    });
+  }
+
+  function executeCmd(item) {
+    $('#cmd-dialog').close?.() || $('#cmd-dialog').removeAttribute('open');
+    if (item.action) item.action();
+    else if (item.path) navigate(item.path, true);
+  }
+
+  // SUPPORT LAB
+  function initSupportLab() {
+    $('#triage-chips .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        $('#triage-chips .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        $('#triage-output').textContent = TRIAGE[chip.dataset.triage] || '';
+      });
+    });
+    $('#http-select').addEventListener('change', e => {
+      $('#http-output').textContent = HTTP_STATUSES[e.target.value] || 'Select a status code.';
+    });
+    $('#bug-generate').addEventListener('click', () => {
+      const out = ['SUMMARY: ' + ($('#bug-summary').value || '—'), 'ENVIRONMENT: ' + ($('#bug-env').value || '—'), 'STEPS:', $('#bug-steps').value || '—', 'EXPECTED:', $('#bug-expected').value || '—', 'ACTUAL:', $('#bug-actual').value || '—'].join('\n');
+      $('#bug-output').textContent = out;
+    });
+    $('#uat-chips .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        $('#uat-chips .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        $('#uat-output').textContent = UAT_CHECKLISTS[chip.dataset.uat] || '';
+      });
+    });
+  }
+
+  // TIMELINE
+  function initTimeline() {
+    $('[data-timeline-toggle]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.parentElement.querySelector('.timeline-body');
+        const open = body.hidden;
+        body.hidden = !open;
+        btn.setAttribute('aria-expanded', open);
+      });
+    });
+  }
+
+  // GSAP
+  function killScrollTriggers() {
+    scrollTriggers.forEach(st => st.kill());
+    scrollTriggers = [];
+  }
+
+  function animateView() {
+    if (reducedMotion || typeof gsap === 'undefined') return;
+    const active = $('.view.active');
+    if (!active) return;
+    gsap.fromTo(active.querySelectorAll('.card, .process-step, .hero-image'), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out' });
+  }
+
+  // VCARD
+  function downloadVCard() {
+    const vcf = ['BEGIN:VCARD', 'VERSION:3.0', 'FN:Bhramar Raut', 'EMAIL:raut.bhramar@gmail.com', 'TEL:+918989412921', 'URL:https://bhramarraut.github.io/', 'END:VCARD'].join('\n');
+    const blob = new Blob([vcf], { type: 'text/vcard' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'Bhramar_Raut.vcf';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  function populateArticlesSource() {
+    const src = $('#articles-source');
+    if (!src) return;
+    src.innerHTML = ARTICLES.map(a => `<article id="article-${a.slug}"><h2>${esc(a.title)}</h2><p>${esc(a.summary)}</p></article>`).join('');
+  }
+
+  // INIT
+  function init() {
+    document.body.classList.add('js-enabled');
+    $('#footer-year').textContent = new Date().getFullYear();
+
+    setTheme(getStoredTheme());
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (getStoredTheme() === 'auto') setTheme('auto');
+    });
+
+    $$('.nav-item, .sidebar-brand a[data-nav]').forEach(n => n.addEventListener('click', e => {
+      e.preventDefault();
+      navigate(n.dataset.nav, true);
+    }));
+
+    bindNavLinks();
+    initTimeline();
+    initSupportLab();
+    renderKnowledgeList();
+    renderToolbox();
+    renderCerts();
+    populateArticlesSource();
+
+    $('#menu-toggle')?.addEventListener('click', openMobileNav);
+    $('#nav-overlay')?.addEventListener('click', closeMobileNav);
+    $$('.theme-toggle, .theme-toggle-mobile').forEach(b => b.addEventListener('click', cycleTheme));
+    $$('.cmd-trigger, .cmd-trigger-mobile, #cmd-trigger-mobile').forEach(b => b?.addEventListener('click', openCommandPalette));
+
+    $('#cmd-input').addEventListener('input', e => renderCmdResults(e.target.value));
+    $('#cmd-input').addEventListener('keydown', e => {
+      const items = $('#cmd-results')._items || [];
+      if (e.key === 'ArrowDown') { e.preventDefault(); cmdActive = Math.min(cmdActive + 1, items.length - 1); highlightCmd(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); cmdActive = Math.max(cmdActive - 1, 0); highlightCmd(); }
+      if (e.key === 'Enter' && items[cmdActive]) { e.preventDefault(); executeCmd(items[cmdActive]); }
+    });
+
+    function highlightCmd() {
+      $$('.cmd-item').forEach((el, i) => el.classList.toggle('active', i === cmdActive));
+    }
+
+    $('#cert-dialog-close').addEventListener('click', () => $('#cert-dialog').close?.() || $('#cert-dialog').removeAttribute('open'));
+
+    $('#knowledge-filters .chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        $('#knowledge-filters .chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        renderKnowledgeList(chip.dataset.filter, $('#knowledge-search').value);
+      });
+    });
+    $('#knowledge-search')?.addEventListener('input', e => {
+      const active = $('#knowledge-filters .chip.active');
+      renderKnowledgeList(active?.dataset.filter || 'all', e.target.value);
+    });
+
+    $('#copy-email')?.addEventListener('click', () => copyText(CONFIG.email, 'Email'));
+    $('#copy-phone')?.addEventListener('click', () => copyText(CONFIG.phone, 'Phone'));
+    $('#download-vcard')?.addEventListener('click', downloadVCard);
+    $('#recruiter-print')?.addEventListener('click', () => window.print());
+    $('#recruiter-copy')?.addEventListener('click', () => copyText($('#recruiter-summary-text').textContent, 'Summary'));
+
+    window.addEventListener('hashchange', () => {
+      const r = parseRoute();
+      if (r.type === 'article') showArticle(r.slug);
+      else if (r.type === 'route') showRoute(r.path);
+      else showRoute('404');
+    });
+
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openCommandPalette(); }
+      if (e.key === 't' && !e.target.matches('input, textarea') && !e.ctrlKey && !e.metaKey) cycleTheme();
+    });
+
+    const r = parseRoute();
+    if (r.type === 'article') showArticle(r.slug);
+    else if (r.type === 'route') showRoute(r.path);
+    else showRoute('home');
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+
+</body>
+</html>
