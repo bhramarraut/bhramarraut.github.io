@@ -13,6 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const KNOWLEDGE_DIR = path.join(ROOT, 'knowledge');
 const OUT_PATH = path.join(ROOT, 'knowledge-index.json');
+const OUT_SCRIPT_PATH = path.join(ROOT, 'knowledge-index.js');
 
 const FRONTMATTER_RE = /^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n?/;
 const WIKI_RE = /\[\[([^\]|#]+)(?:\|([^\]]+))?\]\]/g;
@@ -250,7 +251,10 @@ const payload = {
 };
 
 fs.writeFileSync(OUT_PATH, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+const scriptPayload = JSON.stringify(payload).replace(/</g, '\\u003c');
+fs.writeFileSync(OUT_SCRIPT_PATH, `window.__KNOWLEDGE_INDEX__ = ${scriptPayload};\n`, 'utf8');
 console.log(`[build_knowledge_index] Wrote ${OUT_PATH} (${articles.length} articles)`);
+console.log(`[build_knowledge_index] Wrote ${OUT_SCRIPT_PATH} (file:// fallback)`);
 console.log(`[build_knowledge_index] Categories: ${categories.join(', ')}`);
 console.log(`[build_knowledge_index] Start here: ${startHere.join(', ') || '(none)'}`);
 
@@ -390,7 +394,7 @@ const SEO_ROUTES = {
 const INDEX_HTML = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
 // Copy static files/dirs
-const staticAssets = ['assets', 'knowledge', 'knowledge-index.json', 'CNAME'];
+const staticAssets = ['assets', 'knowledge', 'knowledge-index.json', 'knowledge-index.js', 'CNAME'];
 function copyRecursiveSync(src, dest) {
   if (!fs.existsSync(src)) return;
   const stats = fs.statSync(src);
@@ -517,6 +521,10 @@ function injectMetadata(html, routeObj, articleData = null) {
   let desc = articleData ? articleData.description : routeObj.desc;
   let url = `${BASE_URL}${routeObj.path}`;
   let ogType = articleData ? 'article' : (routeObj.path === '/404.html' ? 'website' : 'website');
+
+  // Source index.html uses a relative URL so it also works when opened directly
+  // from disk. Built nested routes need a root-relative asset URL.
+  html = html.replace('src="./knowledge-index.js"', 'src="/knowledge-index.js"');
 
   // Replace Title
   html = html.replace(/<title>.*?<\/title>/s, `<title>${escapeHtml(title)}</title>`);

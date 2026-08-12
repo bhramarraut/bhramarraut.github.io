@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 <meta name="author" content="Bhramar Raut">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://bhramarraut.github.io/">
-<meta id="meta-theme-color" name="theme-color" content="#DCD9D2">
+<meta id="meta-theme-color" name="theme-color" content="#18181a">
 <meta id="meta-description" name="description" content="Bhramar Raut — Former Wipro Project Engineer targeting Product Support, Application Support and Implementation roles. PSM I, AI-assisted product delivery, functional validation, Skillverse & Catalyx project work. Immediate joiner.">
 <meta property="og:type" content="website">
 <meta id="og-title" property="og:title" content="Bhramar Raut — Product Support & Implementation">
@@ -81,7 +81,7 @@
   try {
     var t = localStorage.getItem('theme');
     if (t !== 'light' && t !== 'dark') {
-      t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      t = 'dark';
     }
     document.documentElement.setAttribute('data-theme', t);
     var meta = document.getElementById('meta-theme-color');
@@ -570,7 +570,7 @@ p:last-child{margin-bottom:0}
   .hero-module{grid-template-columns:minmax(0,1.35fr) minmax(140px,.65fr);align-items:center;gap:var(--space-5)}
 }
 .hero-portrait-wrap{max-width:180px;margin:0 auto}
-.hero-portrait{width:100%;aspect-ratio:4/5;border-radius:var(--radius-module);object-fit:cover;object-position:center top}
+.hero-portrait{width:100%;aspect-ratio:4/5;border-radius:var(--radius-module);object-fit:cover;object-position:center 28%}
 .hero-statement{font-size:clamp(1rem,1.8vw,1.15rem);font-weight:500;line-height:1.55;margin-top:var(--space-3);max-width:36ch;color:var(--ink)}
 .hero-sub{font-family:var(--font-mono);font-size:.8125rem;color:var(--muted);margin-top:var(--space-2);letter-spacing:.02em;line-height:1.5}
 .hero-cta,.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3);margin-top:var(--space-4)}
@@ -595,6 +595,11 @@ p:last-child{margin-bottom:0}
   flex-direction:column;
   text-decoration:none;
   min-height:0;
+  min-width:0;
+  height:100%;
+  padding:var(--module-padding);
+  border-radius:var(--radius-module);
+  overflow:hidden;
 }
 #home-skillverse{
   background:var(--skillverse-surface);
@@ -615,9 +620,13 @@ p:last-child{margin-bottom:0}
 #home-skillverse .text-secondary{color:var(--skillverse-muted)}
 #home-skillverse .project-link,
 #home-catalyx .project-link{
+  display:inline-flex;
+  align-items:center;
+  align-self:flex-start;
   color:var(--lime);
   margin-top:auto;
   padding-top:var(--space-4);
+  line-height:1.35;
   transition:transform var(--dur-fast) var(--ease-out);
 }
 #home-skillverse:hover .project-link,
@@ -636,8 +645,16 @@ p:last-child{margin-bottom:0}
 #home-skillverse .metric-big,
 #home-catalyx .metric-big{font-size:clamp(2rem,3.8vw,2.65rem)}
 #home-skillverse .viz-circles{margin:var(--space-4) 0 0}
-#home-catalyx{background:var(--shell-deep)}
+#home-catalyx{
+  background:var(--shell-deep);
+  color:#f4f4f4;
+}
+#home-catalyx .mono-label,
+#home-catalyx .metric-label{color:rgba(255,255,255,.65)}
+#home-catalyx .metric-big,
+#home-catalyx h3{color:#f4f4f4}
 .home-project-title{margin:var(--space-4) 0 var(--space-2);font-size:clamp(1.15rem,2vw,1.35rem)}
+.home-project-title + .text-sm{margin:0}
 .home-project-metrics{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
@@ -807,6 +824,14 @@ p:last-child{margin-bottom:0}
   display:grid;
   grid-template-columns:1fr;
   gap:4px 18px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.project-feature-contrib ul{
+  display:grid;
+  align-content:start;
+  gap:4px;
   margin:0;
   padding:0;
   list-style:none;
@@ -1117,6 +1142,293 @@ p:last-child{margin-bottom:0}
   .project-feature:hover .project-feature-cta{transform:none}
 }
 
+/* Projects: shared card system */
+.projects-page{
+  width:100%;
+  padding-bottom:var(--space-7);
+}
+.projects-featured{
+  gap:16px;
+  margin-bottom:clamp(36px,4vw,44px);
+}
+.projects-additional{
+  margin:0;
+}
+.project-additional-grid{
+  gap:16px;
+  align-items:start;
+}
+.project-card{
+  min-width:0;
+  width:100%;
+  box-sizing:border-box;
+  border-style:solid;
+  border-width:1px;
+  text-decoration:none;
+  overflow:hidden;
+  transition:background-color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out);
+}
+.project-card:hover{transform:none}
+.project-card:focus-visible{
+  outline:2px solid var(--lime);
+  outline-offset:3px;
+}
+.project-card--featured{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:20px;
+  padding:clamp(24px,2vw,28px);
+  border-radius:18px;
+}
+.project-card--featured .project-feature-content{
+  max-width:none;
+  gap:12px;
+}
+.project-card--featured .project-feature-cta{
+  margin-top:0;
+  padding-top:0;
+}
+.project-card--featured:hover .project-feature-cta{transform:none}
+.project-card--supporting{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  height:auto;
+  padding:clamp(20px,1.8vw,24px);
+  border-radius:16px;
+  border-color:var(--line);
+  background:var(--project-secondary-bg);
+  color:var(--ink);
+}
+.project-card--supporting.project-evidence-card--brickbillion{
+  padding-left:clamp(20px,1.8vw,24px);
+  background:var(--project-brick-bg);
+  border-color:var(--project-brick-border);
+  border-left:3px solid var(--lime);
+}
+.project-card--research{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(240px,.85fr) auto;
+  align-items:center;
+  gap:16px 28px;
+  padding:clamp(18px,1.7vw,22px);
+  border-radius:16px;
+  border-color:var(--line);
+  background:var(--project-secondary-alt);
+  color:var(--ink);
+}
+.project-research-heading{
+  min-width:0;
+  display:grid;
+  gap:8px;
+}
+.project-card--research .project-evidence-kicker,
+.project-card--research h3,
+.project-card--research .project-evidence-note,
+.project-card--research .project-evidence-cta{
+  margin:0;
+}
+.project-card--research h3{
+  font-size:clamp(1.125rem,1.6vw,1.25rem);
+  line-height:1.3;
+}
+.project-card--research .project-evidence-cta{
+  justify-self:end;
+  white-space:nowrap;
+}
+.project-card .project-feature-index,
+.project-card .project-feature-meta,
+.project-card .project-evidence-kicker{
+  font-family:var(--font-mono);
+  font-size:.6875rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+.project-card--supporting h3{
+  margin:0;
+  font-size:clamp(1.125rem,1.6vw,1.3rem);
+  line-height:1.3;
+  letter-spacing:-.02em;
+}
+.project-card--supporting .project-evidence-note{
+  max-width:72ch;
+  font-size:.875rem;
+  line-height:1.55;
+}
+.project-card--supporting .project-evidence-group-label{
+  margin-top:4px;
+}
+.project-feature-title{
+  font-size:clamp(1.625rem,2.3vw,1.875rem);
+}
+.project-feature-metrics{
+  align-items:flex-start;
+}
+.project-feature-metric{
+  display:grid;
+  grid-template-rows:auto minmax(2.6em,auto);
+  align-content:start;
+}
+.project-feature-metric strong{
+  font-size:1.75rem;
+}
+.project-feature-metric span{
+  margin-top:6px;
+}
+.project-feature-contrib{
+  align-items:start;
+}
+.project-process{
+  align-content:center;
+}
+.project-process-step{
+  grid-template-columns:28px minmax(0,1fr);
+  min-height:42px;
+  gap:12px;
+  padding:7px 0;
+  align-items:start;
+}
+.project-process-num{
+  width:28px;
+  height:28px;
+}
+.project-process-label{
+  padding-top:5px;
+  line-height:1.35;
+}
+.project-process-step:not(:last-child)::before{
+  left:13.5px;
+  top:29px;
+  bottom:-1px;
+}
+.project-matrix-panel{
+  padding:16px;
+  border-radius:14px;
+}
+.project-matrix{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.project-matrix-cell{
+  min-height:46px;
+  padding:10px 8px;
+  border-radius:8px;
+}
+.project-evidence-list--contrib{
+  grid-template-rows:repeat(3,auto);
+  grid-auto-flow:column;
+}
+.project-feature-cta,
+.project-evidence-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  width:max-content;
+  max-width:100%;
+  font-size:.875rem;
+  font-weight:700;
+  line-height:1.4;
+  border-bottom:1px solid transparent;
+  color:var(--lime);
+  transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out);
+}
+.project-card:hover .project-feature-cta,
+.project-card:hover .project-evidence-cta{
+  border-bottom-color:currentColor;
+}
+html[data-theme="light"] .project-card .project-feature-index,
+html[data-theme="light"] .project-card .project-feature-cta{
+  color:#566000;
+}
+body:has(#view-projects.active) .site-footer{
+  margin-top:0!important;
+}
+body:has(#view-projects.active) .footer-inner{
+  padding-top:28px;
+  padding-bottom:calc(28px + env(safe-area-inset-bottom));
+}
+@media(min-width:1024px){
+  .project-card--featured{
+    grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);
+    grid-template-rows:auto auto;
+    grid-template-areas:"content visual" "cta visual";
+    column-gap:clamp(40px,4vw,56px);
+    row-gap:20px;
+    align-items:start;
+  }
+  .project-card--featured .project-feature-content{
+    grid-area:content;
+  }
+  .project-card--featured .project-visual{
+    grid-area:visual;
+    align-self:center;
+    width:100%;
+  }
+  .project-card--featured .project-feature-cta{
+    grid-area:cta;
+    align-self:end;
+  }
+  .project-card--featured-alt .project-visual{
+    align-self:center;
+  }
+}
+@media(max-width:767px){
+  .projects-page{
+    padding-bottom:40px;
+  }
+  .project-additional-grid{
+    grid-template-columns:1fr;
+  }
+  .project-card--featured,
+  .project-card--supporting{
+    padding:18px;
+  }
+  .project-card--research{
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:18px;
+  }
+  .project-card--research .project-evidence-cta{
+    justify-self:start;
+  }
+  .project-card--featured .project-visual{
+    width:100%;
+    align-self:stretch;
+  }
+  .project-card .project-matrix{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .project-process-step{
+    min-height:48px;
+  }
+  .project-process-step:not(:last-child)::before{
+    content:"↓";
+    left:8px;
+    top:33px;
+    bottom:auto;
+    width:auto;
+    height:auto;
+    background:none;
+    color:var(--project-skillverse-meta);
+    font-size:.75rem;
+    line-height:1;
+  }
+}
+@media(max-width:480px){
+  .project-feature-contrib,
+  .project-evidence-list--contrib{
+    grid-template-columns:1fr;
+    grid-template-rows:none;
+    grid-auto-flow:row;
+  }
+  .project-feature-top{
+    align-items:flex-start;
+  }
+}
+
 /* CASE-STUDY VISUALS */
 .project-link{font-weight:700;font-size:.875rem;margin-top:var(--space-4);display:inline-flex;align-items:center;gap:6px}
 .workflow-viz{
@@ -1162,22 +1474,35 @@ p:last-child{margin-bottom:0}
 }
 
 /* PROFILE PAGE */
-.profile-page{max-width:1080px}
+.profile-page{max-width:1080px;padding-bottom:0}
 .profile-page .page-head{margin-bottom:var(--space-6)}
 .profile-page .page-head .lead{max-width:58ch}
+.profile-card{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--surface-primary);
+}
+.profile-card--neutral{background:var(--surface-primary)}
+.profile-card--compact{background:var(--surface-secondary)}
+.profile-card--lavender{
+  background:var(--lavender-soft);
+  border-color:color-mix(in srgb,var(--lavender) 55%,var(--line));
+  border-left:3px solid var(--lavender);
+}
+.profile-card--full{width:100%}
 .profile-origin-grid{
   display:grid;
-  grid-template-columns:minmax(0,1.7fr) minmax(220px,.9fr);
-  gap:var(--space-6);
+  grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr);
+  gap:18px;
   align-items:stretch;
-  margin-bottom:var(--space-7);
+  margin-bottom:40px;
 }
 .profile-origin{
-  min-width:0;
-  padding:var(--space-5) var(--space-6);
-  background:var(--surface-primary);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
   display: flex;
   flex-direction: column;
 }
@@ -1191,11 +1516,10 @@ p:last-child{margin-bottom:0}
   color:var(--muted);
 }
 .profile-origin-copy{
-  max-width:58ch;
+  max-width:72ch;
   display:grid;
   gap:var(--space-4);
-  margin-top:auto;
-  margin-bottom:auto;
+  margin-top:var(--space-4);
 }
 .profile-origin-copy p{
   margin:0;
@@ -1205,16 +1529,11 @@ p:last-child{margin-bottom:0}
 }
 .profile-origin-copy p + p{color:var(--muted)}
 .profile-path{
-  padding:var(--space-5) var(--space-6);
-  background:var(--surface-secondary);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
-  min-width:0;
   display: flex;
   flex-direction: column;
 }
 .profile-path-list{
-  margin:auto 0;
+  margin:var(--space-4) 0 0;
   padding:0;
   list-style:none;
   display:grid;
@@ -1222,18 +1541,18 @@ p:last-child{margin-bottom:0}
 }
 .profile-path-step{
   display:grid;
-  grid-template-columns:28px minmax(0,1fr);
+  grid-template-columns:24px minmax(0,1fr);
   gap:var(--space-3);
   position:relative;
-  padding:0 0 var(--space-5);
+  padding:0 0 20px;
 }
 .profile-path-step:last-child{padding-bottom:0}
 .profile-path-step:not(:last-child)::before{
   content:"";
   position:absolute;
   left:10px;
-  top:24px;
-  bottom:-4px;
+  top:22px;
+  bottom:-2px;
   width:2px;
   background:var(--line-strong);
 }
@@ -1278,8 +1597,8 @@ p:last-child{margin-bottom:0}
   color:var(--muted);
   letter-spacing:.04em;
 }
-.profile-principles{margin-bottom:var(--space-8)}
-.profile-principles-head{margin-bottom:var(--space-5)}
+.profile-principles{margin-bottom:18px}
+.profile-principles-head{margin-bottom:20px}
 .profile-principles-head h2{
   margin:0;
   font-size:clamp(1.25rem,2.2vw,1.5rem);
@@ -1290,24 +1609,23 @@ p:last-child{margin-bottom:0}
   list-style:none;
   display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:var(--space-3);
+  gap:0;
   counter-reset:principle;
 }
 .profile-principle{
   position:relative;
   min-width:0;
-  padding:0;
+  padding:0 18px;
   counter-increment:principle;
+  display:grid;
+  grid-template-rows:auto minmax(4.3em,auto) auto;
+  align-content:start;
 }
+.profile-principle:first-child{padding-left:0}
+.profile-principle:last-child{padding-right:0}
+.profile-principle + .profile-principle{border-left:1px solid var(--line)}
 .profile-principle:not(:last-child)::after{
-  content:"→";
-  position:absolute;
-  right:-6px;
-  top:.15rem;
-  color:var(--muted);
-  opacity:.6;
-  font-size:.875rem;
-  z-index:1;
+  content:none;
 }
 .profile-principle-num{
   display:block;
@@ -1316,10 +1634,10 @@ p:last-child{margin-bottom:0}
   font-weight:700;
   letter-spacing:.08em;
   color:var(--lime);
-  margin-bottom:var(--space-3);
+  margin-bottom:10px;
 }
 .profile-principle h3{
-  margin:0 0 var(--space-2);
+  margin:0 0 8px;
   font-size:.95rem;
   line-height:1.3;
   font-weight:700;
@@ -1333,21 +1651,17 @@ p:last-child{margin-bottom:0}
 }
 .profile-split{
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:var(--space-5);
-  margin-bottom:var(--space-7);
-  align-items:start;
-}
-.profile-values{
-  min-width:0;
-  padding-top:var(--space-2);
+  grid-template-columns:minmax(0,1fr) minmax(340px,.9fr);
+  gap:18px;
+  margin-bottom:40px;
+  align-items:stretch;
 }
 .profile-values-list{
-  margin:var(--space-3) 0 0;
+  margin:var(--space-2) 0 0;
   padding:0;
   list-style:none;
   display:grid;
-  gap:var(--space-3);
+  gap:0;
   counter-reset:value;
 }
 .profile-values-list li{
@@ -1360,7 +1674,11 @@ p:last-child{margin-bottom:0}
   line-height:1.4;
   color:var(--ink);
   font-weight:500;
+  padding:12px 0;
+  border-top:1px solid var(--line);
 }
+.profile-values-list li:first-child{border-top:0;padding-top:6px}
+.profile-values-list li:last-child{padding-bottom:0}
 .profile-values-list li::before{
   content:counter(value,decimal-leading-zero);
   font-family:var(--font-mono);
@@ -1370,18 +1688,13 @@ p:last-child{margin-bottom:0}
   color:var(--muted);
 }
 .profile-direction{
-  min-width:0;
-  padding:var(--space-4) var(--space-5);
-  background:var(--lavender-soft);
-  border:1px solid transparent;
-  border-left:3px solid var(--lavender);
-  border-radius:var(--radius-module);
+  padding-left:22px;
 }
 html[data-theme="light"] .profile-direction{
   background:color-mix(in srgb,var(--lavender-soft) 45%,var(--surface));
 }
-.profile-direction-group{margin-top:var(--space-3)}
-.profile-direction-group:first-of-type{margin-top:var(--space-3)}
+.profile-direction-group{margin-top:14px}
+.profile-direction-group:first-of-type{margin-top:10px}
 .profile-direction-kicker{
   margin:0 0 var(--space-2);
   font-family:var(--font-mono);
@@ -1418,28 +1731,25 @@ html[data-theme="light"] .profile-direction{
 }
 .profile-direction-skills span{color:var(--muted)}
 .profile-education{
-  margin-bottom:var(--space-7);
-  padding:var(--space-5) var(--space-6);
-  background:var(--surface-primary);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
+  margin-bottom:0;
 }
 .profile-education-list{
-  margin:var(--space-4) 0 0;
+  margin:var(--space-3) 0 0;
   padding:0;
   list-style:none;
   display:grid;
-  gap:var(--space-4);
+  gap:0;
 }
 .profile-education-entry{
   display:grid;
   grid-template-columns:110px minmax(0,1fr) auto;
   gap:var(--space-4);
-  align-items:start;
-  padding-top:var(--space-4);
+  align-items:center;
+  padding:16px 0;
   border-top:1px solid var(--line);
 }
-.profile-education-entry:first-child{border-top:0;padding-top:0}
+.profile-education-entry:first-child{border-top:0;padding-top:8px}
+.profile-education-entry:last-child{padding-bottom:0}
 .profile-education-dates{
   font-family:var(--font-mono);
   font-size:.75rem;
@@ -1471,6 +1781,8 @@ html[data-theme="light"] .profile-direction{
   letter-spacing:-.02em;
   color:var(--ink);
   white-space:nowrap;
+  justify-self:end;
+  text-align:right;
 }
 .profile-education-metric span{
   display:block;
@@ -1527,11 +1839,26 @@ html[data-theme="light"] .profile-direction{
   color:var(--muted);
 }
 @media(max-width:1100px){
-  .profile-principle-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5) var(--space-4)}
+  .profile-principle-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+  .profile-principle{padding:16px}
+  .profile-principle:nth-child(3n+1){padding-left:0;border-left:0}
+  .profile-principle:nth-child(3n){padding-right:0}
+  .profile-principle:nth-child(n+4){padding-top:18px;border-top:1px solid var(--line)}
   .profile-principle:not(:last-child)::after{content:none}
   .capability-legend-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:767px){
+  .profile-card{padding:16px}
+  .profile-origin-grid{gap:16px;margin-bottom:40px}
+  .profile-principles{margin-bottom:18px}
+  .profile-principles-head{margin-bottom:18px}
+  .profile-principle-list{gap:0}
+  .profile-principle{
+    grid-template-rows:auto auto;
+    padding:0 0 28px;
+    border-left:0;
+    border-top:0;
+  }
   .profile-principle:last-child{padding-bottom:0}
   .profile-principle:not(:last-child)::before{
     content:"";
@@ -1558,7 +1885,17 @@ html[data-theme="light"] .profile-direction{
   }
   .profile-principle h3{grid-column:2;margin:0 0 6px}
   .profile-principle p{grid-column:2;max-width:none}
+  .profile-split{gap:16px;margin-bottom:40px}
+  .profile-values-list li{padding:11px 0}
+  .profile-direction{padding-left:14px}
+  .profile-education{margin-bottom:0}
   .capability-legend-grid{grid-template-columns:1fr}
+}
+
+body:has(#view-profile.active) .site-footer{margin-top:0!important}
+body:has(#view-profile.active) .footer-inner{
+  padding-top:28px;
+  padding-bottom:calc(28px + env(safe-area-inset-bottom));
 }
 
 /* ARTICLES */
@@ -1661,6 +1998,9 @@ html[data-theme="light"] .profile-direction{
   font-size:1.0625rem;
   line-height:1.72;
   color:var(--ink);
+  min-width:0;
+  overflow-wrap:break-word;
+  word-break:normal;
 }
 .article-body > p{margin:0 0 1.15rem;max-width:70ch}
 .article-body > ul,
@@ -1679,6 +2019,16 @@ html[data-theme="light"] .profile-direction{
   line-height:1.5;
   margin:0 0 1.25rem;
 }
+.article-body blockquote{
+  margin:0 0 1.25rem;
+  padding:var(--space-3) var(--space-4);
+  border-left:3px solid var(--lime);
+  background:var(--surface-soft);
+  border-radius:0 var(--radius-control) var(--radius-control) 0;
+  color:var(--muted);
+}
+.article-body blockquote p{margin:0}
+.article-body img{display:block;max-width:100%;height:auto;border-radius:var(--radius-control)}
 .article-section{
   margin-top:var(--space-7);
   scroll-margin-top:88px;
@@ -2191,6 +2541,42 @@ html[data-theme="dark"] .article-framework-num{
   border-radius: var(--radius-module);
   box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
+.recruiter-cv-dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 0;
+}
+.recruiter-cv-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 100;
+  width: min(320px, calc(100vw - 40px));
+  min-width: 0;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-shell);
+  text-align: left;
+}
+.recruiter-cv-menu p {
+  margin: 0 0 8px;
+  padding: 0 8px;
+  color: var(--muted);
+  font-size: .8125rem;
+  font-weight: 600;
+}
+.recruiter-cv-menu .btn {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  justify-content: flex-start;
+  text-align: left;
+  white-space: normal;
+}
+.recruiter-cv-menu .btn + .btn { margin-top: 4px; }
 .recruiter-toolbar-secondary {
   display: flex;
   flex-wrap: wrap;
@@ -2213,6 +2599,10 @@ html[data-theme="dark"] .article-framework-num{
   background: var(--surface-soft);
   color: var(--ink);
   border: 1px solid var(--line);
+}
+.recruiter-toolbar > .btn,
+.recruiter-toolbar > .recruiter-cv-dropdown > .btn {
+  border-radius: 12px;
 }
 .recruiter-toolbar .btn-text {
   color: var(--muted);
@@ -2860,12 +3250,12 @@ html[data-theme="dark"] .recruiter-cap-col li::before {
 
 /* ===== CERTIFICATIONS / CREDENTIALS ===== */
 #view-certifications {
-  --cr-featured-bg: #DCD8EF;
+  --cr-featured-bg: #D5D0E8;
   --cr-featured-text: #171717;
   --cr-featured-muted: #5a5668;
   --cr-featured-meta: #6d687a;
   --cr-featured-border: rgba(23, 23, 23, 0.08);
-  --cr-card-bg: var(--surface);
+  --cr-card-bg: #fffefa;
   --cr-card-border: rgba(23, 23, 23, 0.1);
   --cr-stone: #D8D7D3;
   --cr-stone-text: #171717;
@@ -2894,17 +3284,32 @@ html[data-theme="dark"] #view-certifications {
   max-width: 1080px;
 }
 
-.credentials-micro {
-  margin: var(--space-3) 0 0;
+.credentials-page,
+#cert-grid,
+.credentials-page > *,
+.credentials-section,
+.credentials-section > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.credentials-page .page-head {
+  margin-bottom: var(--space-5);
+}
+
+.credentials-page .page-head .mono-label {
+  margin-bottom: var(--space-3);
+}
+
+.credentials-page .page-head .lead {
+  margin: 0;
   max-width: 58ch;
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: var(--muted);
 }
 
 .credentials-read {
-  margin: var(--space-5) 0 var(--space-7);
-  padding: 14px 0;
+  margin: 0 0 var(--space-6);
+  padding: 12px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   max-width: 62ch;
@@ -2925,6 +3330,10 @@ html[data-theme="dark"] #view-certifications {
 
 .credentials-section {
   margin: 0 0 var(--space-8);
+}
+
+.credentials-section:last-child {
+  margin-bottom: 0;
 }
 
 .credentials-section-head {
@@ -2959,6 +3368,17 @@ html[data-theme="dark"] #view-certifications {
   background: var(--cr-featured-bg);
   color: var(--cr-featured-text);
   border: 1px solid var(--cr-featured-border);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+}
+
+.credential-featured-main,
+.credential-featured-side,
+.credential-featured-side > div {
+  min-width: 0;
 }
 
 .credential-featured-main .mono-label {
@@ -3022,12 +3442,37 @@ html[data-theme="dark"] #view-certifications {
   color: var(--cr-featured-text);
 }
 
+.credential-featured-side .btn {
+  min-height: 44px;
+  white-space: normal;
+}
+
+.credential-featured .btn-primary,
+.credential-bridge .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--lime);
+  color: #171717;
+  font-weight: 750;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.credential-featured .btn-primary:hover,
+.credential-bridge .btn-primary:hover {
+  filter: brightness(1.03);
+}
+
 .credential-status {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -3062,9 +3507,9 @@ html[data-theme="dark"] #view-certifications {
 
 .credential-timeline-item {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
-  gap: 12px 16px;
-  padding: 12px 0 12px 16px;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 8px 14px;
+  padding: 10px 0 10px 18px;
   border-left: 2px solid var(--line);
   position: relative;
 }
@@ -3073,7 +3518,7 @@ html[data-theme="dark"] #view-certifications {
   content: "";
   position: absolute;
   left: -5px;
-  top: 18px;
+  top: 16px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -3084,13 +3529,18 @@ html[data-theme="dark"] #view-certifications {
   border-left-color: var(--cr-valid);
 }
 
+.credential-timeline-item--now .credential-timeline-when,
+.credential-timeline-item--now strong {
+  color: var(--ink);
+}
+
 .credential-timeline-item--now::before {
   background: var(--cr-valid);
 }
 
 .credential-timeline-when {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
@@ -3100,7 +3550,7 @@ html[data-theme="dark"] #view-certifications {
 .credential-timeline-item strong {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-bottom: 2px;
 }
 
@@ -3129,6 +3579,9 @@ html[data-theme="dark"] #view-certifications {
   width: 100%;
   appearance: none;
   font: inherit;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .credential-card:focus-visible {
@@ -3146,7 +3599,7 @@ html[data-theme="dark"] #view-certifications {
 
 .credential-type {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--cr-meta);
@@ -3157,23 +3610,25 @@ html[data-theme="dark"] #view-certifications {
   font-family: var(--font-display);
   font-size: 1.05rem;
   letter-spacing: -0.015em;
+  line-height: 1.3;
 }
 
 .credential-card-meta {
   margin: 0 0 10px;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--muted);
 }
 
 .credential-card-supports {
   margin: 0 0 12px;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--muted);
 }
 
 .credential-card-cta {
-  font-size: 0.8125rem;
+  margin-top: auto;
+  font-size: 0.875rem;
   color: var(--ink);
 }
 
@@ -3205,6 +3660,7 @@ html[data-theme="dark"] #view-certifications {
   text-align: left;
   color: inherit;
   cursor: pointer;
+  min-width: 0;
 }
 
 .credential-list button:focus-visible {
@@ -3215,11 +3671,13 @@ html[data-theme="dark"] #view-certifications {
 .credential-list strong {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .credential-list span {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -3229,17 +3687,16 @@ html[data-theme="dark"] #view-certifications {
 
 .credential-lineage {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
 .credential-lineage-item {
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-}
-
-.credential-lineage-item:first-child {
-  border-top: 0;
-  padding-top: 0;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--cr-card-bg);
 }
 
 .credential-lineage-item h3 {
@@ -3253,6 +3710,27 @@ html[data-theme="dark"] #view-certifications {
   font-size: 0.875rem;
   line-height: 1.5;
   color: var(--muted);
+}
+
+.credential-lineage-flow {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+}
+
+.credential-lineage-flow span {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.credential-lineage-flow span::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--cr-meta);
 }
 
 .credential-bridge {
@@ -3280,102 +3758,523 @@ html[data-theme="dark"] #view-certifications {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
+
+.credential-bridge-secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+.credential-bridge-secondary .btn-text {
+  color: var(--cr-stone-text);
+  font-size: 0.875rem;
+}
+
 
 #cert-dialog.cert-dialog {
-  border: none;
-}
-
-#cert-dialog[open] {
-  width: min(1080px, calc(100vw - 48px));
-  height: min(800px, calc(100dvh - 48px));
+  width: min(90vw, 1280px);
+  height: min(90dvh, 960px);
   max-width: none;
   max-height: none;
   margin: auto;
   padding: 0;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-module);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .42);
   overflow: hidden;
-  border-radius: 28px;
+}
+
+#cert-dialog[open] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+#cert-dialog::backdrop {
+  background: rgba(10, 10, 12, .72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+html.credential-viewer-open,
+body.credential-viewer-open {
+  overflow: hidden !important;
+}
+
+body.credential-viewer-open .workspace-scroll {
+  overflow: hidden !important;
 }
 
 #cert-dialog .modal-header {
-  min-height: 72px;
+  display: flex;
   align-items: center;
-  padding: 18px 24px;
+  gap: 16px;
+  min-height: 64px;
+  padding: 10px 12px 10px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+#cert-dialog-title {
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#cert-dialog-close {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  margin-left: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+
+#cert-dialog-close:hover {
+  background: var(--lime);
+  color: #171717;
 }
 
 #cert-dialog .modal-body {
-  padding: 16px;
+  min-width: 0;
   min-height: 0;
   max-height: none;
+  padding: 12px;
   overflow: hidden;
-  background: var(--surface-soft);
-}
-
-#cert-dialog .modal-footer {
-  padding: 14px 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
+  background: #202023;
+  width: 100%;
+  max-width: 100%;
 }
 
 .cert-preview-shell {
   width: 100%;
   height: 100%;
+  min-width: 0;
   min-height: 0;
   overflow: hidden;
-  border-radius: 18px;
-  background: #202020;
+  border-radius: var(--radius-control);
+  background: #202023;
 }
 
 .cert-pdf {
+  display: block;
   width: 100%;
   height: 100%;
   border: 0;
-  display: block;
+  background: #fff;
+  min-width: 0;
+  max-width: 100%;
 }
 
-.cert-fallback {
-  padding: 20px;
-  color: var(--muted);
-  font-size: 0.85rem;
+#cert-dialog .modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 56px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
-.cert-dialog-meta {
-  margin: 0;
-  font-size: 0.8125rem;
-  color: var(--muted);
+#cert-dialog-link {
+  min-height: 40px;
+}
+
+@media (max-width: 767px) {
+  #cert-dialog.cert-dialog {
+    width: calc(100vw - 28px - env(safe-area-inset-left) - env(safe-area-inset-right));
+    height: calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    margin:
+      calc(14px + env(safe-area-inset-top))
+      calc(14px + env(safe-area-inset-right))
+      calc(14px + env(safe-area-inset-bottom))
+      calc(14px + env(safe-area-inset-left));
+    border-radius: 18px;
+  }
+
+  #cert-dialog .modal-header {
+    min-height: 58px;
+    padding: 7px 7px 7px 14px;
+  }
+
+  #cert-dialog-title {
+    font-size: .9rem;
+  }
+
+  #cert-dialog .modal-body {
+    padding: 6px;
+  }
+
+  .cert-preview-shell {
+    border-radius: 12px;
+  }
+
+  #cert-dialog .modal-footer {
+    min-height: 54px;
+    padding: 7px 10px calc(7px + env(safe-area-inset-bottom));
+  }
+
+  #cert-dialog-link {
+    width: 100%;
+    min-height: 40px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1023px) {
+  #view-certifications .page-inner {
+    padding: 24px 24px 48px;
+  }
+
+  .credentials-page .display-page {
+    font-size: clamp(2.1rem, 5vw, 2.6rem);
+  }
+
+  .credentials-section {
+    margin-bottom: 48px;
+  }
+
+  .credential-featured {
+    grid-template-columns: minmax(0, 1.25fr) minmax(13rem, 0.75fr);
+    padding: 22px 24px;
+  }
+
+  body:has(#view-certifications.active) .site-footer {
+    margin-top: 0 !important;
+  }
+
+  body:has(#view-certifications.active) .footer-inner {
+    padding: 24px 24px calc(32px + env(safe-area-inset-bottom));
+  }
 }
 
 @media(max-width:767px){
+  #view-certifications .page-inner {
+    padding: 20px var(--mobile-gutter) 40px;
+  }
+
+  .credentials-page .page-head {
+    margin-bottom: 20px;
+  }
+
+  .credentials-page .page-head .mono-label {
+    margin-bottom: 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .credentials-page .display-page {
+    margin-bottom: 10px;
+    font-size: clamp(2.1rem, 9vw, 2.8rem);
+    line-height: 1.05;
+  }
+
+  .credentials-page .page-head .lead {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .credentials-read {
+    margin-bottom: 32px;
+    padding: 10px 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .credentials-read strong {
+    margin-bottom: 4px;
+    font-size: 0.72rem;
+  }
+
+  .credentials-section {
+    margin-bottom: 40px;
+  }
+
+  .credentials-section-head {
+    margin-bottom: 16px;
+  }
+
+  .credentials-section-head .mono-label {
+    margin-bottom: 7px;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .credentials-section-head h2 {
+    margin-bottom: 7px;
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  .credentials-section-head p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .credential-featured {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 19px;
+    border-radius: 18px;
+  }
+
+  .credential-featured h2 {
+    font-size: clamp(1.4rem, 6.2vw, 1.7rem);
+    line-height: 1.2;
+  }
+
+  .credential-featured-short {
+    font-size: 0.78rem;
+  }
+
+  .credential-featured-issuer,
+  .credential-featured-summary,
+  .credential-featured-side p {
+    font-size: 0.92rem;
+    line-height: 1.52;
+  }
+
+  .credential-featured-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cr-featured-border);
+  }
+
+  .credential-featured-side > div,
+  .credential-featured-side > div:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .credential-featured-side > div:nth-child(n+3) {
+    grid-column: 1 / -1;
+  }
+
+  .credential-featured-side > div:nth-child(3) {
+    padding-top: 12px;
+    border-top: 1px solid var(--cr-featured-border);
+  }
+
+  .credential-featured-side > div:last-child .mono-label {
+    display: none;
+  }
+
+  .credential-featured-side .btn {
+    width: 100%;
+  }
+
+  .credential-timeline-item {
+    grid-template-columns: 3.75rem minmax(0, 1fr);
+    gap: 6px 12px;
+    padding: 9px 0 9px 17px;
+  }
+
+  .credential-timeline-item::before {
+    top: 15px;
+  }
+
+  .credential-timeline-item strong {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .credential-timeline-item span {
+    font-size: 0.86rem;
+    line-height: 1.42;
+  }
+
+  .credential-timeline-when {
+    font-size: 0.74rem !important;
+  }
+
+  .credential-grid,
+  .credential-lineage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .credential-grid {
+    gap: 14px;
+  }
+
+  .credential-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .credential-card h3 {
+    font-size: 1.08rem;
+    margin-bottom: 4px;
+  }
+
+  .credential-card-top {
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .credential-card-meta {
+    margin-bottom: 8px;
+  }
+
+  .credential-card-supports {
+    margin-bottom: 10px;
+  }
+
   .credential-list li {
     grid-template-columns: 1fr;
-    gap: 4px;
+    gap: 6px;
+    padding: 12px 0;
   }
 
   .credential-list .credential-type {
     justify-self: start;
   }
+
+  .credential-lineage {
+    gap: 12px;
+  }
+
+  .credential-lineage-item {
+    padding: 13px 14px;
+  }
+
+  .credential-lineage-flow {
+    gap: 4px;
+  }
+
+  .credential-bridge {
+    padding: 19px;
+    border-radius: 18px;
+  }
+
+  .credential-bridge h2 {
+    font-size: 1.3rem;
+    line-height: 1.25;
+  }
+
+  .credential-bridge p {
+    font-size: 0.92rem;
+  }
+
+  .credential-bridge-actions {
+    align-items: stretch;
+  }
+
+  .credential-bridge-actions > .btn-primary {
+    width: 100%;
+  }
+
+  .credential-bridge-secondary {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  body:has(#view-certifications.active) .site-footer {
+    margin-top: 0 !important;
+  }
+
+  body:has(#view-certifications.active) .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px var(--mobile-gutter) calc(28px + env(safe-area-inset-bottom));
+    line-height: 1.5;
+  }
 }
 
-@media(max-width:480px){
-  #cert-dialog .modal-header {
-    padding: 14px 16px;
+/* Keep the compact ledger header authoritative over retired credential layouts. */
+@media(max-width:767px){
+  #view-certifications .page-inner{padding:20px 16px 40px}
+  .credentials-page .page-head{margin-bottom:16px}
+  .credentials-page .display-page{
+    margin-bottom:6px;
+    font-size:clamp(2rem,10vw,2.55rem);
   }
-
-  #cert-dialog .modal-body {
-    padding: 8px;
-  }
-
-  #cert-dialog .modal-footer {
-    padding: 10px 16px;
+  .credentials-page .page-head .lead{font-size:.9375rem}
+  .credentials-read{
+    margin-bottom:8px;
+    padding:9px 0;
+    font-size:.8rem;
+    line-height:1.45;
   }
 }
 
 
 
+
+/* Unified professional credential ledger */
+.credentials-page .page-head{margin-bottom:18px;max-width:64ch}
+.credentials-page .page-head .mono-label{margin-bottom:8px}
+.credentials-page .display-page{margin-bottom:6px;font-size:clamp(2rem,4vw,3.2rem)}
+.credentials-page .page-head .lead{font-size:1rem;line-height:1.45}
+.credentials-micro{margin:5px 0 0;max-width:58ch;font-size:.8125rem;line-height:1.45;color:var(--muted)}
+.credentials-read{margin:0 0 18px;padding:9px 0;max-width:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.8125rem;line-height:1.45;color:var(--muted)}
+.credential-ledger{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.credential-ledger-item{display:grid;grid-template-columns:105px 26px minmax(0,1fr) auto;gap:0 20px;align-items:start;min-width:0;padding:22px 0;border-bottom:1px solid var(--line)}
+.credential-ledger-item--current{background:linear-gradient(90deg,rgba(208,201,235,.18),transparent 74%)}
+.credential-ledger-date{padding-top:2px;font-family:var(--font-mono);font-size:.7rem;line-height:1.35;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.credential-ledger-date span{display:block;color:var(--ink);font-weight:700}
+.credential-ledger-rail{position:relative;align-self:stretch;min-height:76px}
+.credential-ledger-rail::before{content:"";position:absolute;top:-23px;bottom:-23px;left:50%;width:1px;background:var(--line);transform:translateX(-50%)}
+.credential-ledger-item:first-child .credential-ledger-rail::before{top:7px}
+.credential-ledger-item:last-child .credential-ledger-rail::before{bottom:calc(100% - 8px)}
+.credential-ledger-node{position:absolute;z-index:1;top:3px;left:50%;width:10px;height:10px;border:2px solid var(--surface);border-radius:50%;background:var(--line-strong);box-shadow:0 0 0 1px var(--line);transform:translateX(-50%)}
+.credential-ledger-item--current .credential-ledger-node{background:var(--lime);box-shadow:0 0 0 3px var(--lime-soft)}
+.credential-ledger-item--foundation .credential-ledger-node{background:var(--lavender)}
+.credential-ledger-info{min-width:0}
+.credential-ledger-heading{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 4px}
+.credential-ledger-heading h2{margin:0;font-family:var(--font-display);font-size:clamp(1.05rem,1.6vw,1.18rem);line-height:1.25;letter-spacing:-.012em;color:var(--ink)}
+.credential-ledger-status{display:inline-flex;align-items:center;min-height:20px;padding:2px 7px;border-radius:999px;background:rgba(208,201,235,.45);font-family:var(--font-mono);font-size:.625rem;font-weight:700;line-height:1.2;letter-spacing:.055em;text-transform:uppercase;color:var(--ink)}
+.credential-ledger-status--valid{background:var(--lime);color:#171717}
+.credential-ledger-status--expired{border:1px solid color-mix(in srgb,var(--cr-expired) 55%,transparent);background:color-mix(in srgb,var(--cr-expired) 12%,transparent);color:var(--cr-expired)}
+.credential-ledger-issuer{margin:0 0 5px;font-size:.85rem;font-weight:600;line-height:1.4;color:var(--muted)}
+.credential-ledger-description{margin:0;max-width:66ch;font-size:.85rem;line-height:1.45;color:var(--muted)}
+.credential-ledger-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 12px;border:1px solid var(--line-strong);border-radius:var(--radius-control);background:var(--surface);color:var(--ink);font-size:.8125rem;font-weight:700;line-height:1.25;text-decoration:none;white-space:nowrap;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+.credential-ledger-item--current .credential-ledger-action{border-color:color-mix(in srgb,var(--lime) 72%,var(--line-strong))}
+.credential-ledger-action:hover{border-color:var(--ink);background:var(--surface-soft);transform:translateY(-1px)}
+.credential-ledger-action:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.credential-ledger-end{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin-top:20px}
+.credential-ledger-end p{margin:0;font-size:.8125rem;line-height:1.5;color:var(--muted)}
+.credential-ledger-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.credential-ledger-links a{color:var(--ink);font-size:.8125rem;font-weight:700;text-decoration:none}
+.credential-ledger-links a:hover{text-decoration:underline}
+@media(max-width:1023px){.credential-ledger-item{grid-template-columns:82px 22px minmax(0,1fr) auto;gap:0 14px}}
+@media(max-width:767px){
+  #view-certifications .page-inner{padding:20px 16px 40px}
+  .credentials-page .page-head{margin-bottom:16px}
+  .credentials-page .display-page{margin-bottom:6px;font-size:clamp(2rem,10vw,2.55rem)}
+  .credentials-page .page-head .lead{font-size:.9375rem}
+  .credentials-read{margin-bottom:8px;padding:9px 0;font-size:.8rem;line-height:1.45}
+  .credential-ledger-item{grid-template-columns:48px 18px minmax(0,1fr);gap:0 10px;padding:18px 0}
+  .credential-ledger-date{padding-top:1px;font-size:.625rem;letter-spacing:.06em}
+  .credential-ledger-rail{grid-column:2;grid-row:1 / span 2;min-height:100%}
+  .credential-ledger-info{grid-column:3;grid-row:1}
+  .credential-ledger-action{grid-column:3;grid-row:2;justify-self:start;min-height:44px;margin-top:12px;padding:9px 12px;font-size:.875rem;white-space:normal}
+  .credential-ledger-rail::before{top:-19px;bottom:-19px}
+  .credential-ledger-heading{gap:6px 8px;margin-bottom:4px}
+  .credential-ledger-heading h2{font-size:clamp(1rem,4.7vw,1.1rem)}
+  .credential-ledger-issuer,.credential-ledger-description{font-size:.8125rem}
+  .credential-ledger-end{align-items:flex-start;flex-direction:column;margin-top:16px}
+  .credential-ledger-links{gap:8px 14px}
+}
 
 /* WORKBENCH */
 /* ===== SUPPORT LAB ===== */
@@ -3969,7 +4868,7 @@ html[data-theme="dark"] #view-support-lab {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 28%;
   border-radius: var(--radius-module);
   background: var(--lavender-soft);
   padding: 4px;
@@ -4250,12 +5149,184 @@ html[data-theme="dark"] #view-support-lab {
 .home-knowledge .article-feature h4{margin:var(--space-2) 0 var(--space-2);font-size:1rem;line-height:1.3}
 .home-knowledge .article-preview-item{padding:var(--space-3) 0}
 .home-knowledge .article-preview-item h4{margin:0;font-size:.9375rem;font-weight:600;line-height:1.35}
+#operating-loop{
+  padding:var(--module-padding);
+  border-radius:var(--radius-module);
+  background:var(--shell-deep);
+  color:#f4f4f4;
+}
+#operating-loop .mono-label{color:rgba(255,255,255,.62)}
 #operating-loop h2{color:#f4f4f4;margin:var(--space-2) 0}
 #operating-loop .support-loop-lead{margin:0;font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.5}
 @media(min-width:1024px){
   #home-building{height:100%;align-self:stretch}
   .home-knowledge,
   .home-credentials{height:100%;align-self:stretch}
+}
+
+/* Unified Home bento card system */
+#view-home .home-card{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  height:auto;
+  min-height:0;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--surface-primary);
+}
+#view-home .home-card--compact{padding:21px 22px}
+#view-home .home-card--dark{border-color:rgba(255,255,255,.08);background:var(--shell-deep)}
+#view-home .home-card--lavender{border-color:var(--contact-cta-border);background:var(--contact-cta-bg)}
+#view-home .home-card > .mono-label,
+#view-home .about-strip > .mono-label{
+  font-size:.6875rem;
+  font-weight:700;
+  line-height:1.4;
+  letter-spacing:.08em;
+}
+#view-home .home-snapshot{gap:7px}
+#view-home .home-snapshot-title{margin:7px 0 2px}
+#view-home .home-snapshot-cta{margin-top:12px}
+#view-home .home-knowledge,
+#view-home .home-credentials,
+#view-home #home-building{align-self:start}
+#view-home .home-knowledge h3{margin:10px 0 16px}
+#view-home .home-knowledge .article-feature{
+  margin-bottom:10px;
+  padding:18px;
+  border-radius:14px;
+}
+#view-home .home-knowledge .article-preview-item{min-height:48px;padding:12px 0}
+#view-home .credential-home-list{gap:10px;margin-top:16px}
+#view-home .credential-home-row{
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  min-height:68px;
+  padding:12px 14px;
+  border-radius:14px;
+}
+#view-home .credential-home-copy{min-width:0}
+#view-home .credential-home-tag,
+#view-home .credential-home-badge{
+  display:grid;
+  place-items:center;
+  width:44px;
+  min-width:44px;
+  height:44px;
+  margin:0;
+  text-align:center;
+}
+#view-home .credential-home-status{justify-self:end;align-self:start;margin-top:1px}
+#view-home #home-building{justify-content:flex-start}
+#view-home .building-strip{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  margin-top:18px;
+}
+#view-home .building-item{
+  min-width:0;
+  padding:2px 20px;
+  border-left:1px solid var(--line-strong);
+}
+#view-home .building-item:first-child{padding-left:14px;border-left:3px solid var(--lime)}
+#view-home .building-item--next{border-left-color:var(--lavender)}
+#view-home .building-item--later{border-left-color:var(--line-strong);opacity:1}
+#view-home .building-item h4{margin-bottom:8px}
+#view-home .building-item li{color:var(--muted)}
+#view-home .building-item--now li{color:var(--ink)}
+#view-home .contact-cta{
+  justify-content:flex-start;
+  gap:0;
+  align-self:stretch;
+}
+#view-home .contact-cta-body{display:block;flex:0 0 auto;margin-top:18px}
+#view-home .contact-cta-title{margin:0 0 10px}
+#view-home .contact-cta-meta{margin-top:18px}
+#view-home .contact-cta-action{margin-top:24px}
+#view-home .about-strip{
+  display:grid;
+  grid-template-columns:140px minmax(0,1fr);
+  gap:24px;
+  margin-top:var(--grid-gap);
+  background:var(--surface-primary);
+}
+#view-home .about-strip-body{min-width:0;max-width:78ch}
+#view-home .about-strip-body p{margin:0;font-size:.9375rem;line-height:1.6;color:var(--muted)}
+#view-home .about-strip-body p + p{margin-top:10px}
+#view-home .about-strip-body .btn-text{margin-top:14px}
+#view-home #operating-loop{padding:24px;border-radius:20px}
+#view-home .support-loop-track{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:0;
+  margin-top:22px;
+}
+#view-home .support-loop-step{
+  position:relative;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:baseline;
+  gap:6px;
+  padding-right:18px;
+}
+#view-home .support-loop-step:not(:last-child)::after{
+  position:absolute;
+  top:50%;
+  right:7px;
+  margin:0;
+  transform:translateY(-50%);
+}
+#view-home .career-node{display:grid;grid-template-rows:20px 16px auto;align-items:center}
+#view-home .career-node-year{display:flex;align-items:center;justify-content:center;min-height:20px}
+#view-home .career-node-dot{margin:auto}
+#view-home .career-nodes{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+#view-home .career-nodes::before{top:28px}
+body:has(#view-home.active) .site-footer{margin-top:0!important}
+body:has(#view-home.active) .footer-inner{
+  padding-top:26px;
+  padding-bottom:calc(26px + env(safe-area-inset-bottom));
+}
+@media(min-width:1024px){
+  #view-home #home-building,
+  #view-home .contact-cta{
+    height:100%;
+    align-self:stretch;
+  }
+}
+@media(min-width:768px) and (max-width:1120px){
+  #view-home #home-building,
+  #view-home .contact-cta{grid-column:span 12}
+}
+@media(max-width:1023px){
+  #view-home .bento-side-stack{display:flex!important;height:auto;min-height:0}
+}
+@media(max-width:767px){
+  #view-home .home-card,
+  #view-home .home-card--compact,
+  #view-home #operating-loop{padding:17px;border-radius:18px}
+  #view-home .building-strip{grid-template-columns:1fr!important;margin-top:14px}
+  #view-home .building-item,
+  #view-home .building-item:first-child{
+    padding:13px 0 13px 14px;
+    border-top:1px solid var(--line);
+    border-left:3px solid var(--line-strong);
+  }
+  #view-home .building-item:first-child{padding-top:2px;border-top:0;border-left-color:var(--lime)}
+  #view-home .building-item--next{border-left-color:var(--lavender)}
+  #view-home .about-strip{grid-template-columns:1fr;gap:12px;margin-top:var(--grid-gap)}
+  #view-home .credential-home-row{grid-template-columns:44px minmax(0,1fr) auto;padding:11px 12px}
+  #view-home .support-loop-track{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:18px}
+  #view-home .support-loop-step{padding:10px 8px;border-top:1px solid rgba(255,255,255,.1)}
+  #view-home .support-loop-step:nth-child(-n+2){border-top:0}
+  #view-home .support-loop-step:not(:last-child)::after{content:none}
+  #view-home .career-nodes::before{content:"";left:8%;right:8%;top:28px}
+  #view-home .career-node-year{font-size:.75rem}
+  #view-home .career-node-label{font-size:.65rem}
+  body:has(#view-home.active) .footer-inner{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
 }
 .seo-quiet{padding:var(--space-5);font-size:.875rem;color:var(--muted);line-height:1.7;margin-top:var(--space-4)}
 
@@ -5211,6 +6282,7 @@ dialog:not([open]),
 /* VIEWS */
 .view{display:none}
 .view.active{display:block;animation:view-in var(--dur-slow) var(--ease-out)}
+html.js-enabled .view:not(.active){display:none!important}
 @keyframes view-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 html.js-enabled #knowledge-articles-archive{display:none}
 html:not(.js-enabled) .nav-sidebar,html:not(.js-enabled) .mobile-header,html:not(.js-enabled) .workspace-topbar,html:not(.js-enabled) .menu-overlay,html:not(.js-enabled) .site-menu{display:none!important}
@@ -5493,6 +6565,9 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   height:10px;
   border-radius:50%;
   display:inline-block;
+  grid-column:1;
+  grid-row:1;
+  margin-top:2px;
 }
 .capability-depth-row--hands .capability-depth-marker{background:var(--cap-hands-marker);box-shadow:0 0 0 3px var(--lime-soft)}
 .capability-depth-row--foundation .capability-depth-marker{background:var(--cap-foundation-marker)}
@@ -5507,7 +6582,7 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
   letter-spacing:-.01em;
   margin-top:-2px;
 }
-.capability-depth-label span{
+.capability-depth-label > span:not(.capability-depth-marker){
   grid-column:2;
   grid-row:2;
   font-size:.8125rem;
@@ -5639,182 +6714,41 @@ html:not(.js-enabled) #knowledge-articles-archive{display:block!important;paddin
 }
 
 .experience-page{max-width:1180px;margin:0 auto}
-.experience-page .page-head{margin-bottom:var(--space-4)}
+.experience-page .page-head{margin-bottom:18px}
 .experience-page .page-head .lead{max-width:62ch}
-.experience-signals{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:0;
-  margin-bottom:var(--space-6);
-  padding:0;
-  background:transparent;
-  border:none;
-}
-.experience-signal{
-  padding:0 var(--space-4);
-  min-width:0;
-  border-left:2px solid var(--line);
-}
-.experience-signal:first-child{padding-left:0;border-left:0}
-.experience-signal-label{
-  font-family:var(--font-mono);
-  font-size:.6875rem;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin:0 0 6px;
-}
-.experience-signal strong{
-  display:block;
-  font-family:var(--font-display);
-  font-size:1.05rem;
-  font-weight:700;
-  line-height:1.25;
-  color:var(--ink);
-}
-.experience-signal span{
-  display:block;
-  margin-top:4px;
-  font-size:.75rem;
-  color:var(--muted);
-  line-height:1.4;
-}
-.experience-timeline{
-  display:grid;
-  gap:0;
-  margin:0;
-  padding:0;
-  list-style:none;
-}
-.experience-entry{
-  display:grid;
-  grid-template-columns:minmax(120px,140px) 32px minmax(0,1fr);
-  column-gap:var(--space-4);
-  align-items:stretch;
-  padding:0 0 var(--space-4);
-}
+.experience-signals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.experience-signal{display:grid;align-content:center;min-width:0;min-height:86px;padding:14px 20px;border-left:1px solid var(--line)}
+.experience-signal:first-child{border-left:0}
+.experience-signal-label{margin:0 0 5px;font-family:var(--font-mono);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.experience-signal strong{display:block;font-family:var(--font-display);font-size:1.08rem;font-weight:750;line-height:1.25;color:var(--ink)}
+.experience-signal span{display:block;margin-top:3px;font-size:.78rem;line-height:1.4;color:var(--muted)}
+.experience-timeline{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.experience-entry{display:grid;grid-template-columns:120px 24px minmax(0,1fr);column-gap:20px;align-items:stretch;min-width:0;padding:0 0 20px}
 .experience-entry:last-child{padding-bottom:0}
-.experience-date{
-  padding-top:2px;
-  text-align:right;
-}
-.experience-date-year{
-  display:block;
-  font-family:var(--font-display);
-  font-size:1.05rem;
-  font-weight:800;
-  letter-spacing:-.02em;
-  color:var(--ink);
-  white-space:nowrap;
-  text-transform:none;
-}
-.experience-date-range{
-  display:block;
-  margin-top:4px;
-  font-family:var(--font-mono);
-  font-size:.8125rem;
-  color:var(--muted);
-  line-height:1.35;
-  white-space:nowrap;
-}
-.experience-rail{
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-}
-.experience-rail::before{
-  content:"";
-  position:absolute;
-  top:0;
-  bottom:calc(var(--space-4) * -1);
-  left:50%;
-  width:2px;
-  transform:translateX(-50%);
-  background:var(--line-strong);
-}
-.experience-entry:first-child .experience-rail::before{top:8px}
-.experience-entry:last-child .experience-rail::before{
-  bottom:auto;
-  height:12px;
-}
-.experience-marker{
-  position:relative;
-  z-index:1;
-  width:12px;
-  height:12px;
-  margin-top:6px;
-  border-radius:50%;
-  background:var(--surface-primary);
-  border:2px solid var(--muted);
-  flex-shrink:0;
-}
-.experience-entry--now .experience-marker{
-  background:var(--lime);
-  border-color:var(--lime);
-  box-shadow:0 0 0 3px var(--lime-soft);
-}
-.experience-entry--fulltime .experience-marker{
-  background:var(--lavender);
-  border-color:var(--lavender);
-}
-.experience-entry--project .experience-marker{
-  background:var(--surface-primary);
-  border-color:var(--lavender);
-}
-.experience-entry--recent .experience-marker{
-  background:var(--surface-primary);
-  border-color:var(--lime);
-}
-.experience-entry--internship .experience-marker{
-  background:var(--muted);
-  border-color:var(--muted);
-}
-.experience-entry--training .experience-marker{
-  width:10px;
-  height:10px;
-  margin-top:7px;
-  background:transparent;
-  border-color:var(--muted);
-}
-.experience-content{
-  min-width:0;
-  max-width:72ch;
-}
-.experience-content--card{
-  padding:var(--space-4) var(--space-5);
-  background:var(--surface-primary);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
-}
-.experience-content--editorial,
-.experience-content--milestone {
-  padding:2px 0 var(--space-4);
-  background:transparent;
-  border:0;
-  border-radius:0;
-}
-.experience-entry--featured .experience-content--card{
-  border-left:3px solid var(--lavender);
-  background:var(--surface-primary);
-}
-.experience-entry--recent .experience-content--card{
-  border-left:3px solid var(--lime);
-}
-.experience-entry--now .experience-content--card{
-  background:var(--lavender-soft);
-  border:1px solid transparent;
-  border-left:3px solid var(--lime);
-  padding:var(--space-4);
-}
-html[data-theme="light"] .experience-entry--now .experience-content--card{
-  background:color-mix(in srgb,var(--lavender-soft) 40%,var(--surface));
-}
-.experience-entry--compact .experience-content--editorial,
-.experience-entry--compact .experience-content--milestone {
-  padding-bottom:var(--space-3);
-}
+.experience-date{padding-top:4px;text-align:right;font-variant-numeric:tabular-nums}
+.experience-date-year{display:block;font-family:var(--font-display);font-size:1rem;font-weight:800;line-height:1.25;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
+.experience-date-range{display:block;margin-top:4px;font-family:var(--font-mono);font-size:.75rem;line-height:1.4;color:var(--muted);white-space:nowrap}
+.experience-rail{position:relative;display:flex;justify-content:center;align-items:flex-start}
+.experience-rail::before{content:"";position:absolute;top:0;bottom:-20px;left:50%;width:2px;background:var(--line-strong);transform:translateX(-50%)}
+.experience-entry:first-child .experience-rail::before{top:10px}
+.experience-entry:last-child .experience-rail::before{bottom:auto;height:14px}
+.experience-marker{position:relative;z-index:1;width:12px;height:12px;margin-top:6px;border:2px solid var(--muted);border-radius:50%;background:var(--surface);flex:0 0 auto}
+.experience-entry--now .experience-marker{background:var(--lime);border-color:var(--lime);box-shadow:0 0 0 3px var(--lime-soft)}
+.experience-entry--recent .experience-marker{background:var(--surface);border-color:var(--lime)}
+.experience-entry--project:not(.experience-entry--recent) .experience-marker{background:var(--surface);border-color:var(--lavender)}
+.experience-entry--fulltime .experience-marker{background:var(--lavender);border-color:var(--lavender)}
+.experience-entry--training .experience-marker{background:var(--surface);border-color:var(--muted)}
+.experience-entry--internship .experience-marker{background:var(--muted);border-color:var(--muted)}
+.experience-content{width:100%;max-width:100%;min-width:0}
+.experience-card{box-sizing:border-box;padding:22px 24px;border:1px solid var(--line);border-radius:18px;background:var(--surface-primary);color:var(--ink)}
+.experience-card--compact{padding:18px 20px;border-radius:16px;background:color-mix(in srgb,var(--surface-primary) 72%,var(--surface-secondary))}
+.experience-card--current{padding:20px 22px;border-left:3px solid var(--lime);background:var(--lavender-soft)}
+html[data-theme="light"] .experience-card--current{background:color-mix(in srgb,var(--lavender) 20%,var(--surface))}
+.experience-card--project{border-left:3px solid var(--lime)}
+.experience-card--project-supporting{border-left:3px solid color-mix(in srgb,var(--lavender) 72%,var(--line-strong))}
+.experience-card--employment{border-left:3px solid var(--lavender);background:color-mix(in srgb,var(--surface-primary) 92%,var(--lavender-soft))}
+.experience-card--training{background:transparent;border-color:var(--line-strong)}
+.experience-card--internship{background:color-mix(in srgb,var(--surface-primary) 78%,var(--surface-secondary))}
 .experience-kicker{
   margin:0 0 var(--space-2);
   font-family:var(--font-mono);
@@ -5832,7 +6766,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   line-height:1.25;
   letter-spacing:-.02em;
 }
-.experience-entry--featured .experience-heading{font-size:1.3rem}
+.experience-entry--featured .experience-heading{font-size:1.28rem}
 .experience-entry--training .experience-heading{font-size:1.05rem;font-weight:600}
 .experience-entry--compact .experience-heading{font-size:1.05rem}
 .experience-role{
@@ -5899,10 +6833,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   color:var(--ink);
   max-width:68ch;
 }
-.experience-entry--compact .experience-description{
-  font-size:.9rem;
-  margin-top:var(--space-2);
-}
+.experience-entry--compact .experience-description{font-size:.9rem;margin-top:10px}
 .experience-entry--training .experience-description{
   font-size:.875rem;
   color:var(--muted);
@@ -5915,14 +6846,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   line-height:1.5;
   color:var(--muted);
 }
-.experience-tools{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:baseline;
-  gap:6px 10px;
-  padding-top:var(--space-3);
-  border-top:1px solid var(--line);
-}
+.experience-tools{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;padding-top:14px;border-top:1px solid var(--line)}
 .experience-tools-label{
   font-family:var(--font-mono);
   font-size:.6875rem;
@@ -5939,12 +6863,7 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   color:var(--muted);
   max-width:68ch;
 }
-.experience-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:var(--space-3) var(--space-4);
-  margin-top:var(--space-3);
-}
+.experience-links{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:14px}
 .experience-links a{
   font-size:.875rem;
   font-weight:700;
@@ -5959,19 +6878,8 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   line-height:1.55;
   color:var(--muted);
 }
-.experience-ahead{
-  margin-top:var(--space-6);
-  padding:var(--space-4) var(--space-5);
-  background:var(--surface-primary);
-  border:1px solid var(--line);
-  border-radius:var(--radius-module);
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  gap:var(--space-4);
-}
-.experience-ahead-copy{max-width:46ch}
+.experience-ahead{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;margin-top:28px;padding:20px 24px;background:var(--surface-primary);border:1px solid var(--line);border-radius:18px}
+.experience-ahead-copy{max-width:58ch}
 .experience-ahead-copy .mono-label{margin-bottom:var(--space-2)}
 .experience-ahead-copy h2{
   margin:0 0 var(--space-2);
@@ -5984,45 +6892,38 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   line-height:1.55;
   color:var(--muted);
 }
-.experience-ahead-actions{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:var(--space-3) var(--space-4);
-}
+.experience-ahead-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:10px 14px}
+body:has(#view-experience.active) .site-footer{margin-top:0!important}
+body:has(#view-experience.active) .footer-inner{padding-bottom:calc(34px + env(safe-area-inset-bottom))}
 @media(max-width:767px){
-  .experience-signals{
-    grid-template-columns:1fr;
-    gap:0;
-  }
-  .experience-signal{
-    padding:var(--space-3) 0;
-    border-left:0;
-    border-top:1px solid var(--line);
-  }
-  .experience-signal:first-child{
-    padding-top:0;
-    border-top:0;
-  }
-  .experience-entry{
-    grid-template-columns:18px minmax(0,1fr);
-    column-gap:12px;
-    padding-bottom:var(--space-5);
-  }
-  .experience-rail::before{bottom:calc(var(--space-5) * -1)}
-  .experience-date{
-    grid-column:2;
-    grid-row:1;
-    text-align:left;
-    padding-top:0;
-    margin-bottom:var(--space-2);
-  }
+  .experience-page .page-head{margin-bottom:16px}
+  .experience-signals{grid-template-columns:1fr;margin-bottom:24px}
+  .experience-signal{display:block;min-height:0;padding:12px 0;border-left:0;border-top:1px solid var(--line)}
+  .experience-signal:first-child{border-top:0}
+  .experience-signal strong,.experience-signal span{display:inline}
+  .experience-signal strong::after{content:" · ";color:var(--muted)}
+  .experience-entry{grid-template-columns:18px minmax(0,1fr);column-gap:12px;padding-bottom:22px}
+  .experience-rail::before{bottom:-22px}
+  .experience-date{grid-column:2;grid-row:1;display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 8px;margin-bottom:8px;padding-top:0;text-align:left}
+  .experience-date-year{font-size:.82rem}
+  .experience-date-range{margin-top:0;font-size:.68rem;white-space:normal;text-transform:uppercase;letter-spacing:.04em}
   .experience-rail{grid-column:1;grid-row:1 / span 2}
   .experience-content{grid-column:2;grid-row:2}
-  .experience-content--card{padding:var(--space-4)}
-  .experience-date-year,.experience-date-range{white-space:normal}
-  .experience-ahead{flex-direction:column;align-items:flex-start}
+  .experience-card,.experience-card--compact,.experience-card--current{padding:16px 17px;border-radius:16px}
+  .experience-heading,.experience-entry--featured .experience-heading,.experience-entry--compact .experience-heading{font-size:1.08rem}
+  .experience-role{font-size:.94rem}
+  .experience-description{font-size:.9rem;line-height:1.58}
+  .experience-links{align-items:flex-start}
+  .experience-ahead{grid-template-columns:1fr;gap:16px;padding:18px}
+  .experience-ahead-actions{width:100%}
   .experience-ahead-actions .btn{min-height:44px}
+  body:has(#view-experience.active) .footer-inner{padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+}
+@media(max-width:430px){
+  .experience-links{display:grid;grid-template-columns:1fr;gap:12px}
+  .experience-links a{justify-self:start}
+  .experience-ahead-actions{display:grid;grid-template-columns:1fr}
+  .experience-ahead-actions .btn{width:100%;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){
   .experience-entry--now .experience-marker{box-shadow:none}
@@ -6429,6 +7330,8 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   line-height:1.3;
   letter-spacing:-.02em;
   color:var(--ink);
+  overflow-wrap:break-word;
+  word-break:normal;
 }
 .knowledge-card-summary{
   margin:0;
@@ -6436,6 +7339,8 @@ html[data-theme="light"] .experience-entry--now .experience-content--card{
   line-height:1.5;
   color:var(--muted);
   flex:1;
+  overflow-wrap:break-word;
+  word-break:normal;
 }
 .knowledge-card-cta{
   margin-top:4px;
@@ -7845,6 +8750,122 @@ html[data-theme="dark"] .toolbox-tco .btn-text {
 }
 
 
+/* Toolbox: shared premium card system */
+#view-toolbox .toolbox-page{width:100%;max-width:1080px;min-width:0;box-sizing:border-box;padding-bottom:44px}
+#view-toolbox .page-head{margin-bottom:18px}
+#view-toolbox .page-head .lead,#view-toolbox .toolbox-micro,#view-toolbox .toolbox-section-head p,#view-toolbox .toolbox-playbook-problem,#view-toolbox .toolbox-cta>p{max-width:72ch}
+#view-toolbox .toolbox-flow{margin-bottom:10px;padding:14px 18px;border:1px solid var(--tb-playbook-border);border-radius:14px;background:var(--surface-secondary)}
+#view-toolbox .toolbox-flow-caption{margin-bottom:40px}
+#view-toolbox .toolbox-section{margin-bottom:clamp(36px,3.6vw,44px)}
+#view-toolbox .toolbox-card{width:100%;max-width:100%;min-width:0;height:auto;min-height:0;box-sizing:border-box;overflow:hidden;padding:clamp(22px,2vw,26px);border:1px solid var(--tb-playbook-border);border-radius:18px}
+#view-toolbox .toolbox-card--neutral,#view-toolbox .toolbox-card--catalog{background:var(--tb-playbook-bg);color:var(--tb-playbook-text)}
+#view-toolbox .toolbox-card--lavender,#view-toolbox .toolbox-card--cta{background:var(--tb-oss-bg);color:var(--tb-oss-text);border-color:var(--tb-oss-border)}
+#view-toolbox .toolbox-section-head{max-width:72ch;margin-bottom:16px}
+#view-toolbox .toolbox-section-head .mono-label,#view-toolbox .toolbox-cta>.mono-label{margin:0 0 8px;font-family:var(--font-mono);font-size:.6875rem;font-weight:700;letter-spacing:.09em;line-height:1.4;text-transform:uppercase;color:var(--muted)}
+#view-toolbox .toolbox-section-head h2,#view-toolbox .toolbox-cta h2{margin:0 0 8px;font-size:clamp(1.4rem,2vw,1.8rem);line-height:1.15}
+#view-toolbox .toolbox-section-head p,#view-toolbox .toolbox-playbook-problem,#view-toolbox .toolbox-flagship-purpose,#view-toolbox .toolbox-cta>p{font-size:.9375rem;line-height:1.58}
+#view-toolbox .toolbox-principles{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+#view-toolbox .toolbox-principle{min-width:0;padding:18px 20px;border:0;border-top:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-principle:nth-child(-n+3){padding-top:0;border-top:0}
+#view-toolbox .toolbox-principle:nth-child(3n+1){padding-left:0}
+#view-toolbox .toolbox-principle:nth-child(3n){padding-right:0}
+#view-toolbox .toolbox-principle:not(:nth-child(3n+1)){border-left:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-principle h3{min-height:2.7em;font-size:1rem;line-height:1.35}
+#view-toolbox .toolbox-principle p{font-size:.875rem;line-height:1.55}
+#view-toolbox .toolbox-toolchain{margin-top:22px;padding:20px;border:1px solid var(--line);border-radius:14px}
+#view-toolbox .toolbox-playbooks{gap:16px}
+#view-toolbox .toolbox-playbook{width:100%;min-width:0;height:auto;min-height:0;padding:clamp(22px,2vw,26px);border-radius:18px}
+#view-toolbox .toolbox-playbook-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;margin-bottom:14px}
+#view-toolbox .toolbox-playbook-status,#view-toolbox .toolbox-level{min-height:24px;padding:4px 10px;border-radius:var(--radius-pill);white-space:nowrap}
+#view-toolbox .toolbox-playbook h3{margin-bottom:10px}
+#view-toolbox .toolbox-playbook-problem{margin-bottom:20px}
+#view-toolbox .toolbox-playbook-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px}
+#view-toolbox .toolbox-evidence-row{margin-top:20px}
+#view-toolbox .toolbox-compare-wrapper{grid-template-columns:1fr;gap:40px;margin-bottom:40px}
+#view-toolbox .toolbox-compare-wrapper .toolbox-section{margin-bottom:0}
+#view-toolbox .toolbox-compare-wrapper .toolbox-compare-card,#view-toolbox .toolbox-compare-wrapper .toolbox-split-when{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+#view-toolbox .toolbox-compare-card{gap:0;padding-top:0}
+#view-toolbox .toolbox-compare-col{padding:16px 20px 0;border-top:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-compare-col:first-child{padding-left:0}
+#view-toolbox .toolbox-compare-col:last-child{padding-right:0;border-left:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-when{padding:20px;border-radius:14px}
+#view-toolbox .toolbox-tco{padding:clamp(22px,2vw,26px);border-radius:18px}
+#view-toolbox .toolbox-tco-grid{gap:22px}
+#view-toolbox .toolbox-questions{margin-bottom:18px}
+#view-toolbox .toolbox-questions li{padding:14px 16px 14px 0;border-top-color:var(--tb-playbook-border)}
+#view-toolbox .toolbox-cases,#view-toolbox .toolbox-stacks{gap:0}
+#view-toolbox .toolbox-case,#view-toolbox .toolbox-stack{padding:18px 20px 0;border-top:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-case:first-child,#view-toolbox .toolbox-stack:first-child{padding-left:0}
+#view-toolbox .toolbox-case:last-child,#view-toolbox .toolbox-stack:last-child{padding-right:0}
+#view-toolbox .toolbox-case+.toolbox-case,#view-toolbox .toolbox-stack+.toolbox-stack{border-left:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-flagships{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#view-toolbox .toolbox-flagship,#view-toolbox .toolbox-flagship:first-child{min-width:0;height:auto;min-height:0;padding:20px;border:1px solid var(--tb-flagship-border);border-radius:16px;background:var(--tb-flagship-bg)}
+#view-toolbox .toolbox-flagship-head{align-items:flex-start}
+#view-toolbox .toolbox-matrix{overflow:hidden;border:1px solid var(--tb-playbook-border);border-radius:14px;border-collapse:separate;border-spacing:0}
+#view-toolbox .toolbox-matrix th,#view-toolbox .toolbox-matrix td{padding:12px;font-size:.8125rem;border-bottom-color:var(--tb-playbook-border)}
+#view-toolbox .toolbox-matrix th{background:var(--surface-secondary);font-size:.6875rem}
+#view-toolbox .toolbox-matrix tr:last-child td{border-bottom:0}
+#view-toolbox .toolbox-directory{gap:20px}
+#view-toolbox .toolbox-dir-table{display:block}
+#view-toolbox .toolbox-dir-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#view-toolbox .toolbox-dir-table tbody{display:grid}
+#view-toolbox .toolbox-dir-table tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-dir-table td{width:auto;padding:0;text-align:left;font-size:.875rem;line-height:1.5}
+#view-toolbox .toolbox-dir-table td:nth-child(2){justify-self:end}
+#view-toolbox .toolbox-dir-table td:nth-child(3),#view-toolbox .toolbox-dir-table td:nth-child(4){grid-column:1/-1;color:var(--muted)}
+#view-toolbox .toolbox-dir-table td:nth-child(4){font-size:.8125rem}
+#view-toolbox .toolbox-building-grid{gap:0}
+#view-toolbox .toolbox-building-grid article{padding:16px 18px;border-top:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-building-grid article:nth-child(-n+3){padding-top:0;border-top:0}
+#view-toolbox .toolbox-building-grid article:nth-child(3n+1){padding-left:0}
+#view-toolbox .toolbox-building-grid article:nth-child(3n){padding-right:0}
+#view-toolbox .toolbox-building-grid article:not(:nth-child(3n+1)){border-left:1px solid var(--tb-playbook-border)}
+#view-toolbox .toolbox-cta{margin:0;padding:clamp(22px,2vw,26px);border-radius:18px}
+#view-toolbox .toolbox-cta-actions .btn{min-height:44px;padding:10px 18px;border-radius:var(--radius-pill)}
+body:has(#view-toolbox.active) .site-footer{margin-top:28px!important}
+body:has(#view-toolbox.active) .footer-inner{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+@media(max-width:1023px){
+  #view-toolbox .toolbox-principles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #view-toolbox .toolbox-principle:nth-child(-n+3){padding-top:18px;border-top:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-principle:nth-child(-n+2){padding-top:0;border-top:0}
+  #view-toolbox .toolbox-principle:nth-child(3n+1),#view-toolbox .toolbox-principle:nth-child(3n){padding-inline:20px}
+  #view-toolbox .toolbox-principle:nth-child(2n+1){padding-left:0;border-left:0}
+  #view-toolbox .toolbox-principle:nth-child(2n){padding-right:0;border-left:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-tco-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #view-toolbox .toolbox-building-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #view-toolbox .toolbox-building-grid article:nth-child(-n+3){padding-top:16px;border-top:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-building-grid article:nth-child(-n+2){padding-top:0;border-top:0}
+  #view-toolbox .toolbox-building-grid article:nth-child(3n+1),#view-toolbox .toolbox-building-grid article:nth-child(3n){padding-inline:18px}
+  #view-toolbox .toolbox-building-grid article:nth-child(2n+1){padding-left:0;border-left:0}
+  #view-toolbox .toolbox-building-grid article:nth-child(2n){padding-right:0;border-left:1px solid var(--tb-playbook-border)}
+}
+@media(max-width:767px){
+  #view-toolbox .toolbox-page{padding:20px var(--mobile-gutter) 40px}
+  #view-toolbox .toolbox-card,#view-toolbox .toolbox-playbook,#view-toolbox .toolbox-flagship{width:100%;max-width:100%;min-width:0;height:auto;min-height:0;padding:18px;border-radius:18px}
+  #view-toolbox .toolbox-flow{padding:16px;border-radius:14px}
+  #view-toolbox .toolbox-principles,#view-toolbox .toolbox-playbook-grid,#view-toolbox .toolbox-compare-wrapper .toolbox-compare-card,#view-toolbox .toolbox-compare-wrapper .toolbox-split-when,#view-toolbox .toolbox-flagships,#view-toolbox .toolbox-building-grid{grid-template-columns:1fr}
+  #view-toolbox .toolbox-principle,#view-toolbox .toolbox-principle:nth-child(-n+3),#view-toolbox .toolbox-principle:nth-child(3n+1),#view-toolbox .toolbox-principle:nth-child(3n),#view-toolbox .toolbox-principle:nth-child(2n+1),#view-toolbox .toolbox-principle:nth-child(2n){min-height:0;padding:14px 0;border:0;border-top:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-principle:first-child{padding-top:0;border-top:0}
+  #view-toolbox .toolbox-principle h3{min-height:0}
+  #view-toolbox .toolbox-playbook-top{grid-template-columns:1fr}
+  #view-toolbox .toolbox-playbook-status{justify-self:start}
+  #view-toolbox .toolbox-compare-col,#view-toolbox .toolbox-compare-col:first-child,#view-toolbox .toolbox-compare-col:last-child{padding:14px 0;border:0;border-top:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-compare-col:first-child{padding-top:0;border-top:0}
+  #view-toolbox .toolbox-tco-grid{grid-template-columns:1fr}
+  #view-toolbox .toolbox-cases,#view-toolbox .toolbox-stacks{grid-template-columns:1fr}
+  #view-toolbox .toolbox-case,#view-toolbox .toolbox-case:first-child,#view-toolbox .toolbox-case:last-child,#view-toolbox .toolbox-stack,#view-toolbox .toolbox-stack:first-child,#view-toolbox .toolbox-stack:last-child{padding:14px 0;border:0;border-top:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-case:first-child,#view-toolbox .toolbox-stack:first-child{padding-top:0;border-top:0}
+  #view-toolbox .toolbox-matrix{display:none}
+  #view-toolbox .toolbox-matrix-mobile{display:grid;gap:0}
+  #view-toolbox .toolbox-matrix-card{padding:16px 0;border-top:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-matrix-card:first-child{padding-top:0;border-top:0}
+  #view-toolbox .toolbox-building-grid article,#view-toolbox .toolbox-building-grid article:nth-child(-n+3),#view-toolbox .toolbox-building-grid article:nth-child(3n+1),#view-toolbox .toolbox-building-grid article:nth-child(3n),#view-toolbox .toolbox-building-grid article:nth-child(2n+1),#view-toolbox .toolbox-building-grid article:nth-child(2n){padding:14px 0;border:0;border-top:1px solid var(--tb-playbook-border)}
+  #view-toolbox .toolbox-building-grid article:first-child{padding-top:0;border-top:0}
+  #view-toolbox .toolbox-compare-tabs{flex-direction:row;overflow-x:auto;padding-bottom:4px}
+  #view-toolbox .toolbox-compare-tab{width:auto;min-height:44px;flex:0 0 auto}
+  #view-toolbox .toolbox-cta-actions .btn,#view-toolbox .toolbox-cta-actions .btn-text{width:100%;justify-content:center;text-align:center}
+}
+
 /* ===== LEARNING PAGE ===== */
 /* Learning page — professional multi-track system */
 
@@ -8065,9 +9086,13 @@ html[data-theme="dark"] #view-learning {
 
 .learning-sprint-target {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--muted);
+}
+.learning-north-more,
+.learning-track-mobile {
+  display: none;
 }
 
 .learning-sprint-target strong {
@@ -8095,10 +9120,9 @@ html[data-theme="dark"] #view-learning {
 }
 
 .learning-track-top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   gap: 8px 14px;
   margin-bottom: 8px;
 }
@@ -8134,6 +9158,17 @@ html[data-theme="dark"] #view-learning {
 
 .learning-stage--deepening {
   color: var(--ln-deepening);
+}
+.learning-stage--active { color: #637500; }
+.learning-stage--next { color: #70679a; }
+.learning-stage--later { color: var(--muted); }
+html[data-theme="dark"] .learning-stage--active { color: var(--ln-now); }
+html[data-theme="dark"] .learning-stage--next { color: #c3b9ef; }
+.learning-track-top .learning-stage {
+  padding: 4px 8px;
+  border: 1px solid var(--ln-surface-border);
+  border-radius: var(--radius-pill);
+  line-height: 1;
 }
 
 .learning-track h3 {
@@ -8277,7 +9312,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 .learning-platform-aside {
   margin-top: 16px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -8340,6 +9375,28 @@ html[data-theme="dark"] .learning-platform-layers li {
   line-height: 1.5;
   color: var(--muted);
 }
+.learning-convergence-more {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.learning-convergence-more summary,
+.learning-track-details summary,
+.learning-north-more summary {
+  color: var(--ink);
+  font-size: .8125rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.learning-convergence-more div { padding-top: 12px; }
+.learning-convergence-more strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.learning-convergence-more p { margin: 0; font-size: .875rem; color: var(--muted); }
 
 /* Evidence loop */
 .learning-evidence-loop {
@@ -8374,6 +9431,14 @@ html[data-theme="dark"] .learning-platform-layers li {
   line-height: 1.55;
   color: var(--muted);
 }
+.learning-evidence-path {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-size: .875rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.learning-evidence-path span { color: var(--ln-now); padding: 0 3px; }
 
 /* Foundations */
 .learning-foundations {
@@ -8514,41 +9579,406 @@ html[data-theme="dark"] .learning-platform-layers li {
   gap: 12px;
   align-items: center;
 }
+.learning-milestone-proof {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media(min-width:768px) and (max-width:1023px){
+  #view-learning .page-inner{padding-inline:24px}
+  .learning-convergence{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .learning-convergence-item,.learning-convergence-item:first-child{
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:var(--radius-module);
+  }
+  .learning-convergence-more{grid-column:1/-1}
+}
+
+@media(min-width:768px) and (max-width:899px){
+  .learning-split-hero{grid-template-columns:1fr;gap:40px}
+  .learning-milestones{grid-template-columns:1fr}
+}
 
 @media(max-width:767px){
-  .learning-split-hero,
-  .learning-track-body,
-  .learning-platform-aside,
-  .learning-milestones {
-    grid-template-columns: 1fr;
-  }
+  #view-learning .learning-page,#view-learning .learning-section,#view-learning .learning-split-main,
+  #view-learning .learning-split-side,#view-learning .learning-track,#view-learning .learning-platform,
+  #view-learning .learning-cta{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+  #view-learning .learning-page{padding:16px var(--mobile-gutter) 40px}
+  #view-learning .page-head{margin-bottom:34px}
+  #view-learning .page-head .mono-label{margin-bottom:10px}
+  #view-learning .display-page{margin-bottom:8px;font-size:clamp(2.1rem,9vw,2.75rem);line-height:1.05}
+  #view-learning .page-head .lead{font-size:1rem;line-height:1.4}
+  #view-learning .learning-micro{margin-top:8px;font-size:.92rem;line-height:1.5}
+  #view-learning .learning-section{margin-bottom:44px}
+  #view-learning .learning-section-head{margin-bottom:16px}
+  #view-learning .learning-section-head .mono-label{margin-bottom:6px;font-size:.72rem}
+  #view-learning .learning-section-head h2{margin-bottom:8px;font-size:1.35rem;line-height:1.2}
+  #view-learning .learning-section-head p{font-size:.92rem;line-height:1.55}
+  #view-learning .learning-north-intro{display:none}
 
-  .learning-foundations li {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
+  .learning-split-hero{grid-template-columns:1fr;gap:40px;margin-bottom:0}
+  .learning-north-star{margin-bottom:44px}
+  .learning-path-step{grid-template-columns:1fr;gap:3px;padding:10px 0 10px 20px}
+  .learning-path-step::before{top:17px}
+  .learning-path-label{font-size:.72rem;padding-top:0}
+  .learning-path-copy strong{font-size:1rem;line-height:1.3;margin-bottom:3px}
+  .learning-path-copy span{font-size:.875rem;line-height:1.45}
+  .learning-path-secondary{display:none!important}
+  .learning-north-note{display:none}
+  .learning-north-more{display:block;margin-top:10px}
+  .learning-north-more p{margin:10px 0 0;font-size:.875rem;line-height:1.5;color:var(--muted)}
 
-  .learning-path-step {
-    grid-template-columns: 1fr;
-  }
+  .learning-sprint{padding:18px;border-radius:18px}
+  .learning-sprint-cards{gap:0;margin:0 0 14px}
+  .learning-sprint-card{align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+  .learning-sprint-card:first-child{padding-top:0}
+  .learning-sprint-num{flex:0 0 2ch;min-width:2ch;font-size:1rem}
+  .learning-sprint-content strong{font-size:1rem;line-height:1.3}
+  .learning-sprint-content span{font-size:.875rem;line-height:1.45}
+  .learning-sprint-target{font-size:.875rem;line-height:1.5}
 
-  .learning-platform-layers li {
-    grid-template-columns: 1fr;
-  }
+  .learning-track-grid{gap:14px}
+  .learning-track{height:auto;min-height:0;padding:18px;border-radius:18px}
+  .learning-track--active{border-left:3px solid var(--ln-now)}
+  .learning-track--next{background:var(--ln-platform-bg)}
+  .learning-track--later{background:var(--ln-stone)}
+  .learning-track-top{margin-bottom:8px}
+  .learning-track-num,.learning-stage{font-size:.72rem}
+  .learning-track h3{font-size:1rem;line-height:1.3;margin-bottom:8px}
+  .learning-track-why{margin-bottom:14px;font-size:.92rem;line-height:1.55}
+  .learning-track-body{display:none}
+  .learning-track-mobile{display:block}
+  .learning-track-mobile-row{padding:11px 0;border-top:1px solid var(--line)}
+  .learning-track-mobile-row>span{display:block;margin-bottom:4px;font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .learning-track-mobile-row.is-current>span{color:var(--ln-now)}
+  .learning-track-mobile-row p{margin:0;font-size:.92rem;line-height:1.5;color:var(--ln-surface-muted)}
+  .learning-track-mobile-row ul{margin:0;padding-left:1rem;font-size:.92rem;line-height:1.5;color:var(--ln-surface-muted)}
+  .learning-track-mobile-row li+li{margin-top:2px}
+  .learning-track-mobile-unlocks p{color:var(--ln-surface-text);font-weight:600}
+  .learning-track-details{padding-top:12px;border-top:1px solid var(--line)}
+  .learning-track-details-body{padding-top:12px}
+  .learning-track-details h4{margin:12px 0 4px;font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;color:var(--muted)}
+  .learning-track-details h4:first-child{margin-top:0}
+  .learning-track-details p,.learning-track-details .learning-track-links{margin:0;font-size:.875rem;line-height:1.5;color:var(--ln-surface-muted)}
+
+  .learning-platform{padding:18px;border-radius:18px}
+  .learning-platform h2{font-size:1.35rem;line-height:1.2;margin:8px 0 10px}
+  .learning-platform>p{font-size:.92rem;line-height:1.55;margin-bottom:16px}
+  .learning-platform-layers{max-width:none;gap:0}
+  .learning-platform-layers li{grid-template-columns:1fr;gap:3px;padding:11px 12px 20px;border-radius:10px;position:relative}
+  .learning-platform-layers li:not(:last-child){margin-bottom:14px}
+  .learning-platform-layers li:not(:last-child)::after{content:'↓';position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);color:var(--ln-platform-meta);font-weight:700}
+  .learning-platform-layers strong{font-size:.72rem;padding:0}
+  .learning-platform-layers span{font-size:.92rem;line-height:1.45}
+  .learning-platform-aside{grid-template-columns:1fr;gap:0;margin-top:18px}
+  .learning-platform-aside div{padding:12px 0}
+  .learning-platform-aside h3{font-size:.72rem}
+  .learning-platform-aside p{font-size:.875rem;line-height:1.5}
+
+  .learning-convergence{gap:12px}
+  .learning-convergence-item,.learning-convergence-item:first-child{padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--ln-surface)}
+  .learning-convergence-item h3{font-size:1rem;line-height:1.3}
+  .learning-convergence-eq{font-size:.72rem;line-height:1.5}
+  .learning-convergence-item p{font-size:.92rem;line-height:1.5}
+  .learning-convergence-more{padding:12px 2px}
+
+  .learning-evidence-loop{display:grid;grid-template-columns:1fr;gap:0;font-size:.78rem}
+  .learning-evidence-loop li{display:grid;place-items:center;gap:5px;padding:8px 12px;background:var(--ln-surface);border:1px solid var(--line);border-radius:10px;position:relative}
+  .learning-evidence-loop li:not(:last-child){margin-bottom:18px}
+  .learning-evidence-loop li:not(:last-child)::after{content:'↓';position:absolute;top:31px;color:var(--ln-now)}
+  .learning-evidence-path{font-size:.875rem;line-height:1.6;text-align:center}
+  .learning-evidence-note{font-size:.875rem;line-height:1.5;margin-top:12px}
+
+  .learning-foundations{gap:12px}
+  .learning-foundations li{grid-template-columns:1fr;gap:5px;padding:15px 16px;border:1px solid var(--line);border-radius:14px;background:var(--ln-surface);align-items:start}
+  .learning-foundations strong{font-size:1rem;line-height:1.3}
+  .learning-foundation-detail{font-size:.875rem!important;line-height:1.45}
+  .learning-foundations .learning-stage{justify-self:start;margin-top:2px}
+
+  .learning-journey{gap:0;border-left:1px solid var(--line);margin-left:5px}
+  .learning-journey li{grid-template-columns:4.25rem minmax(0,1fr);gap:10px;margin-left:-5px;padding:10px 0 10px 18px;border-bottom:0;position:relative;font-size:.92rem;line-height:1.5}
+  .learning-journey li::before{content:'';position:absolute;left:0;top:17px;width:9px;height:9px;border-radius:50%;background:var(--line-strong)}
+  .learning-journey li:nth-last-child(-n+3)::before{background:var(--ln-now)}
+  .learning-journey time,.learning-journey .learning-journey-when{font-size:.72rem;padding-top:2px}
+
+  .learning-milestones{grid-template-columns:1fr;gap:14px}
+  .learning-milestone{padding:18px;border-radius:18px}
+  .learning-milestone .mono-label,.learning-milestone-proof{font-size:.72rem}
+  .learning-milestone h3{font-size:1rem;line-height:1.3}
+  .learning-milestone ul{font-size:.92rem;line-height:1.55}
+
+  .learning-cta{margin-top:0;padding:20px 18px;border-radius:18px}
+  .learning-cta h2{font-size:1.35rem;line-height:1.2}
+  .learning-cta p{font-size:.92rem;line-height:1.55;margin-bottom:16px}
+  .learning-cta-actions{align-items:flex-start;gap:10px 16px}
+  .learning-cta-actions .btn{width:100%}
+  .learning-cta-actions .btn-text{min-height:32px}
 }
 
 @media(max-width:480px){
-  .learning-evidence-loop li:not(:last-child)::after {
-    content: "↓";
-  }
+  .learning-cta-actions{display:grid;grid-template-columns:1fr}
+}
 
-  .learning-cta-actions {
-    flex-direction: column;
-    align-items: stretch;
+/* Learning: shared major-card system */
+#view-learning .learning-page{
+  width:100%;
+  max-width:1100px;
+  min-width:0;
+  box-sizing:border-box;
+}
+#view-learning .learning-card{
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  height:auto;
+  min-height:0;
+  box-sizing:border-box;
+  overflow:hidden;
+  padding:clamp(22px,2vw,26px);
+  border:1px solid var(--ln-surface-border);
+  border-radius:18px;
+}
+#view-learning .learning-card--standard{
+  background:var(--ln-surface);
+  color:var(--ln-surface-text);
+}
+#view-learning .learning-card--compact{
+  padding:clamp(18px,1.8vw,22px);
+  background:var(--ln-surface);
+  color:var(--ln-surface-text);
+}
+#view-learning .learning-card--feature{
+  background:var(--ln-platform-bg);
+  color:var(--ln-platform-text);
+  border-color:var(--ln-platform-border);
+}
+#view-learning .learning-card--track{
+  padding:clamp(22px,2vw,26px);
+}
+#view-learning .learning-card--summary{
+  padding:22px;
+}
+#view-learning .learning-section{
+  margin-bottom:clamp(36px,3.6vw,44px);
+}
+#view-learning .learning-section-head{
+  margin-bottom:14px;
+}
+#view-learning .learning-section-head .mono-label,
+#view-learning .learning-platform > .mono-label{
+  margin:0 0 8px;
+  font-family:var(--font-mono);
+  font-size:.6875rem;
+  font-weight:700;
+  letter-spacing:.09em;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+#view-learning .learning-split-hero{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+  margin-bottom:0;
+  align-items:stretch;
+}
+#view-learning .learning-split-main,
+#view-learning .learning-split-side{
+  display:flex;
+  flex-direction:column;
+}
+#view-learning .learning-split-side .learning-sprint{
+  flex:1;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+}
+#view-learning .learning-north-star{
+  margin-bottom:clamp(36px,3.6vw,44px);
+}
+#view-learning .learning-path{
+  margin-bottom:16px;
+}
+#view-learning .learning-track-grid{
+  gap:16px;
+}
+#view-learning .learning-track-top{
+  min-height:24px;
+  align-items:start;
+}
+#view-learning .learning-track-top .learning-stage{
+  justify-self:end;
+  align-self:start;
+  margin:0;
+}
+#view-learning .learning-platform{
+  padding:clamp(22px,2vw,26px);
+}
+#view-learning .learning-platform-layers{
+  margin-inline:auto;
+  width:100%;
+}
+#view-learning .learning-contained-section .learning-section-head{
+  max-width:68ch;
+}
+#view-learning .learning-convergence{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;
+}
+#view-learning .learning-convergence-item,
+#view-learning .learning-convergence-item:first-child{
+  padding:18px 20px;
+  border:0;
+  border-top:1px solid var(--ln-surface-border);
+  border-radius:0;
+  background:transparent;
+}
+#view-learning .learning-convergence-item:nth-child(-n+2){
+  padding-top:0;
+  border-top:0;
+}
+#view-learning .learning-convergence-item:nth-child(odd){
+  padding-left:0;
+}
+#view-learning .learning-convergence-item:nth-child(even){
+  padding-right:0;
+  border-left:1px solid var(--ln-surface-border);
+}
+#view-learning .learning-convergence-item:nth-last-child(-n+2){
+  padding-bottom:0;
+}
+#view-learning .learning-convergence-more{
+  grid-column:1/-1;
+  margin-top:18px;
+  padding:14px 0 0;
+  border-top:1px solid var(--ln-surface-border);
+}
+#view-learning .learning-evidence-loop{
+  align-items:center;
+}
+#view-learning .learning-foundations li{
+  border-bottom-color:var(--ln-surface-border);
+}
+#view-learning .learning-foundations li:last-child,
+#view-learning .learning-journey li:last-child{
+  border-bottom:0;
+  padding-bottom:0;
+}
+#view-learning .learning-foundations li:first-child,
+#view-learning .learning-journey li:first-child{
+  padding-top:0;
+}
+#view-learning .learning-milestones{
+  align-items:start;
+}
+#view-learning .learning-milestone{
+  border-radius:18px;
+}
+#view-learning .learning-cta{
+  margin-top:0;
+  padding:clamp(22px,2vw,26px);
+  border-radius:18px;
+  background:var(--ln-stone);
+  color:var(--ln-stone-text);
+}
+body:has(#view-learning.active) .site-footer{
+  margin-top:28px!important;
+}
+body:has(#view-learning.active) .footer-inner{
+  padding-bottom:calc(28px + env(safe-area-inset-bottom));
+}
+@media(min-width:768px) and (max-width:899px){
+  #view-learning .learning-split-hero{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
   }
-
-  .learning-cta-actions .btn {
-    width: 100%;
+  #view-learning .learning-milestones{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:767px){
+  #view-learning .learning-card{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    height:auto;
+    min-height:0;
+    padding:18px;
+    border-radius:18px;
+  }
+  #view-learning .learning-split-hero{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  #view-learning .learning-north-star{
+    margin-bottom:40px;
+  }
+  #view-learning .learning-section{
+    margin-bottom:40px;
+  }
+  #view-learning .learning-section-head{
+    margin-bottom:14px;
+  }
+  #view-learning .learning-track{
+    padding:18px;
+    border-radius:18px;
+  }
+  #view-learning .learning-platform{
+    padding:18px;
+  }
+  #view-learning .learning-convergence{
+    grid-template-columns:1fr;
+  }
+  #view-learning .learning-convergence-item,
+  #view-learning .learning-convergence-item:first-child,
+  #view-learning .learning-convergence-item:nth-child(-n+2),
+  #view-learning .learning-convergence-item:nth-child(odd),
+  #view-learning .learning-convergence-item:nth-child(even),
+  #view-learning .learning-convergence-item:nth-last-child(-n+2){
+    padding:16px 0;
+    border:0;
+    border-top:1px solid var(--ln-surface-border);
+    border-radius:0;
+    background:transparent;
+  }
+  #view-learning .learning-convergence-item:first-child{
+    padding-top:0;
+    border-top:0;
+  }
+  #view-learning .learning-convergence-item:last-of-type{
+    padding-bottom:0;
+  }
+  #view-learning .learning-evidence-loop li{
+    background:transparent;
+    border:0;
+    border-radius:0;
+  }
+  #view-learning .learning-foundations{
+    gap:0;
+  }
+  #view-learning .learning-foundations li{
+    grid-template-columns:1fr;
+    gap:5px;
+    padding:14px 0;
+    border:0;
+    border-bottom:1px solid var(--ln-surface-border);
+    border-radius:0;
+    background:transparent;
+  }
+  #view-learning .learning-journey{
+    margin-left:5px;
+  }
+  #view-learning .learning-milestones{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  #view-learning .learning-cta{
+    padding:20px 18px;
   }
 }
 
@@ -9086,8 +10516,15 @@ html[data-theme="dark"] .learning-platform-layers li {
     padding-inline: var(--mobile-gutter);
     padding-top: env(safe-area-inset-top);
     background: var(--surface-primary);
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
     width: 100%;
     box-sizing: border-box;
+  }
+
+  .mobile-header .btn-icon {
+    background: var(--surface-secondary);
+    color: var(--ink);
   }
   
   /* Mobile Menu */
@@ -9165,13 +10602,26 @@ html[data-theme="dark"] .learning-platform-layers li {
   .career-nodes, .project-matrix, .capability-legend-grid, .profile-principle-list, .recruiter-snapshot-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  #view-profile .profile-card { padding: 22px; }
+  #view-profile .profile-origin-grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, .85fr);
+  }
+  #view-profile .profile-principle-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #view-profile .profile-principle { padding: 18px; }
+  #view-profile .profile-principle:nth-child(3n+1) { padding-left: 0; border-left: 0; }
+  #view-profile .profile-principle:nth-child(3n) { padding-right: 0; }
+  #view-profile .profile-principle:nth-child(-n+3) { padding-top: 0; }
+  #view-profile .profile-principle:nth-child(n+4) { border-top: 1px solid var(--line); }
   
   /* Tables */
   table { width: 100%; }
   .table-wrapper { overflow-x: auto; width: 100%; display: block; }
   
   /* Dialogs */
-  #cert-dialog[open], #research-dialog[open] {
+  #research-dialog[open] {
     width: calc(100vw - 32px); max-width: 100vw; height: auto; max-height: calc(100dvh - 32px);
   }
   
@@ -9204,11 +10654,10 @@ html[data-theme="dark"] .learning-platform-layers li {
   .project-feature-contrib, .contact-layout, .research-hero, .research-scope, .research-findings,
   .research-figures, .research-recs, .research-demonstrates, .research-role-grid, .research-paper-block,
   .research-record, .research-scenario-metrics, .research-system-map-grid, .research-flow, .research-glance,
-  .lab-library, .lab-ws-grid, .credential-featured, .credential-grid, .recruiter-cap-grid,
+  .lab-library, .lab-ws-grid, .recruiter-cap-grid,
   .recruiter-timeline-item, .knowledge-featured, .knowledge-list, .knowledge-topic-grid,
   .toolbox-principles, .toolbox-playbook-grid, .toolbox-tco-grid, .toolbox-building-grid,
-  .capability-depth-row, .learning-split-hero, .learning-track-body, .learning-platform-aside,
-  .learning-milestones {
+  .capability-depth-row {
     grid-template-columns: 1fr !important;
   }
 
@@ -9222,9 +10671,24 @@ html[data-theme="dark"] .learning-platform-layers li {
   .career-node { flex-direction: column; align-items: flex-start; }
   
   /* Profile */
-  .profile-principle { display: grid; grid-template-columns: 28px minmax(0,1fr); padding: 0 0 20px; }
-  .profile-education-entry { grid-template-columns: 1fr; gap: 8px; }
-  .profile-education-metric { justify-self: start; }
+  #view-profile .profile-card { padding: 16px; }
+  #view-profile .profile-origin-grid,
+  #view-profile .profile-split { grid-template-columns: 1fr !important; }
+  #view-profile .profile-principle {
+    display: grid;
+    grid-template-columns: 28px minmax(0,1fr);
+    grid-template-rows: auto auto;
+    padding: 0 0 28px;
+    border: 0;
+  }
+  #view-profile .profile-principle:last-child { padding-bottom: 0; }
+  #view-profile .profile-education-entry {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 16px;
+    align-items: start;
+  }
+  #view-profile .profile-education-entry > div { grid-column: 1 / -1; }
+  #view-profile .profile-education-metric { justify-self: end; text-align: right; }
   
   /* Experience */
   .experience-timeline { padding-left: 0; border-left: none; }
@@ -9295,7 +10759,36 @@ html[data-theme="dark"] .learning-platform-layers li {
   .contact-cta { height: auto; }
   
   /* Recruiter */
-  .recruiter-toolbar .btn { flex: 1 1 100%; }
+  .recruiter-toolbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    padding: var(--mobile-card-padding);
+  }
+  .recruiter-cv-dropdown,
+  .recruiter-toolbar > .btn,
+  .recruiter-toolbar-secondary { width: 100%; }
+  .recruiter-toolbar > .btn,
+  .recruiter-cv-dropdown > .btn { justify-content: center; }
+  .recruiter-cv-menu {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+    box-shadow: none;
+  }
+  .recruiter-toolbar-secondary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-left: 0;
+  }
+  .recruiter-toolbar-secondary .btn-text {
+    min-width: 0;
+    padding: 8px 4px;
+    justify-content: center;
+    text-align: center;
+  }
   .recruiter-credential { grid-template-columns: 1fr; gap: 6px; }
   .recruiter-cred-status { justify-self: start; white-space: normal; }
 
@@ -9308,8 +10801,8 @@ html[data-theme="dark"] .learning-platform-layers li {
   .btn.primary-action { width: 100%; justify-content: center; }
   
   /* Full screen dialogs on very small screens */
-  #cert-dialog[open], #research-dialog[open] {
-    width: 100vw !important; height: 100dvh !important; max-width: none !important; max-height: none !important; border-radius: 0 !important; top: 0 !important; left: 0 !important; translate: 0 !important;
+  #research-dialog[open] {
+    width: 100% !important; height: 100dvh !important; max-width: none !important; max-height: none !important; border-radius: 0 !important; top: 0 !important; left: 0 !important; translate: 0 !important;
   }
 }
 
@@ -9437,7 +10930,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 <div class="page-inner">
   <div class="bento-grid">
     <!-- ROW 1: Hero + side panels -->
-    <div class="bento-col-7 module module-light">
+    <div class="bento-col-7 module module-light home-card home-card--feature">
       <div class="hero-module">
         <div>
           <p class="mono-label">India / Remote</p>
@@ -9452,19 +10945,19 @@ html[data-theme="dark"] .learning-platform-layers li {
           </div>
         </div>
         <div class="hero-portrait-wrap">
-          <img class="hero-portrait" src="./assets/images/bhramar-raut.jpg" alt="Bhramar Raut" width="320" height="400" loading="eager" fetchpriority="high">
+          <img class="hero-portrait" src="./assets/images/bhramar-raut-home.jpg" alt="Bhramar Raut" width="320" height="400" loading="eager" fetchpriority="high">
         </div>
       </div>
     </div>
     <div class="bento-col-5 bento-side-stack">
-      <div class="module module-light home-snapshot">
+      <div class="module module-light home-card home-card--compact home-snapshot">
         <p class="mono-label">Recruiter snapshot</p>
         <h3 class="home-snapshot-title">Immediate joiner</h3>
         <p class="home-snapshot-line">Former Wipro Project Engineer</p>
         <p class="home-snapshot-line">PSM I · Open to relocation · India / Remote</p>
         <a href="/recruiter/" class="btn btn-primary btn-sm home-snapshot-cta" data-nav-link="recruiter">Recruiter view</a>
       </div>
-      <div class="module module-light" id="signal-rail">
+      <div class="module module-light home-card home-card--compact" id="signal-rail">
         <p class="mono-label">Career signals</p>
         <div class="career-track">
           <div class="career-nodes">
@@ -9479,7 +10972,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
 
     <!-- ROW 2: Projects -->
-    <a href="/projects/skillverse/" class="bento-col-7 module" data-nav-link="projects/skillverse" id="home-skillverse">
+    <a href="/projects/skillverse/" class="bento-col-7 module home-card home-card--feature" data-nav-link="projects/skillverse" id="home-skillverse">
       <p class="mono-label">01 / Selected work</p>
       <div class="metric-big">6+</div>
       <div class="metric-label">Product areas</div>
@@ -9493,7 +10986,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       </div>
       <span class="project-link">View case study →</span>
     </a>
-    <a href="/projects/catalyx/" class="bento-col-5 module module-dark" data-nav-link="projects/catalyx" id="home-catalyx">
+    <a href="/projects/catalyx/" class="bento-col-5 module module-dark home-card home-card--dark" data-nav-link="projects/catalyx" id="home-catalyx">
       <p class="mono-label">02 / Admissions ops</p>
       <div class="home-project-metrics">
         <div>
@@ -9518,7 +11011,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     </a>
 
     <!-- ROW 3: Support loop -->
-    <div class="bento-col-12 module module-dark" id="operating-loop">
+    <div class="bento-col-12 module module-dark home-card home-card--dark home-card--full" id="operating-loop">
       <p class="mono-label">How I work</p>
       <h2>My support loop</h2>
       <p class="support-loop-lead">From unclear behavior to reproducible evidence.</p>
@@ -9533,7 +11026,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
 
     <!-- ROW 4: Thinking + Certs -->
-    <div class="bento-col-6 module module-light home-knowledge">
+    <div class="bento-col-6 module module-light home-card home-knowledge">
       <p class="mono-label">Thinking</p>
       <h3>Knowledge notes</h3>
       <a href="/knowledge/ai-agents-without-fake-coding/" class="article-feature" data-nav-link="knowledge/ai-agents-without-fake-coding">
@@ -9551,28 +11044,28 @@ html[data-theme="dark"] .learning-platform-layers li {
       </div>
       <a href="/knowledge/" class="btn-text home-panel-link" data-nav-link="knowledge">View all notes →</a>
     </div>
-    <div class="bento-col-6 module module-light home-credentials">
+    <div class="bento-col-6 module module-light home-card home-credentials">
       <p class="mono-label">Credentials</p>
       <div class="credential-home-list">
         <div class="credential-home-row">
           <div class="viz-circle viz-circle--lime credential-home-badge">PSM</div>
-          <div>
-            <span class="credential-home-status credential-home-status--active">Active</span>
+          <div class="credential-home-copy">
             <h4>PSM I</h4>
             <p class="text-xs text-muted">Scrum.org · 2026</p>
           </div>
+          <span class="credential-home-status credential-home-status--active">Active</span>
         </div>
         <div class="credential-home-row">
           <span class="credential-home-tag">AWS</span>
-          <div>
-            <span class="credential-home-status credential-home-status--history">History</span>
+          <div class="credential-home-copy">
             <h4>Cloud Practitioner</h4>
             <p class="text-xs text-muted cert-expired">Earned 2023 · Expired Apr 2026</p>
           </div>
+          <span class="credential-home-status credential-home-status--history">History</span>
         </div>
         <div class="credential-home-row">
           <span class="credential-home-tag">IBM</span>
-          <div>
+          <div class="credential-home-copy">
             <h4>Databases and SQL for Data Science with Python</h4>
             <p class="text-xs text-muted">Coursera · Course credential</p>
           </div>
@@ -9582,7 +11075,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
 
     <!-- ROW 5: Building + CTA -->
-    <div class="bento-col-8 module module-light" id="home-building">
+    <div class="bento-col-8 module module-light home-card" id="home-building">
       <p class="mono-label">Currently building</p>
       <div class="building-strip">
         <div class="building-item building-item--now"><h4>Now</h4><ul><li>SQL · APIs · Postman</li><li>ITSM · Linux · Networking</li></ul></div>
@@ -9590,7 +11083,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         <div class="building-item building-item--later"><h4>Later</h4><ul><li>Implementation · Solutions</li></ul></div>
       </div>
     </div>
-    <a href="/contact/" class="bento-col-4 module contact-cta" data-nav-link="contact" aria-label="Contact Bhramar Raut">
+    <a href="/contact/" class="bento-col-4 module home-card home-card--lavender home-card--compact contact-cta" data-nav-link="contact" aria-label="Contact Bhramar Raut">
       <p class="mono-label contact-cta-kicker">Open to opportunities</p>
       <div class="contact-cta-body">
         <h2 class="contact-cta-title">Let's talk.</h2>
@@ -9601,14 +11094,14 @@ html[data-theme="dark"] .learning-platform-layers li {
     </a>
   </div>
 
-  <div class="about-strip">
-    <p class="mono-label">About</p>
+  <section class="about-strip home-card home-card--full" aria-labelledby="home-about-label">
+    <p class="mono-label" id="home-about-label">About</p>
     <div class="about-strip-body">
       <p>Bhramar Raut is a former Wipro Project Engineer and Civil Engineering graduate from RCOEM Nagpur, building toward Product Support, Application Support and Implementation roles.</p>
       <p>His background combines enterprise IT exposure, structured technical training, PSM I, project-based AI-assisted product delivery, functional validation and hands-on technology troubleshooting — including Skillverse.in and Catalyx.</p>
       <a href="/profile/" class="btn-text" data-nav-link="profile">Profile →</a>
     </div>
-  </div>
+  </section>
 </div>
 </section>
 
@@ -9622,7 +11115,7 @@ html[data-theme="dark"] .learning-platform-layers li {
   </header>
 
   <div class="profile-origin-grid">
-    <section class="profile-origin" aria-labelledby="profile-origin-title">
+    <section class="profile-origin profile-card profile-card--neutral" aria-labelledby="profile-origin-title">
       <p class="profile-section-label" id="profile-origin-title">Origin</p>
       <div class="profile-origin-copy">
         <p>Civil Engineering graduate who entered enterprise technology through Wipro Velocity and later spent more than two years at Wipro within its enterprise IT environment. That experience provided formal technical training, exposure to structured enterprise processes and a foundation in software-delivery concepts.</p>
@@ -9630,7 +11123,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       </div>
     </section>
 
-    <aside class="profile-path" aria-label="Career path progression">
+    <aside class="profile-path profile-card profile-card--compact" aria-label="Career path progression">
       <p class="profile-section-label">Path</p>
       <ol class="profile-path-list">
         <li class="profile-path-step">
@@ -9665,7 +11158,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     </aside>
   </div>
 
-  <section class="profile-principles" aria-labelledby="profile-principles-title">
+  <section class="profile-principles profile-card profile-card--neutral profile-card--full" aria-labelledby="profile-principles-title">
     <div class="profile-principles-head">
       <p class="profile-section-label">Working principles</p>
       <h2 id="profile-principles-title">How I work</h2>
@@ -9700,7 +11193,7 @@ html[data-theme="dark"] .learning-platform-layers li {
   </section>
 
   <div class="profile-split">
-    <section class="profile-values" aria-labelledby="profile-values-title">
+    <section class="profile-values profile-card profile-card--neutral" aria-labelledby="profile-values-title">
       <p class="profile-section-label" id="profile-values-title">What I value</p>
       <ol class="profile-values-list">
         <li>Evidence over claims</li>
@@ -9711,7 +11204,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       </ol>
     </section>
 
-    <section class="profile-direction" aria-labelledby="profile-direction-title">
+    <section class="profile-direction profile-card profile-card--lavender" aria-labelledby="profile-direction-title">
       <p class="profile-section-label" id="profile-direction-title">Current direction</p>
       <div class="profile-direction-group">
         <p class="profile-direction-kicker">Primary roles</p>
@@ -9738,7 +11231,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     </section>
   </div>
 
-  <section class="profile-education" aria-labelledby="profile-education-title">
+  <section class="profile-education profile-card profile-card--neutral profile-card--full" aria-labelledby="profile-education-title">
     <p class="profile-section-label" id="profile-education-title">Education</p>
     <ul class="profile-education-list">
       <li class="profile-education-entry">
@@ -9796,7 +11289,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         <span class="experience-date-range">Current focus</span>
       </div>
       <div class="experience-rail" aria-hidden="true"><span class="experience-marker"></span></div>
-      <div class="experience-content experience-content--card">
+      <div class="experience-content experience-card experience-card--current">
         <p class="experience-kicker">Current direction</p>
         <ul class="experience-role-stack">
           <li>Product Support</li>
@@ -9813,7 +11306,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         <time class="experience-date-range" datetime="2026-04">Apr — Jul 2026</time>
       </div>
       <div class="experience-rail" aria-hidden="true"><span class="experience-marker"></span></div>
-      <div class="experience-content experience-content--card">
+      <div class="experience-content experience-card experience-card--project">
         <h2 class="experience-heading">Analytika Improva SV</h2>
         <p class="experience-role">Product Operations Support / AI-Assisted Product Delivery</p>
         <div class="experience-meta">
@@ -9834,7 +11327,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         <time class="experience-date-range" datetime="2024-11">Nov 2024 — Mar 2025</time>
       </div>
       <div class="experience-rail" aria-hidden="true"><span class="experience-marker"></span></div>
-      <div class="experience-content experience-content--editorial">
+      <div class="experience-content experience-card experience-card--compact experience-card--project-supporting">
         <h2 class="experience-heading">BrickBillion Properties</h2>
         <p class="experience-role">Business Operations Support</p>
         <div class="experience-meta">
@@ -9851,7 +11344,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         <time class="experience-date-range" datetime="2022-09">Sep 2022 — Jan 2025</time>
       </div>
       <div class="experience-rail" aria-hidden="true"><span class="experience-marker"></span></div>
-      <div class="experience-content experience-content--card">
+      <div class="experience-content experience-card experience-card--employment">
         <h2 class="experience-heading">Wipro Limited</h2>
         <p class="experience-role">Project Engineer</p>
         <div class="experience-meta">
@@ -9868,7 +11361,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         <time class="experience-date-range" datetime="2022-04">Apr — Jul 2022</time>
       </div>
       <div class="experience-rail" aria-hidden="true"><span class="experience-marker"></span></div>
-      <div class="experience-content experience-content--milestone">
+      <div class="experience-content experience-card experience-card--compact experience-card--training">
         <p class="experience-kicker">Training milestone</p>
         <h2 class="experience-heading">Wipro Velocity / StackRoute</h2>
         <p class="experience-role">Certificate Program in Java Full Stack</p>
@@ -9885,7 +11378,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         <time class="experience-date-range" datetime="2021-12">Dec 2021 — Jun 2022</time>
       </div>
       <div class="experience-rail" aria-hidden="true"><span class="experience-marker"></span></div>
-      <div class="experience-content experience-content--editorial">
+      <div class="experience-content experience-card experience-card--compact experience-card--internship">
         <h2 class="experience-heading">Arcons Infrastructures &amp; Constructions Pvt. Ltd.</h2>
         <p class="experience-role">Project Engineering Intern</p>
         <div class="experience-meta">
@@ -9924,7 +11417,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 
   <h2 class="projects-featured-label" id="projects-featured-label">Featured</h2>
   <div class="projects-featured" role="list" aria-labelledby="projects-featured-label">
-    <a href="/projects/skillverse/" class="project-feature project-feature--skillverse" data-nav-link="projects/skillverse" role="listitem">
+    <a href="/projects/skillverse/" class="project-card project-card--featured project-feature project-feature--skillverse" data-nav-link="projects/skillverse" role="listitem">
       <div class="project-feature-content">
         <div class="project-feature-top">
           <span class="project-feature-index">01</span>
@@ -9936,13 +11429,17 @@ html[data-theme="dark"] .learning-platform-layers li {
           <div class="project-feature-metric"><strong>6+</strong><span>Product areas</span></div>
         </div>
         <p class="project-feature-contrib-label">My contribution</p>
-        <ul class="project-feature-contrib">
-          <li>Requirements</li>
-          <li>Issue reproduction</li>
-          <li>User journeys</li>
-          <li>Fix verification</li>
-          <li>Functional validation</li>
-        </ul>
+        <div class="project-feature-contrib">
+          <ul>
+            <li>Requirements</li>
+            <li>User journeys</li>
+            <li>Functional validation</li>
+          </ul>
+          <ul>
+            <li>Issue reproduction</li>
+            <li>Fix verification</li>
+          </ul>
+        </div>
       </div>
       <div class="project-visual" aria-label="Delivery process">
         <ol class="project-process">
@@ -9956,7 +11453,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       <span class="project-feature-cta">View case study →</span>
     </a>
 
-    <a href="/projects/catalyx/" class="project-feature project-feature--catalyx" data-nav-link="projects/catalyx" role="listitem">
+    <a href="/projects/catalyx/" class="project-card project-card--featured project-card--featured-alt project-feature project-feature--catalyx" data-nav-link="projects/catalyx" role="listitem">
       <div class="project-feature-content">
         <div class="project-feature-top">
           <span class="project-feature-index">02</span>
@@ -9969,13 +11466,17 @@ html[data-theme="dark"] .learning-platform-layers li {
           <div class="project-feature-metric"><strong>7</strong><span>Role concepts</span></div>
         </div>
         <p class="project-feature-contrib-label">My contribution</p>
-        <ul class="project-feature-contrib">
-          <li>Workflow definition</li>
-          <li>Permissions</li>
-          <li>Role-based behaviour</li>
-          <li>Functional validation</li>
-          <li>Delivery tracking</li>
-        </ul>
+        <div class="project-feature-contrib">
+          <ul>
+            <li>Workflow definition</li>
+            <li>Role-based behaviour</li>
+            <li>Delivery tracking</li>
+          </ul>
+          <ul>
+            <li>Permissions</li>
+            <li>Functional validation</li>
+          </ul>
+        </div>
       </div>
       <div class="project-visual" aria-label="Role and operations model">
         <div class="project-matrix-panel">
@@ -9996,7 +11497,7 @@ html[data-theme="dark"] .learning-platform-layers li {
   <section class="projects-additional" aria-labelledby="projects-additional-label">
     <h2 class="projects-additional-label" id="projects-additional-label">Additional work</h2>
     <div class="project-additional-grid">
-      <article class="project-evidence-card project-evidence-card--brickbillion">
+      <article class="project-card project-card--supporting project-evidence-card project-evidence-card--brickbillion">
         <p class="project-evidence-kicker">03 / Real estate / Digital operations / Project-based / 2024–25</p>
         <h3>BrickBillion Properties — Digital Presence &amp; Business Operations</h3>
         <p class="project-evidence-note">Early-stage real-estate channel-partner business · Pune · Nov 2024 – Mar 2025</p>
@@ -10004,10 +11505,10 @@ html[data-theme="dark"] .learning-platform-layers li {
         <p class="project-evidence-group-label">Contribution</p>
         <ul class="project-evidence-list project-evidence-list--contrib">
           <li>Landing page</li>
-          <li>Content support</li>
           <li>Reel scripting</li>
-          <li>Enquiry tracking</li>
           <li>Social media</li>
+          <li>Content support</li>
+          <li>Enquiry tracking</li>
           <li>Operations</li>
         </ul>
         <div class="project-evidence-flow" aria-hidden="true">
@@ -10018,7 +11519,7 @@ html[data-theme="dark"] .learning-platform-layers li {
         </div>
       </article>
 
-      <article class="project-evidence-card">
+      <article class="project-card project-card--supporting project-evidence-card">
         <p class="project-evidence-kicker">04 / Engineering / Internship / 2021–22</p>
         <h3>NDB-II Highway Project</h3>
         <p class="project-evidence-metric">18<span>KM</span></p>
@@ -10035,9 +11536,11 @@ html[data-theme="dark"] .learning-platform-layers li {
         <p class="project-evidence-note project-evidence-note--strong">Industry Mentor Assessment · 46 / 50</p>
       </article>
 
-      <a href="/research/" class="project-evidence-card project-evidence-card--research" data-nav-link="research">
-        <p class="project-evidence-kicker">05 / Research / Publication / 2020</p>
-        <h3>Economic Impact on Construction Sector Due to COVID-19</h3>
+      <a href="/research/" class="project-card project-card--research project-evidence-card project-evidence-card--research" data-nav-link="research">
+        <div class="project-research-heading">
+          <p class="project-evidence-kicker">05 / Research / Publication / 2020</p>
+          <h3>Economic Impact on Construction Sector Due to COVID-19</h3>
+        </div>
         <p class="project-evidence-note">Co-author · Journal of Seybold Report · Volume 15 · Issue 8 · 2020</p>
         <span class="project-evidence-cta">View publication →</span>
       </a>
@@ -10423,7 +11926,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 
 <!-- VIEW: TOOLBOX -->
 <section id="view-toolbox" class="view" data-route="toolbox" aria-labelledby="toolbox-heading">
-<div class="page-inner">
+<div class="page-inner toolbox-page">
   <header class="page-head">
     <p class="mono-label">Thinking / Toolbox</p>
     <h1 id="toolbox-heading" class="display-page">Toolbox</h1>
@@ -10442,7 +11945,7 @@ html[data-theme="dark"] .learning-platform-layers li {
   </ol>
   <p class="toolbox-flow-caption">I choose tools from the problem outward — not from a preferred vendor inward. The stack has to survive requirements, constraints, daily workflow and ongoing operations.</p>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-principles-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--neutral" aria-labelledby="toolbox-principles-heading">
     <header class="toolbox-section-head">
       <p class="mono-label">01 / Method</p>
       <h2 id="toolbox-principles-heading">How I choose tools</h2>
@@ -10498,7 +12001,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 
   <section class="toolbox-section" aria-labelledby="toolbox-playbooks-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">02 / Implementation</p>
+      <p class="mono-label">02 / Playbooks</p>
       <h2 id="toolbox-playbooks-heading">Implementation playbooks</h2>
       <p>Four working patterns — what problem they address, how the stack fits together, and where the trade-offs sit.</p>
     </header>
@@ -10712,10 +12215,10 @@ html[data-theme="dark"] .learning-platform-layers li {
   </section>
 
   <div class="toolbox-compare-wrapper">
-    <section class="toolbox-section" aria-labelledby="toolbox-compare-heading">
+    <section class="toolbox-section toolbox-card toolbox-card--neutral toolbox-card--comparison" aria-labelledby="toolbox-compare-heading">
       <header class="toolbox-section-head">
-      <p class="mono-label">03 / Compare</p>
-      <h2 id="toolbox-compare-heading">Compare by need</h2>
+      <p class="mono-label">03 / Decision framework</p>
+      <h2 id="toolbox-compare-heading">Compare before committing</h2>
       <p>Lean and enterprise options side by side. Use “evaluate when” — not “best tool” — language for each need.</p>
     </header>
 
@@ -10829,9 +12332,9 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
   </section>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-when-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--neutral toolbox-card--comparison" aria-labelledby="toolbox-when-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">04 / Fit</p>
+      <p class="mono-label">04 / Build vs buy</p>
       <h2 id="toolbox-when-heading">When open source wins / when enterprise wins</h2>
       <p>Neither side wins by default. The decision follows constraints, not preference.</p>
     </header>
@@ -10860,7 +12363,7 @@ html[data-theme="dark"] .learning-platform-layers li {
   </section>
   </div>
 
-  <section class="toolbox-section toolbox-tco" aria-labelledby="toolbox-tco-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--lavender toolbox-tco" aria-labelledby="toolbox-tco-heading">
     <header class="toolbox-section-head">
       <p class="mono-label">05 / Cost reality</p>
       <h2 id="toolbox-tco-heading">Open source ≠ zero cost</h2>
@@ -10898,9 +12401,9 @@ html[data-theme="dark"] .learning-platform-layers li {
     <a class="btn-text" href="/knowledge/open-source-tco/" data-nav-link="knowledge/open-source-tco">Read: Open-source TCO →</a>
   </section>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-questions-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--neutral" aria-labelledby="toolbox-questions-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">06 / Gate</p>
+      <p class="mono-label">05 / Operating model</p>
       <h2 id="toolbox-questions-heading">Before I add a tool</h2>
       <p>Twelve questions that slow impulse adoption and surface switching cost early.</p>
     </header>
@@ -10929,9 +12432,9 @@ html[data-theme="dark"] .learning-platform-layers li {
     </ol>
   </section>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-cases-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--neutral" aria-labelledby="toolbox-cases-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">07 / Cases</p>
+      <p class="mono-label">Evidence / Cases</p>
       <h2 id="toolbox-cases-heading">Two illustrative mini cases</h2>
       <p>Short examples of how the principles show up in practice.</p>
     </header>
@@ -10951,9 +12454,9 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
   </section>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-stacks-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--neutral" aria-labelledby="toolbox-stacks-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">08 / Stacks</p>
+      <p class="mono-label">06 / Tool fit</p>
       <h2 id="toolbox-stacks-heading">Three compact stacks</h2>
       <p>Depth labels stay explicit so “used,” “building,” and “reference” do not blur together.</p>
     </header>
@@ -10990,16 +12493,16 @@ html[data-theme="dark"] .learning-platform-layers li {
 
   <section class="toolbox-section" aria-labelledby="toolbox-flagships-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">09 / Flagships</p>
+      <p class="mono-label">07 / Flagship tools</p>
       <h2 id="toolbox-flagships-heading">Flagship tools</h2>
       <p>Deeper profiles for the tools that carry the most of my current workflow.</p>
     </header>
     <div id="toolbox-flagships" class="toolbox-flagships"></div>
   </section>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-matrix-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--neutral toolbox-card--comparison" aria-labelledby="toolbox-matrix-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">10 / Matrix</p>
+      <p class="mono-label">09 / Qualitative matrix</p>
       <h2 id="toolbox-matrix-heading">Qualitative fit matrix</h2>
       <p>Not a scorecard. A quick read of where each tool tends to fit and what to watch.</p>
     </header>
@@ -11095,10 +12598,10 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
   </section>
 
-  <section class="toolbox-section" aria-labelledby="toolbox-depth-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--catalog" aria-labelledby="toolbox-depth-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">11 / Directory</p>
-      <h2 id="toolbox-depth-heading">Tool depth</h2>
+      <p class="mono-label">08 / Tool catalog</p>
+      <h2 id="toolbox-depth-heading">Tool catalog &amp; depth</h2>
       <p>Relationship labels for the wider set — filled from the toolbox data at runtime.</p>
     </header>
     <div class="toolbox-legend" aria-label="Depth legend">
@@ -11110,9 +12613,9 @@ html[data-theme="dark"] .learning-platform-layers li {
     <div id="toolbox-grid" class="toolbox-directory"></div>
   </section>
 
-  <section class="toolbox-section toolbox-building" aria-labelledby="toolbox-building-heading">
+  <section class="toolbox-section toolbox-card toolbox-card--neutral toolbox-building" aria-labelledby="toolbox-building-heading">
     <header class="toolbox-section-head">
-      <p class="mono-label">12 / Building</p>
+      <p class="mono-label">11 / Building now</p>
       <h2 id="toolbox-building-heading">Building now</h2>
       <p>Active skill areas tied to support and implementation readiness — not finished claims.</p>
     </header>
@@ -11144,7 +12647,8 @@ html[data-theme="dark"] .learning-platform-layers li {
     </div>
   </section>
 
-  <section class="toolbox-cta" aria-labelledby="toolbox-cta-heading">
+  <section class="toolbox-card toolbox-card--cta toolbox-cta" aria-labelledby="toolbox-cta-heading">
+    <p class="mono-label">12 / Evidence</p>
     <h2 id="toolbox-cta-heading">See the tools in project context</h2>
     <p>Projects show how the toolchain behaves under real requirements. Knowledge captures the decision notes. Recruiter view compresses the evidence.</p>
     <div class="toolbox-cta-actions">
@@ -11162,9 +12666,10 @@ html[data-theme="dark"] .learning-platform-layers li {
   <header class="page-head">
     <p class="mono-label">Proof / Certifications</p>
     <h1 id="cert-heading" class="display-page">Certifications</h1>
-    <p class="lead">External evidence of structured learning, technical foundations and professional development.</p>
+    <p class="lead">Verified learning and credential history.</p>
+    <p class="credentials-micro">External evidence of technical foundations and professional development.</p>
   </header>
-  <p class="credentials-read"><strong>How to read this page</strong>Credentials show formal learning evidence. Projects and labs show how that learning is applied. Credential ≠ capability.</p>
+  <p class="credentials-read">Credentials show formal learning evidence; projects and labs show practical application.</p>
   <div id="cert-grid"></div>
 </div>
 </section>
@@ -11616,11 +13121,11 @@ html[data-theme="dark"] .learning-platform-layers li {
 
   <section class="learning-north-star learning-section" aria-labelledby="learning-north-heading">
     <div class="learning-split-hero">
-      <div class="learning-split-main">
+      <div class="learning-split-main learning-card learning-card--standard">
         <div class="learning-section-head">
           <p class="mono-label">01 / Direction</p>
           <h2 id="learning-north-heading">North star</h2>
-          <p>One primary direction. Supporting skills add layers around how modern applications run, fail, communicate, store data and are supported.</p>
+          <p class="learning-north-intro">One direction, with supporting skills adding depth around modern applications.</p>
         </div>
         <ol class="learning-path" aria-label="Learning direction">
           <li class="learning-path-step learning-path-step--now">
@@ -11641,14 +13146,18 @@ html[data-theme="dark"] .learning-platform-layers li {
             <span class="learning-path-label">Longer term</span>
             <div class="learning-path-copy">
               <strong>Technical Operations · Integrations · Solutions depth</strong>
-              <span>Learning direction — not a guaranteed title path.</span>
+          <span class="learning-path-secondary">Learning direction — not a guaranteed title path.</span>
             </div>
           </li>
         </ol>
         <p class="learning-north-note">The goal is not to collect unrelated technologies. Each learning track adds another layer of understanding around how modern applications run, fail, communicate, store data and are supported.</p>
+        <details class="learning-north-more">
+          <summary>Why these tracks connect <span aria-hidden="true">↓</span></summary>
+          <p>The goal is not to collect unrelated technologies. Each learning track adds another layer of understanding around how modern applications run, fail, communicate, store data and are supported.</p>
+        </details>
       </div>
 
-      <div class="learning-split-side">
+      <div class="learning-split-side learning-card learning-card--standard">
         <div class="learning-section-head">
           <p class="mono-label">02 / Focus</p>
           <h2 id="learning-sprint-heading">Current learning sprint</h2>
@@ -11661,7 +13170,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 
   <section class="learning-section" aria-labelledby="learning-map-heading">
     <div class="learning-section-head">
-      <p class="mono-label">03 / Tracks</p>
+      <p class="mono-label">03 / Active learning map</p>
       <h2 id="learning-map-heading">Active learning map</h2>
       <p>Several tracks, one direction.</p>
     </div>
@@ -11669,7 +13178,7 @@ html[data-theme="dark"] .learning-platform-layers li {
   </section>
 
   <section class="learning-section" aria-labelledby="learning-platform-heading">
-    <div class="learning-platform">
+    <div class="learning-platform learning-card learning-card--feature">
       <p class="mono-label" style="color:var(--ln-platform-meta)">04 / Platform depth</p>
       <h2 id="learning-platform-heading">The stack I’m learning to see</h2>
       <p>Knowing one product UI is useful. Understanding the layers around the product — operating system, network, API, data, cloud, monitoring and service workflow — makes troubleshooting and implementation progressively stronger.</p>
@@ -11680,34 +13189,37 @@ html[data-theme="dark"] .learning-platform-layers li {
         <li><strong>Data</strong><span>SQL · records · states</span></li>
         <li><strong>System</strong><span>Windows · Linux · processes · logs</span></li>
         <li><strong>Network</strong><span>DNS · ports · connectivity</span></li>
-        <li><strong>Cloud</strong><span>AWS / GCP concepts · IAM · monitoring</span></li>
-        <li><strong>Service</strong><span>ITSM · incident · SLA · escalation · RCA</span></li>
+        <li><strong>Cloud / platform</strong><span>AWS / GCP concepts · IAM · monitoring</span></li>
       </ol>
       <div class="learning-platform-aside">
         <div>
-          <h3>Service management</h3>
-          <p>Spans the lifecycle — intake, triage, resolution, documentation and improvement.</p>
+          <h3>ITSM</h3>
+          <p>Service context across every layer — intake, triage, resolution and improvement.</p>
         </div>
         <div>
-          <h3>AI / automation</h3>
-          <p>Cross-cutting accelerator for research, documentation, implementation and analysis — with human validation.</p>
+          <h3>AI</h3>
+          <p>Assisted investigation, documentation and delivery — with human validation.</p>
+        </div>
+        <div>
+          <h3>Observability</h3>
+          <p>Logs, metrics and monitoring provide evidence across the stack.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="learning-section" aria-labelledby="learning-converge-heading">
+  <section class="learning-section learning-card learning-card--standard learning-contained-section" aria-labelledby="learning-converge-heading">
     <div class="learning-section-head">
-      <p class="mono-label">05 / Combinations</p>
+      <p class="mono-label">05 / Convergence</p>
       <h2 id="learning-converge-heading">Where the tracks converge</h2>
       <p>Breadth only matters when combinations unlock better support and implementation outcomes.</p>
     </div>
     <div class="learning-convergence" id="learning-convergence"></div>
   </section>
 
-  <section class="learning-section" aria-labelledby="learning-loop-heading">
+  <section class="learning-section learning-card learning-card--compact learning-contained-section" aria-labelledby="learning-loop-heading">
     <div class="learning-section-head">
-      <p class="mono-label">06 / Method</p>
+      <p class="mono-label">06 / Evidence</p>
       <h2 id="learning-loop-heading">Learning → evidence</h2>
       <p>Learning is only useful when it becomes proof — notes, labs, projects or credentials.</p>
     </div>
@@ -11719,12 +13231,13 @@ html[data-theme="dark"] .learning-platform-layers li {
       <li>Explain</li>
       <li>Apply</li>
     </ol>
+    <p class="learning-evidence-path">Learning <span>→</span> Knowledge <span>→</span> Support Lab <span>→</span> Projects</p>
     <p class="learning-evidence-note">Example: learn SQL joins → practice queries → build a small support-data check → document in Obsidian → publish a Knowledge note → apply in a troubleshooting scenario.</p>
   </section>
 
-  <section class="learning-section" aria-labelledby="learning-foundations-heading">
+  <section class="learning-section learning-card learning-card--standard learning-contained-section" aria-labelledby="learning-foundations-heading">
     <div class="learning-section-head">
-      <p class="mono-label">07 / Past</p>
+      <p class="mono-label">07 / Foundations</p>
       <h2 id="learning-foundations-heading">Foundations already built</h2>
       <p>Certification and training establish foundation — they are not automatic claims of current production depth.</p>
     </div>
@@ -11732,7 +13245,7 @@ html[data-theme="dark"] .learning-platform-layers li {
     <p class="learning-micro" style="margin-top:14px"><a href="/certifications/" data-nav-link="certifications">View credentials →</a></p>
   </section>
 
-  <section class="learning-section" aria-labelledby="learning-journey-heading">
+  <section class="learning-section learning-card learning-card--standard learning-contained-section" aria-labelledby="learning-journey-heading">
     <div class="learning-section-head">
       <p class="mono-label">08 / Journey</p>
       <h2 id="learning-journey-heading">Learning milestones</h2>
@@ -11743,49 +13256,51 @@ html[data-theme="dark"] .learning-platform-layers li {
 
   <section class="learning-section" aria-labelledby="learning-horizon-heading">
     <div class="learning-section-head">
-      <p class="mono-label">09 / Horizon</p>
+      <p class="mono-label">09 / Next</p>
       <h2 id="learning-horizon-heading">Next capability milestones</h2>
     </div>
     <div class="learning-milestones">
-      <article class="learning-milestone learning-milestone--now">
-        <p class="mono-label">Now</p>
+      <article class="learning-card learning-card--summary learning-milestone learning-milestone--now">
+        <p class="mono-label">Next 01</p>
         <h3>Support readiness</h3>
+        <p class="learning-milestone-proof">Proof expected</p>
         <ul>
-          <li>SQL / APIs / Postman</li>
-          <li>ITSM / JSM concepts</li>
-          <li>Linux + networking</li>
-          <li>Troubleshooting practice</li>
+          <li>Structured troubleshooting</li>
+          <li>API / SQL evidence</li>
+          <li>ITSM workflow understanding</li>
         </ul>
       </article>
-      <article class="learning-milestone learning-milestone--next">
-        <p class="mono-label">Next</p>
-        <h3>Platform literacy</h3>
+      <article class="learning-card learning-card--summary learning-milestone learning-milestone--next">
+        <p class="mono-label">Next 02</p>
+        <h3>Platform depth</h3>
+        <p class="learning-milestone-proof">Proof expected</p>
         <ul>
-          <li>ServiceNow fundamentals</li>
-          <li>AWS refresh + GCP basics</li>
-          <li>Monitoring / observability concepts</li>
-          <li>CI/CD + containers fundamentals</li>
+          <li>Linux</li>
+          <li>Networking</li>
+          <li>Cloud / monitoring</li>
         </ul>
       </article>
-      <article class="learning-milestone learning-milestone--later">
-        <p class="mono-label">Later</p>
+      <article class="learning-card learning-card--summary learning-milestone learning-milestone--later">
+        <p class="mono-label">Next 03</p>
         <h3>Implementation depth</h3>
+        <p class="learning-milestone-proof">Proof expected</p>
         <ul>
-          <li>Integrations</li>
-          <li>Platform troubleshooting</li>
-          <li>Solutions-oriented delivery depth</li>
+          <li>Integration workflows</li>
+          <li>Configuration</li>
+          <li>Validation / handover</li>
         </ul>
       </article>
     </div>
   </section>
 
-  <section class="learning-cta" aria-labelledby="learning-cta-heading">
-    <h2 id="learning-cta-heading">Learning only matters when it becomes evidence</h2>
-    <p>Building toward platform-depth support — understanding not only the product workflow, but the systems, APIs, data, network and service layers around it.</p>
+  <section class="learning-card learning-card--standard learning-cta" aria-labelledby="learning-cta-heading">
+    <h2 id="learning-cta-heading">Learning only matters when it becomes evidence.</h2>
+    <p>These tracks become useful through practical notes, labs and project work.</p>
     <div class="learning-cta-actions">
-      <a class="btn btn-primary" href="/knowledge/" data-nav-link="knowledge">Explore Knowledge</a>
-      <a class="btn btn-ghost" href="/projects/" data-nav-link="projects">View projects</a>
-      <a class="btn btn-ghost" href="/toolbox/" data-nav-link="toolbox">View Toolbox</a>
+      <a class="btn btn-primary" href="/support-lab/" data-nav-link="support-lab">View Support Lab</a>
+      <a class="btn-text" href="/knowledge/" data-nav-link="knowledge">Knowledge →</a>
+      <a class="btn-text" href="/projects/" data-nav-link="projects">Projects →</a>
+      <a class="btn-text" href="/toolbox/" data-nav-link="toolbox">Toolbox →</a>
     </div>
   </section>
 </div>
@@ -11858,15 +13373,15 @@ html[data-theme="dark"] .learning-platform-layers li {
 <div class="page-inner recruiter-page">
   <div class="recruiter-shell" id="print-target">
     <div class="recruiter-toolbar no-print">
-      <div class="dropdown no-print" style="position: relative; display: inline-block;">
+      <div class="dropdown recruiter-cv-dropdown no-print">
         <button type="button" class="btn btn-primary btn-sm" id="recruiter-cv-btn" aria-label="Download CV" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('recruiter-pdf-menu').style.display = document.getElementById('recruiter-pdf-menu').style.display === 'none' ? 'block' : 'none'">
           <i class="bi bi-file-earmark-pdf-fill" aria-hidden="true"></i> Download CV
         </button>
-        <div class="dropdown-menu" id="recruiter-pdf-menu" style="display: none; position: absolute; top: 100%; right: 0; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem; z-index: 100; min-width: 250px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 0.5rem; text-align: left;">
-          <p style="margin: 0 0 0.5rem 0; padding: 0 0.5rem; font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Select Target Role:</p>
-          <a href="./assets/cv/Bhramar_Raut_Resume_ProductApplicationSupport.docx" class="btn btn-ghost btn-sm" style="display: block; text-align: left; width: 100%; margin-bottom: 0.25rem;">Product / Application Support</a>
-          <a href="./assets/cv/Bhramar_Raut_Resume_ProductOperations_Implementation.docx" class="btn btn-ghost btn-sm" style="display: block; text-align: left; width: 100%; margin-bottom: 0.25rem;">Product Operations / Implementation</a>
-          <a href="./assets/cv/Bhramar_Raut_Resume_ProjectPMO_Support.docx" class="btn btn-ghost btn-sm" style="display: block; text-align: left; width: 100%;">Project PMO / Support</a>
+        <div class="dropdown-menu recruiter-cv-menu" id="recruiter-pdf-menu" style="display:none">
+          <p>Select target role</p>
+          <a href="./assets/cv/Bhramar_Raut_Resume_ProductApplicationSupport.docx" class="btn btn-ghost btn-sm">Product / Application Support</a>
+          <a href="./assets/cv/Bhramar_Raut_Resume_ProductOperations_Implementation.docx" class="btn btn-ghost btn-sm">Product Operations / Implementation</a>
+          <a href="./assets/cv/Bhramar_Raut_Resume_ProjectPMO_Support.docx" class="btn btn-ghost btn-sm">Project PMO / Support</a>
         </div>
       </div>
       <button type="button" class="btn btn-secondary btn-sm" id="recruiter-copy" aria-label="Copy profile summary"><i class="bi bi-clipboard" aria-hidden="true"></i> Copy summary</button>
@@ -12217,7 +13732,7 @@ html[data-theme="dark"] .learning-platform-layers li {
   <div class="contact-layout">
     <aside class="contact-profile">
       <div class="contact-profile-media">
-        <img class="contact-profile-photo" src="./assets/images/bhramar-raut.jpg" alt="Bhramar Raut" width="220" height="275" loading="lazy">
+        <img class="contact-profile-photo" src="./assets/images/bhramar-raut-contact.jpg" alt="Bhramar Raut" width="220" height="275" loading="lazy">
       </div>
       <div class="contact-profile-copy">
         <h2 class="contact-profile-name">Bhramar Raut</h2>
@@ -12320,14 +13835,18 @@ html[data-theme="dark"] .learning-platform-layers li {
   <div class="cmd-results" id="cmd-results" role="listbox"></div>
 </dialog>
 
-<dialog id="cert-dialog" class="cert-dialog" aria-labelledby="cert-dialog-title">
+<dialog id="cert-dialog" class="cert-dialog" role="dialog" aria-modal="true" aria-label="Credential PDF viewer">
   <div class="modal-header">
-    <h2 id="cert-dialog-title" style="font-size:1rem">Certificate</h2>
-    <button type="button" class="btn-icon" id="cert-dialog-close" aria-label="Close"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+    <h2 id="cert-dialog-title">Certificate</h2>
+    <button type="button" class="btn-icon" id="cert-dialog-close" aria-label="Close credential viewer"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
   </div>
-  <div class="modal-body" id="cert-dialog-body"></div>
+  <div class="modal-body" id="cert-dialog-body">
+    <div class="cert-preview-shell">
+      <iframe id="cert-dialog-viewer" class="cert-pdf" src="about:blank" title="Certificate PDF"></iframe>
+    </div>
+  </div>
   <div class="modal-footer">
-    <a id="cert-dialog-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Open PDF in new tab</a>
+    <a id="cert-dialog-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Open PDF in new tab ↗</a>
   </div>
 </dialog>
 
@@ -12343,6 +13862,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 </dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="./knowledge-index.js"></script>
 <script>
 /* Portfolio app logic - will be inlined into index.html */
 (function () {
@@ -12462,7 +13982,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       expiresLabel: 'Apr 2026',
       type: 'certification_history',
       status: 'expired',
-      statusLabel: 'Expired Apr 2026',
+      statusLabel: 'Historical · expired Apr 2026',
       score: '754 / 1000',
       relevance: 'foundational',
       featured: false,
@@ -12481,7 +14001,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       issuedLabel: 'Jul 2022',
       type: 'training',
       status: 'completed',
-      statusLabel: 'Completed',
+      statusLabel: 'Formal training',
       relevance: 'foundational',
       featured: false,
       priority: 3,
@@ -12499,7 +14019,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       issuedLabel: 'Nov 2025',
       type: 'course',
       status: 'completed',
-      statusLabel: 'Completed',
+      statusLabel: 'Course completion',
       relevance: 'foundational',
       featured: false,
       priority: 4,
@@ -12517,7 +14037,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       issuedLabel: 'Nov 2022',
       type: 'course',
       status: 'completed',
-      statusLabel: 'Completed',
+      statusLabel: 'Course completion',
       relevance: 'foundational',
       featured: false,
       priority: 5,
@@ -12797,7 +14317,7 @@ html[data-theme="dark"] .learning-platform-layers li {
       { num: '03', title: 'ITSM + Jira Service Management', detail: 'Ticket workflow, incidents, queues, SLA concepts' },
       { num: '04', title: 'Linux fundamentals', detail: 'CLI, processes, services, logs, permissions' },
       { num: '05', title: 'Networking fundamentals', detail: 'DNS, ports, connectivity, HTTP' },
-      { num: '06', title: 'Troubleshooting practice', detail: 'Structured reproduce → isolate → document loops' }
+      { num: '06', title: 'Cloud / platform fundamentals', detail: 'Cloud services · monitoring · runtime concepts' }
     ]
   };
 
@@ -12941,17 +14461,20 @@ html[data-theme="dark"] .learning-platform-layers li {
   ];
 
   const LEARNING_FOUNDATIONS = [
-    { title: 'Java / Full Stack', detail: 'Wipro Velocity / StackRoute · 2022', label: 'Foundation' },
-    { title: 'AWS', detail: 'Cloud Practitioner · earned 2023 · expired Apr 2026', label: 'Certification history' },
-    { title: 'Scrum', detail: 'PSM I · 2026', label: 'Credential' },
+    { title: 'PSM I', detail: 'Scrum.org · 2026 · Supports Scrum framework understanding', label: 'Valid' },
+    { title: 'AWS', detail: 'Cloud Practitioner · 2023 · Cloud foundation', label: 'Historical' },
+    { title: 'Java / Full Stack', detail: 'Wipro Velocity / StackRoute · 2022', label: 'Formal training' },
+    { title: 'SQL', detail: 'IBM / Coursera · relational database foundation', label: 'Course foundation' },
     { title: 'AI-assisted delivery', detail: 'Skillverse + Catalyx · 2026', label: 'Applied project work' },
     { title: 'Systems', detail: 'Windows / macOS troubleshooting', label: 'Practical familiarity' },
     { title: 'Work tracking', detail: 'OpenProject on delivery work', label: 'Used in workflow' }
   ];
 
   const LEARNING_JOURNEY = [
+    { when: '2021', text: 'Digital Marketing · Aerial Robotics exploration' },
     { when: '2022', text: 'Java Full Stack foundation — Wipro Velocity / StackRoute' },
     { when: '2023', text: 'AWS Cloud Practitioner — cloud concepts foundation' },
+    { when: '2025', text: 'IBM Databases and SQL course foundation' },
     { when: '2026', text: 'PSM I · AI-assisted product delivery on Skillverse + Catalyx' },
     { when: 'Now', text: 'SQL · APIs/Postman · ITSM/JSM · Linux · Networking' },
     { when: 'Next', text: 'Cloud refresh · monitoring · DevOps foundations · ServiceNow fundamentals' },
@@ -13013,17 +14536,21 @@ None identified`;
           ? new Date(updated).toLocaleString('en-US', { month: 'short', year: 'numeric' })
           : updated)
       : '';
+    const summary = a.summary || a.description || '';
+    const deck = a.deck || a.description || a.summary || '';
+    const keywords = a.keywords || a.tags || [];
+    const bodyText = String(a.bodyHtml || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
     return {
       slug: a.slug,
       title: a.title,
       category: a.category,
       label: a.label || 'NOTE',
-      summary: a.summary || a.description || '',
+      summary,
       description: a.description || a.summary || '',
-      deck: a.deck || a.description || a.summary || '',
+      deck,
       minutes: a.minutes || 1,
       bodyHtml: a.bodyHtml || '',
-      keywords: a.keywords || a.tags || [],
+      keywords,
       tags: a.tags || a.keywords || [],
       featured: Boolean(a.featured),
       start_here: Boolean(a.start_here),
@@ -13031,28 +14558,37 @@ None identified`;
       updated: updatedLabel || updated,
       related: a.related || [],
       sources: a.sources || '',
-      path: a.path || ('knowledge/' + a.slug + '.md')
+      path: a.path || ('knowledge/' + a.slug + '.md'),
+      searchText: [a.title, summary, deck, a.category, a.label, a.slug, ...keywords, bodyText]
+        .filter(Boolean).join(' ').toLowerCase()
     };
+  }
+
+  function applyKnowledgeIndex(data) {
+    const list = Array.isArray(data?.articles) ? data.articles : [];
+    ARTICLES = list.map(normalizeKnowledgeArticle);
+    START_HERE = Array.isArray(data?.start_here) && data.start_here.length
+      ? data.start_here.filter(slug => ARTICLES.some(a => a.slug === slug))
+      : ARTICLES.filter(a => a.start_here).sort((a, b) => a.order - b.order).map(a => a.slug);
+    KNOWLEDGE_INDEX_META = {
+      count: data?.count || ARTICLES.length,
+      categories: data?.categories || [],
+      generated_at: data?.generated_at || ''
+    };
+    knowledgeIndexReady = true;
+    return ARTICLES;
   }
 
   async function loadKnowledgeIndex() {
     knowledgeIndexError = null;
     try {
+      if (window.__KNOWLEDGE_INDEX__) {
+        return applyKnowledgeIndex(window.__KNOWLEDGE_INDEX__);
+      }
       const res = await fetch('knowledge-index.json', { cache: 'no-store' });
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
-      const list = Array.isArray(data.articles) ? data.articles : [];
-      ARTICLES = list.map(normalizeKnowledgeArticle);
-      START_HERE = Array.isArray(data.start_here) && data.start_here.length
-        ? data.start_here.filter(slug => ARTICLES.some(a => a.slug === slug))
-        : ARTICLES.filter(a => a.start_here).sort((a, b) => a.order - b.order).map(a => a.slug);
-      KNOWLEDGE_INDEX_META = {
-        count: data.count || ARTICLES.length,
-        categories: data.categories || [],
-        generated_at: data.generated_at || ''
-      };
-      knowledgeIndexReady = true;
-      return ARTICLES;
+      return applyKnowledgeIndex(data);
     } catch (err) {
       knowledgeIndexReady = false;
       knowledgeIndexError = err;
@@ -13139,11 +14675,7 @@ None identified`;
     }
   }
 
-  // THEME — light ↔ dark only (OS preference on first visit)
-  function getSystemTheme() {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
+  // THEME — dark by default; the visitor's explicit light/dark choice is remembered.
   function getStoredTheme() {
     try {
       const t = localStorage.getItem('theme');
@@ -13200,7 +14732,7 @@ None identified`;
 
   (function initThemeEarly() {
     const stored = getStoredTheme();
-    applyTheme(stored || getSystemTheme(), false);
+    applyTheme(stored || 'dark', false);
   })();
 
   function updatePageMeta(title, description) {
@@ -13621,6 +15153,28 @@ None identified`;
     { id: 'security', label: 'Security', blurb: 'Defensive learning and testing fundamentals' }
   ];
 
+  function getKnowledgeTopics() {
+    const categoryIds = KNOWLEDGE_INDEX_META.categories.length
+      ? KNOWLEDGE_INDEX_META.categories
+      : [...new Set(ARTICLES.map(article => article.category))];
+    const known = new Map(KNOWLEDGE_TOPICS.map(topic => [topic.id, topic]));
+    return categoryIds.map(id => known.get(id) || {
+      id,
+      label: formatKnowledgeCategory(id),
+      blurb: `Notes filed under ${formatKnowledgeCategory(id)}`
+    });
+  }
+
+  function renderKnowledgeFilters() {
+    const root = $('#knowledge-filters');
+    if (!root) return;
+    const topics = getKnowledgeTopics();
+    root.innerHTML = [
+      '<button type="button" class="knowledge-filter" data-filter="all" aria-pressed="true">All</button>',
+      ...topics.map(topic => `<button type="button" class="knowledge-filter" data-filter="${esc(topic.id)}" aria-pressed="false">${esc(topic.label)}</button>`)
+    ].join('');
+  }
+
   function formatKnowledgeCategory(cat) {
     if (!cat) return '';
     return cat.charAt(0).toUpperCase() + cat.slice(1);
@@ -13648,7 +15202,7 @@ None identified`;
   function renderKnowledgeTopics() {
     const root = $('#knowledge-topics');
     if (!root) return;
-    root.innerHTML = KNOWLEDGE_TOPICS.map(topic => {
+    root.innerHTML = getKnowledgeTopics().map(topic => {
       const count = ARTICLES.filter(a => a.category === topic.id).length;
       return `<button type="button" class="knowledge-topic" data-filter="${topic.id}">
         <strong>${esc(topic.label)}</strong>
@@ -13687,13 +15241,7 @@ None identified`;
     const filtered = ARTICLES.filter(a => {
       if (activeKnowledgeCategory !== 'all' && a.category !== activeKnowledgeCategory) return false;
       if (!q) return true;
-      return (
-        a.title.toLowerCase().includes(q) ||
-        a.summary.toLowerCase().includes(q) ||
-        a.category.toLowerCase().includes(q) ||
-        a.label.toLowerCase().includes(q) ||
-        a.keywords.some(k => String(k).toLowerCase().includes(q))
-      );
+      return a.searchText.includes(q);
     });
 
     if (startSection) startSection.hidden = !browsing;
@@ -13990,11 +15538,20 @@ None identified`;
         .filter(Boolean)
         .slice(0, 4);
       const evidence = (track.evidence || []).concat(related);
+      const priority = ['01', '02', '03', '04'].includes(track.num)
+        ? 'active'
+        : track.num === '06' ? 'later' : 'next';
+      const priorityLabel = priority === 'active' ? 'Active' : priority === 'next' ? 'Next' : 'Later';
+      const evidenceMarkup = evidence.length ? evidence.map(e =>
+        `<a href="${esc(e.href)}" data-nav-link="${esc(e.path)}">${esc(e.label)} →</a>`
+      ).join('') : '<span>Planned</span>';
+      const nowHighlights = String(track.now).split(' · ').slice(0, 3);
+      const nextHighlights = String(track.next).split(' · ').slice(0, 2);
       return `
-        <article class="learning-track" id="learning-track-${esc(track.id)}" aria-labelledby="learning-track-title-${esc(track.id)}">
+        <article class="learning-card learning-card--track learning-track learning-track--${priority}" id="learning-track-${esc(track.id)}" aria-labelledby="learning-track-title-${esc(track.id)}">
           <div class="learning-track-top">
             <span class="learning-track-num">Track ${esc(track.num)}</span>
-            <span class="learning-stage learning-stage--${esc(stage.id)}">${esc(stage.label)}</span>
+            <span class="learning-stage learning-stage--${priority}">${priorityLabel}</span>
           </div>
           <h3 id="learning-track-title-${esc(track.id)}">${esc(track.title)}</h3>
           <p class="learning-track-why"><strong>Why this matters:</strong> ${esc(track.why)}</p>
@@ -14031,6 +15588,35 @@ None identified`;
               ).join('')}</div>` : '<h4>Evidence / notes</h4><p>Planned</p>'}
             </div>
           </div>
+          <div class="learning-track-mobile">
+            <div class="learning-track-mobile-row">
+              <span>Now</span>
+              <p>${esc(stage.label)} · current priority</p>
+            </div>
+            <div class="learning-track-mobile-row is-current">
+              <span>Building</span>
+              <ul>${nowHighlights.map(item => `<li>${esc(item)}</li>`).join('')}</ul>
+            </div>
+            <div class="learning-track-mobile-row">
+              <span>Next</span>
+              <ul>${nextHighlights.map(item => `<li>${esc(item)}</li>`).join('')}</ul>
+            </div>
+            <div class="learning-track-mobile-row learning-track-mobile-unlocks">
+              <span>Unlocks</span>
+              <p>${esc(track.outcome)}</p>
+            </div>
+            <details class="learning-track-details">
+              <summary>View deeper roadmap <span aria-hidden="true">↓</span></summary>
+              <div class="learning-track-details-body">
+                <h4>Foundation</h4><p>${esc(track.foundation)}</p>
+                <h4>Full current roadmap</h4><p>${esc(track.now)}</p>
+                <h4>Full next roadmap</h4><p>${esc(track.next)}</p>
+                <h4>Later horizon</h4><p>${esc(track.later)}</p>
+                <h4>Next proof</h4><p>${esc(track.nextProof || 'Planned')}</p>
+                <h4>Evidence / notes</h4><div class="learning-track-links">${evidenceMarkup}</div>
+              </div>
+            </details>
+          </div>
         </article>
       `;
     }).join('');
@@ -14040,13 +15626,18 @@ None identified`;
   function renderLearningConvergence() {
     const root = $('#learning-convergence');
     if (!root) return;
-    root.innerHTML = LEARNING_CONVERGENCE.map(item => `
+    const primaryItems = LEARNING_CONVERGENCE.slice(0, 4);
+    const secondaryItems = LEARNING_CONVERGENCE.slice(4);
+    root.innerHTML = primaryItems.map(item => `
       <article class="learning-convergence-item">
         <h3>${esc(item.title)}</h3>
         <p class="learning-convergence-eq">${esc(item.equation)}</p>
         <p>→ ${esc(item.result)}</p>
       </article>
-    `).join('');
+    `).join('') + (secondaryItems.length ? `<details class="learning-convergence-more">
+      <summary>AI-assisted delivery connection <span aria-hidden="true">↓</span></summary>
+      ${secondaryItems.map(item => `<div><strong>${esc(item.equation)}</strong><p>→ ${esc(item.result)}</p></div>`).join('')}
+    </details>` : '');
   }
 
   function renderLearningFoundations() {
@@ -14055,7 +15646,7 @@ None identified`;
     root.innerHTML = LEARNING_FOUNDATIONS.map(item => `
       <li>
         <strong>${esc(item.title)}</strong>
-        <span>${esc(item.detail)}</span>
+        <span class="learning-foundation-detail">${esc(item.detail)}</span>
         <span class="learning-stage learning-stage--foundation">${esc(item.label)}</span>
       </li>
     `).join('');
@@ -14091,7 +15682,7 @@ None identified`;
     return 'credential-status--completed';
   }
 
-  function renderCerts() {
+  function renderCertsLegacy() {
     const grid = $('#cert-grid');
     if (!grid) return;
 
@@ -14168,8 +15759,8 @@ None identified`;
                 <span class="credential-type">${esc(credentialTypeLabel(c.type))}</span>
                 <span class="credential-status ${credentialStatusClass(c.status)}" aria-label="Status: ${esc(c.statusLabel)}">${esc(c.statusLabel)}</span>
               </div>
-              <h3>${esc(c.name)}</h3>
-              <p class="credential-card-meta">${esc(c.issuer)} · ${esc(c.issuedLabel || c.year)}${c.score ? ' · Exam score ' + esc(c.score) : ''}</p>
+              <h3>${esc(c.id === 'aws-clf' ? 'AWS Certified Cloud Practitioner' : c.name)}</h3>
+              <p class="credential-card-meta">${esc(c.issuer)} · ${esc(c.issuedLabel || c.year)}${c.id === 'aws-clf' ? ' · CLF-C01' : ''}${c.score ? ' · Exam score ' + esc(c.score) : ''}</p>
               <p class="credential-card-supports">${esc(c.supports || c.summary || '')}</p>
               <span class="credential-card-cta">View ${esc(c.shortTitle || 'credential')} evidence →</span>
             </button>
@@ -14207,15 +15798,28 @@ None identified`;
         <div class="credential-lineage">
           <article class="credential-lineage-item">
             <h3>Scrum</h3>
-            <p>PSM I → framework knowledge → delivery visibility, requirements and validation mindset in project work.</p>
+            <p class="credential-lineage-flow">
+              <span>PSM I</span>
+              <span>Scrum framework knowledge</span>
+              <span>Delivery visibility</span>
+              <span>Requirements / validation mindset</span>
+            </p>
           </article>
           <article class="credential-lineage-item">
             <h3>Cloud</h3>
-            <p>AWS Essentials → AWS Cloud Practitioner (historical) → current cloud / platform refresh in Learning.</p>
+            <p class="credential-lineage-flow">
+              <span>AWS Essentials</span>
+              <span>AWS Cloud Practitioner</span>
+              <span>Current cloud / platform refresh</span>
+            </p>
           </article>
           <article class="credential-lineage-item">
             <h3>Software / data</h3>
-            <p>Java Full Stack training → IBM SQL course → practical SQL, REST and Postman building now.</p>
+            <p class="credential-lineage-flow">
+              <span>Java Full Stack</span>
+              <span>IBM SQL</span>
+              <span>Practical SQL / REST / Postman building now</span>
+            </p>
           </article>
         </div>
       </section>`;
@@ -14227,9 +15831,11 @@ None identified`;
           <p>See how these foundations are being developed into practice — and where applied work already exists.</p>
           <div class="credential-bridge-actions">
             <a class="btn btn-primary" href="/learning/" data-nav-link="learning">View Learning</a>
-            <a class="btn btn-ghost" href="/projects/" data-nav-link="projects">Projects</a>
-            <a class="btn btn-ghost" href="/capabilities/" data-nav-link="capabilities">Capabilities</a>
-            <a class="btn btn-ghost" href="/support-lab/" data-nav-link="support-lab">Support Lab</a>
+            <div class="credential-bridge-secondary">
+              <a class="btn-text" href="/projects/" data-nav-link="projects">Projects →</a>
+              <a class="btn-text" href="/capabilities/" data-nav-link="capabilities">Capabilities →</a>
+              <a class="btn-text" href="/support-lab/" data-nav-link="support-lab">Support Lab →</a>
+            </div>
           </div>
         </div>
       </section>`;
@@ -14250,68 +15856,108 @@ None identified`;
     bindNavLinks(grid);
   }
 
+
+
+  function renderCerts() {
+    const grid = $('#cert-grid');
+    if (!grid) return;
+    const order = ['psm1', 'ibm-sql', 'aws-clf', 'aws-essentials', 'data-privacy', 'java-fs', 'digital-marketing', 'robotics'];
+    const credentials = order.map(id => CREDENTIALS.find(c => c.id === id)).filter(Boolean);
+    const descriptions = {
+      'psm1': 'Scrum framework, empiricism, accountabilities and delivery/validation foundations.',
+      'ibm-sql': 'SQL and relational-database foundation supporting current practical SQL development.',
+      'aws-clf': 'Foundational cloud concepts and AWS service awareness.',
+      'aws-essentials': 'Introductory cloud concepts completed before the certification.',
+      'data-privacy': 'Corporate awareness of privacy, information handling and compliance.',
+      'java-fs': 'Formal training in Java, application architecture, databases and APIs.',
+      'digital-marketing': 'Earlier foundation in digital business and marketing.',
+      'robotics': 'Earlier technical exploration in robotics concepts.'
+    };
+    const statuses = {
+      'psm1': { label: 'Valid', className: 'credential-ledger-status--valid' },
+      'ibm-sql': { label: 'Course', className: '' },
+      'aws-clf': { label: 'Historical · expired Apr 2026', className: 'credential-ledger-status--expired' },
+      'java-fs': { label: 'Training', className: '' }
+    };
+    const foundationIds = new Set(['ibm-sql', 'aws-clf', 'aws-essentials', 'data-privacy', 'java-fs']);
+    const dateHtml = credential => {
+      const parts = String(credential.issuedLabel || credential.year).trim().split(/\s+/);
+      return parts.length > 1 ? `${esc(parts[0])}<span>${esc(parts.slice(1).join(' '))}</span>` : `<span>${esc(parts[0])}</span>`;
+    };
+    grid.innerHTML = `
+      <ol class="credential-ledger" aria-label="Credential history, newest first">
+        ${credentials.map(c => {
+          const status = statuses[c.id];
+          const emphasisClass = c.id === 'psm1' ? ' credential-ledger-item--current' : foundationIds.has(c.id) ? ' credential-ledger-item--foundation' : '';
+          return `<li class="credential-ledger-item${emphasisClass}">
+            <time class="credential-ledger-date">${dateHtml(c)}</time>
+            <span class="credential-ledger-rail" aria-hidden="true"><span class="credential-ledger-node"></span></span>
+            <article class="credential-ledger-info">
+              <div class="credential-ledger-heading"><h2>${esc(c.name)}</h2>${status ? `<span class="credential-ledger-status ${status.className}" aria-label="Status: ${esc(status.label)}">${esc(status.label)}</span>` : ''}</div>
+              <p class="credential-ledger-issuer">${esc(c.issuer)}</p>
+              <p class="credential-ledger-description">${esc(descriptions[c.id] || c.summary || '')}</p>
+            </article>
+            <a class="credential-ledger-action" href="${esc(encodeURI(c.file))}" target="_blank" rel="noopener noreferrer" data-credential-pdf="${esc(c.file)}" data-credential-name="${esc(c.name)}" aria-label="View ${esc(c.name)} credential">View credential ↗</a>
+          </li>`;
+        }).join('')}
+      </ol>
+      <footer class="credential-ledger-end">
+        <p>Practical application of these foundations is shown across Projects, Capabilities and Support Lab.</p>
+        <nav class="credential-ledger-links" aria-label="Related portfolio evidence">
+          <a href="/projects/" data-nav-link="projects">Projects →</a>
+          <a href="/capabilities/" data-nav-link="capabilities">Capabilities →</a>
+          <a href="/support-lab/" data-nav-link="support-lab">Support Lab →</a>
+        </nav>
+      </footer>`;
+    $$('.credential-ledger-action', grid).forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        openCredentialPdf(link.dataset.credentialPdf, link.dataset.credentialName, link);
+      });
+    });
+    bindNavLinks(grid);
+  }
+
+  function openCredentialPdf(pdfPath, credentialName, trigger = document.activeElement) {
+    const dlg = $('#cert-dialog');
+    const viewer = $('#cert-dialog-viewer');
+    const link = $('#cert-dialog-link');
+    const close = $('#cert-dialog-close');
+    if (!dlg || !viewer || !link || !close || !pdfPath) return;
+
+    certDialogLastFocus = trigger instanceof HTMLElement ? trigger : document.activeElement;
+    const name = credentialName || 'Credential';
+    $('#cert-dialog-title').textContent = name;
+    dlg.setAttribute('aria-label', `${name} PDF viewer`);
+    viewer.title = `${name} PDF`;
+    viewer.src = pdfPath;
+    link.href = pdfPath;
+    link.textContent = 'Open PDF in new tab ↗';
+    link.setAttribute('aria-label', `Open ${name} PDF in new tab`);
+
+    document.documentElement.classList.add('credential-viewer-open');
+    document.body.classList.add('credential-viewer-open');
+    if (!dlg.open) {
+      if (typeof dlg.showModal === 'function') dlg.showModal();
+      else dlg.setAttribute('open', '');
+    }
+    requestAnimationFrame(() => close.focus());
+  }
+
+  function closeCredentialPdf() {
+    const dlg = $('#cert-dialog');
+    if (!dlg?.open) return;
+    if (typeof dlg.close === 'function') dlg.close();
+    else {
+      dlg.removeAttribute('open');
+      dlg.dispatchEvent(new Event('close'));
+    }
+  }
+
   function openCert(id) {
     const c = CREDENTIALS.find(x => x.id === id);
     if (!c) return;
-    certDialogLastFocus = document.activeElement;
-    const dlg = $('#cert-dialog');
-    const title = c.shortTitle ? `${c.name} (${c.shortTitle})` : c.name;
-    $('#cert-dialog-title').textContent = title;
-    const body = $('#cert-dialog-body');
-    body.innerHTML = '';
-    const link = $('#cert-dialog-link');
-    link.href = c.file;
-    link.textContent = 'Open ' + (c.shortTitle || 'credential') + ' PDF in new tab';
-    link.setAttribute('aria-label', 'Open ' + c.name + ' PDF in new tab');
-
-    const meta = document.createElement('p');
-    meta.className = 'cert-dialog-meta';
-    meta.textContent = [
-      credentialTypeLabel(c.type),
-      c.issuer,
-      c.issuedLabel || c.year,
-      c.statusLabel,
-      c.score ? 'Exam score ' + c.score : null
-    ].filter(Boolean).join(' · ');
-    body.appendChild(meta);
-
-    if (c.supports) {
-      const supports = document.createElement('p');
-      supports.className = 'cert-dialog-meta';
-      supports.textContent = 'Supports: ' + c.supports;
-      body.appendChild(supports);
-    }
-
-    if (c.file.toLowerCase().endsWith('.pdf')) {
-      const shell = document.createElement('div');
-      shell.className = 'cert-preview-shell';
-      const obj = document.createElement('object');
-      obj.className = 'cert-pdf';
-      obj.data = c.file;
-      obj.type = 'application/pdf';
-      const fallback = document.createElement('p');
-      fallback.className = 'cert-fallback';
-      const fallbackLink = document.createElement('a');
-      fallbackLink.href = c.file;
-      fallbackLink.target = '_blank';
-      fallbackLink.rel = 'noopener noreferrer';
-      fallbackLink.textContent = 'Open certificate PDF';
-      fallback.append('PDF preview is unavailable in this browser. ', fallbackLink);
-      obj.appendChild(fallback);
-      shell.appendChild(obj);
-      body.appendChild(shell);
-    } else {
-      const p = document.createElement('p');
-      const a = document.createElement('a');
-      a.href = c.file;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.textContent = 'Open file';
-      p.appendChild(a);
-      body.appendChild(p);
-    }
-    if (typeof dlg.showModal === 'function') dlg.showModal();
-    else dlg.setAttribute('open', '');
+    openCredentialPdf(c.file, c.name, document.activeElement);
   }
 
   function researchPdfUrl(page) {
@@ -16475,11 +18121,7 @@ None identified`;
 
     const stored = getStoredTheme();
     if (stored) setTheme(stored);
-    else applyTheme(getSystemTheme(), false);
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (getStoredTheme()) return;
-      applyTheme(e.matches ? 'dark' : 'light', false);
-    });
+    else applyTheme('dark', false);
 
     try {
       await loadKnowledgeIndex();
@@ -16489,6 +18131,7 @@ None identified`;
         list.innerHTML = `<div class="knowledge-empty"><h3>Knowledge library unavailable</h3><p>Could not load <code>knowledge-index.json</code>. Serve this folder over HTTP and run <code>node scripts/build_knowledge_index.mjs</code>.</p></div>`;
       }
     }
+    renderKnowledgeFilters();
     renderKnowledgeTopics();
     if (typeof renderLearning === 'function') renderLearning();
 
@@ -16577,13 +18220,28 @@ None identified`;
       cmdLastFocus = null;
     });
 
-    $('#cert-dialog-close').addEventListener('click', () => {
-      const dlg = $('#cert-dialog');
-      if (dlg.close) dlg.close();
-      else dlg.removeAttribute('open');
+    $('#cert-dialog-close').addEventListener('click', closeCredentialPdf);
+    $('#cert-dialog').addEventListener('click', event => {
+      if (event.target === event.currentTarget) closeCredentialPdf();
     });
+    $('#cert-dialog').addEventListener('cancel', event => {
+      event.preventDefault();
+      closeCredentialPdf();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && $('#cert-dialog')?.open) {
+        event.preventDefault();
+        event.stopPropagation();
+        closeCredentialPdf();
+      }
+    }, true);
     $('#cert-dialog').addEventListener('close', () => {
-      if (certDialogLastFocus && certDialogLastFocus.focus) certDialogLastFocus.focus();
+      document.documentElement.classList.remove('credential-viewer-open');
+      document.body.classList.remove('credential-viewer-open');
+      const viewer = $('#cert-dialog-viewer');
+      if (viewer) viewer.src = 'about:blank';
+      if (certDialogLastFocus?.isConnected && certDialogLastFocus.focus) certDialogLastFocus.focus();
+      certDialogLastFocus = null;
     });
 
     $$('#knowledge-filters .knowledge-filter').forEach(chip => {
