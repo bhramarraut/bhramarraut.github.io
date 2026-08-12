@@ -11738,7 +11738,17 @@ html[data-theme="dark"] .learning-platform-layers li {
 <div class="page-inner recruiter-page">
   <div class="recruiter-shell" id="print-target">
     <div class="recruiter-toolbar no-print">
-      <button type="button" class="btn btn-primary btn-sm" id="recruiter-print" aria-label="Print or save résumé as PDF"><i class="bi bi-printer-fill" aria-hidden="true"></i> Print / Save PDF</button>
+      <div class="dropdown no-print" style="position: relative; display: inline-block;">
+        <button type="button" class="btn btn-primary btn-sm" id="recruiter-cv-btn" aria-label="Download CV" aria-haspopup="true" aria-expanded="false" onclick="document.getElementById('recruiter-pdf-menu').style.display = document.getElementById('recruiter-pdf-menu').style.display === 'none' ? 'block' : 'none'">
+          <i class="bi bi-file-earmark-pdf-fill" aria-hidden="true"></i> Download CV
+        </button>
+        <div class="dropdown-menu" id="recruiter-pdf-menu" style="display: none; position: absolute; top: 100%; right: 0; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.5rem; z-index: 100; min-width: 250px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 0.5rem; text-align: left;">
+          <p style="margin: 0 0 0.5rem 0; padding: 0 0.5rem; font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Select Target Role:</p>
+          <a href="./assets/cv/Bhramar_Raut_Resume_ProductApplicationSupport.docx" class="btn btn-ghost btn-sm" style="display: block; text-align: left; width: 100%; margin-bottom: 0.25rem;">Product / Application Support</a>
+          <a href="./assets/cv/Bhramar_Raut_Resume_ProductOperations_Implementation.docx" class="btn btn-ghost btn-sm" style="display: block; text-align: left; width: 100%; margin-bottom: 0.25rem;">Product Operations / Implementation</a>
+          <a href="./assets/cv/Bhramar_Raut_Resume_ProjectPMO_Support.docx" class="btn btn-ghost btn-sm" style="display: block; text-align: left; width: 100%;">Project PMO / Support</a>
+        </div>
+      </div>
       <button type="button" class="btn btn-secondary btn-sm" id="recruiter-copy" aria-label="Copy profile summary"><i class="bi bi-clipboard" aria-hidden="true"></i> Copy summary</button>
       <div class="recruiter-toolbar-secondary">
         <a href="mailto:raut.bhramar@gmail.com?subject=Application%20%2F%20Opportunity%20%E2%80%94%20Bhramar%20Raut" class="btn-text"><i class="bi bi-envelope-fill" aria-hidden="true"></i> Email</a>
@@ -16494,11 +16504,11 @@ None identified`;
     bindCopyControl($('#copy-phone'), CONFIG.phone, 'Phone');
     $('#download-vcard')?.addEventListener('click', downloadVCard);
     document.addEventListener('click', (e) => {
-    const printBtn = e.target.closest('#recruiter-print');
-    if (printBtn) {
-      e.preventDefault();
-      printRecruiterResume();
-      return;
+    const cvMenu = document.getElementById('recruiter-pdf-menu');
+    if (cvMenu && cvMenu.style.display === 'block') {
+      if (!e.target.closest('#recruiter-cv-btn') && !e.target.closest('#recruiter-pdf-menu')) {
+        cvMenu.style.display = 'none';
+      }
     }
       
       const copyBtn = e.target.closest('#recruiter-copy');
