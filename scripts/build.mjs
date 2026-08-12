@@ -430,7 +430,7 @@ function generateSchema(routeObj, articleData = null) {
         "@id": `${BASE_URL}/#person`,
         "name": "Bhramar Raut",
         "url": BASE_URL,
-        "image": `${BASE_URL}/assets/og/bhramar-raut-portfolio.jpg`,
+        "image": `${BASE_URL}/assets/images/bhramar-raut-home.jpg`,
         "jobTitle": "Product Support & Implementation",
         "description": "Former Wipro Project Engineer targeting Product Support, Application Support and Implementation roles. PSM I certified.",
         "alumniOf": { "@type": "CollegeOrUniversity", "name": "Shri Ramdeobaba College of Engineering and Management" },
@@ -516,15 +516,31 @@ function generateSchema(routeObj, articleData = null) {
   return JSON.stringify(schema, null, 2);
 }
 
-function injectMetadata(html, routeObj, articleData = null) {
+function injectMetadata(html, routeObj, articleData = null, options = {}) {
+  const { pruneViews = true, staticRoute = null } = options;
   let title = articleData ? `${articleData.title} | Bhramar Raut` : routeObj.title;
   let desc = articleData ? articleData.description : routeObj.desc;
   let url = `${BASE_URL}${routeObj.path}`;
   let ogType = articleData ? 'article' : (routeObj.path === '/404.html' ? 'website' : 'website');
 
-  // Source index.html uses a relative URL so it also works when opened directly
-  // from disk. Built nested routes need a root-relative asset URL.
+  // Source index.html uses relative URLs so it also works when opened directly
+  // from disk. Every production page can be nested, so built assets must be
+  // root-relative.
+  html = html.replaceAll('./assets/', '/assets/');
   html = html.replace('src="./knowledge-index.js"', 'src="/knowledge-index.js"');
+  html = html.replace("fetch('knowledge-index.json'", "fetch('/knowledge-index.json'");
+
+  const researchPdfPath = path.join(ROOT, 'assets', 'research', 'economic-impact-construction-covid19.pdf');
+  const researchPdfAvailable = fs.existsSync(researchPdfPath);
+  if (!researchPdfAvailable) {
+    html = html.replace(/(<a\b[^>]*\bdata-research-pdf-action\b[^>]*?)\s+href="[^"]*"/gi, '$1');
+  }
+
+  const runtimeConfig = [
+    staticRoute ? `window.__STATIC_ROUTE__ = ${JSON.stringify(staticRoute)};` : '',
+    `window.__RESEARCH_PDF_AVAILABLE__ = ${researchPdfAvailable};`
+  ].filter(Boolean).join(' ');
+  html = html.replace('</head>', `<script>${runtimeConfig}</script>\n</head>`);
 
   // Replace Title
   html = html.replace(/<title>.*?<\/title>/s, `<title>${escapeHtml(title)}</title>`);
@@ -546,15 +562,18 @@ function injectMetadata(html, routeObj, articleData = null) {
   // Canonical
   html = html.replace(/<link rel="canonical" href=".*?">/s, `<link rel="canonical" href="${url}">`);
 
-  // Strip non-active views to ensure Google indexes correctly
-  const viewsToKeep = [routeObj.viewId];
-  html = html.replace(/<section id="(view-[^"]+)" class="view(?: active)?"[\s\S]*?<\/section>\s*(?=<!-- VIEW:|<\/main>)/gi, (match, viewId) => {
-    if (viewsToKeep.includes(viewId)) {
-      // Make it active
-      return match.replace(/class="view"/, 'class="view active"');
-    }
-    return '';
-  });
+  if (pruneViews) {
+    // Static SEO snapshots contain only their route. The root SPA deliberately
+    // keeps every view so hash navigation can work after GitHub Pages deploys it.
+    const viewsToKeep = [routeObj.viewId];
+    html = html.replace(/<section id="(view-[^"]+)" class="view(?: active)?"[\s\S]*?<\/section>\s*(?=<!-- VIEW:|<\/main>)/gi, (match, viewId) => {
+      if (viewsToKeep.includes(viewId)) {
+        return match.replace(/class="view"/, 'class="view active"');
+      }
+      return '';
+    });
+    html = html.replace(`id="${routeObj.viewId}" class="view"`, `id="${routeObj.viewId}" class="view active"`);
+  }
 
   // Inject Schema
   const schemaStr = generateSchema(routeObj, articleData);
@@ -565,7 +584,11 @@ function injectMetadata(html, routeObj, articleData = null) {
 
 // Generate Static Core Routes
 for (const [key, routeObj] of Object.entries(SEO_ROUTES)) {
-  let html = injectMetadata(INDEX_HTML, routeObj);
+  const isRootSpa = routeObj.path === '/';
+  let html = injectMetadata(INDEX_HTML, routeObj, null, {
+    pruneViews: !isRootSpa,
+    staticRoute: isRootSpa ? null : key
+  });
   
   // Create directory
   let destPath;
@@ -594,7 +617,10 @@ for (const article of knowledgeIndex.articles) {
     type: 'Article'
   };
 
-  let html = injectMetadata(INDEX_HTML, routeObj, article);
+  let html = injectMetadata(INDEX_HTML, routeObj, article, {
+    pruneViews: true,
+    staticRoute: `knowledge/${article.slug}`
+  });
   
   // Inject article body HTML into the container
   const articleHtml = `
@@ -640,5 +666,62 @@ Allow: /
 Sitemap: ${BASE_URL}/sitemap.xml
 `;
 fs.writeFileSync(path.join(OUT_DIR, 'robots.txt'), robotsTxt, 'utf8');
+
+function failBuild(message) {
+  throw new Error(`[production validation] ${message}`);
+}
+
+function listHtmlFiles(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+    const fullPath = path.join(dir, entry.name);
+    return entry.isDirectory() ? listHtmlFiles(fullPath) : (entry.name.endsWith('.html') ? [fullPath] : []);
+  });
+}
+
+function validateProductionOutput() {
+  const rootHtml = fs.readFileSync(path.join(OUT_DIR, 'index.html'), 'utf8');
+  const requiredViews = [...new Set(Object.values(SEO_ROUTES).map(route => route.viewId))];
+
+  for (const viewId of requiredViews) {
+    if (!rootHtml.includes(`id="${viewId}"`)) {
+      failBuild(`root SPA is missing ${viewId}`);
+    }
+  }
+  if (/<script>window\.__STATIC_ROUTE__\s*=/.test(rootHtml)) {
+    failBuild('root SPA must not declare a static route');
+  }
+
+  for (const [key, routeObj] of Object.entries(SEO_ROUTES)) {
+    if (routeObj.path === '/') continue;
+    const routeFile = routeObj.path.endsWith('.html')
+      ? path.join(OUT_DIR, routeObj.path)
+      : path.join(OUT_DIR, routeObj.path, 'index.html');
+    const routeHtml = fs.readFileSync(routeFile, 'utf8');
+    if (!routeHtml.includes(`window.__STATIC_ROUTE__ = ${JSON.stringify(key)}`)) {
+      failBuild(`${routeObj.path} is missing its static-route bootstrap`);
+    }
+    if (!routeHtml.includes(`id="${routeObj.viewId}" class="view active"`)) {
+      failBuild(`${routeObj.path} does not activate ${routeObj.viewId}`);
+    }
+  }
+
+  const stalePatterns = ['./assets/', '/home/', 'Profile%20Pic/Profile_Pic.jpg', 'assets/og/bhramar-raut-portfolio.jpg'];
+  for (const htmlFile of listHtmlFiles(OUT_DIR)) {
+    const html = fs.readFileSync(htmlFile, 'utf8');
+    for (const stalePath of stalePatterns) {
+      if (html.includes(stalePath)) failBuild(`${path.relative(OUT_DIR, htmlFile)} contains stale path ${stalePath}`);
+    }
+
+    for (const match of html.matchAll(/(?:src|href)="(\/(?:assets\/|knowledge-index\.(?:js|json))[^"?#]*)/g)) {
+      const publicPath = decodeURIComponent(match[1]);
+      const localPath = path.join(OUT_DIR, ...publicPath.split('/').filter(Boolean));
+      if (!fs.existsSync(localPath)) {
+        failBuild(`${path.relative(OUT_DIR, htmlFile)} references missing ${publicPath}`);
+      }
+    }
+  }
+}
+
+validateProductionOutput();
 
 console.log('SEO build completed successfully. Output in _site/');
