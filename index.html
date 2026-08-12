@@ -12037,7 +12037,7 @@ html[data-theme="dark"] .learning-platform-layers li {
 <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
 <dialog id="cmd-dialog" class="cmd-palette" aria-label="Command palette">
-  <input type="search" class="cmd-input" id="cmd-input" placeholder="Search pages, projects, articles, tools…" autocomplete="off" aria-label="Search">
+  <input type="search" class="cmd-input" id="cmd-input" placeholder="Search pages, projects, articles, tools…" autocomplete="off" aria-label="Search" role="combobox" aria-controls="cmd-results" aria-expanded="true">
   <div class="cmd-results" id="cmd-results" role="listbox"></div>
 </dialog>
 
@@ -14120,7 +14120,10 @@ None identified`;
     });
     Object.keys(ROUTES).forEach(p => {
       if (p === '404' || NAVIGATION.some(n => n.id === p)) return;
-      items.push({ type: 'page', label: ROUTES[p].label, path: p, icon: 'bi-file' });
+      let icon = 'bi-file';
+      if (p === 'learning') icon = 'bi-mortarboard';
+      if (p === 'support-lab') icon = 'bi-wrench';
+      items.push({ type: 'page', label: ROUTES[p].label, path: p, icon: icon });
     });
     ARTICLES.forEach(a => items.push({ type: 'article', label: a.title, path: 'knowledge/' + a.slug, icon: 'bi-book' }));
     CREDENTIALS.forEach(c => items.push({ type: 'cert', label: c.name, path: 'certifications', icon: 'bi-award' }));
@@ -14727,7 +14730,7 @@ None identified`;
       gsap.set(modules, { opacity: 1, y: 0, clearProps: 'transform' });
       return;
     }
-    gsap.fromTo(modules, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .42, stagger: .045, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
+    gsap.fromTo(modules, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .4, stagger: .05, ease: 'power2.out', overwrite: true, clearProps: 'opacity,transform' });
     const circles = $('#skillverse-workflow');
     if (circles) {
       const c = circles.querySelectorAll('.viz-circle');
@@ -14749,7 +14752,7 @@ None identified`;
   function forceActiveViewVisible(root) {
     if (!root) return;
     root.querySelectorAll('.module, .feature-panel, .project-feature, .project-evidence-card, .experience-entry, .profile-origin, .profile-path, .profile-principle, .profile-direction, .profile-education, .capability-pillar, .capability-depth, .capability-cta, .toolbox-playbook, .toolbox-flagship, .toolbox-tco, .toolbox-building, .toolbox-cta, .learning-track, .learning-sprint, .learning-platform, .learning-cta, .lab-featured, .lab-card, .lab-panel, .credential-featured, .credential-card, .credential-bridge, .research-hero, .research-finding, .research-figure, .research-why, .knowledge-card, .knowledge-featured-main, .knowledge-topic, .card').forEach(el => {
-      gsap?.killTweensOf(el);
+      window.gsap?.killTweensOf(el);
       el.style.opacity = '';
       el.style.transform = '';
     });
@@ -14785,13 +14788,16 @@ None identified`;
 
   // VCARD
   function downloadVCard() {
-    const vcf = ['BEGIN:VCARD', 'VERSION:3.0', 'FN:Bhramar Raut', 'EMAIL:raut.bhramar@gmail.com', 'TEL:+918989412921', 'URL:https://bhramarraut.github.io/', 'END:VCARD'].join('\n');
-    const blob = new Blob([vcf], { type: 'text/vcard' });
+    const vcf = ['BEGIN:VCARD', 'VERSION:3.0', 'FN:Bhramar Raut', 'EMAIL:raut.bhramar@gmail.com', 'TEL:+918989412921', 'URL:https://bhramarraut.github.io/', 'END:VCARD'].join('\r\n');
+    const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = 'Bhramar_Raut.vcf';
+    a.style.display = 'none';
+    document.body.appendChild(a);
     a.click();
-    URL.revokeObjectURL(a.href);
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(a.href), 0);
   }
 
   function loadArticlesFromDOM() {
@@ -14942,6 +14948,10 @@ None identified`;
 
     $('#cmd-input').addEventListener('input', e => renderCmdResults(e.target.value));
     $('#cmd-input').addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        $('#cmd-dialog')?.close?.();
+      }
       const items = $('#cmd-results')._items || [];
       if (e.key === 'ArrowDown') { e.preventDefault(); cmdActive = Math.min(cmdActive + 1, items.length - 1); highlightCmd(); }
       if (e.key === 'ArrowUp') { e.preventDefault(); cmdActive = Math.max(cmdActive - 1, 0); highlightCmd(); }
@@ -14955,7 +14965,19 @@ None identified`;
       }
     });
     $('#cmd-dialog')?.addEventListener('close', () => {
-      if (cmdLastFocus && cmdLastFocus.focus) cmdLastFocus.focus();
+      const dlg = $('#cmd-dialog');
+      if (
+          cmdLastFocus &&
+          cmdLastFocus !== document.body &&
+          !dlg.contains(cmdLastFocus) &&
+          cmdLastFocus.isConnected
+      ) {
+          cmdLastFocus.focus();
+      } else {
+          $('#cmd-input')?.blur();
+          $('.topbar-search')?.focus();
+      }
+      cmdLastFocus = null;
     });
 
     $('#cert-dialog-close').addEventListener('click', () => {
