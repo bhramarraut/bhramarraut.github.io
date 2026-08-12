@@ -8765,272 +8765,482 @@ html[data-theme="dark"] .learning-platform-layers li {
   }
 }
 
-/* PRINT — 2-PAGE SERIOUS EXECUTIVE RESUME */
+/* ==========================================================
+   SCREEN
+========================================================== */
+
+.resume-print-root {
+  display: none;
+}
+
+
+/* ==========================================================
+   PRINT — DEDICATED TWO-PAGE RESUME
+========================================================== */
+
 @page {
-  size: A4;
-  margin: 10mm 12mm;
+  size: A4 portrait;
+  margin: 0;
 }
 
 @media print {
-  html, body {
-    height: auto !important;
-    overflow: visible !important;
-    background: #ffffff !important;
-    color: #111111 !important;
-    font-size: 9.5pt !important;
-  }
 
-  .app-frame, .app-shell, .app, .workspace, .workspace-scroll, .main-content, .content-area, .page-inner {
-    display: block !important;
-    width: 100% !important;
-    max-width: none !important;
-    min-height: 0 !important;
-    height: auto !important;
+  /* ------------------------------------------
+     RESET
+  ------------------------------------------ */
+
+  html,
+  body {
+    width: 210mm !important;
     margin: 0 !important;
     padding: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: #ffffff !important;
-    background-color: #ffffff !important;
-    background-image: none !important;
+
+    background: #fff !important;
+    color: #111 !important;
+
     overflow: visible !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  /* Hide web controls & chrome */
-  .nav-sidebar, .mobile-header, .workspace-topbar, .menu-overlay, .site-menu, .no-print, .read-progress, .skip-link, .recruiter-toolbar, .site-footer, dialog {
+
+  /* ------------------------------------------
+     NEVER PRINT THE WEBSITE
+  ------------------------------------------ */
+
+  body > *:not(#resume-print-root) {
     display: none !important;
   }
 
-  /* Print logic for views */
-  .view {
-    display: none !important;
-  }
-  .view.active {
+  #resume-print-root {
     display: block !important;
-  }
-  body.is-printing .view.active {
-    display: none !important;
-  }
-  body.is-printing #view-recruiter, body.is-printing #print-target {
-    display: block !important;
-  }
 
-  .recruiter-page, .recruiter-shell {
-    max-width: none !important;
-    gap: 8px !important;
-  }
-
-  /* Print Header */
-  .recruiter-print-header {
-    display: flex !important;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    padding-bottom: 8px;
-    margin-bottom: 8px;
-    border-bottom: 2px solid #111111;
-  }
-  .recruiter-print-header h1 {
-    font-size: 20pt !important;
-    font-weight: 800 !important;
-    margin: 0 0 2px !important;
-    color: #111111 !important;
-  }
-  .print-role {
+    width: 210mm !important;
     margin: 0 !important;
+    padding: 0 !important;
+
+    color: #111 !important;
+    background: #fff !important;
+
+    font-family:
+      Arial,
+      Helvetica,
+      sans-serif !important;
+
+    font-size: 9pt !important;
+    line-height: 1.35 !important;
+  }
+
+
+  /* ------------------------------------------
+     EXACT A4 SHEETS
+  ------------------------------------------ */
+
+  .resume-sheet {
+    display: block !important;
+
+    box-sizing: border-box !important;
+
+    width: 210mm !important;
+    height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 11mm 14mm 10mm !important;
+
+    overflow: hidden !important;
+
+    background: #fff !important;
+    color: #111 !important;
+
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .resume-sheet:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+
+  /* ------------------------------------------
+     HEADER
+  ------------------------------------------ */
+
+  .resume-header {
+    display: grid !important;
+    grid-template-columns: 1fr 72mm !important;
+    gap: 8mm !important;
+
+    padding-bottom: 4mm !important;
+    margin-bottom: 4mm !important;
+
+    border-bottom: 1.5pt solid #111 !important;
+  }
+
+  .resume-header h1 {
+    margin: 0 0 1.5mm !important;
+
+    font-size: 23pt !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+
+    color: #111 !important;
+  }
+
+  .resume-role {
+    margin-bottom: 1mm !important;
+
     font-size: 9.5pt !important;
     font-weight: 700 !important;
-    color: #222222 !important;
+
+    color: #222 !important;
   }
-  .print-subline {
-    margin: 2px 0 0 !important;
+
+  .resume-subtitle {
     font-size: 8.5pt !important;
-    color: #444444 !important;
+    color: #555 !important;
   }
-  .print-contact-block {
+
+  .resume-contact {
     text-align: right !important;
-    font-size: 8.5pt !important;
-    line-height: 1.3 !important;
-    color: #222222 !important;
-  }
-  .print-contact-block p {
-    margin: 0 !important;
+
+    font-size: 7.8pt !important;
+    line-height: 1.45 !important;
+
+    color: #333 !important;
   }
 
-  /* Structural Cards in Print */
-  .recruiter-card, .recruiter-project, .recruiter-footer-cta, .snapshot-tile {
-    background: #ffffff !important;
-    color: #111111 !important;
-    border: 1px solid #e0e0e0 !important;
-    border-radius: 4px !important;
-    box-shadow: none !important;
-    padding: 8px 10px !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
+
+  /* ------------------------------------------
+     SECTIONS
+  ------------------------------------------ */
+
+  .resume-section {
+    margin: 0 0 4mm !important;
   }
 
-  .recruiter-snapshot-strip {
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-    gap: 6px !important;
-  }
-  .snapshot-val {
-    font-size: 9.5pt !important;
-  }
-  .snapshot-lbl {
-    font-size: 5.5pt !important;
-  }
+  .resume-section h2 {
+    margin: 0 0 2mm !important;
+    padding-bottom: 1mm !important;
 
-  .recruiter-card-title {
-    color: #444444 !important;
-    font-size: 7.5pt !important;
-    margin-bottom: 6px !important;
-  }
-  .recruiter-summary {
+    border-bottom: .6pt solid #bbb !important;
+
     font-size: 9pt !important;
-    line-height: 1.4 !important;
-    margin-bottom: 6px !important;
-    color: #111111 !important;
-  }
-  .recruiter-bring-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 8px !important;
-    padding-top: 6px !important;
-  }
-  .bring-col h3 {
-    font-size: 8.5pt !important;
-    color: #111111 !important;
-  }
-  .bring-col p {
-    font-size: 8pt !important;
+    line-height: 1 !important;
+
+    font-weight: 800 !important;
+
+    text-transform: uppercase !important;
+    letter-spacing: .8pt !important;
+
+    color: #222 !important;
   }
 
-  .recruiter-timeline-item {
-    grid-template-columns: 100px minmax(0, 1fr) auto !important;
-    padding: 6px 0 !important;
+  .resume-section h3 {
+    margin: 0 !important;
+
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+
+    color: #111 !important;
+  }
+
+  .resume-section p {
+    margin: 0 !important;
+
+    font-size: 8.5pt !important;
+    line-height: 1.42 !important;
+
+    color: #333 !important;
+  }
+
+
+  /* ------------------------------------------
+     CORE VALUE
+  ------------------------------------------ */
+
+  .resume-3col {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 5mm !important;
+  }
+
+  .resume-3col h3 {
+    margin-bottom: 1mm !important;
+    font-size: 8.5pt !important;
+  }
+
+  .resume-3col ul {
+    margin: 0 !important;
+    padding-left: 4mm !important;
+  }
+
+  .resume-3col li {
+    margin: 0 0 .6mm !important;
+
+    font-size: 7.8pt !important;
+    line-height: 1.3 !important;
+
+    color: #333 !important;
+  }
+
+
+  /* ------------------------------------------
+     EXPERIENCE
+  ------------------------------------------ */
+
+  .resume-job {
+    display: grid !important;
+
+    grid-template-columns:
+      27mm
+      minmax(0, 1fr)
+      22mm !important;
+
+    gap: 3mm !important;
+
+    padding: 2.2mm 0 !important;
+
+    border-bottom: .5pt solid #ddd !important;
+
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
-  .recruiter-timeline-date {
-    font-size: 8pt !important;
-    color: #444444 !important;
-  }
-  .recruiter-timeline-org {
-    font-size: 9.5pt !important;
-    color: #111111 !important;
-  }
-  .recruiter-timeline-role {
-    font-size: 8.5pt !important;
-    color: #333333 !important;
-  }
-  .recruiter-timeline-desc {
-    font-size: 8pt !important;
-    color: #222222 !important;
-  }
-  .recruiter-type {
-    background: #f0f0f0 !important;
-    color: #222222 !important;
-    border: 1px solid #ccc !important;
-    font-size: 6pt !important;
-    padding: 2px 6px !important;
-  }
-  .recruiter-type--full {
-    background: #e8f6a6 !important;
-    color: #111111 !important;
+
+  .resume-job:last-child {
+    border-bottom: 0 !important;
   }
 
-  .recruiter-projects {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
+  .resume-job-date {
+    padding-top: .3mm !important;
+
+    font-size: 7.4pt !important;
+    font-weight: 700 !important;
+
+    color: #555 !important;
   }
-  .recruiter-project {
+
+  .resume-job-main h3 {
+    margin-bottom: .5mm !important;
+    font-size: 9pt !important;
+  }
+
+  .resume-job-role {
+    margin-bottom: .8mm !important;
+
+    font-size: 8pt !important;
+    font-weight: 600 !important;
+
+    color: #333 !important;
+  }
+
+  .resume-job-main p {
+    font-size: 7.8pt !important;
+    line-height: 1.33 !important;
+  }
+
+  .resume-tag {
+    align-self: start !important;
+
+    padding-top: .4mm !important;
+
+    text-align: right !important;
+
+    font-size: 5.8pt !important;
+    font-weight: 700 !important;
+
+    letter-spacing: .45pt !important;
+
+    color: #666 !important;
+  }
+
+  .resume-tag--strong {
+    color: #111 !important;
+  }
+
+
+  /* ------------------------------------------
+     PROJECTS
+  ------------------------------------------ */
+
+  .resume-project-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+
+    gap: 4mm !important;
+  }
+
+  .resume-project {
+    padding: 3mm !important;
+
+    border: .7pt solid #bbb !important;
+    border-radius: 2mm !important;
+
     break-inside: avoid !important;
   }
-  .recruiter-project h3 {
+
+  .resume-project-head {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+
+    gap: 3mm !important;
+
+    margin-bottom: 1.5mm !important;
+  }
+
+  .resume-project-head h3 {
     font-size: 10pt !important;
-    color: #111111 !important;
   }
-  .recruiter-project-metric {
-    font-size: 13pt !important;
-    color: #111111 !important;
+
+  .resume-project-head strong {
+    font-size: 7.4pt !important;
+    white-space: nowrap !important;
   }
-  .recruiter-project-flow {
+
+  .resume-project p {
+    margin-bottom: 1.5mm !important;
+
+    font-size: 7.8pt !important;
+  }
+
+  .resume-flow {
+    font-size: 7.2pt !important;
+    color: #555 !important;
+  }
+
+
+  /* ------------------------------------------
+     TECHNICAL PROFILE
+  ------------------------------------------ */
+
+  .resume-skill-row {
+    display: grid !important;
+    grid-template-columns: 29mm 1fr !important;
+
+    gap: 3mm !important;
+
+    padding: 1.8mm 0 !important;
+
+    border-bottom: .5pt solid #ddd !important;
+  }
+
+  .resume-skill-row:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .resume-skill-row strong {
+    font-size: 7.8pt !important;
+  }
+
+  .resume-skill-row span {
+    font-size: 7.8pt !important;
+    color: #333 !important;
+  }
+
+
+  /* ------------------------------------------
+     LOWER PAGE GRID
+  ------------------------------------------ */
+
+  .resume-bottom-grid {
+    display: grid !important;
+    grid-template-columns: 1.2fr .8fr !important;
+
+    gap: 6mm !important;
+  }
+
+  .resume-credential {
+    padding: 1.7mm 0 !important;
+
+    border-bottom: .5pt solid #ddd !important;
+  }
+
+  .resume-credential strong {
+    display: block !important;
+
     font-size: 8pt !important;
-    color: #333333 !important;
+    color: #111 !important;
   }
 
-  .recruiter-cap-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 8px !important;
+  .resume-credential span {
+    display: block !important;
+
+    margin-top: .4mm !important;
+
+    font-size: 7.1pt !important;
+    color: #555 !important;
   }
-  .recruiter-cap-col h3 {
+
+  .resume-muted {
+    margin-top: .8mm !important;
+
+    font-size: 7.2pt !important;
+    color: #666 !important;
+  }
+
+
+  /* ------------------------------------------
+     FINAL STRIP
+  ------------------------------------------ */
+
+  .resume-final {
+    display: flex !important;
+
+    justify-content: space-between !important;
+    align-items: center !important;
+
+    gap: 5mm !important;
+
+    margin-top: 4mm !important;
+    padding-top: 3mm !important;
+
+    border-top: 1pt solid #111 !important;
+  }
+
+  .resume-final strong {
+    display: block !important;
+
     font-size: 8.5pt !important;
   }
-  .recruiter-cap-col li {
-    font-size: 8pt !important;
-    line-height: 1.3 !important;
-  }
 
-  .recruiter-skill-level {
-    grid-template-columns: 120px minmax(0, 1fr) !important;
-    padding-top: 4px !important;
-    break-inside: avoid !important;
-  }
-  .chip {
-    background: #f5f5f5 !important;
-    border: 1px solid #ddd !important;
-    color: #111111 !important;
+  .resume-final span {
+    display: block !important;
+
+    margin-top: .5mm !important;
+
     font-size: 7.5pt !important;
-    padding: 2px 6px !important;
-  }
-  .chip--accent {
-    background: #e8f6a6 !important;
-    border-color: transparent !important;
+    color: #555 !important;
   }
 
-  .recruiter-grid-2 {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-  }
-  .recruiter-credential {
-    padding: 4px 0 !important;
-    break-inside: avoid !important;
-  }
-  .recruiter-credential strong {
-    font-size: 8.5pt !important;
-  }
-  .recruiter-credential span {
+  .resume-final-contact {
+    text-align: right !important;
+
     font-size: 7.5pt !important;
-  }
-  .recruiter-cred-status {
-    font-size: 6pt !important;
-    padding: 2px 6px !important;
-  }
-  .recruiter-cred-status--valid {
-    background: #e8f6a6 !important;
-    color: #111111 !important;
+    white-space: nowrap !important;
   }
 
-  .recruiter-footer-cta {
-    background: #f9f9f9 !important;
-    border: 1px solid #ccc !important;
-    padding: 8px 12px !important;
-    break-inside: avoid !important;
-  }
-  .recruiter-footer-cta h2 {
-    font-size: 9.5pt !important;
-    margin-bottom: 2px !important;
-  }
-  .recruiter-footer-cta p {
-    font-size: 8.5pt !important;
-  }
+
+  /* ------------------------------------------
+     ABSOLUTE PRINT SAFETY
+  ------------------------------------------ */
 
   a {
-    color: #111111 !important;
+    color: inherit !important;
     text-decoration: none !important;
   }
-}
 
+  img,
+  svg {
+    max-width: 100% !important;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
 
 /* MOBILE OVERRIDES */
 @media (max-width: 1023px) {
@@ -11987,27 +12197,30 @@ None identified`;
        The legacy archive is no longer merged into ARTICLES. */
   }
 
+  let printRestoreTitle = null;
+
   function printRecruiterResume() {
-    const doPrint = () => {
-      const originalTitle = document.title;
-      document.title = 'Bhramar-Raut-Resume';
-      document.body.classList.add('is-printing');
-      const restoreTitle = () => {
-        document.title = originalTitle;
-        document.body.classList.remove('is-printing');
-        window.removeEventListener('afterprint', restoreTitle);
-      };
-      window.addEventListener('afterprint', restoreTitle);
-      requestAnimationFrame(() => window.print());
+    const originalTitle = document.title;
+    document.title = 'Bhramar-Raut-Resume';
+    document.documentElement.classList.add('resume-print-active');
+    document.body.classList.add('resume-print-active');
+
+    const restore = () => {
+      document.title = originalTitle;
+      document.documentElement.classList.remove('resume-print-active');
+      document.body.classList.remove('resume-print-active');
+      window.removeEventListener('afterprint', restore);
+      printRestoreTitle = null;
     };
-    
-    const r = parseRoute();
-    if (r.path !== 'recruiter') {
-      navigate('recruiter', true);
-      requestAnimationFrame(() => requestAnimationFrame(doPrint));
-    } else {
-      doPrint();
-    }
+
+    printRestoreTitle = restore;
+    window.addEventListener('afterprint', restore, { once: true });
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.print();
+      });
+    });
   }
 
   function handleCopySummary() {
@@ -12209,11 +12422,13 @@ None identified`;
     bindCopyControl($('#copy-phone'), CONFIG.phone, 'Phone');
     $('#download-vcard')?.addEventListener('click', downloadVCard);
     document.addEventListener('click', (e) => {
-      const printBtn = e.target.closest('#recruiter-print');
-      if (printBtn) {
-        e.preventDefault();
-        printRecruiterResume();
-      }
+    const printBtn = e.target.closest('#recruiter-print');
+    if (printBtn) {
+      e.preventDefault();
+      printRecruiterResume();
+      return;
+    }
+      
       const copyBtn = e.target.closest('#recruiter-copy');
       if (copyBtn) {
         e.preventDefault();
@@ -12242,5 +12457,342 @@ None identified`;
 
 </script>
 
+
+<!-- =========================================================
+     PRINT-ONLY RESUME
+     Hidden on screen, rendered only by @media print
+========================================================= -->
+<div id="resume-print-root" class="resume-print-root" aria-hidden="true">
+
+  <!-- ================= PAGE 1 ================= -->
+  <section class="resume-sheet resume-sheet--1">
+
+    <header class="resume-header">
+      <div>
+        <h1>Bhramar Raut</h1>
+
+        <div class="resume-role">
+          Product Support · Application Support · Implementation
+        </div>
+
+        <div class="resume-subtitle">
+          Former Wipro Project Engineer · PSM I · Immediate Joiner
+        </div>
+      </div>
+
+      <div class="resume-contact">
+        <div>raut.bhramar@gmail.com</div>
+        <div>+91 89894 12921</div>
+        <div>Pandhurna, Madhya Pradesh, India</div>
+        <div>Open to relocation · Remote India</div>
+        <div>bhramarraut.github.io</div>
+        <div>linkedin.com/in/bhramarraut</div>
+      </div>
+    </header>
+
+
+    <section class="resume-section">
+      <h2>Profile</h2>
+
+      <p>
+        Former Wipro Project Engineer with 2+ years of enterprise IT
+        environment exposure, formal Java Full Stack training and recent
+        project-based work in AI-assisted product delivery, requirements and
+        workflow decomposition, functional validation and documentation.
+        PSM I certified with hands-on exposure to OpenProject,
+        Windows/macOS troubleshooting and AI-assisted delivery workflows.
+        Currently strengthening SQL, REST APIs, Postman, ITSM, Linux and
+        networking for Product/Application Support and Implementation roles.
+      </p>
+    </section>
+
+
+    <section class="resume-section">
+      <h2>Core Value</h2>
+
+      <div class="resume-3col">
+
+        <div>
+          <h3>Support & Validation</h3>
+          <ul>
+            <li>Issue reproduction and triage</li>
+            <li>Expected-vs-actual documentation</li>
+            <li>Functional / UAT-style validation</li>
+            <li>Fix verification and regression checks</li>
+            <li>Technology troubleshooting</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Product & Workflow</h3>
+          <ul>
+            <li>Requirements decomposition</li>
+            <li>Workflow and user-journey mapping</li>
+            <li>Role / permission concept validation</li>
+            <li>Process documentation</li>
+            <li>User-journey edge cases</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Delivery & Operations</h3>
+          <ul>
+            <li>Structured work-item tracking</li>
+            <li>OpenProject</li>
+            <li>Cross-team follow-up</li>
+            <li>Technical handover documentation</li>
+            <li>AI-assisted execution with human accountability</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="resume-section resume-experience">
+      <h2>Experience</h2>
+
+      <article class="resume-job">
+        <div class="resume-job-date">Apr–Jul 2026</div>
+
+        <div class="resume-job-main">
+          <h3>Analytika Improva SV</h3>
+          <div class="resume-job-role">
+            AI-Assisted Product Delivery & Product Operations
+          </div>
+
+          <p>
+            Decomposed product requirements, mapped user journeys,
+            performed functional validation, reproduced issues,
+            verified fixes and prepared delivery documentation across
+            Skillverse.in and Catalyx.
+          </p>
+        </div>
+
+        <div class="resume-tag">PROJECT-BASED</div>
+      </article>
+
+
+      <article class="resume-job">
+        <div class="resume-job-date">Nov 2024–Mar 2025</div>
+
+        <div class="resume-job-main">
+          <h3>BrickBillion Properties</h3>
+          <div class="resume-job-role">
+            Business Operations & Digital Execution
+          </div>
+
+          <p>
+            Supported landing-page creation, digital presence,
+            reel/content support, information organisation,
+            enquiry tracking and structured operational follow-up
+            for an early-stage real-estate business.
+          </p>
+        </div>
+
+        <div class="resume-tag">PROJECT-BASED</div>
+      </article>
+
+
+      <article class="resume-job">
+        <div class="resume-job-date">Sep 2022–Jan 2025</div>
+
+        <div class="resume-job-main">
+          <h3>Wipro Limited</h3>
+          <div class="resume-job-role">
+            Project Engineer · Enterprise IT Environment & Technical Training
+          </div>
+
+          <p>
+            Formal enterprise employment in a structured IT corporate
+            environment. Completed Java Full Stack training, internal
+            assessments, security/compliance protocols, technical
+            documentation and structured team workflows.
+          </p>
+        </div>
+
+        <div class="resume-tag resume-tag--strong">FULL-TIME</div>
+      </article>
+
+
+      <article class="resume-job">
+        <div class="resume-job-date">Dec 2021–Jun 2022</div>
+
+        <div class="resume-job-main">
+          <h3>Arcons Infrastructures & Constructions Pvt. Ltd.</h3>
+          <div class="resume-job-role">
+            Project Engineering Intern
+          </div>
+
+          <p>
+            Supported an approximately 18 km state-highway project through
+            site supervision, survey/design reporting, laboratory-test
+            documentation and tender-related activities.
+          </p>
+        </div>
+
+        <div class="resume-tag">INTERNSHIP</div>
+      </article>
+
+    </section>
+
+  </section>
+
+
+  <!-- ================= PAGE 2 ================= -->
+  <section class="resume-sheet resume-sheet--2">
+
+    <section class="resume-section">
+      <h2>Selected Product Work</h2>
+
+      <div class="resume-project-grid">
+
+        <article class="resume-project">
+          <div class="resume-project-head">
+            <h3>Skillverse.in</h3>
+            <strong>6+ Product Areas</strong>
+          </div>
+
+          <p>
+            AI-assisted product delivery and functional validation across
+            requirements, workflows and user journeys.
+          </p>
+
+          <div class="resume-flow">
+            Requirements → Workflows → Functional Validation →
+            Issue Reproduction → Fix Verification
+          </div>
+        </article>
+
+        <article class="resume-project">
+          <div class="resume-project-head">
+            <h3>Catalyx</h3>
+            <strong>10+ Modules · 7 Role Concepts</strong>
+          </div>
+
+          <p>
+            Workflow definition and role-aware validation across
+            admissions operations.
+          </p>
+
+          <div class="resume-flow">
+            Workflow → Role Behaviour → Permissions →
+            Functional Validation → Delivery Tracking
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <section class="resume-section">
+      <h2>Technical Profile</h2>
+
+      <div class="resume-skill-row">
+        <strong>Practical / Used</strong>
+        <span>
+          Windows troubleshooting · macOS troubleshooting ·
+          Functional testing / UAT · OpenProject · Cursor / Codex ·
+          Workflow documentation
+        </span>
+      </div>
+
+      <div class="resume-skill-row">
+        <strong>Foundation</strong>
+        <span>
+          Java / Full Stack concepts · SQL fundamentals ·
+          AWS fundamentals · Excel
+        </span>
+      </div>
+
+      <div class="resume-skill-row">
+        <strong>Building Now</strong>
+        <span>
+          Practical SQL · REST APIs · Postman · JSON · ITSM ·
+          Linux · Networking
+        </span>
+      </div>
+    </section>
+
+
+    <div class="resume-bottom-grid">
+
+      <section class="resume-section">
+        <h2>Credentials</h2>
+
+        <div class="resume-credential">
+          <strong>Professional Scrum Master I (PSM I)</strong>
+          <span>Scrum.org · 2026 · VALID</span>
+        </div>
+
+        <div class="resume-credential">
+          <strong>AWS Certified Cloud Practitioner</strong>
+          <span>Earned 2023 · Expired Apr 2026 · HISTORICAL</span>
+        </div>
+
+        <div class="resume-credential">
+          <strong>Databases and SQL for Data Science with Python</strong>
+          <span>IBM / Coursera · 2025 · COURSE</span>
+        </div>
+
+        <div class="resume-credential">
+          <strong>Certificate Program in Java Full Stack</strong>
+          <span>StackRoute / Wipro Velocity · 2022 · TRAINING</span>
+        </div>
+      </section>
+
+
+      <div>
+
+        <section class="resume-section">
+          <h2>Education</h2>
+
+          <h3>B.E. Civil Engineering</h3>
+          <p>
+            Shri Ramdeobaba College of Engineering and Management,
+            Nagpur
+          </p>
+          <p class="resume-muted">
+            2018–2022 · CGPA 7.81 / 10
+          </p>
+        </section>
+
+
+        <section class="resume-section">
+          <h2>Publication</h2>
+
+          <h3>
+            Economic Impact on Construction Sector Due to COVID-19
+          </h3>
+
+          <p>
+            Journal of Seybold Report · 2020 · Co-author
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+
+
+    <section class="resume-final">
+      <div>
+        <strong>
+          Open to Product Support, Application Support & Implementation roles
+        </strong>
+
+        <span>
+          Immediate joiner · India · Open to relocation / Remote India
+        </span>
+      </div>
+
+      <div class="resume-final-contact">
+        raut.bhramar@gmail.com · +91 89894 12921
+      </div>
+    </section>
+
+  </section>
+
+</div>
 </body>
 </html>
