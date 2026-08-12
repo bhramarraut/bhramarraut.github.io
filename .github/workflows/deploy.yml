@@ -30,10 +30,7 @@ jobs:
           node-version: "20"
           
       - name: Build Knowledge Index
-        run: node scripts/build_knowledge_index.mjs
-        
-      - name: Build SEO Static Site
-        run: node scripts/build_seo.mjs
+        run: node scripts/build.mjs
         
       - name: Setup Pages
         uses: actions/configure-pages@v4

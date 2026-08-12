@@ -195,3 +195,6 @@ coverage/
 # portfolio PDFs/images
 #
 # These are part of the public GitHub Pages website.
+
+# Deployment artifact
+_site/

@@ -5,7 +5,7 @@ on:
     paths:
       - "knowledge/**"
       - "scripts/build_knowledge_index.py"
-      - "scripts/build_knowledge_index.mjs"
+      - "scripts/build.mjs"
       - ".github/workflows/build-knowledge-index.yml"
   workflow_dispatch:
 
