@@ -1,6 +1,6 @@
-# Bhramar Raut — Professional Portfolio
+# Bhramar Raut — Associate Product Manager Portfolio
 
-Personal portfolio of **Bhramar Raut**, a former Wipro Project Engineer currently building toward **Product Support, Application Support, SaaS Support, Implementation, and Product Operations** roles.
+Personal portfolio of **Bhramar Raut**, an Associate Product Manager candidate and former Wipro Project Engineer with **HIMS Product Implementation** and **Product Management support** experience across healthcare workflows.
 
 🌐 **Live Portfolio:** [bhramarraut.github.io](https://bhramarraut.github.io/)
 
@@ -10,22 +10,17 @@ Personal portfolio of **Bhramar Raut**, a former Wipro Project Engineer currentl
 
 I am a Civil Engineering graduate from **Shri Ramdeobaba College of Engineering and Management (RCOEM), Nagpur**, with:
 
-- 2+ years of employment at **Wipro Limited**
-- Formal **Java Full Stack** training through Wipro Velocity / StackRoute
-- **Professional Scrum Master I (PSM I)** certification
+- 2+ years at **Wipro Limited** as **Project Engineer** supporting HIMS Product Implementation and Product Management
+- Hands-on experience across **healthcare workflows** — Patient Registration, OPD, IPD/ADT, Billing, Laboratory, Radiology, Pharmacy, Discharge
+- **Professional Scrum Master I (PSM I)** certification — Scrum.org, 2026
+- **NextLeap Product Manager Fellowship** — Enrolled, Sep–Dec 2026
 - AWS Cloud Practitioner certification history
 - IBM SQL / Database coursework
-- Project-based experience in **AI-assisted product delivery**
-- Functional testing and UAT-style validation
-- Requirements and workflow decomposition
-- Issue reproduction and fix validation
+- Project-based experience in **requirements, workflow analysis, user stories, acceptance criteria, Jira, functional validation and UAT**
+- AI-assisted product delivery review
 - Technical documentation
-- OpenProject work-item tracking
-- Windows / macOS troubleshooting
 
-I am currently strengthening practical knowledge in:
-
-`SQL` · `REST APIs` · `Postman` · `HTTP` · `ITSM` · `Linux` · `Networking`
+I am targeting **Associate Product Manager** opportunities, building on my HIMS product implementation background.
 
 ---
 
@@ -186,34 +181,28 @@ Do not embed articles in `index.html`. The browser never directory-scans `knowle
 
 ## Career Direction
 
-I am currently targeting opportunities such as:
+I am targeting **Associate Product Manager** opportunities, leveraging my:
 
-- Product Support
-- Application Support
-- SaaS Support
-- Technical Support
-- Implementation Support
-- Implementation Specialist
-- Product Operations
-- Project Coordination / PMO Support
-
-My longer-term direction is toward technically deeper work involving:
-
-**APIs · integrations · cloud · troubleshooting · implementation · solutions engineering**
+- HIMS Product Implementation experience at Wipro
+- Healthcare workflow understanding
+- Requirements, user stories, acceptance criteria and Jira experience
+- Functional validation and UAT background
+- Cross-functional coordination experience
+- NextLeap Product Manager Fellowship (Sep–Dec 2026)
 
 ---
 
 ## Contact
 
 **Bhramar Raut**  
-Pandhurna, Madhya Pradesh, India
+Pune, Maharashtra, India
 
 📧 [raut.bhramar@gmail.com](mailto:raut.bhramar@gmail.com)  
 💼 [LinkedIn](https://www.linkedin.com/in/bhramarraut)  
 💻 [GitHub](https://github.com/bhramarraut)  
 🌐 [Portfolio](https://bhramarraut.github.io/)
 
-**Availability:** Immediate Joiner
+**Availability:** Open to Associate Product Manager opportunities
 
 ---
 
